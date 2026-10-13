@@ -42,7 +42,7 @@ The runtime has its own four roles, which decide which API and WebSocket methods
 - **Operator**: read and write access for day-to-day work, without admin operations.
 - **Viewer**: read-only access.
 
-Tenant members are mapped onto these roles: owners and admins become admin, operators and members become operator, and viewers stay viewer. Access to an individual agent is checked separately: unless the caller is an owner or admin, the agent must be the default agent, owned by the caller, or shared with them. Chat in the app follows the same rule, with one exception: every workspace member can chat with the workspace's Super Agent, because workspace setup runs through it.
+Tenant members are mapped onto these roles: owners and admins become admin, operators and members become operator, and viewers stay viewer. Access to an individual agent is checked separately: the agent must be the default agent, owned by the caller, or shared with them. A predefined agent also counts when an enabled channel lists the caller in its allowed senders. The check covers chatting over the WebSocket and the HTTP chat API, scheduling the agent, and reading or editing it. Editing an agent's context files needs ownership or an admin or operator share, because a user share only allows chat. Tenant admins skip the check when chatting and on the agent's WebSocket methods, and so does an API key with no owner, which acts for the whole tenant. Chat in the app follows the same rule, with one exception: every workspace member can chat with the workspace's Super Agent, because it is where a chat starts when no agent is picked.
 
 ## API keys
 
