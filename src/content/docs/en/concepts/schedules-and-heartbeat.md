@@ -12,6 +12,8 @@ A dewee agent does not have to wait for someone to message it. A cron job runs a
 
 A cron job belongs to one agent and pairs a schedule with a payload. The scheduler checks for due jobs every second.
 
+You can only schedule a job on an agent you can already use: the default agent, one you own, or one shared with you. Tenant admins can schedule any agent in the tenant. An agent that creates a job with its own `cron` tool always schedules itself, never another agent. If your access to an agent is removed later, you can no longer edit, run or re-enable your jobs on it, but you can still pause or delete them.
+
 | Kind | Runs | `--schedule` value |
 |---|---|---|
 | `at` | Once, at a point in time | `at:2026-10-01T09:00:00+07:00` |
