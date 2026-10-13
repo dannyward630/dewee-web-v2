@@ -3,7 +3,7 @@ title: Skills
 description: How dewee skills are packaged, found and loaded into the prompt, who can use them, how agents publish their own, and how skills improve over time with review.
 section: concepts
 order: 5
-updated: 2026-09-25
+updated: 2026-10-13
 ---
 
 A skill is a reusable set of instructions, with optional scripts and reference files, that an agent loads when a task calls for it. Skills keep the system prompt short: the agent sees a one-line summary of each skill and reads the full instructions only when it needs them.
@@ -78,7 +78,7 @@ dewee skills access effective <skill-id> --agent <agent-id>
 - **Content guard.** Before anything is written, `SKILL.md` is scanned against 25 rules covering destructive commands, code injection, credential access, path traversal, SQL drops and privilege escalation. Any match rejects the skill. `SKILL.md` is limited to 100 KB and each companion text file to 2 MB.
 - **Agent publishing.** An agent can publish a folder from its workspace with `publish_skill`. The new skill is private to the user and granted to that agent, which makes it internal. Publishing the same slug again creates a new version. Built-in slugs are reserved.
 - **Agent editing.** With `skill_manage`, available only when skill learning is on, an agent can create, patch or delete skills it owns. Deleted skills are moved to a trash folder and erased after 7 days.
-- **Version retention.** Every version is its own folder on disk. The gateway keeps the current version, the 5 versions before it (`skills.versions.retain_previous`, a negative value keeps every version), any version an agent grant pins, and any version replaced in the last 24 hours so running tasks finish. A deleted skill's files are removed 7 days after the delete. Version history stays listed; the files of a removed version are no longer readable. Pinned versions do not use up the 5 slots. If the gateway stops in the middle of an upload, the half-written version moves to the trash folder after 24 hours, so the next upload of that skill is no longer refused as a conflict. A deleted skill cannot be switched back on; upload it again instead.
+- **Version retention.** Every version is its own folder on disk. The gateway keeps the current version, the 5 versions before it (`skills.versions.retain_previous`, a negative value keeps every version), any version an agent grant pins, and any version replaced in the last 24 hours so running tasks finish. A deleted skill's files are removed 7 days after the delete. Version history stays listed; the files of a removed version are no longer readable. Pinned versions do not use up the 5 slots. If the gateway stops in the middle of an upload, the half-written version moves to the trash folder after 24 hours, so the next upload of that skill is no longer refused as a conflict. A deleted skill cannot be switched back on; upload it again instead. Editing a skill through the API changes only its name, description, tags, visibility and status (active or archived); delete a skill with the delete action.
 
 ## Improving skills over time
 
