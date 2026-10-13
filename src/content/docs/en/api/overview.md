@@ -56,7 +56,7 @@ The WebSocket at `/ws` is what the console uses for live chat. The first frame m
 {"type": "req", "id": "1", "method": "connect", "params": {"token": "<api-key>", "locale": "en"}}
 ```
 
-The reply tells you your role and tenant. After that, each request is a `req` frame with a `method` and `params`, answered by a `res` frame with the same `id`. The server pushes `event` frames for streamed replies, tool calls, team tasks, approvals and trace updates. The protocol version is 3; `/health` reports it too.
+The reply tells you your role and tenant. Sending `connect` again on the same socket replaces the earlier login entirely, and a rejected `connect` logs the socket out. After that, each request is a `req` frame with a `method` and `params`, answered by a `res` frame with the same `id`. The server pushes `event` frames for streamed replies, tool calls, team tasks, approvals and trace updates. The protocol version is 3; `/health` reports it too.
 
 ## Errors and limits
 
