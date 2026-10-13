@@ -27,7 +27,7 @@ Tài liệu trên gateway luôn khớp đúng phiên bản bạn đang chạy, n
 | WebSocket RPC | `/ws` | Chat trực tiếp có streaming, sự kiện của agent và nhóm agent, phê duyệt |
 | Chat completions | `POST /v1/chat/completions` | Trò chuyện với agent từ bất kỳ client nào tương thích OpenAI |
 | Responses | `POST /v1/responses` | Tương tự, cho client dùng định dạng OpenAI Responses |
-| MCP server công khai | `POST /mcp` | Cho Claude Code, Cursor, VS Code hoặc Gemini CLI dùng tri thức và workflow của workspace |
+| MCP server công khai | `POST /mcp/server` | Cho Claude Code, Cursor, VS Code hoặc Gemini CLI dùng tri thức và workflow của workspace |
 | Webhook | `POST /v1/webhooks/llm`, `POST /v1/webhooks/message` | Cho hệ thống khác kích hoạt agent hoặc gửi tin nhắn qua một channel |
 | Kiểm tra sức khoẻ | `/health`, `/livez`, `/readyz` | Cho load balancer và orchestrator; không cần xác thực |
 

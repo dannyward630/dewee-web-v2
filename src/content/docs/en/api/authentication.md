@@ -39,9 +39,9 @@ Keys look like `goclaw_` followed by 32 hexadecimal characters. The runtime stor
 | `operator.approvals` | Approving held commands | Operator |
 | `operator.pairing` | Managing paired browser devices | Operator |
 | `operator.admin` | Everything, including API keys and system configuration | Admin |
-| `mcp.tools.read`, `mcp.tools.write` | The public MCP endpoint only | None outside `/mcp` |
+| `mcp.tools.read`, `mcp.tools.write` | The public MCP endpoint only | None outside `/mcp/server` |
 
-A key gets the highest role its scopes allow. Keys with only MCP scopes are refused everywhere except `POST /mcp`, and they must be tied to an owner, the person whose agent access they use.
+A key gets the highest role its scopes allow. Keys with only MCP scopes are refused everywhere except `POST /mcp/server`, and they must be tied to an owner, the person whose agent access they use.
 
 ## Send the key
 
