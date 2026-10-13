@@ -53,7 +53,7 @@ Host: dewee.example.com
 Authorization: Bearer <api-key>
 ```
 
-On the WebSocket, put it in the `token` field of the first `connect` request. Links to files and media can also carry a token in the `?token=` query parameter, for places where you cannot set a header.
+On the WebSocket, put it in the `token` field of the first `connect` request. If you send `connect` again on the same socket, the new credential replaces the old one completely, and a `connect` that fails leaves the socket signed out. Links to files and media can also carry a token in the `?token=` query parameter, for places where you cannot set a header.
 
 Optional headers refine a request:
 
