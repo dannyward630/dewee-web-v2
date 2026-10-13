@@ -42,7 +42,7 @@ Runtime có bốn vai trò riêng, quyết định bên gọi được dùng nh�
 - **Operator**: quyền đọc và ghi cho công việc hằng ngày, không có thao tác quản trị.
 - **Viewer**: chỉ đọc.
 
-Thành viên của tenant được ánh xạ vào các vai trò này: owner và admin thành admin, operator và member thành operator, viewer giữ nguyên viewer. Quyền truy cập từng agent được kiểm tra riêng: agent phải là agent mặc định, do chính bên gọi sở hữu, hoặc đã được chia sẻ cho họ.
+Thành viên của tenant được ánh xạ vào các vai trò này: owner và admin thành admin, operator và member thành operator, viewer giữ nguyên viewer. Quyền truy cập từng agent được kiểm tra riêng: trừ khi bên gọi là owner hoặc admin, agent phải là agent mặc định, do chính bên gọi sở hữu, hoặc đã được chia sẻ cho họ. Chat trong ứng dụng tuân theo cùng quy tắc này, với một ngoại lệ: mọi thành viên workspace đều chat được với Super Agent của workspace, vì quá trình thiết lập workspace chạy qua agent này.
 
 ## API key
 
