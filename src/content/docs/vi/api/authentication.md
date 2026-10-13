@@ -53,7 +53,7 @@ Host: dewee.example.com
 Authorization: Bearer <api-key>
 ```
 
-Trên WebSocket, đặt key vào trường `token` của request `connect` đầu tiên. Đường dẫn tới file và media cũng có thể mang token qua tham số `?token=`, cho những chỗ không đặt được header.
+Trên WebSocket, đặt key vào trường `token` của request `connect` đầu tiên. Nếu gửi `connect` lần nữa trên cùng socket, credential mới thay hẳn credential cũ, và một `connect` thất bại sẽ đưa socket về trạng thái chưa đăng nhập. Đường dẫn tới file và media cũng có thể mang token qua tham số `?token=`, cho những chỗ không đặt được header.
 
 Các header tuỳ chọn giúp request rõ ràng hơn:
 
