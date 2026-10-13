@@ -65,6 +65,8 @@ Các header tuỳ chọn giúp request rõ ràng hơn:
 
 Chữ `GoClaw` trong tên header là tên gốc của runtime; hãy dùng đúng như trên.
 
+`X-GoClaw-User-Id` chỉ cho biết request làm việc trên dữ liệu của ai. Header này không bao giờ thay đổi việc key được phép làm: với key không gắn owner, ghi tên owner của workspace hay một admin cũng không cho request vai trò của họ. Key giữ vai trò mà các scope của nó cho phép, trong chính tenant của nó. Để thao tác với vai trò của owner hay admin, hãy dùng key gắn với đúng người đó.
+
 ## Kiểm tra key
 
 `GET /v1/auth/token/status` cho biết key hoặc token có hợp lệ không, là cách nhanh để thử một tích hợp mới. Từ terminal, bất kỳ lệnh đọc nào cũng làm được việc tương tự:

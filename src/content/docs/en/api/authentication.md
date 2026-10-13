@@ -65,6 +65,8 @@ Optional headers refine a request:
 
 The `GoClaw` in these header names is the runtime's original name; use them exactly as shown.
 
+`X-GoClaw-User-Id` only says whose data the request works on. It never changes what the key may do: on a key without an owner, naming the workspace owner or an admin does not give the request their role. The key keeps the role its scopes allow, inside its own tenant. To act with an owner's or admin's role, use a key tied to that person.
+
 ## Check a key
 
 `GET /v1/auth/token/status` tells you whether a key or token is valid, which is a quick way to test a new integration. From the terminal, any read command does the same:
