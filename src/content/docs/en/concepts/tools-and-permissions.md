@@ -3,7 +3,7 @@ title: Tools and permissions
 description: How dewee decides which tools an agent can call, how shell commands are filtered and approved, and which permissive defaults to tighten before production use.
 section: concepts
 order: 4
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 Tools are how an agent acts. Before every model call, dewee filters the tool list through a policy pipeline, and each shell command passes further checks when it runs. The defaults are permissive; the last section lists what to tighten.
@@ -123,4 +123,5 @@ dewee is closed by default at the edge, but agent capabilities start open:
 - [Security model](/docs/security/overview): edge controls and defence layers.
 - [Secrets, roles and audit](/docs/security/secrets-roles-and-audit): how secrets are stored and who can change policy.
 - [Hooks](/docs/concepts/hooks): blocking or rewriting a tool call before it runs.
+- [Access grants](/docs/security/access-grants): which agents may use a skill, MCP server, package or provider.
 - [Webhooks and MCP](/docs/api/webhooks-and-mcp): exposing dewee itself as an MCP server.
