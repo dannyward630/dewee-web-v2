@@ -3,7 +3,7 @@ title: Tổng quan bảo mật
 description: Những gì dewee khoá sẵn theo mặc định, những năng lực của agent còn mở cho tới khi bạn siết lại, và năm lớp kiểm tra giữa một tin nhắn với hệ thống của bạn.
 section: security
 order: 1
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 Trang này viết cho người phải ký duyệt việc dùng dewee: cái gì được bảo vệ ngay từ đầu, cái gì bạn cần tự cấu hình, và mỗi lớp kiểm tra nằm ở đâu. Nội dung mô tả đúng những gì runtime đang làm, kể cả các mặc định còn thoáng. Bản tóm tắt ở mức sản phẩm có tại trang [Bảo mật](/security).
@@ -41,6 +41,7 @@ Các mặc định này ưu tiên việc bắt đầu nhanh. Hãy rà lại trư
 | Origin của WebSocket (`gateway.allowed_origins`) | Mọi origin khi để trống | Danh sách origin của bạn |
 | Nhóm chat (`group_policy`) | `open` với phần lớn loại channel | `allowlist` hoặc `disabled` |
 | Danh sách IP cho webhook | Để trống, tức mọi IP | Địa chỉ của bên gửi |
+| Quyền dùng provider và package | Mở cho mọi agent của workspace | `restricted`, kèm quyền `use` cho từng agent cần dùng; xem [Cấp quyền theo tài nguyên](/docs/security/access-grants) |
 
 Cách các lớp chính sách tool chồng lên nhau được giải thích trong [Tool và quyền](/docs/concepts/tools-and-permissions).
 
