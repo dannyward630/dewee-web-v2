@@ -78,7 +78,7 @@ Gateway từ chối khởi động trên một địa chỉ không phải loopba
 
 Đặt `GOCLAW_PUBLIC_URL` là địa chỉ công khai của gateway (ví dụ `https://dewee.example.com`). Gateway đưa địa chỉ này cho các dịch vụ bên ngoài, chẳng hạn URL callback và webhook của kênh hay link tải file. Khi đã đặt, không request nào thay đổi được nó. Nếu không đặt, gateway chỉ học địa chỉ từ request của system owner hoặc admin của master tenant. Các workspace khác không bao giờ thay đổi được nó.
 
-Gateway chỉ đọc `X-Forwarded-Host` và `X-Forwarded-Proto` từ các proxy có trong `GOCLAW_TRUSTED_PROXIES`, một danh sách địa chỉ IP hoặc dải CIDR cách nhau bằng dấu phẩy (ví dụ `127.0.0.1,::1` khi nginx chạy cùng máy). Với mọi client khác, các header này bị bỏ qua. Danh sách mặc định rỗng, và một mục không hợp lệ sẽ khiến gateway không khởi động.
+Gateway chỉ đọc `X-Forwarded-Host` và `X-Forwarded-Proto` từ các proxy có trong `GOCLAW_TRUSTED_PROXIES`, một danh sách địa chỉ IP, dải CIDR hoặc tên máy cách nhau bằng dấu phẩy (ví dụ `127.0.0.1,::1` khi nginx chạy cùng máy, hoặc tên service Docker Compose của container proxy). Với mọi client khác, các header này bị bỏ qua. Trình cài đặt self-hosted và các file Compose đã tự đặt giá trị này cho proxy đi kèm; ở nơi khác danh sách mặc định rỗng. Một mục không hợp lệ sẽ khiến gateway không khởi động.
 
 Truy cập MCP công khai vào gateway (`GOCLAW_MCP_PUBLIC_ENABLED`) mặc định tắt. Đọc [Webhook và MCP](/docs/api/webhooks-and-mcp) trước khi bật.
 
