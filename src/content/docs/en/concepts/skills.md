@@ -77,7 +77,8 @@ dewee skills access effective <skill-id> --agent <agent-id>
 - **Upload.** `dewee skills upload <dir-or-zip>` packages a folder or sends an existing ZIP, and the skill appears under custom skills in the console. The size limit is 20 MB by default, configurable from 1 to 500 MB. `dewee skills promote <slug>` uploads a personal skill from `~/.agents`.
 - **Content guard.** Before anything is written, `SKILL.md` is scanned against 25 rules covering destructive commands, code injection, credential access, path traversal, SQL drops and privilege escalation. Any match rejects the skill. `SKILL.md` is limited to 100 KB and each companion text file to 2 MB.
 - **Agent publishing.** An agent can publish a folder from its workspace with `publish_skill`. The new skill is private to the user and granted to that agent, which makes it internal. Publishing the same slug again creates a new version. Built-in slugs are reserved.
-- **Agent editing.** With `skill_manage`, available only when skill learning is on, an agent can create, patch or delete skills it owns. Deleted skills are moved to a trash folder, not erased.
+- **Agent editing.** With `skill_manage`, available only when skill learning is on, an agent can create, patch or delete skills it owns. Deleted skills are moved to a trash folder and erased after 7 days.
+- **Version retention.** Every version is its own folder on disk. The gateway keeps the current version, the 5 versions before it (`skills.versions.retain_previous`, a negative value keeps every version), any version an agent grant pins, and any version replaced in the last 24 hours so running tasks finish. A deleted skill's files are removed 7 days after the delete. Version history stays listed; the files of a removed version are no longer readable.
 
 ## Improving skills over time
 
