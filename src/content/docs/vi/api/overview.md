@@ -56,7 +56,7 @@ WebSocket tại `/ws` là thứ console dùng cho chat trực tiếp. Frame đ�
 {"type": "req", "id": "1", "method": "connect", "params": {"token": "<api-key>", "locale": "vi"}}
 ```
 
-Phản hồi cho biết vai trò và tenant của bạn. Sau đó, mỗi request là một frame `req` có `method` và `params`, được trả lời bằng frame `res` có cùng `id`. Máy chủ đẩy các frame `event` cho câu trả lời dạng stream, lời gọi tool, task của nhóm agent, yêu cầu phê duyệt và cập nhật trace. Phiên bản protocol là 3; `/health` cũng báo con số này.
+Phản hồi cho biết vai trò và tenant của bạn. Gửi `connect` lần nữa trên cùng socket sẽ thay hoàn toàn phiên đăng nhập trước, còn một `connect` bị từ chối sẽ đăng xuất socket. Sau đó, mỗi request là một frame `req` có `method` và `params`, được trả lời bằng frame `res` có cùng `id`. Máy chủ đẩy các frame `event` cho câu trả lời dạng stream, lời gọi tool, task của nhóm agent, yêu cầu phê duyệt và cập nhật trace. Phiên bản protocol là 3; `/health` cũng báo con số này.
 
 ## Lỗi và giới hạn
 
