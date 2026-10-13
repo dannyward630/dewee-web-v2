@@ -39,9 +39,9 @@ Key có dạng `goclaw_` theo sau là 32 ký tự hexa. Runtime chỉ lưu hash 
 | `operator.approvals` | Phê duyệt các lệnh đang bị giữ | Operator |
 | `operator.pairing` | Quản lý thiết bị trình duyệt đã ghép cặp | Operator |
 | `operator.admin` | Mọi thứ, kể cả API key và cấu hình hệ thống | Admin |
-| `mcp.tools.read`, `mcp.tools.write` | Chỉ endpoint MCP công khai | Không có vai trò nào ngoài `/mcp` |
+| `mcp.tools.read`, `mcp.tools.write` | Chỉ endpoint MCP công khai | Không có vai trò nào ngoài `/mcp/server` |
 
-Key nhận vai trò cao nhất mà các scope của nó cho phép. Key chỉ có scope MCP bị từ chối ở mọi nơi trừ `POST /mcp`, và phải gắn với một owner, là người có quyền truy cập agent mà key sẽ dùng.
+Key nhận vai trò cao nhất mà các scope của nó cho phép. Key chỉ có scope MCP bị từ chối ở mọi nơi trừ `POST /mcp/server`, và phải gắn với một owner, là người có quyền truy cập agent mà key sẽ dùng.
 
 ## Gửi key
 

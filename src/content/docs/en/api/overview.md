@@ -27,7 +27,7 @@ The reference on your gateway always matches the version you run, so prefer it o
 | WebSocket RPC | `/ws` | Live chat with streaming, agent and team events, approvals |
 | Chat completions | `POST /v1/chat/completions` | Talking to an agent from any OpenAI-compatible client |
 | Responses | `POST /v1/responses` | The same, for clients that use the OpenAI Responses format |
-| Public MCP server | `POST /mcp` | Letting Claude Code, Cursor, VS Code or Gemini CLI use a workspace's knowledge and workflows |
+| Public MCP server | `POST /mcp/server` | Letting Claude Code, Cursor, VS Code or Gemini CLI use a workspace's knowledge and workflows |
 | Webhooks | `POST /v1/webhooks/llm`, `POST /v1/webhooks/message` | Letting another system trigger an agent or send a message on a channel |
 | Health | `/health`, `/livez`, `/readyz` | Load balancer and orchestrator checks; no authentication |
 
