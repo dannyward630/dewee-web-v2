@@ -84,7 +84,7 @@ Trong console, mở **API key & tài liệu** rồi chọn tab **Kết nối MCP
 
 1. **Trạng thái endpoint.** Các nhãn trạng thái cho biết runtime đã được liên kết chưa, endpoint có sẵn sàng trên runtime này không, và MCP đã được bật cho workspace chưa. Bên dưới là địa chỉ endpoint chính xác, số tool đọc và tool ghi, cùng các giới hạn. Admin của workspace có thể **Bật MCP** hoặc **Tắt MCP** ngay tại đây, sau một bước xác nhận; các thành viên khác chỉ xem được trạng thái và được hướng dẫn liên hệ admin.
 2. **Chọn agent.** Chọn agent mà client sẽ làm việc cùng, hoặc để trống để dùng agent mặc định của workspace.
-3. **Tạo khóa.** Key chỉ dùng được cho MCP và mặc định chỉ có quyền đọc. Chỉ đánh dấu **Cho phép thêm công cụ ghi** khi client thật sự cần thay đổi dữ liệu. Key chỉ hiện một lần, nên hãy sao chép ngay.
+3. **Tạo key.** Key chỉ dùng được cho MCP và mặc định chỉ có quyền đọc. Chỉ đánh dấu **Cho phép thêm công cụ ghi** khi client thật sự cần thay đổi dữ liệu. Key chỉ hiện một lần, nên hãy sao chép ngay.
 4. **Sao chép cấu hình client.** Chọn Claude Code, Cursor, VS Code hoặc Gemini CLI rồi sao chép cấu hình, trong đó đã có sẵn endpoint và agent bạn chọn. Cấu hình luôn dùng chỗ giữ chỗ `<your-mcp-key>`, không bao giờ chứa key thật; hãy thay chỗ giữ chỗ bằng key của bạn.
 5. **Kiểm tra kết nối.** Dán một key, hoặc dùng key vừa tạo, rồi chọn **Kiểm tra kết nối**. Console chạy đúng bước bắt tay mà client thực hiện và hiển thị kết quả, bước tiếp theo nên làm, số tool tìm thấy và thời gian phản hồi. Tuỳ chọn **Gọi thử một công cụ chỉ đọc** chứng minh rằng tool thật sự chạy được.
 

@@ -85,7 +85,7 @@ Hai tính năng riêng biệt giúp skill tốt dần lên, và không tính nă
 
 **Học skill** (`skill_evolve` trong `other_config` của agent, mặc định tắt, chỉ dành cho agent predefined) dạy agent nhận ra khi nào một việc đáng lưu lại. Tính năng này thêm hướng dẫn vào prompt, nhắc nhở khi dùng tới 70% và 90% số vòng lặp cho phép, và sau một việc có ít nhất 15 lệnh gọi tool (`skill_nudge_interval`) sẽ hỏi người dùng "save as skill" hay "skip". Không có gì được lưu nếu người dùng chưa trả lời.
 
-**Tự cải tiến skill** theo dõi hiệu quả của từng skill. Các lần chạy `use_skill` và lệnh slash được ghi lại, agent có thể đọc các trace gần đây của chính mình làm bằng chứng, và các đề xuất cải tiến được xếp vào hàng chờ. Chế độ là `suggest_only` (mặc định) hoặc `auto_analyze`, và ở cả hai chế độ, skill đều không bị tự động sửa. Quản trị viên duyệt và áp dụng đề xuất, việc này tạo ra phiên bản mới; skill tích hợp không bao giờ bị thay đổi.
+**Tự cải tiến skill** theo dõi hiệu quả của từng skill. Các lần chạy `use_skill` và lệnh slash được ghi lại, agent có thể đọc các trace gần đây của chính mình làm bằng chứng, và các đề xuất cải tiến được xếp vào hàng chờ. Chế độ là `suggest_only` (mặc định) hoặc `auto_analyze`, và ở cả hai chế độ, skill đều không bị tự động sửa. Quản trị viên phê duyệt và áp dụng đề xuất, việc này tạo ra phiên bản mới; skill tích hợp không bao giờ bị thay đổi.
 
 ```bash
 dewee skills evolve status <skill>

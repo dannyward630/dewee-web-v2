@@ -1,6 +1,6 @@
 ---
 title: Agent
-description: "Tạo và quản lý các agent trong workspace: mô hình, chỉ dẫn và tệp ngữ cảnh, kỹ năng và công cụ, ai được dùng agent, cùng heartbeat và tối ưu hóa."
+description: "Tạo và quản lý các agent trong workspace: mô hình, chỉ dẫn và tệp ngữ cảnh, kỹ năng và công cụ, ai được dùng agent, cùng heartbeat và tối ưu hoá."
 section: console
 order: 3
 screens: [agents]
@@ -64,15 +64,15 @@ Chọn một dòng để mở trang đầy đủ của agent. Menu của mỗi d
    - **Biểu tượng cảm xúc** và **Mô tả** (tối đa 600 ký tự): không bắt buộc.
    - **Nhà cung cấp** và **Mô hình**: chọn một nhà cung cấp đã kết nối và một mô hình của nhà cung cấp đó. Nếu chưa có nhà cung cấp nào, hãy thêm trước ở [Provider và model](/docs/console/providers-and-models).
    - **Kế hoạch năng lực**: chọn tối đa 4 mục trong **MCP servers**, **Skills**, **Công cụ tích hợp** và **Lịch chạy** để ghi lại những gì cần thiết lập tiếp theo. Ở đây chưa cấp gì cả; bạn cấp chúng trên các tab của agent sau khi agent đã được tạo.
-4. Nếu cần, mở **Ngữ cảnh và giới hạn** để đặt **Loại agent**, **Context window** (0 đến 2.000.000 token), **Cập nhật trạng thái tác vụ**, **Số lần lặp công cụ** (0 đến 100), **Prompt mode**, **Mức độ suy luận** và **Max tokens**. Để trống một trường để giữ mặc định của runtime hoặc nhà cung cấp.
+4. Nếu cần, mở **Ngữ cảnh và giới hạn** để đặt **Loại agent**, **Context window** (0 đến 2.000.000 token), **Cập nhật trạng thái task**, **Số lần lặp công cụ** (0 đến 100), **Prompt mode**, **Mức độ suy luận** và **Max tokens**. Để trống một trường để giữ mặc định của runtime hoặc nhà cung cấp.
 5. Nếu cần, mở **Cấu hình nâng cao** để dán thiết lập riêng của agent dưới dạng JSON.
 6. Chọn **Tạo agent**. Agent mới mở trong bảng xem nhanh, ở tab **Hồ sơ**.
 
 ## Quản lý agent
 
-Trang đầy đủ của agent có phần đầu với **Trò chuyện** và menu **Thêm** gồm **Tạm dừng** hoặc **Tiếp tục** và **Xóa agent**. Thay đổi trên một tab chỉ được lưu khi bạn lưu từ thanh hiện ra. Các tab gồm:
+Trang đầy đủ của agent có phần đầu với **Trò chuyện** và menu **Thêm** gồm **Tạm dừng** hoặc **Tiếp tục** và **Xoá agent**. Thay đổi trên một tab chỉ được lưu khi bạn lưu từ thanh hiện ra. Các tab gồm:
 
-- **Tổng quan**: danh tính, số yêu cầu, tỷ lệ lỗi, kiểm tra tình trạng, các đề xuất tối ưu hóa đang chờ và các phiên gần đây.
+- **Tổng quan**: danh tính, số yêu cầu, tỷ lệ lỗi, kiểm tra tình trạng, các đề xuất tối ưu hoá đang chờ và các phiên gần đây.
 - **Hồ sơ**: tên, emoji, mô tả, loại, trạng thái, nhà cung cấp và mô hình.
 - **Chỉ dẫn**: đọc và sửa các tệp ngữ cảnh trong danh sách cho phép, trong giới hạn dung lượng của từng tệp.
 - **Phân quyền**: những người được chia sẻ agent trong runtime. Quyền cấp mới gồm **Dùng**, để trò chuyện với agent, và **Quản lý**, để còn cấp hoặc thu hồi quyền truy cập. Quyền **Chỉnh sửa** hoặc **Quản trị** đã có vẫn hiện và đổi được, nhưng không được đề xuất khi cấp mới, vì sửa hoặc xoá agent ở đây vẫn cần quản trị viên workspace. Runtime ghi lại mọi thay đổi; xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
@@ -81,7 +81,7 @@ Trang đầy đủ của agent có phần đầu với **Trò chuyện** và men
 - **Hook**: thêm, bật hoặc xoá các hook chạy theo sự kiện của agent.
 - **Kênh**: các kênh mà agent trả lời. Gắn kênh ở trang [Kênh](/docs/console/channels-and-contacts).
 - **Phiên**: các cuộc trò chuyện mà agent đã tham gia.
-- **Tối ưu hóa**: các đề xuất agent tự đưa ra cho chính nó, dựa trên số liệu của nó. **Duyệt** hoặc **Từ chối** một đề xuất đang chờ, hoặc **Hoàn tác** một đề xuất đã áp dụng.
+- **Tối ưu hoá**: các đề xuất agent tự đưa ra cho chính nó, dựa trên số liệu của nó. **Phê duyệt** hoặc **Từ chối** một đề xuất đang chờ, hoặc **Hoàn tác** một đề xuất đã áp dụng.
 - **Heartbeat**: đánh thức agent theo chu kỳ (tối thiểu 300 giây) trong khoảng **Hoạt động từ** đến **Hoạt động đến** theo một múi giờ, và **Chạy thử**.
 - **Định tuyến**: chỉ xuất hiện với agent định tuyến qua một nhóm tài khoản OAuth ChatGPT/Codex.
 - **Hoạt động**: các thay đổi gần đây của agent, kèm đường dẫn tới trace và sự kiện của nó.

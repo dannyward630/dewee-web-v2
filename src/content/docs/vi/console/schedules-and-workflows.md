@@ -58,19 +58,19 @@ Tab **Quy trình** liệt kê từng quy trình với **Tên**, **Bật**, **Phi
 
 1. Chọn **Quy trình mới**. Nhập **Tên**, kiểm tra **Slug**, tức mã định danh cố định mà runtime sử dụng, và thêm **Mô tả** nếu muốn.
 2. Trong **Bắt đầu từ**, chọn **Khung trống** hoặc **Mẫu cơ bản**, rồi chọn **Tạo và mở trình chỉnh sửa**.
-3. Trong trình chỉnh sửa, chọn **Thêm nút** để đặt các bước lên khung vẽ: **Tác tử**, **Phê duyệt**, **So sánh**, **Điều kiện**, **Gửi tin**, **Gửi nhiều nơi**, **Đồ thị tri thức**, **Công cụ MCP**, **Đọc tệp**, **Ghi tệp**, **Tạo công việc**, **Biến đổi** và **Tìm trong kho**. Chọn một nút để sửa nó trong **Thuộc tính**.
+3. Trong trình chỉnh sửa, chọn **Thêm nút** để đặt các bước lên khung vẽ: **Agent**, **Phê duyệt**, **So sánh**, **Điều kiện**, **Gửi tin**, **Gửi nhiều nơi**, **Đồ thị tri thức**, **Công cụ MCP**, **Đọc tệp**, **Ghi tệp**, **Tạo công việc**, **Biến đổi** và **Tìm trong kho**. Chọn một nút để sửa nó trong **Thuộc tính**.
 4. Bản nháp tự lưu; thanh công cụ hiển thị **Đang lưu…** và **Đã lưu bản nháp**. Bảng **Kiểm tra** kiểm tra bản nháp đã lưu và liệt kê các lỗi, hoặc báo **Không phát hiện lỗi**. Dùng **Kiểm tra lại** để kiểm tra một lần nữa.
 5. Chọn **Xuất bản**. Trong **Xuất bản bản nháp hiện tại**, xác nhận bằng **Xuất bản thành phiên bản** kèm số phiên bản mới. Runtime kiểm tra bản nháp rồi xuất bản thành phiên bản mới; lượt chạy luôn dùng phiên bản đã xuất bản, còn bản nháp vẫn sửa được.
 6. Chọn **Chạy thử** để thử phiên bản đã xuất bản. Nhập **Đầu vào** dưới dạng một đối tượng JSON, chọn **Chạy khô** hoặc **Chạy thật**, rồi chọn **Bắt đầu chạy khô** hoặc **Bắt đầu chạy thật**.
 
-Chủ workspace và admin xuất bản trực tiếp. Khi một agent, hoặc một thành viên không phải chủ workspace hay admin, xuất bản quy trình, runtime sẽ tạo một yêu cầu phê duyệt xuất bản thay vì xuất bản ngay. Một người khác với người yêu cầu phải duyệt yêu cầu đó, và lượt duyệt gắn với bản nháp tại thời điểm yêu cầu: nếu bản nháp thay đổi, lượt duyệt bị từ chối. Các yêu cầu này nằm ở tab **Phê duyệt** của trang **Task & phê duyệt**; xem [Nhóm agent và phê duyệt](/docs/console/agent-teams).
+Chủ workspace và admin xuất bản trực tiếp. Khi một agent, hoặc một thành viên không phải chủ workspace hay admin, xuất bản quy trình, runtime sẽ tạo một yêu cầu phê duyệt xuất bản thay vì xuất bản ngay. Một người khác với người yêu cầu phải phê duyệt yêu cầu đó, và lượt phê duyệt gắn với bản nháp tại thời điểm yêu cầu: nếu bản nháp thay đổi, lượt phê duyệt bị từ chối. Các yêu cầu này nằm ở tab **Phê duyệt** của trang **Task & phê duyệt**; xem [Nhóm agent và phê duyệt](/docs/console/agent-teams).
 
 > [!WARNING]
 > Chạy thật sẽ thực hiện hành động thật: tin nhắn được gửi, tệp và công việc được ghi. Hãy dùng **Chạy khô** trước.
 
 Muốn sửa thiết lập, lược đồ hay trình kích hoạt mà khung vẽ không sửa được, mở **Sửa JSON định nghĩa** trong menu của thanh công cụ. Ngăn **JSON định nghĩa** chứa toàn bộ bản nháp, và **Lưu bản nháp** sẽ thay bản nháp đúng như nội dung đã viết.
 
-**Phiên bản** liệt kê các phiên bản đã xuất bản. Chọn **Quay lại** trên một phiên bản cũ để từ giờ lượt chạy dùng phiên bản đó; bản nháp không thay đổi. Phiên bản đã xuất bản chỉ xem được; chọn **Tạo bản nháp mới** để thay đổi. **Xóa quy trình** xoá quy trình, bản nháp và các phiên bản đã xuất bản, và các trình kích hoạt trỏ tới nó ngừng chạy. Thao tác này không thể hoàn tác.
+**Phiên bản** liệt kê các phiên bản đã xuất bản. Chọn **Quay lại** trên một phiên bản cũ để từ giờ lượt chạy dùng phiên bản đó; bản nháp không thay đổi. Phiên bản đã xuất bản chỉ xem được; chọn **Tạo bản nháp mới** để thay đổi. **Xoá quy trình** xoá quy trình, bản nháp và các phiên bản đã xuất bản, và các trình kích hoạt trỏ tới nó ngừng chạy. Thao tác này không thể hoàn tác.
 
 ## Lượt chạy quy trình
 
@@ -78,7 +78,7 @@ Tab **Lượt chạy** liệt kê lượt chạy của mọi quy trình trong wo
 
 ::shot{id="workflow-runs"}
 
-- **Kích hoạt** là **Thủ công**, **Theo lịch**, **Tác tử** hoặc **Sự kiện kênh**. Lượt chạy bắt đầu từ **Chạy thử** được đánh dấu **Thử**.
+- **Kích hoạt** là **Thủ công**, **Theo lịch**, **Agent** hoặc **Sự kiện kênh**. Lượt chạy bắt đầu từ **Chạy thử** được đánh dấu **Thử**.
 - **Trạng thái** là **Đang chờ**, **Đang chạy**, **Chờ phê duyệt**, **Thành công**, **Thất bại** hoặc **Đã huỷ**.
 
 Chọn một lượt chạy để mở nó. Trang hiển thị trạng thái, cách kích hoạt, chế độ, phiên bản và số nút của lượt chạy, rồi tới **Đầu vào và đầu ra**, **Dòng thời gian của nút** và **Các lần thực thi nút**, kèm đầu vào và đầu ra của từng nút. Chọn **Mở trace** để xem toàn bộ quá trình chạy trong [Trace](/docs/console/monitoring), hoặc **Mở quy trình** để về trình chỉnh sửa. Khi lượt chạy đang diễn ra, bạn có thể chọn **Huỷ lượt chạy**. Lượt chạy thất bại có nút **Chạy lại**, bắt đầu một lần thử mới từ đầu với cùng dữ liệu đầu vào.

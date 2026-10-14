@@ -18,7 +18,7 @@ Mọi lời gọi tới runtime, trừ các endpoint kiểm tra sức khoẻ, đ
 
 ## Tạo API key
 
-**Trong console**, mở **API key & tài liệu**, chọn **Tạo khóa**, chọn mức **Quyền truy cập** và thời hạn, rồi tạo key. Các mức là **Đọc**, **Đọc và ghi**, **MCP đọc** và **MCP đọc và ghi**; thời hạn có thể là 1 giờ, 1 ngày, 30 ngày, 90 ngày hoặc không hết hạn. Key chỉ hiện một lần, hãy chép ngay vào trình quản lý secret. Việc tạo hoặc xoay vòng key giới hạn 20 lần mỗi giờ, còn thu hồi là 30 lần mỗi giờ.
+**Trong console**, mở **API key & tài liệu**, chọn **Tạo key**, chọn mức **Quyền truy cập** và thời hạn, rồi tạo key. Các mức là **Đọc**, **Đọc và ghi**, **MCP đọc** và **MCP đọc và ghi**; thời hạn có thể là 1 giờ, 1 ngày, 30 ngày, 90 ngày hoặc không hết hạn. Key chỉ hiện một lần, hãy chép ngay vào trình quản lý secret. Việc tạo hoặc xoay vòng key giới hạn 20 lần mỗi giờ, còn thu hồi là 30 lần mỗi giờ.
 
 **Bằng CLI**, admin có thể tạo key với scope cụ thể:
 
@@ -37,7 +37,7 @@ Key có dạng `goclaw_` theo sau là 32 ký tự hexa. Runtime chỉ lưu hash 
 | `operator.read` | Quyền đọc | Viewer |
 | `operator.write` | Đọc và ghi cho công việc hằng ngày | Operator |
 | `operator.approvals` | Phê duyệt các lệnh đang bị giữ | Operator |
-| `operator.pairing` | Quản lý thiết bị trình duyệt đã ghép cặp | Operator |
+| `operator.pairing` | Quản lý thiết bị trình duyệt đã ghép nối | Operator |
 | `operator.admin` | Mọi thứ, kể cả API key và cấu hình hệ thống | Admin |
 | `mcp.tools.read`, `mcp.tools.write` | Chỉ endpoint MCP công khai | Không có vai trò nào ngoài `/mcp/server` |
 

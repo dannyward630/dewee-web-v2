@@ -54,7 +54,7 @@ Bộ nhớ kênh thụ động cho phép agent học từ những cuộc trò ch
 | `allowed_types` | people, projects, decisions, todos, preferences, events |
 | Phạm vi | Chỉ nhóm chat |
 
-Tin nhắn được che thông tin nhạy cảm trước khi trích xuất: secret, token, chuỗi kết nối, số giống số thẻ thanh toán, địa chỉ email, số điện thoại, cùng những người dùng hoặc mẫu mà bạn loại trừ. Các mục được duyệt trở thành bản tóm tắt session và đi vào knowledge graph giống như bộ nhớ từ session.
+Tin nhắn được che thông tin nhạy cảm trước khi trích xuất: secret, token, chuỗi kết nối, số giống số thẻ thanh toán, địa chỉ email, số điện thoại, cùng những người dùng hoặc mẫu mà bạn loại trừ. Các mục được phê duyệt trở thành bản tóm tắt session và đi vào knowledge graph giống như bộ nhớ từ session.
 
 ## Kho tri thức
 

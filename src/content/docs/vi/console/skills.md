@@ -1,6 +1,6 @@
 ---
 title: Skill và mẫu skill
-description: Tải lên gói skill, xem tệp, phiên bản và phụ thuộc, tinh chỉnh tối ưu hóa, quyết định agent và người nào được dùng skill, và tạo agent mới từ các mẫu skill.
+description: Tải lên gói skill, xem tệp, phiên bản và phụ thuộc, tinh chỉnh tối ưu hoá, quyết định agent và người nào được dùng skill, và tạo agent mới từ các mẫu skill.
 section: console
 order: 6
 screens: [skills, skill-templates]
@@ -23,7 +23,7 @@ Tab **Đã cài** liệt kê mọi skill kèm thẻ, nguồn, phiên bản, tìn
 
 Bạn có thể tìm theo tên, slug, mô tả hoặc thẻ, và lọc theo **Nguồn**, **Chủ sở hữu** (**Workspace này** hoặc **Tích hợp sẵn**) và **Trạng thái** (**Đang bật** hoặc **Đã tắt**). Bạn sắp xếp được theo tên, nguồn, phiên bản, phụ thuộc hoặc công tắc. Menu của mỗi dòng có **Mở**, **Tải về .zip** và **Xoá**.
 
-Tab **Marketplace** hiện chưa liệt kê skill nào: workspace chưa được duyệt và cài skill từ marketplace, nên tab này hướng bạn sang tải lên một gói thay thế.
+Tab **Marketplace** hiện chưa liệt kê skill nào: workspace chưa thể duyệt và cài skill từ marketplace, nên tab này hướng bạn sang tải lên một gói thay thế.
 
 ::shot{id="skills"}
 
@@ -44,9 +44,9 @@ Chọn một skill, hoặc chọn **Mở** trong menu của dòng, để mở tr
 - **Tổng quan**: nguồn, tác giả, phạm vi hiển thị, trạng thái và thẻ; mục **Phụ thuộc** của skill, với nút **Quét lại** để kiểm tra lại những gì còn thiếu; và tệp `SKILL.md` của gói, hiển thị như README.
 - **Tệp**: duyệt nội dung gói, như `SKILL.md`, `scripts/` và `references/`. Ở đây tệp chỉ xem được; muốn thay đổi, hãy tải lên phiên bản mới của gói. Tệp quá lớn hoặc tệp nhị phân được liệt kê nhưng không xem trước được.
 - **Phiên bản**: các phiên bản đã phát hành, phiên bản hiện tại được đánh dấu. Chỉ tải về được phiên bản hiện tại. Muốn phát hành phiên bản mới, hãy tải lên một gói có cùng slug.
-- **Tối ưu hóa**: bật **Bật tối ưu hóa** để runtime theo dõi hiệu quả của skill và đề xuất cải tiến, rồi chọn **Chế độ**: **Chỉ đề xuất** hoặc **Tự phân tích**. Mục **Mức sử dụng** cho thấy lượt gọi, lượt thành công, thất bại, bỏ dở và tỷ lệ kích hoạt trên mọi agent. Ở mục **Đề xuất**, chọn **Duyệt** hoặc **Từ chối** một đề xuất đang chờ, rồi **Áp dụng** đề xuất đã duyệt để phát hành nó thành phiên bản mới. Không có gì thay đổi cho đến khi có người áp dụng đề xuất.
+- **Tối ưu hoá**: bật **Bật tối ưu hoá** để runtime theo dõi hiệu quả của skill và đề xuất cải tiến, rồi chọn **Chế độ**: **Chỉ đề xuất** hoặc **Tự phân tích**. Mục **Mức sử dụng** cho thấy lượt gọi, lượt thành công, thất bại, bỏ dở và tỷ lệ kích hoạt trên mọi agent. Ở mục **Đề xuất**, chọn **Phê duyệt** hoặc **Từ chối** một đề xuất đang chờ, rồi **Áp dụng** đề xuất đã phê duyệt để phát hành nó thành phiên bản mới. Không có gì thay đổi cho đến khi có người áp dụng đề xuất.
 - **Quyền truy cập**: cấp quyền dùng skill cho agent hoặc người, đổi mức và thu hồi quyền. Agent được cấp **Dùng** hoặc **Quản lý**; người cũng được cấp **Dùng** hoặc **Quản lý**. Quyền của agent được ghim vào một phiên bản: khi skill có nhiều phiên bản, hãy chọn **Phiên bản cho quyền agent mới** trước. Quản trị viên workspace và người có quyền **Quản lý** trên skill được thay đổi quyền truy cập; người khác thấy thông báo chỉ được xem. Skill tích hợp sẵn theo chính sách runtime và không cấp quyền được ở đây. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
-- **Hoạt động**: các thay đổi về cài đặt tối ưu hóa và đề xuất của skill, tiếp theo là hoạt động truy cập: thay đổi quyền, lượt bị từ chối và lượt dùng.
+- **Hoạt động**: các thay đổi về cài đặt tối ưu hoá và đề xuất của skill, tiếp theo là hoạt động truy cập: thay đổi quyền, lượt bị từ chối và lượt dùng.
 - **Cài đặt**: sửa tên, mô tả, **Phạm vi hiển thị** và **Trạng thái**, và dùng công tắc **Đang bật**. Nút **Xoá kỹ năng này** trong **Vùng nguy hiểm** gỡ skill cùng mọi phiên bản của nó; agent mất quyền truy cập ngay lập tức.
 
 ### Ai được dùng một skill

@@ -42,14 +42,14 @@ Tab **Tài liệu** liệt kê các tài liệu bộ nhớ kèm đường dẫn,
 
 Đường dẫn và phạm vi không đổi được sau khi tạo tài liệu. Mở một tài liệu để sửa nội dung rồi chọn **Lưu thay đổi**; hộp thoại cũng cho biết tài liệu có bao nhiêu đoạn và trạng thái **Đã nhúng** của các đoạn đó. **Xem các đoạn dùng để tìm kiếm** liệt kê các đoạn đó, còn **Làm mới trong tìm kiếm** đọc lại một tài liệu. **Làm mới tìm kiếm** đọc lại mọi tài liệu để tìm kiếm luôn thấy nội dung mới nhất.
 
-Trong menu của một dòng, dùng **Lưu trữ** để ngừng dùng một tài liệu đã cũ và **Khôi phục** để dùng lại. **Xóa tài liệu** xoá tài liệu đó, và agent sẽ không thể nhớ lại nó nữa. Nếu chỉ có `memory.read`, bạn mở và đọc được tài liệu nhưng không thay đổi được.
+Trong menu của một dòng, dùng **Lưu trữ** để ngừng dùng một tài liệu đã cũ và **Khôi phục** để dùng lại. **Xoá tài liệu** xoá tài liệu đó, và agent sẽ không thể nhớ lại nó nữa. Nếu chỉ có `memory.read`, bạn mở và đọc được tài liệu nhưng không thay đổi được.
 
 > [!NOTE]
 > Agent tìm trong các tài liệu này khi cần nhớ lại điều gì đó, nên một tài liệu lỗi thời có thể dẫn tới câu trả lời lỗi thời. Hãy sửa hoặc lưu trữ bộ nhớ đã cũ thay vì để nguyên.
 
 ### Dữ kiện và tóm tắt cuộc trò chuyện
 
-Tab **Dữ kiện** liệt kê các dữ kiện có cấu trúc mà agent học được về người và sự vật, với **Chủ thể**, **Thuộc tính**, **Giá trị**, **Người dùng**, **Trạng thái** và **Hiệu lực từ**. Mở một dữ kiện để xem nó được học từ đâu và lịch sử của nó. Một dữ kiện ở trạng thái **Đang dùng**, **Đang tranh chấp**, **Đã thay thế** hoặc **Đã xóa**. Chọn **Chấp nhận** hoặc **Từ chối** cho dữ kiện đang tranh chấp, hoặc **Xóa dữ kiện** để xoá một dữ kiện sai; agent ngừng dùng dữ kiện đó ngay.
+Tab **Dữ kiện** liệt kê các dữ kiện có cấu trúc mà agent học được về người và sự vật, với **Chủ thể**, **Thuộc tính**, **Giá trị**, **Người dùng**, **Trạng thái** và **Hiệu lực từ**. Mở một dữ kiện để xem nó được học từ đâu và lịch sử của nó. Một dữ kiện ở trạng thái **Đang dùng**, **Đang tranh chấp**, **Đã thay thế** hoặc **Đã xoá**. Chọn **Chấp nhận** hoặc **Từ chối** cho dữ kiện đang tranh chấp, hoặc **Xoá dữ kiện** để xoá một dữ kiện sai; agent ngừng dùng dữ kiện đó ngay.
 
 Tab **Tóm tắt cuộc trò chuyện** hiển thị những bản tóm tắt ngắn mà agent viết sau mỗi cuộc trò chuyện. Bạn tìm được các bản tóm tắt theo chủ đề. Bạn chỉ xem được bản tóm tắt các cuộc trò chuyện của chính mình. Một số phiên bản runtime không lưu dữ kiện hay bản tóm tắt; khi đó tab sẽ báo như vậy.
 
@@ -72,7 +72,7 @@ Tab **Tóm tắt cuộc trò chuyện** hiển thị những bản tóm tắt ng
 
 Đường dẫn và phạm vi không đổi được sau khi tạo tài liệu. Muốn nạp file, chọn **Nhập** và thêm file Markdown, văn bản, JSON hoặc CSV, tối đa 2 MB mỗi file. Mỗi file trở thành một tài liệu dùng chung tìm kiếm được.
 
-Chọn một tài liệu để xem trước, xem tóm tắt và quản lý **Liên kết** tới tài liệu khác bằng **Thêm liên kết**. Tài liệu mới phải chờ làm giàu, tức bước viết tóm tắt, tạo embedding cho tìm kiếm ngữ nghĩa và gợi ý liên kết; trước đó, tìm kiếm ngữ nghĩa có thể bỏ sót chúng. Khi có tài liệu đang chờ, **Quét lại** đưa chúng vào hàng đợi. **Xóa tài liệu** xoá một tài liệu khỏi kho tri thức sau một bước xác nhận.
+Chọn một tài liệu để xem trước, xem tóm tắt và quản lý **Liên kết** tới tài liệu khác bằng **Thêm liên kết**. Tài liệu mới phải chờ làm giàu, tức bước viết tóm tắt, tạo embedding cho tìm kiếm ngữ nghĩa và gợi ý liên kết; trước đó, tìm kiếm ngữ nghĩa có thể bỏ sót chúng. Khi có tài liệu đang chờ, **Quét lại** đưa chúng vào hàng đợi. **Xoá tài liệu** xoá một tài liệu khỏi kho tri thức sau một bước xác nhận.
 
 ### Đồ thị
 
@@ -84,7 +84,7 @@ Bạn chỉnh sửa được đồ thị:
 - **Trích xuất từ văn bản**: dán tối đa 50 KB ghi chú hoặc tài liệu, và mô hình của trợ lý không gian làm việc sẽ tìm các thực thể và quan hệ trong đó.
 - **Tìm trùng lặp**: chọn **Quét tìm trùng lặp**, rồi với mỗi cặp, giữ lại một thực thể để gộp thực thể kia vào, hoặc chọn **Không phải một**.
 
-Chọn một thực thể để xem mô tả, độ tin cậy và quan hệ của nó. Đặt **Độ sâu duyệt** rồi chọn **Chạy duyệt đồ thị** để xem những gì liên kết với nó. **Xóa thực thể** cũng xoá các quan hệ của thực thể đó.
+Chọn một thực thể để xem mô tả, độ tin cậy và quan hệ của nó. Đặt **Độ sâu duyệt** rồi chọn **Chạy duyệt đồ thị** để xem những gì liên kết với nó. **Xoá thực thể** cũng xoá các quan hệ của thực thể đó.
 
 ## Lưu trữ
 

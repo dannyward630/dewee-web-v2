@@ -39,7 +39,7 @@ Một số nhà cung cấp, như ChatGPT, kết nối bằng OAuth thay vì key:
 2. Đăng nhập vào nhà cung cấp ở tab mới và cho phép truy cập.
 3. Sao chép URL callback mà nhà cung cấp trả về, dán vào ô **URL callback** rồi chọn **Kết nối nhà cung cấp**.
 
-Giá trị callback bị xoá ngay sau khi dùng, và không bao giờ xuất hiện trong dòng thời gian, bảng hay metadata của nhật ký audit. Muốn làm lại từ đầu, chọn **Ủy quyền lại với {name}**. Một nhà cung cấp ChatGPT OAuth có thể định tuyến qua nhiều tài khoản: tab **Kết nối** của nó hiện **Nhóm tài khoản**, và agent dùng nó có thêm tab **Định tuyến** trên trang Agent.
+Giá trị callback bị xoá ngay sau khi dùng, và không bao giờ xuất hiện trong dòng thời gian, bảng hay metadata của nhật ký audit. Muốn làm lại từ đầu, chọn **Uỷ quyền lại với {name}**. Một nhà cung cấp ChatGPT OAuth có thể định tuyến qua nhiều tài khoản: tab **Kết nối** của nó hiện **Nhóm tài khoản**, và agent dùng nó có thêm tab **Định tuyến** trên trang Agent.
 
 ### Nhà cung cấp cần thiết lập trên máy chủ
 
@@ -47,7 +47,7 @@ Claude CLI, Ollama và ACP không kết nối được bằng cách dán key, v�
 
 ## Quản lý một nhà cung cấp
 
-Chọn một dòng để mở trang chi tiết của nhà cung cấp. Phần đầu có **Sửa nhà cung cấp** và **Xóa nhà cung cấp**. Trang chi tiết có năm tab:
+Chọn một dòng để mở trang chi tiết của nhà cung cấp. Phần đầu có **Sửa nhà cung cấp** và **Xoá nhà cung cấp**. Trang chi tiết có năm tab:
 
 - **Tổng quan**: trạng thái, mô hình mặc định, URL gốc, tình trạng thông tin xác thực, các agent đang dùng, và thời điểm tạo và cập nhật. **Sửa nhà cung cấp** mở một biểu mẫu ở đây để đổi **Tên hiển thị**, dán **API key mới** (để trống nếu muốn giữ secret đã lưu), chọn **Mô hình mặc định** và tắt công tắc **Đang bật**. Nhà cung cấp bị tắt vẫn giữ cấu hình, nhưng agent không thể dùng. Chọn **Lưu thay đổi** để áp dụng.
 - **Mô hình**: các mô hình nhà cung cấp có. **Kiểm tra** chạy thử một yêu cầu thật với mô hình, còn **Đặt làm mặc định** đặt nó làm mặc định. **Dùng mô hình khác** kiểm tra một mã mô hình không có trong danh sách rồi đặt làm mặc định. Tab này còn có phần **Giá** để ghi đè giá, **Mặc định suy luận** mà agent dùng nhà cung cấp này kế thừa, và **Embedding cho bộ nhớ**, nơi bạn bật **Dùng để tạo embedding cho bộ nhớ** bằng thông tin xác thực của nhà cung cấp này.
@@ -69,7 +69,7 @@ Bạn cấp quyền **Dùng** cho từng agent ngay trên tab này. Quyền cấ
 
 ## Xoá nhà cung cấp
 
-Chọn **Xoá** trong menu của dòng, hoặc **Xóa nhà cung cấp** trong trang chi tiết. Hộp xác nhận **Xóa {name}?** liệt kê các agent còn dùng nhà cung cấp này, và bạn phải gõ tên hiển thị của nó trước khi chọn **Xóa nhà cung cấp**.
+Chọn **Xoá** trong menu của dòng, hoặc **Xoá nhà cung cấp** trong trang chi tiết. Hộp xác nhận **Xoá {name}?** liệt kê các agent còn dùng nhà cung cấp này, và bạn phải gõ tên hiển thị của nó trước khi chọn **Xoá nhà cung cấp**.
 
 > [!WARNING]
 > Agent dùng một nhà cung cấp đã bị xoá sẽ lỗi cho tới khi bạn gán cho chúng nhà cung cấp khác. Hãy chuyển chúng sang nhà cung cấp khác trước.
@@ -81,5 +81,5 @@ Trên AaaS, việc hoàn tiền gói đăng ký cũng tắt phần thiết lập
 - [Provider, fallback và suy luận](/docs/concepts/providers-and-routing)
 - [Provider LLM và giọng nói](/docs/integrations/llm-providers)
 - [Agent](/docs/console/agents)
-- [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring)
+- [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring)
 - [Secret, vai trò và nhật ký kiểm toán](/docs/security/secrets-roles-and-audit)

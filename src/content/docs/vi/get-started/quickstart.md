@@ -49,7 +49,7 @@ Mở **Trò chuyện**, chọn `super-agent` và hỏi thử, ví dụ "Bạn l�
 ### Làm gì tiếp theo
 
 - Tạo thêm agent với hướng dẫn và tool riêng: [Agent](/docs/console/agents).
-- Đưa agent lên Telegram, Slack, Zalo hoặc ứng dụng chat khác: [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts).
+- Đưa agent lên Telegram, Slack, Zalo hoặc ứng dụng chat khác: [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts).
 - Mời đồng đội và gán vai trò: [Thành viên, vai trò và API key](/docs/console/members-roles-and-api-keys).
 
 ## Con đường tự vận hành
@@ -92,6 +92,6 @@ Bỏ `--message` để trò chuyện tương tác. Danh sách lệnh đầy đ�
 
 ## Khi có trục trặc
 
-- **Console báo runtime offline.** Mở [Sức khoẻ runtime](/docs/console/monitoring) để xem bước kiểm tra nào thất bại.
+- **Console báo runtime offline.** Mở [Tình trạng runtime](/docs/console/monitoring) để xem bước kiểm tra nào thất bại.
 - **Xác minh provider thất bại.** Kiểm tra key còn hiệu lực và tài khoản provider còn credit, rồi thử lại.
 - **`curl /health` không phản hồi.** Chạy `./dewee doctor` để in ra đường dẫn cấu hình, trạng thái cơ sở dữ liệu và phiên bản.

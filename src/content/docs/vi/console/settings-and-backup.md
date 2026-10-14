@@ -29,7 +29,7 @@ Trang **Cài đặt** có danh sách mục ở bên trái và nội dung của m
 - **Thương hiệu**, **Bảo mật**, **Thông báo**, **Mặc định cho agent**, **Lưu giữ dữ liệu** và **Lớp quyết định**: bản triển khai của bạn không báo các mục này, nên mỗi mục hiện **Chưa được báo cáo**.
 - **Ngôn ngữ và khu vực**: múi giờ mặc định.
 - **Giọng nói**: cài đặt chuyển văn bản thành giọng nói và giọng nói thành văn bản do runtime cung cấp.
-- **Kênh và ghép nối**: cài đặt ghép nối và cập nhật tác vụ do runtime cung cấp.
+- **Kênh và ghép nối**: cài đặt ghép nối và cập nhật task do runtime cung cấp.
 - **Chính sách kỹ năng**: cài đặt skill do runtime cung cấp.
 - **Vùng nguy hiểm**: chuyển quyền sở hữu và xoá workspace.
 - **Cài đặt runtime khác**: các cài đặt khác mà runtime báo về. Mục này chỉ xuất hiện khi có cài đặt như vậy.
@@ -52,7 +52,7 @@ Chọn **Múi giờ mặc định** rồi lưu bằng thanh lưu. Lịch chạy 
 
 ### Vùng nguy hiểm
 
-**Chuyển quyền sở hữu** và **Xóa workspace** không thực hiện trong app. Cả hai đều dẫn tới **Liên hệ hỗ trợ**.
+**Chuyển quyền sở hữu** và **Xoá workspace** không thực hiện trong app. Cả hai đều dẫn tới **Liên hệ hỗ trợ**.
 
 ## Sao lưu
 
@@ -90,7 +90,7 @@ Bộ phận hỗ trợ xác nhận kế hoạch với bạn trước khi thực 
 Trên các hình thức triển khai này, workspace sở hữu runtime của riêng mình, nên owner có thêm bốn trang. Trên Shared SaaS, các trang này hiển thị **Không khả dụng với kiểu triển khai này** vì người vận hành nền tảng chạy runtime; khi đó hãy nhờ bộ phận hỗ trợ nếu cần thay đổi. **Cấu hình hệ thống** cũng chỉ dùng được sau khi onboarding hoàn tất.
 
 - **Gắn giấy phép**: nhập **Khoá giấy phép** từ đơn hàng của bạn rồi chọn **Gắn giấy phép vào workspace này**. Khoá chỉ được dùng một lần và không bao giờ hiển thị lại. Việc gắn giấy phép xác nhận quyền sử dụng của bạn nhưng không tiêu tốn lượt kích hoạt; mỗi máy chạy runtime vẫn kích hoạt riêng. Với bản tự triển khai, chọn **Mở cổng khách hàng lưu trữ** và gắn khoá ở đó. Bạn tới trang này từ trang Thanh toán bằng **Mở kích hoạt**.
-- **Cấu hình hệ thống**: cài đặt runtime cho toàn bộ bản triển khai. Tìm bằng ô **Tìm khóa cấu hình…**; giá trị chứa thông tin xác thực hiện là **Đã ẩn**. Thay đổi được giữ ở trạng thái chờ cho tới khi bạn chọn **Xem lại và áp dụng**, rồi **Áp dụng thay đổi**. Thay đổi có hiệu lực ngay.
+- **Cấu hình hệ thống**: cài đặt runtime cho toàn bộ bản triển khai. Tìm bằng ô **Tìm khoá cấu hình…**; giá trị chứa thông tin xác thực hiện là **Đã ẩn**. Thay đổi được giữ ở trạng thái chờ cho tới khi bạn chọn **Xem lại và áp dụng**, rồi **Áp dụng thay đổi**. Thay đổi có hiệu lực ngay.
 - **Nhập / xuất**: các tab **Xuất**, **Nhập** và **Lịch sử** đưa agent, nhóm, skill, MCP server và nhà cung cấp vào hoặc ra dưới dạng gói lưu trữ của runtime. Để xuất, nhập **Mã tài nguyên**, chọn **Tạo bản xem trước xuất**, rồi **Tải tệp lưu trữ**. Để nhập, chọn **Chạy thử** trước, rồi **Áp dụng nhập**. Gói lưu trữ **Không kèm thông tin xác thực**.
 - **Workstations**: các node runtime đã đăng ký cho workspace này. **Đăng ký workstation** yêu cầu tên và endpoint. Bảng hiển thị endpoint, trạng thái và **Lần cuối hoạt động** của từng node.
 
@@ -102,5 +102,5 @@ Trên các hình thức triển khai này, workspace sở hữu runtime của ri
 - [Chọn cách triển khai](/docs/get-started/deployment-options)
 - [Kích hoạt license](/docs/runtime/licence)
 - [Cài đặt và chạy gateway](/docs/runtime/install-and-run)
-- [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts)
+- [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts)
 - [Hỗ trợ và thanh toán](/docs/console/support-and-billing)

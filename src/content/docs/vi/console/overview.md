@@ -52,7 +52,7 @@ dewee có bốn hình thức triển khai: Tự cài đặt, AaaS, Dedicated và
 
 ## Trạng thái runtime
 
-Nhãn trạng thái ở đầu console hiển thị **Runtime đã sẵn sàng**, **Runtime đang thiết lập** hoặc **Runtime gặp lỗi**. Chọn nhãn này để xem trạng thái, chế độ, **Mã tham chiếu hỗ trợ** của workspace, chính sách package, cùng nút **Sức khoẻ runtime**. Những khu vực làm việc trực tiếp với runtime, như Trò chuyện, cần runtime sẵn sàng. Xem [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring).
+Nhãn trạng thái ở đầu console hiển thị **Runtime đã sẵn sàng**, **Runtime đang thiết lập** hoặc **Runtime gặp lỗi**. Chọn nhãn này để xem trạng thái, chế độ, **Mã tham chiếu hỗ trợ** của workspace, chính sách package, cùng nút **Tình trạng runtime**. Những khu vực làm việc trực tiếp với runtime, như Trò chuyện, cần runtime sẵn sàng. Xem [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring).
 
 ## Trang Tổng quan
 
@@ -62,7 +62,7 @@ Nhãn trạng thái ở đầu console hiển thị **Runtime đã sẵn sàng**
 - Khi runtime đã chạy, **Trợ lý thiết lập** hỏi bạn vài câu và lo phần còn lại. Chọn **Tự thiết lập thủ công** để dùng các biểu mẫu theo bước: **Kết nối provider**, sau đó **Tạo Super Agent**.
 - Thành viên không được phép thay đổi thiết lập sẽ thấy **Chủ sở hữu workspace đang hoàn tất thiết lập** cho tới khi chủ sở hữu hoặc quản trị viên làm xong.
 
-Sau khi thiết lập xong, Tổng quan trở thành bảng điều khiển cho biết workspace đang vận hành ra sao: yêu cầu, token, chi phí, độ trễ và lỗi trong khoảng thời gian bạn chọn, kèm **So sánh** với kỳ trước và **Xuất tóm tắt**. Bên dưới là **Bảng xếp hạng** agent và kênh hàng đầu, cùng các khung **Phê duyệt đang chờ**, **Trace thất bại gần đây** và **Sức khoẻ runtime**. Ngày được tính theo ngày lịch UTC, giống trang Mức sử dụng.
+Sau khi thiết lập xong, Tổng quan trở thành bảng điều khiển cho biết workspace đang vận hành ra sao: yêu cầu, token, chi phí, độ trễ và lỗi trong khoảng thời gian bạn chọn, kèm **So sánh** với kỳ trước và **Xuất tóm tắt**. Bên dưới là **Bảng xếp hạng** agent và kênh hàng đầu, cùng các khung **Phê duyệt đang chờ**, **Trace thất bại gần đây** và **Tình trạng runtime**. Ngày được tính theo ngày lịch UTC, giống trang Mức sử dụng.
 
 ::shot{id="overview"}
 

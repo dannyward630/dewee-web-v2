@@ -46,7 +46,7 @@ Mở menu thao tác cạnh một cuộc trò chuyện ở thanh bên của Trò 
 
 ### Phê duyệt yêu cầu ngay trong cuộc trò chuyện
 
-Khi agent xin chạy một lệnh hoặc cài một gói, yêu cầu hiện trong cuộc trò chuyện dưới dạng thẻ có **Phê duyệt** và **Từ chối**. Thẻ này chính là yêu cầu bạn thấy ở tab **Phê duyệt** của [Tác vụ & phê duyệt](/docs/console/agent-teams), nên áp dụng cùng quyền hạn.
+Khi agent xin chạy một lệnh hoặc cài một gói, yêu cầu hiện trong cuộc trò chuyện dưới dạng thẻ có **Phê duyệt** và **Từ chối**. Thẻ này chính là yêu cầu bạn thấy ở tab **Phê duyệt** của [Task & phê duyệt](/docs/console/agent-teams), nên áp dụng cùng quyền hạn.
 
 - Với thao tác có tính phá huỷ, hãy nhập tên tài nguyên để xác nhận trước khi phê duyệt.
 - **Từ chối** yêu cầu nhập lý do; chọn **Từ chối yêu cầu** để gửi.
@@ -91,7 +91,7 @@ Trang chi tiết chỉ cho xem:
 ## Liên quan
 
 - [Agent](/docs/console/agents)
-- [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring)
+- [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring)
 - [Vòng lặp agent](/docs/concepts/agent-loop)
 - [Tracing](/docs/concepts/tracing)
 - [Tổng quan API](/docs/api/overview)

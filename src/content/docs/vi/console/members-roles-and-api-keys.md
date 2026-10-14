@@ -36,9 +36,9 @@ Nếu bản triển khai không gửi được email mời, hộp thoại hiện
 
 Mỗi lời mời có hiệu lực trong 7 ngày. Tab **Lời mời** liệt kê **Email**, **Vai trò**, **Trạng thái** (**Đang chờ**, **Đã chấp nhận**, **Đã hết hạn** hoặc **Đã thu hồi**), **Gửi đi** và **Hết hạn** của từng lời mời. Với lời mời đang chờ, bạn có thể **Gửi lại**, **Sao chép liên kết mời** hoặc **Thu hồi**. Khi thu hồi, bạn xác nhận bằng **Thu hồi lời mời**, và liên kết ngừng hoạt động ngay. Liên kết đã hết hạn thì phải mời lại.
 
-Để thay đổi quyền của một thành viên, chọn **Đổi vai trò tùy chỉnh** trong menu của dòng đó. Trong hộp thoại **Vai trò tùy chỉnh của {email}**, đánh dấu các vai trò rồi chọn **Lưu vai trò**. Thay đổi có hiệu lực ngay.
+Để thay đổi quyền của một thành viên, chọn **Đổi vai trò tuỳ chỉnh** trong menu của dòng đó. Trong hộp thoại **Vai trò tuỳ chỉnh của {email}**, đánh dấu các vai trò rồi chọn **Lưu vai trò**. Thay đổi có hiệu lực ngay.
 
-**Xóa khỏi không gian làm việc** đưa một thành viên ra khỏi workspace. Xác nhận bằng **Gỡ thành viên**: quyền truy cập app bị gỡ trước, sau đó quyền truy cập runtime bị thu hồi. Cho tới khi phía runtime xử lý xong, dòng đó hiện nhãn **Đang gỡ quyền**.
+**Xoá khỏi không gian làm việc** đưa một thành viên ra khỏi workspace. Xác nhận bằng **Gỡ thành viên**: quyền truy cập app bị gỡ trước, sau đó quyền truy cập runtime bị thu hồi. Cho tới khi phía runtime xử lý xong, dòng đó hiện nhãn **Đang gỡ quyền**.
 
 Workspace luôn phải còn ít nhất một owner. Chỉ owner mới đổi được vai trò của owner hoặc admin, gỡ owner hoặc admin, hay đổi vai trò tuỳ chỉnh của chính mình.
 
@@ -61,7 +61,7 @@ Có ba vai trò có sẵn. Chúng hiện dưới dạng thẻ có ghi **Có sẵ
 
 Gán vai trò mới cho từng người ở trang **Thành viên**.
 
-Bảng **Vai trò tùy chỉnh** liệt kê từng vai trò kèm khoá, quyền và thành viên. Menu của mỗi dòng có **Sửa** và **Nhân bản**. **Xoá** không dùng được với vai trò tuỳ chỉnh. Khi bạn sửa một vai trò đã có thành viên giữ, nút **Lưu thay đổi** sẽ hỏi xác nhận **Cập nhật vai trò tuỳ chỉnh** trước, vì những thành viên đó nhận bộ quyền mới ngay lập tức.
+Bảng **Vai trò tuỳ chỉnh** liệt kê từng vai trò kèm khoá, quyền và thành viên. Menu của mỗi dòng có **Sửa** và **Nhân bản**. **Xoá** không dùng được với vai trò tuỳ chỉnh. Khi bạn sửa một vai trò đã có thành viên giữ, nút **Lưu thay đổi** sẽ hỏi xác nhận **Cập nhật vai trò tuỳ chỉnh** trước, vì những thành viên đó nhận bộ quyền mới ngay lập tức.
 
 Nếu bạn quản lý vai trò mà không phải owner, trình chỉnh sửa hiện **Người quản lý vai trò giới hạn**: bạn chỉ cấp được những quyền mà chính bạn đang giữ. Máy chủ kiểm tra quy tắc này khi bạn lưu.
 
@@ -91,7 +91,7 @@ Trang **API key & tài liệu** có bốn tab:
 
 Để tạo một key:
 
-1. Chọn **Tạo khóa** và nhập **Tên** (từ 2 đến 80 ký tự).
+1. Chọn **Tạo key** và nhập **Tên** (từ 2 đến 80 ký tự).
 2. Chọn **Quyền truy cập**. Mỗi lựa chọn hiện các phạm vi của nó và nhãn mức rủi ro, **thông thường** hoặc **nhạy cảm**:
    - Trong nhóm **Vận hành**, **Đọc** cho quyền chỉ đọc qua API của workspace, còn **Đọc và ghi** thêm quyền ghi.
    - Trong nhóm **MCP (chỉ truy cập công cụ)**, **MCP đọc** cho phép một AI client như Claude Code, Cursor, VS Code hay Gemini CLI dùng các công cụ MCP chỉ đọc của workspace, còn **MCP đọc và ghi** thêm các công cụ MCP có thể thay đổi dữ liệu.
@@ -99,12 +99,12 @@ Trang **API key & tài liệu** có bốn tab:
 4. Đặt **Hết hạn**: 1 giờ, 1 ngày, 30 ngày, 90 ngày hoặc **Không hết hạn**. Mặc định là 30 ngày.
 5. Chọn **Tạo key**.
 
-Hộp thoại **Sao chép khóa API mới** hiện toàn bộ key một lần duy nhất. Hãy lưu key vào trình quản lý secret, rồi đánh dấu **Tôi đã lưu khóa này ở nơi an toàn** trước khi đóng hộp thoại.
+Hộp thoại **Sao chép API key mới** hiện toàn bộ key một lần duy nhất. Hãy lưu key vào trình quản lý secret, rồi đánh dấu **Tôi đã lưu khoá này ở nơi an toàn** trước khi đóng hộp thoại.
 
 Tab **Key** hiển thị tiền tố, phạm vi, lần dùng gần nhất, hạn dùng và trạng thái của từng key: **Đang hoạt động**, **Sắp hết hạn**, **Đã hết hạn** hoặc **Đã thu hồi**. Menu của mỗi dòng có **Xem chi tiết**, **Xoay vòng** và **Thu hồi**:
 
-- **Xoay vòng** thu hồi key hiện tại và hiện key mới một lần duy nhất. Xác nhận bằng **Xoay vòng khóa**, rồi cập nhật mọi client đang dùng key đó.
-- **Thu hồi** vô hiệu hoá key ngay, nên mọi client đang dùng key đó sẽ ngừng hoạt động. Gõ tên key để xác nhận, rồi chọn **Thu hồi khóa**.
+- **Xoay vòng** thu hồi key hiện tại và hiện key mới một lần duy nhất. Xác nhận bằng **Xoay vòng key**, rồi cập nhật mọi client đang dùng key đó.
+- **Thu hồi** vô hiệu hoá key ngay, nên mọi client đang dùng key đó sẽ ngừng hoạt động. Gõ tên key để xác nhận, rồi chọn **Thu hồi khoá**.
 
 Cả hai thao tác đều được ghi lại trong **Nhật ký**. Phạm vi của key lấy từ quyền truy cập chọn lúc tạo; muốn đổi, hãy tạo key mới.
 
@@ -117,11 +117,11 @@ Việc tạo và xoay vòng key bị giới hạn 20 lần mỗi giờ, còn thu
 
 Tab **Kết nối MCP client** cho phép một công cụ AI như Claude Code, Cursor, VS Code hoặc Gemini CLI dùng công cụ của agent trong workspace này. Tab hướng dẫn qua năm bước:
 
-1. **Trạng thái endpoint**: địa chỉ endpoint, số công cụ đọc và ghi, và các giới hạn. Quản trị viên workspace có thể **Bật MCP** hoặc **Tắt MCP** ở đây. Tắt MCP làm mọi client đang kết nối ngừng hoạt động, nhưng các khóa vẫn được giữ.
+1. **Trạng thái endpoint**: địa chỉ endpoint, số công cụ đọc và ghi, và các giới hạn. Quản trị viên workspace có thể **Bật MCP** hoặc **Tắt MCP** ở đây. Tắt MCP làm mọi client đang kết nối ngừng hoạt động, nhưng các khoá vẫn được giữ.
 2. **Chọn agent**: agent mà client làm việc cùng. Để trống để dùng agent mặc định của workspace.
-3. **Tạo khóa**: một khóa chỉ dùng được cho MCP. **Công cụ đọc** luôn được cấp; chỉ bật **Cho phép thêm công cụ ghi** khi client thật sự cần. Chọn **Tạo khóa** rồi sao chép khóa, vì khóa chỉ hiện một lần.
+3. **Tạo key**: một key chỉ dùng được cho MCP. **Công cụ đọc** luôn được cấp; chỉ bật **Cho phép thêm công cụ ghi** khi client thật sự cần. Chọn **Tạo key** rồi sao chép khoá, vì khoá chỉ hiện một lần.
 4. **Sao chép cấu hình client**: chọn client của bạn trong **MCP client** rồi chọn **Sao chép cấu hình**.
-5. **Kiểm tra kết nối**: dán một **Khóa MCP** rồi chọn **Kiểm tra kết nối**. Bài kiểm tra chạy đúng bước bắt tay mà client thực hiện, và khóa không được lưu lại.
+5. **Kiểm tra kết nối**: dán một **Key MCP** rồi chọn **Kiểm tra kết nối**. Bài kiểm tra chạy đúng bước bắt tay mà client thực hiện, và khoá không được lưu lại.
 
 > [!NOTE]
 > Key MCP cho phép AI client bên ngoài gọi vào dewee. Nếu bạn muốn agent của dewee gọi tới một MCP server bên ngoài, hãy thêm server đó ở trang [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks).

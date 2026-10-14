@@ -50,7 +50,7 @@ Mở một phiếu để đọc **Hội thoại**. Ở đây chỉ hiện các p
 1. Chọn **Mở yêu cầu gói**.
 2. Chọn **Hệ sinh thái**: Python, npm, GitHub binary hoặc Gói hệ thống.
 3. Nhập **Tên gói** và, nếu cần, một **Ràng buộc phiên bản**. Để trống ràng buộc nếu muốn dùng bản ổn định mới nhất.
-4. Giải thích **Lý do** trong ít nhất 10 ký tự, và thêm **Ghi chú bảo mật** nếu người duyệt cần biết điều gì.
+4. Giải thích **Lý do** trong ít nhất 10 ký tự, và thêm **Ghi chú bảo mật** nếu người xét duyệt cần biết điều gì.
 5. Chọn **Gửi yêu cầu**. Người vận hành sẽ xem xét yêu cầu.
 
 Trang cũng cho biết workspace của bạn đã được phép tự cài gói runtime hay chưa, và liệt kê **Hồ sơ chọn lọc hiện tại**. Trên Shared AaaS, gói lấy từ một hồ sơ do người vận hành chọn lọc, nên gửi yêu cầu là cách để có gói mới. Xem [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks).
@@ -68,7 +68,7 @@ Trang có các thẻ sau:
 
 - **Gói hiện tại**: gói và trạng thái, chủ tài khoản thanh toán, giá, ngày **Gia hạn**, các giới hạn và tính năng đi kèm.
 - **Phương thức thanh toán**: chọn **Cập nhật trong cổng bảo mật** để thay đổi. Trước khi bạn đăng ký, thẻ này hiện **Chưa có phương thức thanh toán**.
-- **Các gói**: so sánh gói miễn phí và **Gói hàng năm**. Gói bạn đang dùng được đánh dấu **Hiện tại**, còn gói hàng năm được đánh dấu **Mở khóa kênh**.
+- **Các gói**: so sánh gói miễn phí và **Gói hàng năm**. Gói bạn đang dùng được đánh dấu **Hiện tại**, còn gói hàng năm được đánh dấu **Mở khoá kênh**.
 - **Hoá đơn & biên nhận**: chọn **Mở hoá đơn & biên nhận** để tải hoá đơn và biên nhận thanh toán.
 
 ### Đăng ký gói
@@ -107,6 +107,6 @@ Workspace chạy trên hạ tầng do bạn quản lý hiển thị gói là **S
 
 - [Cài đặt và sao lưu](/docs/console/settings-and-backup)
 - [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks)
-- [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts)
+- [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts)
 - [Kích hoạt license](/docs/runtime/licence)
 - [Chọn cách triển khai](/docs/get-started/deployment-options)

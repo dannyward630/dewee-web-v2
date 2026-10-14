@@ -37,7 +37,7 @@ Mức sử dụng lấy từ dữ liệu tổng hợp theo giờ, nên số li�
 ::shot{id="activity"}
 
 1. Tìm bằng ô **Tìm hành động, tác nhân, tài nguyên hoặc mã trace…**.
-2. Lọc theo **Thời gian** (**Hôm nay**, **7 ngày qua**, **30 ngày qua** hoặc **Khoảng tùy chọn**), **Tác nhân**, **Tài nguyên**, **Hành động**, **Trạng thái** hoặc **Mức độ** (**Thành công**, **Thông tin**, **Cảnh báo** hoặc **Lỗi**).
+2. Lọc theo **Thời gian** (**Hôm nay**, **7 ngày qua**, **30 ngày qua** hoặc **Khoảng tuỳ chọn**), **Tác nhân**, **Tài nguyên**, **Hành động**, **Trạng thái** hoặc **Mức độ** (**Thành công**, **Thông tin**, **Cảnh báo** hoặc **Lỗi**).
 3. Đổi **Chế độ xem** từ **Danh sách** sang **Phân tách** để đếm các mục thay vì liệt kê.
 4. Chọn **Xem hoạt động cũ hơn** để tải thêm về trước.
 
@@ -83,7 +83,7 @@ Thẻ **Trạng thái runtime** hiển thị **Tình trạng**, là **Ổn đị
 Banner **Runtime cần chú ý** xuất hiện khi ít nhất 10% trace gần đây bị lỗi, và **Runtime đang ngoại tuyến** khi runtime không phản hồi.
 
 > [!WARNING]
-> Nếu workspace chưa được kết nối với runtime, các trang runtime chưa hiển thị được dữ liệu trực tiếp. Hãy hoàn tất thiết lập, hoặc duyệt yêu cầu ghép nối đang chờ, trước đã.
+> Nếu workspace chưa được kết nối với runtime, các trang runtime chưa hiển thị được dữ liệu trực tiếp. Hãy hoàn tất thiết lập, hoặc phê duyệt yêu cầu ghép nối đang chờ, trước đã.
 
 ## Liên quan
 

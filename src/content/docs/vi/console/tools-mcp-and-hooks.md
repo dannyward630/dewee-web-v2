@@ -46,21 +46,21 @@ Server gắn nhãn **Tích hợp sẵn** hoặc **Toàn hệ thống** được 
 
 ### Thêm server
 
-1. Chọn **Thêm máy chủ tùy chỉnh**.
+1. Chọn **Thêm máy chủ tuỳ chỉnh**.
 2. Nhập **Tên** (chữ thường, chữ số và dấu gạch ngang) và, nếu muốn, **Tên hiển thị**.
 3. Chọn **Giao thức**. **stdio** chạy một **Lệnh** kèm **Đối số**, **Biến môi trường** và **Biến môi trường bí mật**. **Streamable HTTP** và **SSE** cần **URL** và **Header**.
 4. Nếu muốn, đặt **Tiền tố công cụ** và **Thời gian chờ (giây)** từ 1 đến 600, và giữ công tắc **Đã bật**.
-5. Với Streamable HTTP và SSE, chọn cách **Xác thực**: **API key và header** gửi một key và header cố định với mọi yêu cầu; **OAuth** đăng nhập qua nhà cung cấp ủy quyền của server. Với OAuth, giữ **Chế độ đăng ký** ở **Tự động (Khuyến nghị)** trừ khi server yêu cầu khác, và thêm **Client ID**, **Client secret** hoặc **Phạm vi yêu cầu** nếu server cần.
+5. Với Streamable HTTP và SSE, chọn cách **Xác thực**: **API key và header** gửi một key và header cố định với mọi yêu cầu; **OAuth** đăng nhập qua nhà cung cấp uỷ quyền của server. Với OAuth, giữ **Chế độ đăng ký** ở **Tự động (Khuyến nghị)** trừ khi server yêu cầu khác, và thêm **Client ID**, **Client secret** hoặc **Phạm vi yêu cầu** nếu server cần.
 6. Khi hộp thoại có nút **Kiểm tra kết nối**, bạn có thể kiểm tra server trước khi lưu, rồi chọn **Thêm máy chủ**.
 
 Trang của server sẽ mở ra. Nếu server dùng OAuth, trang mở ở tab **Thông tin xác thực**: chọn **Xác thực** và hoàn tất đăng nhập với nhà cung cấp. Giá trị header và biến bí mật được che sau khi lưu.
 
 ### Các tab của server
 
-- **Tổng quan**: trạng thái, thông tin kết nối và cách xác thực. Chọn **Kiểm tra kết nối** để kiểm tra cấu hình đã lưu và tìm các tool của server. Một banner báo khi server đang tắt, lần kiểm tra gần nhất thất bại hoặc ủy quyền OAuth đã hết hạn; trường hợp cuối có nút **Uỷ quyền lại**.
-- **Công cụ**: mọi tool tìm thấy và ai được gọi chúng. Khi chưa được cấp quyền, tool ở trạng thái **Bị chặn**. Với mỗi tool, chọn **Cho phép** hoặc **Chặn** cho từng đối tượng được cấp quyền, hoặc **Cho phép agent** để cấp riêng tool đó cho một agent. **Ngữ cảnh an toàn** duyệt một tool chỉ đọc mà agent được chạy trước khi lập kế hoạch công việc, ví dụ để nạp quy tắc hoặc playbook; đổi endpoint, lệnh, biến môi trường hoặc header của server sẽ xoá các phê duyệt này. Nếu chưa có tool nào, hãy chạy kiểm tra kết nối trước.
+- **Tổng quan**: trạng thái, thông tin kết nối và cách xác thực. Chọn **Kiểm tra kết nối** để kiểm tra cấu hình đã lưu và tìm các tool của server. Một banner báo khi server đang tắt, lần kiểm tra gần nhất thất bại hoặc uỷ quyền OAuth đã hết hạn; trường hợp cuối có nút **Uỷ quyền lại**.
+- **Công cụ**: mọi tool tìm thấy và ai được gọi chúng. Khi chưa được cấp quyền, tool ở trạng thái **Bị chặn**. Với mỗi tool, chọn **Cho phép** hoặc **Chặn** cho từng đối tượng được cấp quyền, hoặc **Cho phép agent** để cấp riêng tool đó cho một agent. **Ngữ cảnh an toàn** phê duyệt một tool chỉ đọc mà agent được chạy trước khi lập kế hoạch công việc, ví dụ để nạp quy tắc hoặc playbook; đổi endpoint, lệnh, biến môi trường hoặc header của server sẽ xoá các phê duyệt này. Nếu chưa có tool nào, hãy chạy kiểm tra kết nối trước.
 - **Quyền truy cập**: cấp **Dùng** cho agent, **Dùng** hoặc **Quản lý** cho người. Mỗi quyền cấp hiện các tool mà nó cho phép. **Cấp quyền cho một nhóm** cấp quyền cho mọi agent hiện có trong nhóm; agent được thêm sau cần được cấp quyền riêng. Quyền cấp theo kênh hoặc nhóm chat ở nơi khác được liệt kê trong **Quyền theo kênh và nhóm chat** để bạn thu hồi. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
-- **Thông tin xác thực**: API key, header và biến môi trường của workspace, hoặc với server OAuth là trạng thái ủy quyền cùng các nút **Xác thực**, **Xác thực lại** và **Ngắt kết nối**. Mọi agent đều dùng thông tin xác thực này của workspace; chưa có thông tin xác thực riêng cho từng agent. Server stdio dùng thông tin xác thực từ biến môi trường, không dùng OAuth.
+- **Thông tin xác thực**: API key, header và biến môi trường của workspace, hoặc với server OAuth là trạng thái uỷ quyền cùng các nút **Xác thực**, **Xác thực lại** và **Ngắt kết nối**. Mọi agent đều dùng thông tin xác thực này của workspace; chưa có thông tin xác thực riêng cho từng agent. Server stdio dùng thông tin xác thực từ biến môi trường, không dùng OAuth.
 - **Cấu hình**: sửa **Hồ sơ** và **Kết nối**, tắt server, hoặc **Xoá máy chủ** trong **Vùng nguy hiểm**. Xoá sẽ gỡ server cùng mọi quyền đã cấp.
 - **Hoạt động**: các thay đổi về cấu hình, quyền truy cập và thông tin xác thực của server.
 
@@ -108,14 +108,14 @@ Trang **Gói runtime** có bốn tab:
 
 - **Đã cài**: các gói trong hồ sơ runtime của workspace, kèm nút **Yêu cầu gói**. Trang hiện thông báo khi runtime đang lệch so với hồ sơ gói.
 - **Kho gói**: workspace chưa có danh mục gói, nên tab này hướng bạn sang yêu cầu một gói theo tên.
-- **Chính sách**: chính sách cài gói theo hình thức triển khai của bạn. Trên SaaS dùng chung, người vận hành chọn lọc gói chung cho mọi workspace. Trên Dành riêng và Tại chỗ, runtime của bạn biệt lập, nên người vận hành có thể cài gói trực tiếp vào đó khi giấy phép còn hiệu lực. Ở mọi chế độ, bạn xin gói mới bằng **Yêu cầu gói**: nhập loại, tên gói, phiên bản nếu cần và lý do, rồi chọn **Yêu cầu cài**. Người vận hành sẽ xem xét, và các yêu cầu của bạn cùng tiến độ duyệt được liệt kê trên trang.
-- **CLI**: **Thông tin xác thực CLI** ghép nối terminal của lập trình viên với runtime của workspace. Chạy lệnh ghép nối hiển thị trên trang, rồi duyệt yêu cầu qua **Mở hộp thư ghép nối**.
+- **Chính sách**: chính sách cài gói theo hình thức triển khai của bạn. Trên SaaS dùng chung, người vận hành chọn lọc gói chung cho mọi workspace. Trên Dành riêng và Tại chỗ, runtime của bạn biệt lập, nên người vận hành có thể cài gói trực tiếp vào đó khi giấy phép còn hiệu lực. Ở mọi chế độ, bạn xin gói mới bằng **Yêu cầu gói**: nhập loại, tên gói, phiên bản nếu cần và lý do, rồi chọn **Yêu cầu cài**. Người vận hành sẽ xem xét, và các yêu cầu của bạn cùng tiến độ xét duyệt được liệt kê trên trang.
+- **CLI**: **Thông tin xác thực CLI** ghép nối terminal của lập trình viên với runtime của workspace. Chạy lệnh ghép nối hiển thị trên trang, rồi phê duyệt yêu cầu qua **Mở hộp thư ghép nối**.
 
 Chọn một gói đã cài để mở trang của gói, với các tab **Tổng quan**, **Quyền truy cập**, **Lệnh được phép**, **Thông tin xác thực & biến môi trường**, **Phiên bản** và **Hoạt động**. Ở tab **Quyền truy cập**, quản trị viên workspace dùng công tắc **Giới hạn truy cập** để chuyển gói giữa **Mở**, khi mọi agent đều dùng được, và **Giới hạn**, khi chỉ agent được cấp quyền **Dùng** mới chạy được các lệnh của gói; mã nhập gói như một thư viện thì không bị chặn. Gói phát hành trên GitHub hiện thông báo thay vào đó, vì quyền truy cập của chúng được đặt trong runtime. Tab **Lệnh được phép** và **Thông tin xác thực & biến môi trường** cho biết runtime chưa báo các thông tin này cho ứng dụng.
 
 ## Giọng nói (TTS & STT)
 
-Trang **Giọng nói (TTS & STT)** quyết định cách agent nói và nghe trên các kênh thoại, gồm hai tab. Ở tab **Văn bản thành giọng nói**, bạn chọn nhà cung cấp đang dùng (OpenAI, ElevenLabs, Edge, MiniMax hoặc Gemini), **Tự động đọc** (**Tắt**, **Khi người dùng gửi tin nhắn thoại** hoặc **Luôn luôn**), **Số ký tự tối đa** và **Thời gian chờ**, rồi đặt khoá, giọng và mô hình cho từng nhà cung cấp. Thẻ **Thử giọng** kiểm tra kết nối và tạo bản nghe thử với cài đặt đã lưu. Tab **Giọng nói thành văn bản** chỉ dành cho quản trị viên workspace: chọn nhà cung cấp chính và nhà cung cấp dự phòng (Soniox hoặc ElevenLabs), rồi đặt khoá, mô hình và gợi ý ngôn ngữ cho từng nhà cung cấp. Một thanh **Lưu** lưu thay đổi của cả hai tab. Khoá API được lưu mã hoá, không thể xem lại mà chỉ có thể thay thế.
+Trang **Giọng nói (TTS & STT)** quyết định cách agent nói và nghe trên các kênh thoại, gồm hai tab. Ở tab **Văn bản thành giọng nói**, bạn chọn nhà cung cấp đang dùng (OpenAI, ElevenLabs, Edge, MiniMax hoặc Gemini), **Tự động đọc** (**Tắt**, **Khi người dùng gửi tin nhắn thoại** hoặc **Luôn luôn**), **Số ký tự tối đa** và **Thời gian chờ**, rồi đặt khoá, giọng và mô hình cho từng nhà cung cấp. Thẻ **Thử giọng** kiểm tra kết nối và tạo bản nghe thử với cài đặt đã lưu. Tab **Giọng nói thành văn bản** chỉ dành cho quản trị viên workspace: chọn nhà cung cấp chính và nhà cung cấp dự phòng (Soniox hoặc ElevenLabs), rồi đặt khoá, mô hình và gợi ý ngôn ngữ cho từng nhà cung cấp. Một thanh **Lưu** lưu thay đổi của cả hai tab. API key được lưu mã hoá, không thể xem lại mà chỉ có thể thay thế.
 
 ## Liên quan
 

@@ -52,13 +52,13 @@ Key có thể hết hạn hoặc bị thu hồi bất cứ lúc nào. Key đã t
 
 ## Cấp quyền cho người gửi trên ứng dụng chat
 
-Trên ứng dụng chat, tin nhắn riêng mặc định dùng cơ chế ghép cặp. Khi một người mới nhắn cho agent, họ nhận một mã 8 ký tự có hiệu lực 60 phút, và không gì tới được agent cho tới khi admin duyệt mã đó, trong **Hộp ghép nối** của console hoặc bằng `dewee pairing approve`. Mỗi tài khoản có tối đa ba mã đang chờ. Bạn có thể chuyển channel sang danh sách cho phép, mở hoàn toàn, hoặc tắt tin nhắn riêng, và trong nhóm chỉ những người được chỉ định mới thay đổi được file hay đặt lại cuộc trò chuyện. Xem [Channel, ghép cặp và danh bạ](/docs/console/channels-and-contacts).
+Trên ứng dụng chat, tin nhắn riêng mặc định dùng cơ chế ghép cặp. Khi một người mới nhắn cho agent, họ nhận một mã 8 ký tự có hiệu lực 60 phút, và không gì tới được agent cho tới khi admin phê duyệt mã đó, trong **Hộp ghép nối** của console hoặc bằng `dewee pairing approve`. Mỗi tài khoản có tối đa ba mã đang chờ. Bạn có thể chuyển channel sang danh sách cho phép, mở hoàn toàn, hoặc tắt tin nhắn riêng, và trong nhóm chỉ những người được chỉ định mới thay đổi được file hay đặt lại cuộc trò chuyện. Xem [Channel, ghép cặp và danh bạ](/docs/console/channels-and-contacts).
 
 ## Nhật ký kiểm toán
 
 - **Nhật ký hoạt động.** Các thay đổi được ghi lại cùng người thực hiện, đối tượng và hành động. Xem trên trang **Hoạt động** của console, bằng `dewee activity list`, hoặc qua `GET /v1/activity`.
 - **Hoạt động truy cập.** Mỗi skill, MCP server, package, provider, hook và agent có một luồng ghi lại thay đổi quyền, các lần bị từ chối khi chạy và việc sử dụng. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants#hoạt-động).
-- **Nhật ký khóa API.** Trang **API key & tài liệu** của console có tab **Nhật ký** cho các key của bạn.
+- **Nhật ký API key.** Trang **API key & tài liệu** của console có tab **Nhật ký** cho các key của bạn.
 - **Sự kiện bảo mật.** Prompt injection bị phát hiện hoặc bị chặn và tin nhắn bị cắt bớt được ghi thành `security.injection_detected`, `security.injection_blocked` và `security.message_truncated`.
 - **Trace.** Mỗi lượt chạy của agent ghi lại các lời gọi model và tool, nên bạn thấy được agent đã làm gì và vì sao. Xem [Tracing](/docs/concepts/tracing).
 
