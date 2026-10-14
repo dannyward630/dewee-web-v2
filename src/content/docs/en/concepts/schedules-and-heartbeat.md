@@ -14,6 +14,8 @@ A cron job belongs to one agent and pairs a schedule with a payload. The schedul
 
 You can schedule a job only on an agent you can use: the default agent, agents you own, and agents shared with you. Admins and gateway owners can schedule on any agent. Naming any other agent is refused with `UNAUTHORIZED` and nothing is saved. The same check applies when you edit, run or re-enable a job, so a job left on an agent you can no longer use can only be disabled, deleted or moved to an agent you can use. Leave the agent out to run the job on the default agent.
 
+Only a job's owner (the member who created it) or a workspace owner or admin can edit, run, pause, resume or delete it. Anyone else gets `403` and the job is left unchanged; the Schedules page hides those actions on jobs you cannot change. Listing jobs and reading run history stay open to every member. A job created from chat or the dashboard is stored under a different user id, so from the workspace console only an owner or admin can change it.
+
 | Kind | Runs | `--schedule` value |
 |---|---|---|
 | `at` | Once, at a point in time | `at:2026-10-01T09:00:00+07:00` |
