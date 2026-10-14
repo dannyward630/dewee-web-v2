@@ -166,7 +166,7 @@ export const INTEGRATIONS_PAGE: Bi<{
     channels: {
       eyebrow: "Kênh chat",
       title: "Mười một kênh, *chấm điểm* thật lòng.",
-      lede: "Mỗi kênh làm được gì hôm nay, từ cách kết nối tới việc câu trả lời có stream hay không. Ở kênh nào, người lạ cũng có thể bị hỏi mã ghép cặp trước khi agent trả lời.",
+      lede: "Mỗi kênh làm được gì hôm nay, từ cách kết nối tới việc câu trả lời có stream hay không. Ở kênh nào, người lạ cũng có thể bị hỏi mã ghép nối trước khi agent trả lời.",
       label: "Khả năng của từng kênh chat: kết nối, hội thoại, stream, tin thoại, gửi file và ghi chú",
       columns: {
         channel: "Kênh",
