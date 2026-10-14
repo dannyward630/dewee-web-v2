@@ -270,7 +270,7 @@ export const PARTNERS: Bi<PartnersPage> = {
           summary: "Dành cho người có quan hệ. Bạn mở cửa và chăm sóc cơ hội B2B, dưới một Solution Partner hạng Grandmaster hoặc Legendary.",
           points: [
             "Ký quỹ tối thiểu: $2.000",
-            "Được một Solution Partner đủ điều kiện duyệt",
+            "Được một Solution Partner đủ điều kiện phê duyệt",
             "Đăng ký và chăm sóc cơ hội B2B",
             "Nhận doanh thu giới thiệu khi dự án chốt",
             "Dần tiến lên Solution Partner",
@@ -302,7 +302,7 @@ export const PARTNERS: Bi<PartnersPage> = {
           ["Commander", "$15.000", "22%", "$20.000 / 6 tháng", "25%"],
           ["Warlord", "$30.000", "25%", "$40.000 / 12 tháng", "30%"],
         ],
-        note: "BD Partner bắt đầu từ hạng Hunter, sau khi ký quỹ $2.000 và được một Solution Partner duyệt. Doanh thu BD tính theo giới thiệu, trừ khi sau này bạn đủ điều kiện lên Solution Partner.",
+        note: "BD Partner bắt đầu từ hạng Hunter, sau khi ký quỹ $2.000 và được một Solution Partner phê duyệt. Doanh thu BD tính theo giới thiệu, trừ khi sau này bạn đủ điều kiện lên Solution Partner.",
       },
       source: "Các hạng và mức chia sẻ theo chương trình đối tác chung của NextLevelBuilder, giống AgentBrain.",
     },

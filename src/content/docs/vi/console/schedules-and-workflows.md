@@ -35,7 +35,7 @@ Dùng **Toggle** để tạm dừng hoặc chạy lại một lịch. Khi xoá, 
 
 ## Workflow
 
-Workflow là một tập các bước, gọi là node, chạy từ đầu đến cuối theo thứ tự cố định, có rẽ nhánh ở những chỗ bạn đặt điều kiện. Node có thể gọi agent, tạo tác vụ, tìm trong kho tri thức hoặc đồ thị tri thức, đọc và ghi lưu trữ, xin một người phê duyệt và gửi tin nhắn. Workflow không chạy được mã tuỳ ý, không lặp và không chạy song song. Workflow đang ở giai đoạn beta.
+Workflow là một tập các bước, gọi là node, chạy từ đầu đến cuối theo thứ tự cố định, có rẽ nhánh ở những chỗ bạn đặt điều kiện. Node có thể gọi agent, tạo task, tìm trong kho tri thức hoặc đồ thị tri thức, đọc và ghi lưu trữ, xin một người phê duyệt và gửi tin nhắn. Workflow không chạy được mã tuỳ ý, không lặp và không chạy song song. Workflow đang ở giai đoạn beta.
 
 ::shot{id="workflows"}
 

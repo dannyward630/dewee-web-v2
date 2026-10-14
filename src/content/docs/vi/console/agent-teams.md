@@ -1,28 +1,28 @@
 ---
 title: Nhóm agent và phê duyệt
-description: Gom agent thành nhóm có lead và bảng tác vụ chung, tạo liên kết để agent giao việc cho nhau, và xem xét các tác vụ cùng yêu cầu phê duyệt do agent gửi lên.
+description: Gom agent thành nhóm có lead và bảng task chung, tạo liên kết để agent giao việc cho nhau, và xem xét các task cùng yêu cầu phê duyệt do agent gửi lên.
 section: console
 order: 4
 screens: [teams]
 updated: 2026-09-25
 ---
 
-Một agent đã làm được nhiều việc, nhưng có những việc sẽ trôi chảy hơn khi nhiều agent cùng chia nhau làm. Nhóm agent gồm một agent lead, các agent thành viên và một bảng tác vụ chung. **Tác vụ & phê duyệt** là nơi bạn theo dõi công việc agent đang chạy và quyết định những hành động mà agent không được tự làm một mình.
+Một agent đã làm được nhiều việc, nhưng có những việc sẽ trôi chảy hơn khi nhiều agent cùng chia nhau làm. Nhóm agent gồm một agent lead, các agent thành viên và một bảng task chung. **Task & phê duyệt** là nơi bạn theo dõi công việc agent đang chạy và quyết định những hành động mà agent không được tự làm một mình.
 
 ## Ai được dùng
 
 | Khu vực | Khoá quyền | Cho phép |
 |---|---|---|
-| Nhóm agent | `teams.manage` | Tạo và sửa nhóm, thành viên, tác vụ và liên kết uỷ quyền |
-| Tác vụ & phê duyệt | `tasks.manage` | Xem tác vụ của agent, chấp thuận hoặc từ chối yêu cầu phê duyệt |
+| Nhóm agent | `teams.manage` | Tạo và sửa nhóm, thành viên, task và liên kết uỷ quyền |
+| Task & phê duyệt | `tasks.manage` | Xem task của agent, phê duyệt hoặc từ chối yêu cầu phê duyệt |
 
 Để thay đổi một nhóm, bạn còn cần là chủ workspace hoặc có vai trò Admin. Những người khác chỉ xem được nhóm. Xem [Thành viên, vai trò và API key](/docs/console/members-roles-and-api-keys).
 
 ## Nhóm hoạt động thế nào
 
-Mỗi nhóm có đúng một agent **lead** và số agent thành viên tuỳ ý. Lead điều phối: chia việc thành các tác vụ trên bảng của nhóm, giao cho thành viên và theo sát tới khi xong. Thành viên xử lý tác vụ được giao và trao đổi qua bình luận trên tác vụ. Mỗi thành viên tham gia nhóm với vai trò **Member** hoặc **Reviewer**.
+Mỗi nhóm có đúng một agent **lead** và số agent thành viên tuỳ ý. Lead điều phối: chia việc thành các task trên bảng của nhóm, giao cho thành viên và theo sát tới khi xong. Thành viên xử lý task được giao và trao đổi qua bình luận trên task. Mỗi thành viên tham gia nhóm với vai trò **Member** hoặc **Reviewer**.
 
-Các cột trên bảng tác vụ tương ứng với trạng thái tác vụ: **Pending**, **In progress**, **In review**, **Completed**, **Blocked** và **Failed**. Khi một tác vụ cần người phê duyệt, nó sẽ nằm ở **In review** cho tới khi có người chuyển nó sang bước tiếp theo.
+Các cột trên bảng task tương ứng với trạng thái task: **Pending**, **In progress**, **In review**, **Completed**, **Blocked** và **Failed**. Khi một task cần người phê duyệt, nó sẽ nằm ở **In review** cho tới khi có người chuyển nó sang bước tiếp theo.
 
 ::shot{id="teams"}
 
@@ -38,12 +38,12 @@ Trang liệt kê từng nhóm kèm lead, số thành viên và trạng thái, c�
 
 Không thể gỡ lead ra khỏi chính nhóm của nó. Muốn ngừng dùng một nhóm mà không xoá, hãy đặt trạng thái của nhóm thành **Archived**.
 
-## Làm việc trên bảng tác vụ
+## Làm việc trên bảng task
 
 1. Mở một nhóm và chọn **Create task**.
 2. Nhập tiêu đề, mô tả và mức ưu tiên, rồi chọn người phụ trách hoặc để trống.
 3. Chuyển qua lại giữa chế độ xem **Kanban** và **List** tuỳ ý.
-4. Để đổi trạng thái của một tác vụ, chọn trạng thái mới trong ô chọn trên thẻ tác vụ.
+4. Để đổi trạng thái của một task, chọn trạng thái mới trong ô chọn trên thẻ task.
 
 ## Liên kết uỷ quyền
 
@@ -56,11 +56,11 @@ Liên kết uỷ quyền cho phép một agent chuyển việc sang agent khác,
 
 Sau này bạn có thể bật, tắt hoặc xoá liên kết. Khi xoá một nhóm, các liên kết riêng của nhóm đó có thể trở thành liên kết thủ công.
 
-## Tác vụ & phê duyệt
+## Task & phê duyệt
 
-**Tác vụ & phê duyệt** có hai tab là **Tasks** và **Approvals**. Tab **Approvals** hiển thị huy hiệu khi có yêu cầu đang chờ.
+**Task & phê duyệt** có hai tab là **Tasks** và **Approvals**. Tab **Approvals** hiển thị huy hiệu khi có yêu cầu đang chờ.
 
-**Tasks** đang ở giai đoạn beta. Tab này hiển thị 30 tác vụ gần nhất của agent trong workspace, kèm agent, model, số token và trạng thái (running, completed, failed hoặc cancelled). Bạn có thể tìm theo tiêu đề, agent hoặc model, lọc theo trạng thái, và mở **Details** để xem tóm tắt, hoạt động và session liên quan của tác vụ. Nội dung thô của tác vụ, prompt và dữ liệu gửi cho tool đều được lược bỏ.
+**Tasks** đang ở giai đoạn beta. Tab này hiển thị 30 task gần nhất của agent trong workspace, kèm agent, model, số token và trạng thái (running, completed, failed hoặc cancelled). Bạn có thể tìm theo tiêu đề, agent hoặc model, lọc theo trạng thái, và mở **Details** để xem tóm tắt, hoạt động và session liên quan của task. Nội dung thô của task, prompt và dữ liệu gửi cho tool đều được lược bỏ.
 
 **Approvals** liệt kê các yêu cầu từ agent cần một người quyết định trước khi agent làm tiếp, ví dụ chạy một lệnh shell hay cài một gói. Mỗi yêu cầu hiển thị tóm tắt lệnh, mức rủi ro, thư mục làm việc, quy tắc chính sách đã khớp, lý do và tác động dự kiến mà agent nêu, cùng thời điểm hết hạn.
 

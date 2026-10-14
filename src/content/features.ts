@@ -178,8 +178,8 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
         body: { en: "In busy Telegram and Slack groups, the agent answers only when someone mentions it.", vi: "Trong nhóm Telegram và Slack đông người, agent chỉ trả lời khi có người nhắc tên." },
       },
       {
-        title: { en: "Pairing for strangers", vi: "Ghép cặp với người lạ" },
-        body: { en: "Unknown senders get a pairing code, and an admin approves them before the agent replies.", vi: "Người lạ nhận mã ghép cặp, admin duyệt xong thì agent mới trả lời." },
+        title: { en: "Pairing for strangers", vi: "Ghép nối với người lạ" },
+        body: { en: "Unknown senders get a pairing code, and an admin approves them before the agent replies.", vi: "Người lạ nhận mã ghép nối, admin phê duyệt xong thì agent mới trả lời." },
       },
       {
         title: { en: "Comments to private replies", vi: "Từ bình luận sang tin nhắn riêng" },
@@ -351,7 +351,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
       },
       {
         title: { en: "Ask before risky actions", vi: "Hỏi trước khi làm việc rủi ro" },
-        body: { en: "Command execution and file writes can wait for a human to approve.", vi: "Lệnh thực thi và thao tác ghi file có thể chờ người duyệt." },
+        body: { en: "Command execution and file writes can wait for a human to approve.", vi: "Lệnh thực thi và thao tác ghi file có thể chờ người phê duyệt." },
       },
     ],
   },
@@ -375,13 +375,13 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
         since: "3.30",
       },
       {
-        title: { en: "Agents draft, people publish", vi: "Agent soạn, con người duyệt" },
+        title: { en: "Agents draft, people publish", vi: "Agent soạn, con người phê duyệt" },
         body: { en: "An agent can draft a workflow from a request. Only a person can publish it.", vi: "Agent có thể soạn workflow từ một yêu cầu. Chỉ con người mới được publish." },
         since: "3.30",
       },
       {
         title: { en: "Frozen permissions", vi: "Quyền được đóng băng" },
-        body: { en: "Each published version runs under the tool policy it was approved with.", vi: "Mỗi phiên bản đã publish chạy theo đúng chính sách tool lúc được duyệt." },
+        body: { en: "Each published version runs under the tool policy it was approved with.", vi: "Mỗi phiên bản đã publish chạy theo đúng chính sách tool lúc được phê duyệt." },
         since: "3.30",
       },
       {
@@ -496,7 +496,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
       },
       {
         title: { en: "Roles and scopes", vi: "Vai trò và scope" },
-        body: { en: "Admin, operator and viewer, with finer scopes for approvals and pairing.", vi: "Admin, operator và viewer, cùng các scope chi tiết cho việc duyệt và ghép cặp." },
+        body: { en: "Admin, operator and viewer, with finer scopes for approvals and pairing.", vi: "Admin, operator và viewer, cùng các scope chi tiết cho việc phê duyệt và ghép nối." },
       },
       {
         title: { en: "API keys done properly", vi: "API key đúng chuẩn" },
@@ -526,7 +526,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
       },
       {
         title: { en: "Audit trail", vi: "Nhật ký kiểm toán" },
-        body: { en: "Admin actions and pairing approvals are recorded with who did them.", vi: "Thao tác quản trị và việc duyệt ghép cặp đều được ghi lại, kèm người thực hiện." },
+        body: { en: "Admin actions and pairing approvals are recorded with who did them.", vi: "Thao tác quản trị và việc phê duyệt ghép nối đều được ghi lại, kèm người thực hiện." },
       },
     ],
   },

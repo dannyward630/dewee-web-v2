@@ -37,7 +37,7 @@ Các nền tảng được hỗ trợ gồm Telegram, Discord, Slack, WhatsApp, 
 4. Ở tab **Identity & Policies**, đặt **DM policy** và **Group policy**, và chọn agent có cần được nhắc tên trong nhóm hay không.
 5. Chọn **Create & continue setup**, rồi hoàn tất bước đăng nhập của nền tảng nếu có. Với Zalo OA, đăng ký Callback URL và Webhook URL được tạo sẵn trong Zalo, dán webhook secret, rồi cấp quyền cho Official Account.
 
-DM policy và Group policy đều có bốn lựa chọn: **Pairing required**, **Open**, **Allowed list only** và **Disabled**. Cả hai mặc định là ghép nối, và **Require mention in groups** mặc định được bật. Bạn cũng chọn được cách cập nhật trạng thái tác vụ gửi tới kênh: kế thừa, tắt, tiến độ, hoàn thành hoặc cả hai.
+DM policy và Group policy đều có bốn lựa chọn: **Pairing required**, **Open**, **Allowed list only** và **Disabled**. Cả hai mặc định là ghép nối, và **Require mention in groups** mặc định được bật. Bạn cũng chọn được cách cập nhật trạng thái task gửi tới kênh: kế thừa, tắt, tiến độ, hoàn thành hoặc cả hai.
 
 Sau khi kênh được tạo, ba tab nữa sẽ mở ra. **Managers** giao một thành viên workspace làm người quản lý cho một nhóm hoặc topic mà kênh đã ghi nhận, **Contexts** liệt kê các nhóm và topic đó, còn **Passive Memory** cho phép agent học từ hội thoại trên kênh. Passive memory mặc định tắt; hãy giữ **Require review before saving** bật để bạn tự phê duyệt từng mục được trích xuất. Xem [Bộ nhớ, kho tri thức và lưu trữ](/docs/console/memory-and-knowledge).
 

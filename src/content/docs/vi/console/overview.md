@@ -29,7 +29,7 @@ Thanh menu bên trái gom các khu vực theo mục đích:
 
 | Nhóm | Khu vực |
 |---|---|
-| Workspace | Tổng quan, Chat, Phiên hội thoại, Agent, Nhóm agent, Tác vụ & phê duyệt |
+| Workspace | Tổng quan, Chat, Phiên hội thoại, Agent, Nhóm agent, Task & phê duyệt |
 | Năng lực | Provider & model, Skill, MCP server, Gói runtime, Tool tích hợp, Lịch chạy, Workflow, Hook, Giọng nói (TTS & STT) |
 | Kết nối | Kênh, Hộp ghép nối, Danh bạ, Tin nhắn chờ |
 | Dữ liệu | Bộ nhớ, Kho tri thức, Đồ thị tri thức, Lưu trữ |
@@ -67,7 +67,7 @@ Chỉ báo trạng thái ở đầu console cho biết runtime của workspace �
 |---|---|
 | Chat, Phiên hội thoại | [Chat và phiên hội thoại](/docs/console/chat-and-sessions) |
 | Agent | [Agent](/docs/console/agents) |
-| Nhóm agent, Tác vụ & phê duyệt | [Nhóm agent và phê duyệt](/docs/console/agent-teams) |
+| Nhóm agent, Task & phê duyệt | [Nhóm agent và phê duyệt](/docs/console/agent-teams) |
 | Provider & model | [Provider và model](/docs/console/providers-and-models) |
 | Skill, mẫu skill | [Skill và mẫu skill](/docs/console/skills) |
 | Tool tích hợp, MCP server, Hook, Gói runtime, Giọng nói | [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks) |

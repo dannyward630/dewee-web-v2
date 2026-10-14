@@ -15,7 +15,7 @@ Workflow là một đồ thị có hướng không chu trình (DAG) gồm các n
 | Nhóm | Node | Tác dụng |
 |---|---|---|
 | Điều khiển | `start`, `end`, `condition`, `transform`, `compare`, `approval` | Nhận đầu vào, trả đầu ra, rẽ nhánh, định dạng lại dữ liệu, so sánh giá trị và tạm dừng chờ người phê duyệt |
-| Năng lực | `agent`, `task_create` | Chạy một lượt model có giới hạn, hoặc tạo công việc |
+| Năng lực | `agent`, `task_create` | Chạy một lượt model có giới hạn, hoặc tạo task |
 | Tri thức và dữ liệu | `vault_search`, `kg_query`, `storage_read`, `storage_write` | Truy vấn kho tri thức và knowledge graph, đọc và ghi vào kho lưu trữ của tenant |
 | Gửi đi và tool | `deliver`, `deliver_multi`, `mcp_tool` | Gửi tới một hoặc nhiều kênh, gọi một tool MCP |
 
@@ -62,7 +62,7 @@ Mọi trigger, trừ manual, đều cần workflow đang bật.
 | Số trigger mỗi workflow | 3 |
 | Workflow được khởi chạy bởi workflow khác | Tối đa 3 cấp; workflow không thể tự khởi chạy chính nó |
 
-Một node thất bại có mặc định 3 lần thử (`settings.max_attempts_default`, hoặc `max_attempts` trên từng node). Thời gian chờ bắt đầu từ 1 giây và tăng gấp đôi tới tối đa 60 giây. Chỉ lỗi hết thời gian chờ, lỗi provider và lỗi tạm thời mới được thử lại. Trước khi một node gửi tin nhắn, ghi vào kho lưu trữ hay tạo công việc, dewee lưu một khoá idempotency, nên việc thử lại hay khởi động lại không lặp lại tác động đó. Một lượt chạy thất bại cũng có thể được chạy lại từ một node bạn chọn.
+Một node thất bại có mặc định 3 lần thử (`settings.max_attempts_default`, hoặc `max_attempts` trên từng node). Thời gian chờ bắt đầu từ 1 giây và tăng gấp đôi tới tối đa 60 giây. Chỉ lỗi hết thời gian chờ, lỗi provider và lỗi tạm thời mới được thử lại. Trước khi một node gửi tin nhắn, ghi vào kho lưu trữ hay tạo task, dewee lưu một khoá idempotency, nên việc thử lại hay khởi động lại không lặp lại tác động đó. Một lượt chạy thất bại cũng có thể được chạy lại từ một node bạn chọn.
 
 ## Những gì workflow không làm
 

@@ -26,7 +26,7 @@ Tại Việt Nam, dewee được cung cấp theo hai hình thức Tự cài đ�
 - **Dùng tool**: đọc và ghi file trong workspace riêng, chạy lệnh shell sau danh sách chặn và quy tắc phê duyệt, tìm kiếm và tải trang web, điều khiển trình duyệt, gọi MCP server hoặc tool tuỳ chỉnh do bạn định nghĩa. Xem [Tool và quyền hạn](/docs/concepts/tools-and-permissions).
 - **Làm theo skill**: các gói hướng dẫn (`SKILL.md`) mà agent nạp vào khi công việc cần đến. Xem [Skill](/docs/concepts/skills).
 - **Ghi nhớ**: cuộc hội thoại hiện tại, bản tóm tắt các phiên trước, một knowledge graph về con người và sự vật, cùng kho tri thức gồm tài liệu mà agent có thể tìm kiếm. Xem [Bộ nhớ và tri thức](/docs/concepts/memory-and-knowledge).
-- **Phối hợp với agent khác**: giao việc cho một agent chuyên trách, hoặc tham gia một nhóm dùng chung bảng công việc. Xem [Nhóm agent](/docs/concepts/agent-teams).
+- **Phối hợp với agent khác**: giao việc cho một agent chuyên trách, hoặc tham gia một nhóm dùng chung bảng task. Xem [Nhóm agent](/docs/concepts/agent-teams).
 - **Tự hành động theo lịch**: cron job, heartbeat định kỳ, và workflow có phiên bản kèm bước phê duyệt của con người. Xem [Lịch chạy và heartbeat](/docs/concepts/schedules-and-heartbeat) và [Workflow](/docs/concepts/workflows).
 
 ## Đội ngũ của bạn nhận được gì

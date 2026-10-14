@@ -65,7 +65,7 @@ Thay đổi về quyền và chế độ có hiệu lực từ lượt chạy k�
 - **Thư viện trong package.** Quyền trên package chặn các lệnh mà package cài vào, theo tên lệnh. Nó không chặn code import package như một thư viện, bản sao đã đổi tên của một lệnh, hay script bên trong package được chạy qua trình thông dịch. Khi cần cô lập thật sự, hãy dùng [sandbox Docker](/docs/security/overview#cách-ly).
 - **File của skill ngoài `read_file`.** Lệnh shell, `search_files` và `list_files` vẫn chạm được tới file của skill.
 - **MCP server khai báo trong file cấu hình gateway.** Chúng không có quyền theo tài nguyên và vẫn mở cho bất kỳ ai gọi được chúng.
-- **Tác vụ nền.** Bộ nhớ, embedding, giọng nói và tóm tắt dùng provider của workspace bên ngoài lượt chạy của agent chưa được kiểm tra theo quyền trên provider.
+- **Công việc nền.** Bộ nhớ, embedding, giọng nói và tóm tắt dùng provider của workspace bên ngoài lượt chạy của agent chưa được kiểm tra theo quyền trên provider.
 - **Bản Lite.** Lite không có kho lưu quyền: panel và lệnh `access` không hoạt động ở đó, provider và package không giới hạn được, còn skill, MCP server, agent và hook giữ quy tắc cũ.
 
 ## Hoạt động

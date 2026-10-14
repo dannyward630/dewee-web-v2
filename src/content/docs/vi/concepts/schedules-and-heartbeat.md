@@ -101,7 +101,7 @@ dewee heartbeat toggle <agent-id> --enabled=false
 
 | | Heartbeat | Cron job |
 |---|---|---|
-| Phù hợp cho | Kiểm tra định kỳ mà phần lớn thời gian không có gì để báo | Mọi tác vụ hay workflow chạy theo lịch |
+| Phù hợp cho | Kiểm tra định kỳ mà phần lớn thời gian không có gì để báo | Mọi task hay workflow chạy theo lịch |
 | Mỗi agent | Một | Nhiều |
 | Lịch | Chu kỳ cố định, tối thiểu 5 phút | `at`, `every` hoặc biểu thức cron |
 | Hướng dẫn | `HEARTBEAT.md` | Tin nhắn lưu trong job |

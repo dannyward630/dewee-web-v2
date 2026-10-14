@@ -30,7 +30,7 @@ Trang có bốn phần: **Runtime settings**, **General**, **Access** và **Rela
 
 | Nhóm | Điều chỉnh gì |
 |---|---|
-| Task status updates | Mặc định gửi tiến độ tác vụ tới kênh: tắt (mặc định), tiến độ, hoàn thành hoặc cả hai. Agent và kênh có thể thu hẹp hoặc ghi đè mặc định này. |
+| Task status updates | Mặc định gửi tiến độ task tới kênh: tắt (mặc định), tiến độ, hoàn thành hoặc cả hai. Agent và kênh có thể thu hẹp hoặc ghi đè mặc định này. |
 | Pairing messages | Tin nhắn gửi kèm mã ghép nối cho người gửi mới, và tin nhắn gửi sau khi được phê duyệt. |
 | Text-to-speech | Provider giọng nói, khi nào câu trả lời được đọc thành tiếng, và giọng cùng model cho từng provider. |
 | Speech-to-text | Provider chuyển tin nhắn thoại thành văn bản. |

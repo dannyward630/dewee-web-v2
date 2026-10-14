@@ -48,7 +48,7 @@ Danh sách hiển thị từng agent kèm loại, chủ sở hữu, provider, mo
 3. **Profile**: nhập tên (từ 2 đến 80 ký tự), emoji nếu muốn và phần mô tả tối đa 600 ký tự.
 4. **Provider & model**: chọn một provider đã kết nối và một model của provider đó. Nếu chưa có provider nào, hãy thêm trước ở [Provider và model](/docs/console/providers-and-models).
 5. **Capabilities**: ghi lại những skill, MCP server và tool tích hợp mà agent sẽ cần. Bạn cấp chúng trên trang riêng của từng mục sau khi agent đã được tạo.
-6. **Context**: chọn loại agent và, nếu cần, context window (0 đến 2.000.000 token), số vòng gọi tool (0 đến 100), prompt mode, mức độ suy luận, số token tối đa và cập nhật trạng thái tác vụ. Để trống một trường để giữ mặc định của runtime.
+6. **Context**: chọn loại agent và, nếu cần, context window (0 đến 2.000.000 token), số vòng gọi tool (0 đến 100), prompt mode, mức độ suy luận, số token tối đa và cập nhật trạng thái task. Để trống một trường để giữ mặc định của runtime.
 7. Xem lại ở **Review** rồi chọn **Create agent**.
 
 ## Quản lý agent

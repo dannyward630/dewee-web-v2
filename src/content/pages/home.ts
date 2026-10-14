@@ -225,7 +225,7 @@ export const HOME: Bi<{
         lines: [
           { who: "Chị Lan", role: "Sales", text: "@dewee khách Đà Nẵng cần báo giá on-prem kèm 3 quy trình tuỳ chỉnh, em soạn giúp chị nhé?" },
           { who: "dewee", text: "Em soạn xong theo bảng giá 2026 rồi ạ ✓ Em đính kèm luôn tài liệu bảo mật khách hỏi tuần trước. Anh Minh duyệt giúp em trước 5 giờ nhé?", me: true },
-          { who: "Anh Minh", role: "Trưởng phòng Sales", text: "Duyệt." },
+          { who: "Anh Minh", role: "Trưởng phòng Sales", text: "Đã phê duyệt." },
           { who: "dewee", text: "Đã gửi khách. Thứ Năm khách chưa phản hồi thì em nhắc lại ạ.", me: true },
         ],
       },
@@ -245,7 +245,7 @@ export const HOME: Bi<{
       items: [
         { text: "637.225 dòng Go, viết rồi đọc lại", detail: "Một file chạy ~25 MB. Khởi động dưới một giây." },
         { text: "8.900+ bài test tự động cho mỗi thay đổi", detail: "Cô lập tenant, khởi động trong hỗn loạn, prompt injection… đủ cả." },
-        { text: "5 lớp phòng thủ giữa dữ liệu của bạn và internet", detail: "Đóng từ cửa: có token mới kết nối, người lạ phải được duyệt mới chat được." },
+        { text: "5 lớp phòng thủ giữa dữ liệu của bạn và internet", detail: "Đóng từ cửa: có token mới kết nối, người lạ phải được phê duyệt mới chat được." },
         { text: "20+ nhà cung cấp mô hình, cái nào cũng có dự phòng", detail: "Nhà cung cấp gặp sự cố, agent của bạn vẫn làm việc." },
         { text: "11 kênh chat, có cả Zalo và Pancake", detail: "Làm cho đúng cách người Việt và Đông Nam Á trò chuyện." },
         { text: "6 bản phát hành ổn định chỉ riêng tháng 9", detail: "Ra bản đều, vá lỗi nhanh, ghi chép đầy đủ trong changelog." },
@@ -303,7 +303,7 @@ export const HOME: Bi<{
     security: {
       eyebrow: "Bảo mật",
       title: "Đóng từ cửa. Mở *có chủ đích*.",
-      lede: "Nhiều nền tảng agent mở toang mọi thứ rồi cầu may. dewee bắt đầu với cửa đóng: không token thì không kết nối, chưa duyệt thì không chat. Sau đó bạn quyết định mỗi agent được làm gì.",
+      lede: "Nhiều nền tảng agent mở toang mọi thứ rồi cầu may. dewee bắt đầu với cửa đóng: không token thì không kết nối, chưa phê duyệt thì không chat. Sau đó bạn quyết định mỗi agent được làm gì.",
       layers: [
         { name: "Transport", body: "CORS, xác thực chống timing attack, giới hạn tần suất ngay từ cửa." },
         { name: "Input", body: "Kiểm tra prompt injection trước khi tới mô hình: mặc định cảnh báo, chặn khi bạn chọn." },
@@ -318,7 +318,7 @@ export const HOME: Bi<{
     integrations: {
       eyebrow: "Tích hợp",
       title: "Kết nối với những công cụ bạn *đã* trả tiền.",
-      lede: "Mang theo ứng dụng chat, khoá API mô hình và MCP server của bạn. dewee kết nối tất cả mà không bắt bạn phải chuyển nhà.",
+      lede: "Mang theo ứng dụng chat, API key mô hình và MCP server của bạn. dewee kết nối tất cả mà không bắt bạn phải chuyển nhà.",
       channels: "Kênh chat",
       providers: "Nhà cung cấp mô hình",
       cta: "Xem mọi tích hợp",
@@ -363,7 +363,7 @@ export const HOME: Bi<{
       items: [
         { q: "dewee có phải là GoClaw đổi tên không?", a: "Không. dewee lớn lên từ GoClaw nhưng là sản phẩm riêng, mã nguồn đóng, được gia cố cho doanh nghiệp, có bảng điều khiển khách hàng, license và đội ngũ hỗ trợ. GoClaw vẫn mở và miễn phí cho mục đích phi thương mại." },
         { q: "Dữ liệu có nằm trên máy chủ của chúng tôi không?", a: "Có. Gói On-Premises chạy runtime dewee trên VPS hoặc Mac mini của bạn, kích hoạt bằng license key. Hoặc bạn tự cài dewee lên máy của mình: cài đặt miễn phí, license dùng để kết nối kênh chat. Tại Việt Nam, đây là hai cách triển khai chúng tôi cung cấp." },
-        { q: "Dùng được những mô hình AI nào?", a: "Anthropic, OpenAI, Gemini, DeepSeek, Qwen, Mistral, xAI, OpenRouter, Groq, Ollama và hơn thế: hơn 20 nhà cung cấp. Bạn dùng khoá API của mình, và mỗi agent có thể tự chuyển sang nhà cung cấp dự phòng." },
+        { q: "Dùng được những mô hình AI nào?", a: "Anthropic, OpenAI, Gemini, DeepSeek, Qwen, Mistral, xAI, OpenRouter, Groq, Ollama và hơn thế: hơn 20 nhà cung cấp. Bạn dùng API key của mình, và mỗi agent có thể tự chuyển sang nhà cung cấp dự phòng." },
         { q: "Nhân viên có phải học công cụ mới không?", a: "Gần như không. Agent vào ngay các ứng dụng chat đội ngũ đang dùng như Telegram, Zalo, Slack, Lark hay Discord. Quản trị viên có bảng điều khiển; mọi người khác chỉ cần @nhắc tên agent." },
         { q: "Mất bao lâu để đi vào hoạt động?", a: "Tự cài đặt chỉ cần chạy script cài đặt rồi thiết lập theo hướng dẫn trong bảng điều khiển. Bản On-Premises thường mất một đến ba tuần, gồm cả cài đặt và các quy trình tuỳ chỉnh chúng tôi dựng cùng bạn." },
         { q: "Nếu agent làm sai thì sao?", a: "Mọi lần chạy đều có trace, thao tác nhạy cảm có thể yêu cầu phê duyệt, và agent chuyển cho người thật khi không chắc chắn. Bạn thấy rõ chuyện gì đã xảy ra và vì sao." },
