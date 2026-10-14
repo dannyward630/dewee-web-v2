@@ -3,7 +3,7 @@ title: Skill
 description: Cách skill trong dewee được đóng gói, tìm và nạp vào prompt, ai được dùng, cách agent tự xuất bản skill, và cách skill được cải thiện dần qua bước xem xét.
 section: concepts
 order: 5
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 Skill là một bộ hướng dẫn dùng lại được, kèm script và file tham khảo tuỳ chọn, mà agent nạp vào khi công việc cần tới. Skill giúp system prompt gọn nhẹ: agent chỉ thấy một dòng tóm tắt của mỗi skill và chỉ đọc hướng dẫn đầy đủ khi thật sự cần.
@@ -100,4 +100,5 @@ dewee skills suggestions apply <skill> <suggestion-id> --approve
 - [Tool và quyền hạn](/docs/concepts/tools-and-permissions): các tool mà script của skill chạy qua.
 - [Vòng lặp agent](/docs/concepts/agent-loop): prompt được dựng thế nào ở mỗi lượt.
 - [Tham chiếu CLI](/docs/runtime/cli): toàn bộ lệnh `dewee skills`.
+- [Cấp quyền theo tài nguyên](/docs/security/access-grants): quyền use, edit và manage trên một skill, và những gì bị từ chối khi chạy.
 - [Mô hình bảo mật](/docs/security/overview): các lớp kiểm soát khác đối với nội dung do agent viết.

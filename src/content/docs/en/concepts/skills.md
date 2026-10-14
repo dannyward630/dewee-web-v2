@@ -3,7 +3,7 @@ title: Skills
 description: How dewee skills are packaged, found and loaded into the prompt, who can use them, how agents publish their own, and how skills improve over time with review.
 section: concepts
 order: 5
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 A skill is a reusable set of instructions, with optional scripts and reference files, that an agent loads when a task calls for it. Skills keep the system prompt short: the agent sees a one-line summary of each skill and reads the full instructions only when it needs them.
@@ -100,4 +100,5 @@ dewee skills suggestions apply <skill> <suggestion-id> --approve
 - [Tools and permissions](/docs/concepts/tools-and-permissions): the tools a skill's scripts run through.
 - [The agent loop](/docs/concepts/agent-loop): how the prompt is built each turn.
 - [CLI reference](/docs/runtime/cli): all `dewee skills` commands.
+- [Access grants](/docs/security/access-grants): use, edit and manage grants on a skill, and what is refused at run time.
 - [Security model](/docs/security/overview): other guards on agent-written content.

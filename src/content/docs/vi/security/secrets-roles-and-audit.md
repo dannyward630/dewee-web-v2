@@ -3,7 +3,7 @@ title: Secret, vai trò và nhật ký kiểm toán
 description: Cách dewee lưu credential, ai làm được gì trong console và runtime, API key và người gửi qua ứng dụng chat được cấp quyền ra sao, và xem nhật ký ở đâu.
 section: security
 order: 2
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 [Tổng quan bảo mật](/docs/security/overview) nói về các lớp kiểm tra quanh agent. Trang này nói về con người và credential: cái gì được lưu và lưu thế nào, có những vai trò nào, và việc gì để lại dấu vết để bạn xem lại sau.
@@ -42,7 +42,7 @@ Runtime có bốn vai trò riêng, quyết định bên gọi được dùng nh�
 - **Operator**: quyền đọc và ghi cho công việc hằng ngày, không có thao tác quản trị.
 - **Viewer**: chỉ đọc.
 
-Thành viên của tenant được ánh xạ vào các vai trò này: owner và admin thành admin, operator và member thành operator, viewer giữ nguyên viewer. Quyền truy cập từng agent được kiểm tra riêng: agent phải là agent mặc định, do chính bên gọi sở hữu, hoặc đã được chia sẻ cho họ.
+Thành viên của tenant được ánh xạ vào các vai trò này: owner và admin thành admin, operator và member thành operator, viewer giữ nguyên viewer. Quyền truy cập từng agent được kiểm tra riêng: agent phải là agent mặc định, do chính bên gọi sở hữu, hoặc đã được chia sẻ cho họ. Với agent dựng sẵn (predefined), bên gọi cũng được dùng nếu một kênh đang bật có tên họ trong danh sách người gửi được phép. Việc kiểm tra áp dụng khi chat qua WebSocket hay HTTP chat API, khi đặt lịch chạy agent, và khi xem hoặc sửa agent. Quyền chia sẻ có bốn mức: use, edit, manage và admin. Muốn sửa file ngữ cảnh của agent thì phải là chủ sở hữu hoặc được chia sẻ ở mức edit, manage hay admin, vì mức use chỉ cho phép chat. Lịch chạy đã tạo không được kiểm tra lại khi đến giờ chạy, nên hãy tắt lịch khi thu hồi quyền chia sẻ mà nó dựa vào. Admin của tenant không bị kiểm tra khi chat và khi gọi các method WebSocket của agent, API key không gắn chủ sở hữu cũng vậy, vì key đó đại diện cho cả tenant. Chat trong ứng dụng tuân theo cùng quy tắc này, với một ngoại lệ: mọi thành viên workspace đều chat được với Super Agent của workspace, vì đó là agent mặc định nhận tin khi chưa chọn agent nào. Mỗi mức chia sẻ mở ra điều gì, cùng các quyền tương ứng trên skill, MCP server, package, provider và hook, được trình bày ở [Cấp quyền theo tài nguyên](/docs/security/access-grants).
 
 ## API key
 
@@ -57,6 +57,7 @@ Trên ứng dụng chat, tin nhắn riêng mặc định dùng cơ chế ghép c
 ## Nhật ký kiểm toán
 
 - **Nhật ký hoạt động.** Các thay đổi được ghi lại cùng người thực hiện, đối tượng và hành động. Xem trên trang **Nhật ký hoạt động** của console, bằng `dewee activity list`, hoặc qua `GET /v1/activity`.
+- **Hoạt động của tài nguyên.** Mỗi skill, MCP server, package, provider, hook và agent có một luồng ghi lại thay đổi quyền, các lần bị từ chối khi chạy và việc sử dụng. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants#hoạt-động).
 - **Kiểm toán API key.** Trang **API key** của console có phần kiểm toán cho các key của bạn.
 - **Sự kiện bảo mật.** Prompt injection bị phát hiện hoặc bị chặn và tin nhắn bị cắt bớt được ghi thành `security.injection_detected`, `security.injection_blocked` và `security.message_truncated`.
 - **Trace.** Mỗi lượt chạy của agent ghi lại các lời gọi model và tool, nên bạn thấy được agent đã làm gì và vì sao. Xem [Tracing](/docs/concepts/tracing).
