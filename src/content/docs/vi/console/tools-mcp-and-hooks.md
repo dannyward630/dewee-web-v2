@@ -43,7 +43,7 @@ MCP server bổ sung tool từ bên ngoài dewee, như GitHub hay một hệ th�
 2. Chọn transport. **stdio** chạy một lệnh kèm tham số và biến môi trường, trong đó biến bí mật luôn được che. **SSE** và **Streamable HTTP** cần URL, header và API key nếu có.
 3. Lưu server. Với server SSE hoặc Streamable HTTP dùng OAuth, mở tab **OAuth**, giữ chế độ đăng ký **Auto (Recommended)** trừ khi server yêu cầu khác, rồi chọn **Authorize**.
 4. Ở tab **Test**, chọn **Test connection** để kiểm tra server và tìm các tool của nó.
-5. Ở tab **Access**, cấp quyền **Use** cho agent, **Use** hoặc **Manage** cho người, hoặc cấp cho một nhóm (các agent hiện có trong nhóm). Mỗi quyền cấp hiện các tool của server mà nó cho phép. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
+5. Ở tab **Access**, cấp quyền **Use** cho agent, **Use**, **Edit** hoặc **Manage** cho người, hoặc cấp cho một nhóm (các agent hiện có trong nhóm). Mỗi quyền cấp hiện các tool của server mà nó cho phép. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
 
 Bạn thu hồi quyền ngay trong tab đó. Tắt một server sẽ giữ nguyên cấu hình nhưng agent không dùng được nữa.
 

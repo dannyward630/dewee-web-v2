@@ -43,7 +43,7 @@ An MCP server adds tools from outside dewee, such as GitHub or a ticketing syste
 2. Pick the transport. **stdio** runs a command with arguments and environment variables, with secret variables kept masked. **SSE** and **Streamable HTTP** take a URL, headers and an optional API key.
 3. Save the server. For SSE and Streamable HTTP servers that use OAuth, open the **OAuth** tab, keep the registration mode on **Auto (Recommended)** unless the server needs otherwise, and select **Authorize**.
 4. On the **Test** tab, select **Test connection** to check the server and discover its tools.
-5. On the **Access** tab, grant agents **Use**, people **Use** or **Manage**, or a team (its current agents). Each grant shows which of the server's tools it allows. See [Access grants](/docs/security/access-grants).
+5. On the **Access** tab, grant agents **Use**, people **Use**, **Edit** or **Manage**, or a team (its current agents). Each grant shows which of the server's tools it allows. See [Access grants](/docs/security/access-grants).
 
 Revoke a grant from the same tab. Turning a server off keeps it configured but unavailable to agents.
 

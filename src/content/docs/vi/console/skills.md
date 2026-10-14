@@ -39,7 +39,7 @@ Chọn **Open** trên một dòng. Trang chi tiết gồm các tab sau:
 
 - **Profile**: sửa tên và mô tả, đặt **Visibility** và đổi trạng thái.
 - **Dependencies**: xem các gói mà skill cần và chọn **Scan dependencies** để kiểm tra gói nào còn thiếu.
-- **Access**: cấp quyền **Use** hoặc **Manage** cho agent hoặc người, đổi mức và thu hồi quyền. Quản trị viên workspace và người có quyền **Manage** trên skill được thay đổi quyền truy cập; người khác thấy thông báo chỉ được xem. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
+- **Access**: cấp quyền **Use** hoặc **Manage** cho agent và **Use**, **Edit** hoặc **Manage** cho người, đổi mức và thu hồi quyền. Quản trị viên workspace và người có quyền **Manage** trên skill được thay đổi quyền truy cập; người khác thấy thông báo chỉ được xem. Xem [Cấp quyền theo tài nguyên](/docs/security/access-grants).
 - **Activities**: gồm cả hoạt động truy cập của skill: thay đổi quyền, lần bị từ chối và lần sử dụng.
 - **Evolution**: xem skill đã chạy bao nhiêu lần, tỉ lệ thành công và thời gian chạy trung bình.
 

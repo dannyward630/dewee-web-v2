@@ -39,7 +39,7 @@ Select **Open** on a row. The detail includes these tabs:
 
 - **Profile**: edit the name and description, set the **Visibility** and change the status.
 - **Dependencies**: see the packages the skill needs and select **Scan dependencies** to check what is missing.
-- **Access**: grant agents or people **Use** or **Manage**, and change or revoke grants. Workspace admins and people with **Manage** on the skill can change access; anyone else sees a view-only notice. See [Access grants](/docs/security/access-grants).
+- **Access**: grant agents **Use** or **Manage** and people **Use**, **Edit** or **Manage**, and change or revoke grants. Workspace admins and people with **Manage** on the skill can change access; anyone else sees a view-only notice. See [Access grants](/docs/security/access-grants).
 - **Activities**: includes the skill's access activity: grant changes, denials and uses.
 - **Evolution**: see how often the skill ran, its success rate and its average duration.
 
