@@ -70,4 +70,4 @@ Runtime báo danh mỗi năm phút bằng ID kích hoạt và credential của n
 
 ## License hiển thị ở đâu trong console
 
-**License binding**, nằm dưới **Billing**, cho biết workspace đã gắn license hay chưa, trạng thái onboarding và runtime tenant đã kết nối chưa. Kết nối và công suất của runtime hiện ở [Sức khoẻ runtime](/docs/console/monitoring). Để gia hạn, thêm runtime hoặc đổi ID instance, hãy dùng [Hỗ trợ và thanh toán](/docs/console/support-and-billing) hoặc [liên hệ chúng tôi](/contact).
+**License binding**, nằm dưới **Billing**, cho biết workspace đã gắn license hay chưa, trạng thái onboarding và runtime tenant đã kết nối chưa. Kết nối và công suất của runtime hiện ở [Tình trạng runtime](/docs/console/monitoring). Để gia hạn, thêm runtime hoặc đổi ID instance, hãy dùng [Hỗ trợ và thanh toán](/docs/console/support-and-billing) hoặc [liên hệ chúng tôi](/contact).

@@ -13,7 +13,7 @@ Một agent đã làm được nhiều việc, nhưng có những việc sẽ tr
 
 | Khu vực | Khoá quyền | Cho phép |
 |---|---|---|
-| Nhóm agent | `teams.manage` | Tạo và sửa nhóm, thành viên, tác vụ và liên kết giao việc |
+| Nhóm agent | `teams.manage` | Tạo và sửa nhóm, thành viên, tác vụ và liên kết uỷ quyền |
 | Tác vụ & phê duyệt | `tasks.manage` | Xem tác vụ của agent, chấp thuận hoặc từ chối yêu cầu phê duyệt |
 
 Để thay đổi một nhóm, bạn còn cần là chủ workspace hoặc có vai trò Admin. Những người khác chỉ xem được nhóm. Xem [Thành viên, vai trò và API key](/docs/console/members-roles-and-api-keys).
@@ -22,7 +22,7 @@ Một agent đã làm được nhiều việc, nhưng có những việc sẽ tr
 
 Mỗi nhóm có đúng một agent **lead** và số agent thành viên tuỳ ý. Lead điều phối: chia việc thành các tác vụ trên bảng của nhóm, giao cho thành viên và theo sát tới khi xong. Thành viên xử lý tác vụ được giao và trao đổi qua bình luận trên tác vụ. Mỗi thành viên tham gia nhóm với vai trò **Member** hoặc **Reviewer**.
 
-Các cột trên bảng tác vụ tương ứng với trạng thái tác vụ: **Pending**, **In progress**, **In review**, **Completed**, **Blocked** và **Failed**. Khi một tác vụ cần người duyệt, nó sẽ nằm ở **In review** cho tới khi có người chuyển nó sang bước tiếp theo.
+Các cột trên bảng tác vụ tương ứng với trạng thái tác vụ: **Pending**, **In progress**, **In review**, **Completed**, **Blocked** và **Failed**. Khi một tác vụ cần người phê duyệt, nó sẽ nằm ở **In review** cho tới khi có người chuyển nó sang bước tiếp theo.
 
 ::shot{id="teams"}
 
@@ -45,9 +45,9 @@ Không thể gỡ lead ra khỏi chính nhóm của nó. Muốn ngừng dùng m�
 3. Chuyển qua lại giữa chế độ xem **Kanban** và **List** tuỳ ý.
 4. Để đổi trạng thái của một tác vụ, chọn trạng thái mới trong ô chọn trên thẻ tác vụ.
 
-## Liên kết giao việc
+## Liên kết uỷ quyền
 
-Liên kết giao việc cho phép một agent chuyển việc sang agent khác, trong phạm vi một nhóm hoặc dưới dạng liên kết thủ công độc lập.
+Liên kết uỷ quyền cho phép một agent chuyển việc sang agent khác, trong phạm vi một nhóm hoặc dưới dạng liên kết thủ công độc lập.
 
 1. Ở phần **Delegation links**, chọn **Create link**.
 2. Chọn **Source agent** và **Target agent**.

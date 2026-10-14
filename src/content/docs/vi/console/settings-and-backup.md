@@ -7,7 +7,7 @@ screens: [settings, backup]
 updated: 2026-09-25
 ---
 
-**Cài đặt** chứa các tuỳ chọn áp dụng cho toàn workspace, từ tin nhắn ghép cặp tới múi giờ mặc định. **Sao lưu & xuất dữ liệu** cho biết dữ liệu của bạn được bảo vệ thế nào theo hình thức triển khai, và nơi yêu cầu xuất hay khôi phục dữ liệu. Trên Dedicated và On-Premises, chủ workspace còn có thêm vài trang để quản lý runtime do chính họ vận hành. Tại Việt Nam, dewee được cung cấp dưới hình thức Tự cài đặt và On-Premises; với On-Premises, bạn sẽ dùng các trang này.
+**Cài đặt** chứa các tuỳ chọn áp dụng cho toàn workspace, từ tin nhắn ghép nối tới múi giờ mặc định. **Sao lưu & xuất dữ liệu** cho biết dữ liệu của bạn được bảo vệ thế nào theo hình thức triển khai, và nơi yêu cầu xuất hay khôi phục dữ liệu. Trên Dedicated và On-Premises, chủ workspace còn có thêm vài trang để quản lý runtime do chính họ vận hành. Tại Việt Nam, dewee được cung cấp dưới hình thức Tự cài đặt và On-Premises; với On-Premises, bạn sẽ dùng các trang này.
 
 ## Ai được dùng
 
@@ -31,7 +31,7 @@ Trang có bốn phần: **Runtime settings**, **General**, **Access** và **Rela
 | Nhóm | Điều chỉnh gì |
 |---|---|
 | Task status updates | Mặc định gửi tiến độ tác vụ tới kênh: tắt (mặc định), tiến độ, hoàn thành hoặc cả hai. Agent và kênh có thể thu hẹp hoặc ghi đè mặc định này. |
-| Pairing messages | Tin nhắn gửi kèm mã ghép cặp cho người gửi mới, và tin nhắn gửi sau khi được duyệt. |
+| Pairing messages | Tin nhắn gửi kèm mã ghép nối cho người gửi mới, và tin nhắn gửi sau khi được phê duyệt. |
 | Text-to-speech | Provider giọng nói, khi nào câu trả lời được đọc thành tiếng, và giọng cùng model cho từng provider. |
 | Speech-to-text | Provider chuyển tin nhắn thoại thành văn bản. |
 | Skills | Dung lượng tối đa khi tải lên skill và cách lệnh slash tìm skill. |
@@ -42,7 +42,7 @@ Mỗi cài đặt cho biết nó đang dùng **Runtime default** hay đã đư�
 2. Chọn **Save changes** của nhóm đó.
 3. Muốn quay về mặc định, chọn **Reset section**.
 
-Tin nhắn ghép cặp có thể chứa biến thay thế. Tin nhắn yêu cầu hỗ trợ `{{senderId}}`, `{{pairingCode}}` và `{{channel}}`; tin nhắn sau khi duyệt hỗ trợ `{{botName}}`, `{{senderId}}` và `{{channel}}`.
+Tin nhắn ghép nối có thể chứa biến thay thế. Tin nhắn yêu cầu hỗ trợ `{{senderId}}`, `{{pairingCode}}` và `{{channel}}`; tin nhắn sau khi phê duyệt hỗ trợ `{{botName}}`, `{{senderId}}` và `{{channel}}`.
 
 **General** hiển thị workspace ID, phiên bản (AaaS hay tự triển khai), runtime tenant kèm nút **Copy reference**, và trạng thái onboarding. Bạn đặt **Default time zone** ở đây rồi chọn **Save time zone**. Lịch chạy mới, và những thành viên chưa tự chọn múi giờ, sẽ dùng múi giờ này; để trống nếu muốn mỗi người xem theo múi giờ của trình duyệt.
 
@@ -63,7 +63,7 @@ Phần **Backup preflight** kiểm tra runtime tenant đã kết nối chưa, en
 
 1. Chọn **Open restore request**.
 2. Điền và gửi yêu cầu.
-3. Chờ xem xét. Yêu cầu khôi phục bắt đầu bằng một lần chạy thử (dry run) và cần người vận hành hoặc admin tại chỗ của bạn duyệt trước khi bất kỳ dữ liệu nào bị ghi đè.
+3. Chờ xem xét. Yêu cầu khôi phục bắt đầu bằng một lần chạy thử (dry run) và cần người vận hành hoặc admin tại chỗ của bạn phê duyệt trước khi bất kỳ dữ liệu nào bị ghi đè.
 
 > [!WARNING]
 > Khôi phục có thể ghi đè dữ liệu của workspace. Hãy chắc chắn đã có một bản sao lưu mới trước khi gửi yêu cầu.
@@ -87,5 +87,5 @@ Trên các hình thức triển khai này, workspace sở hữu runtime của ri
 - [Chọn cách triển khai](/docs/get-started/deployment-options)
 - [Kích hoạt license](/docs/runtime/licence)
 - [Cài đặt và chạy gateway](/docs/runtime/install-and-run)
-- [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts)
+- [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts)
 - [Hỗ trợ và thanh toán](/docs/console/support-and-billing)

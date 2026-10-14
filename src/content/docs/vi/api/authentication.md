@@ -37,7 +37,7 @@ Key có dạng `goclaw_` theo sau là 32 ký tự hexa. Runtime chỉ lưu hash 
 | `operator.read` | Quyền đọc | Viewer |
 | `operator.write` | Đọc và ghi cho công việc hằng ngày | Operator |
 | `operator.approvals` | Phê duyệt các lệnh đang bị giữ | Operator |
-| `operator.pairing` | Quản lý thiết bị trình duyệt đã ghép cặp | Operator |
+| `operator.pairing` | Quản lý thiết bị trình duyệt đã ghép nối | Operator |
 | `operator.admin` | Mọi thứ, kể cả API key và cấu hình hệ thống | Admin |
 | `mcp.tools.read`, `mcp.tools.write` | Chỉ endpoint MCP công khai | Không có vai trò nào ngoài `/mcp/server` |
 

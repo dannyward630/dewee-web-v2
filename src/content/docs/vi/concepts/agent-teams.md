@@ -12,11 +12,11 @@ Một agent không phải tự làm mọi việc. Agent trong dewee có thể t�
 
 | Chế độ | Khi nào áp dụng | Tool agent nhận được |
 |---|---|---|
-| `spawn` | Agent không có liên kết giao việc và không thuộc nhóm nào | `spawn` |
-| `delegate` | Agent có ít nhất một liên kết giao việc | `spawn`, `delegate` |
+| `spawn` | Agent không có liên kết uỷ quyền và không thuộc nhóm nào | `spawn` |
+| `delegate` | Agent có ít nhất một liên kết uỷ quyền | `spawn`, `delegate` |
 | `team` | Agent thuộc một nhóm | `spawn`, `delegate`, `team_tasks` |
 
-dewee xác định chế độ dựa trên thiết lập của agent, xét nhóm trước, rồi tới liên kết giao việc, sau cùng là spawn. Các tool không hợp với chế độ bị ẩn đi, nên model không mất lượt để thử chúng.
+dewee xác định chế độ dựa trên thiết lập của agent, xét nhóm trước, rồi tới liên kết uỷ quyền, sau cùng là spawn. Các tool không hợp với chế độ bị ẩn đi, nên model không mất lượt để thử chúng.
 
 ## Spawn: tự nhân bản agent
 
@@ -42,7 +42,7 @@ Mỗi lần giao việc chạy trong một session riêng. Trace của nó ghi l
 
 Một nhóm có một agent trưởng nhóm và một hoặc nhiều thành viên. Khi tạo nhóm, trưởng nhóm được tự động liên kết tới từng thành viên. Chỉ trưởng nhóm nhận hướng dẫn điều phối `TEAM.md`; thành viên tìm hiểu những gì cần thiết qua tool, nhờ đó prompt của họ gọn nhẹ. Thành viên trao đổi với nhau và với trưởng nhóm qua bình luận trên công việc. Hộp thư nhóm trước đây đã bị gỡ bỏ.
 
-Thiết lập của nhóm có thể giới hạn người dùng và kênh nào được kích hoạt công việc của nhóm, trong đó danh sách chặn được ưu tiên hơn danh sách cho phép. Bản Lite cho phép một nhóm với tối đa 5 thành viên, và bảng công việc của bản này không có bình luận, xem xét, duyệt, đính kèm và `ask_user`.
+Thiết lập của nhóm có thể giới hạn người dùng và kênh nào được kích hoạt công việc của nhóm, trong đó danh sách chặn được ưu tiên hơn danh sách cho phép. Bản Lite cho phép một nhóm với tối đa 5 thành viên, và bảng công việc của bản này không có bình luận, xét duyệt, phê duyệt, đính kèm và `ask_user`.
 
 ## Bảng công việc
 
@@ -53,7 +53,7 @@ Mọi phần việc của nhóm là một công việc (task), và mỗi công v
 | `pending` | Sẵn sàng để nhận |
 | `blocked` | Đang chờ các công việc trong danh sách `blocked_by` |
 | `in_progress` | Đã có thành viên nhận |
-| `in_review` | Đang chờ người duyệt hoặc từ chối |
+| `in_review` | Đang chờ người phê duyệt hoặc từ chối |
 | `completed`, `failed`, `cancelled` | Đã kết thúc |
 | `stale` | Bị kẹt, và được cơ chế khôi phục xử lý |
 
@@ -61,7 +61,7 @@ Tool `team_tasks` gồm các thao tác `create`, `claim`, `complete`, `cancel`, 
 
 - **Nhận việc nguyên tử.** Thao tác nhận việc chỉ thành công khi công việc vẫn đang chờ và chưa có ai nhận, nên hai thành viên không bao giờ cùng giữ một công việc.
 - **Phụ thuộc.** Khi mọi công việc trong `blocked_by` đã hoàn thành hoặc bị huỷ, công việc phụ thuộc chuyển sang `pending` và được điều phối.
-- **Người duyệt.** Công việc tạo với `require_approval` chuyển sang `in_review` khi thành viên nộp, và một người duyệt hoặc từ chối trong console. Từ chối sẽ huỷ công việc và báo cho trưởng nhóm.
+- **Người xét duyệt.** Công việc tạo với `require_approval` chuyển sang `in_review` khi thành viên nộp, và một người phê duyệt hoặc từ chối trong console. Từ chối sẽ huỷ công việc và báo cho trưởng nhóm.
 - **Báo vướng mắc.** Khi thành viên đăng một bình luận loại `blocker`, công việc bị đánh dấu thất bại, và trưởng nhóm nhận thông báo kèm lý do cùng lời nhắc thử lại. Tính năng này bật sẵn và có thể tắt theo từng nhóm bằng `blocker_escalation`.
 
 Khi thành viên hoàn thành công việc, các file nó đã ghi được gắn vào công việc, và những công việc vừa hết bị chặn được điều phối.

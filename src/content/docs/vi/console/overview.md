@@ -31,9 +31,9 @@ Thanh menu bên trái gom các khu vực theo mục đích:
 |---|---|
 | Workspace | Tổng quan, Chat, Phiên hội thoại, Agent, Nhóm agent, Tác vụ & phê duyệt |
 | Năng lực | Provider & model, Skill, MCP server, Gói runtime, Tool tích hợp, Lịch chạy, Workflow, Hook, Giọng nói (TTS & STT) |
-| Kết nối | Kênh, Hộp ghép cặp, Danh bạ, Tin nhắn chờ |
+| Kết nối | Kênh, Hộp ghép nối, Danh bạ, Tin nhắn chờ |
 | Dữ liệu | Bộ nhớ, Kho tri thức, Đồ thị tri thức, Lưu trữ |
-| Giám sát | Mức sử dụng, Nhật ký hoạt động, Trace, Sức khoẻ runtime |
+| Giám sát | Mức sử dụng, Nhật ký hoạt động, Trace, Tình trạng runtime |
 | Quản trị | Thành viên, Vai trò, API key & tài liệu, Thanh toán, Cài đặt, Sao lưu, Hỗ trợ |
 
 Mỗi khu vực được bảo vệ bằng một khoá quyền, ví dụ `agents.manage` hay `observability.read`. Chủ workspace có mọi quyền, vai trò Admin có sẵn giữ mọi khoá quyền, còn Member chỉ có những quyền mà vai trò tuỳ chỉnh của họ cấp. Trang hướng dẫn của từng khu vực đều ghi rõ khoá quyền cần có.
@@ -50,7 +50,7 @@ dewee có bốn hình thức triển khai: Tự cài đặt, AaaS, Dedicated và
 
 ## Trạng thái runtime
 
-Chỉ báo trạng thái ở đầu console cho biết runtime của workspace đã sẵn sàng, đang được thiết lập hay đã gặp lỗi. Những khu vực làm việc trực tiếp với runtime, như Chat, cần runtime sẵn sàng. Nếu chưa, hãy mở **Sức khoẻ runtime** để xem bước kiểm tra nào thất bại; xem [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring).
+Chỉ báo trạng thái ở đầu console cho biết runtime của workspace đã sẵn sàng, đang được thiết lập hay đã gặp lỗi. Những khu vực làm việc trực tiếp với runtime, như Chat, cần runtime sẵn sàng. Nếu chưa, hãy mở **Tình trạng runtime** để xem bước kiểm tra nào thất bại; xem [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring).
 
 ## Trang Tổng quan
 
@@ -72,9 +72,9 @@ Chỉ báo trạng thái ở đầu console cho biết runtime của workspace �
 | Skill, mẫu skill | [Skill và mẫu skill](/docs/console/skills) |
 | Tool tích hợp, MCP server, Hook, Gói runtime, Giọng nói | [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks) |
 | Lịch chạy, Workflow | [Lịch chạy và workflow](/docs/console/schedules-and-workflows) |
-| Kênh, Hộp ghép cặp, Danh bạ, Tin nhắn chờ | [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts) |
+| Kênh, Hộp ghép nối, Danh bạ, Tin nhắn chờ | [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts) |
 | Bộ nhớ, Kho tri thức, Lưu trữ | [Bộ nhớ, kho tri thức và lưu trữ](/docs/console/memory-and-knowledge) |
-| Mức sử dụng, Nhật ký hoạt động, Trace, Sức khoẻ runtime | [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring) |
+| Mức sử dụng, Nhật ký hoạt động, Trace, Tình trạng runtime | [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring) |
 | Thành viên, Vai trò, API key & tài liệu | [Thành viên, vai trò và API key](/docs/console/members-roles-and-api-keys) |
 | Cài đặt, Sao lưu và các khu vực quản trị chỉ dành cho chủ workspace | [Cài đặt và sao lưu](/docs/console/settings-and-backup) |
 | Hỗ trợ, Thanh toán | [Hỗ trợ và thanh toán](/docs/console/support-and-billing) |

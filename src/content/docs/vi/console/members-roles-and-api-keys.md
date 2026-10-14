@@ -71,7 +71,7 @@ Nhóm **Other** liệt kê các khoá dành cho những trang của owner trên 
 
 ## API key
 
-Trang **API key** có bốn tab: **Keys**, **Docs** gồm tài liệu tham chiếu API và biểu mẫu chạy thử, **Examples** gồm các đoạn mã sẵn sàng sao chép cho cURL, JavaScript, Python, WebSocket và MCP client, và **Audit**, lịch sử thay đổi key.
+Trang **API key & tài liệu** có bốn tab: **Keys**, **Docs** gồm tài liệu tham chiếu API và biểu mẫu chạy thử, **Examples** gồm các đoạn mã sẵn sàng sao chép cho cURL, JavaScript, Python, WebSocket và MCP client, và **Audit**, lịch sử thay đổi key.
 
 ::shot{id="api-keys"}
 

@@ -67,7 +67,7 @@ Trang chi tiết chỉ cho xem và đã được che dữ liệu nhạy cảm tr
 
 - **Agent not ready**: super-agent chưa được tạo. Hãy hoàn tất thiết lập từ **Tổng quan**.
 - **No active agents**: không có agent nào trong workspace đang hoạt động. Kiểm tra trạng thái của chúng ở **Agent**.
-- **Runtime is not reachable**: chờ một lúc rồi tải lại trang, sau đó kiểm tra **Sức khoẻ runtime**.
+- **Runtime is not reachable**: chờ một lúc rồi tải lại trang, sau đó kiểm tra **Tình trạng runtime**.
 
 > [!NOTE]
 > Workspace Tự cài đặt và On-Premises, hai hình thức được cung cấp tại Việt Nam, không có mục thanh toán hay hoàn tiền. Trên workspace AaaS, việc hoàn tiền sẽ tắt chat, API key và thiết lập provider; xem [Hỗ trợ và thanh toán](/docs/console/support-and-billing).

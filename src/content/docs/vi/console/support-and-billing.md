@@ -44,7 +44,7 @@ Nếu hình thức triển khai của bạn chưa thiết lập ticket center, p
 1. Chọn **Open package request**.
 2. Chọn **Ecosystem**: Python, npm, GitHub binary hoặc System package.
 3. Nhập **Package name** và, nếu cần, một **Version constraint** như `1.x` hoặc `latest`.
-4. Giải thích **Reason** trong ít nhất 10 ký tự, và thêm **Security notes** nếu người duyệt cần biết điều gì.
+4. Giải thích **Reason** trong ít nhất 10 ký tự, và thêm **Security notes** nếu người xét duyệt cần biết điều gì.
 5. Chọn **Submit request**. Người vận hành sẽ xem xét yêu cầu.
 
 Trang cũng cho biết workspace của bạn đã được phép tự cài runtime package hay chưa, và liệt kê **Current curated profile**. Trên AaaS, package lấy từ một bộ do người vận hành tuyển chọn, nên gửi yêu cầu là cách để có package mới. Xem [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks).
@@ -101,6 +101,6 @@ Workspace chạy trên hạ tầng do bạn quản lý dùng license thay cho g�
 
 - [Cài đặt và sao lưu](/docs/console/settings-and-backup)
 - [Tool tích hợp, MCP server và hook](/docs/console/tools-mcp-and-hooks)
-- [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts)
+- [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts)
 - [Kích hoạt license](/docs/runtime/licence)
 - [Chọn cách triển khai](/docs/get-started/deployment-options)

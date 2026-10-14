@@ -7,7 +7,7 @@ screens: [usage, activity, traces, monitoring]
 updated: 2026-09-25
 ---
 
-Khi agent đã chạy, bốn khu vực cho bạn thấy chúng làm gì. **Mức sử dụng** đếm số request, số token và chi phí ước tính. **Nhật ký hoạt động** là lịch sử các thay đổi trong workspace. **Trace** ghi lại chi tiết mọi lần chạy của agent. **Sức khoẻ runtime** cho biết runtime của bạn có truy cập được và đang hoạt động tốt hay không. Cả bốn khu vực chỉ hiển thị dữ liệu của chính workspace bạn.
+Khi agent đã chạy, bốn khu vực cho bạn thấy chúng làm gì. **Mức sử dụng** đếm số request, số token và chi phí ước tính. **Nhật ký hoạt động** là lịch sử các thay đổi trong workspace. **Trace** ghi lại chi tiết mọi lần chạy của agent. **Tình trạng runtime** cho biết runtime của bạn có truy cập được và đang hoạt động tốt hay không. Cả bốn khu vực chỉ hiển thị dữ liệu của chính workspace bạn.
 
 ## Ai được dùng
 
@@ -64,9 +64,9 @@ Chọn một trace để mở chi tiết, hoặc **Open full page** để xem r�
 
 Mọi dữ liệu trong trace đều được che thông tin nhạy cảm trước khi tới trình duyệt của bạn. Khi cần hỗ trợ về một lần chạy, hãy sao chép **Redacted support bundle** và gửi cho bộ phận hỗ trợ: prompt gốc, tham số tool, header và secret đều được loại bỏ.
 
-## Sức khoẻ runtime
+## Tình trạng runtime
 
-**Sức khoẻ runtime** kiểm tra runtime của workspace mà không để lộ các máy chủ phía sau. Phần tóm tắt cho biết runtime có truy cập được không, tenant binding, tỉ lệ lỗi trace gần đây và heartbeat gần nhất.
+**Tình trạng runtime** kiểm tra runtime của workspace mà không để lộ các máy chủ phía sau. Phần tóm tắt cho biết runtime có truy cập được không, tenant binding, tỉ lệ lỗi trace gần đây và heartbeat gần nhất.
 
 ::shot{id="monitoring"}
 
@@ -79,7 +79,7 @@ Trạng thái chung là **Healthy**, **Needs attention** hoặc **Offline**. Tr�
 Trang này không bao giờ hiển thị hostname, địa chỉ IP hay log thô.
 
 > [!WARNING]
-> Nếu trạng thái là **Awaiting claim**, các trang của runtime chưa hiển thị được dữ liệu trực tiếp. Hãy hoàn tất onboarding, hoặc duyệt yêu cầu ghép cặp đang chờ, trước đã.
+> Nếu trạng thái là **Awaiting claim**, các trang của runtime chưa hiển thị được dữ liệu trực tiếp. Hãy hoàn tất onboarding, hoặc phê duyệt yêu cầu ghép nối đang chờ, trước đã.
 
 ## Liên quan
 

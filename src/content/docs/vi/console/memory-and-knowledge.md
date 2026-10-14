@@ -80,6 +80,6 @@ Bản xem trước được che dữ liệu nhạy cảm trước khi tới trì
 
 - [Bộ nhớ và kho tri thức](/docs/concepts/memory-and-knowledge)
 - [Agent](/docs/console/agents)
-- [Kênh, ghép cặp và danh bạ](/docs/console/channels-and-contacts)
+- [Kênh, ghép nối và danh bạ](/docs/console/channels-and-contacts)
 - [Cài đặt và sao lưu](/docs/console/settings-and-backup)
 - [Tool và quyền hạn](/docs/concepts/tools-and-permissions)

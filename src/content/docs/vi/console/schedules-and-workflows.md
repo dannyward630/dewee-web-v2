@@ -48,7 +48,7 @@ Workflow là một tập các bước, gọi là node, chạy từ đầu đến
 5. Chọn **Publish**. Mỗi lần xuất bản tạo ra một phiên bản mới, cố định; bản nháp vẫn tiếp tục sửa được.
 6. Bật workflow bằng **Enable / disable**, hoặc chạy ngay bằng **Run now**.
 
-Việc xuất bản luôn cần một người. Agent có thể soạn nháp, kiểm tra workflow và gửi yêu cầu xuất bản, nhưng chỉ chủ workspace hoặc admin mới duyệt được yêu cầu đó. Người duyệt phải khác người gửi yêu cầu, và bản nháp không được thay đổi kể từ lúc gửi yêu cầu.
+Việc xuất bản luôn cần một người. Agent có thể soạn nháp, kiểm tra workflow và gửi yêu cầu xuất bản, nhưng chỉ chủ workspace hoặc admin mới phê duyệt được yêu cầu đó. Người phê duyệt phải khác người gửi yêu cầu, và bản nháp không được thay đổi kể từ lúc gửi yêu cầu.
 
 Workflow có thể bắt đầu thủ công, theo lịch, từ một agent hoặc từ một tin nhắn trên kênh, với tối đa ba trigger cho mỗi workflow. Chạy thủ công vẫn được khi workflow đang tắt; các trigger khác cần workflow được bật. Muốn huỷ một bản phát hành lỗi, hãy rollback về phiên bản trước. **Delete** xoá workflow vĩnh viễn.
 

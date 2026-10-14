@@ -22,7 +22,7 @@ Mỗi lượt chạy của agent luôn bắt đầu bằng một tin nhắn. Tin
 
 ## 1. Channel kiểm tra ai đang hỏi
 
-Trước khi gọi tới model, channel áp dụng các quy tắc truy cập của nó. Người gửi mới trong tin nhắn trực tiếp có thể cần một mã ghép cặp được admin duyệt; trong nhóm, agent chỉ trả lời khi được mention. Runtime có thể gộp các tin nhắn một người gửi liên tiếp thành một request, và luôn gộp khi họ gửi nhiều file đính kèm cùng lúc. Các lệnh như `/stop` không phải chờ bước này.
+Trước khi gọi tới model, channel áp dụng các quy tắc truy cập của nó. Người gửi mới trong tin nhắn trực tiếp có thể cần một mã ghép nối được admin phê duyệt; trong nhóm, agent chỉ trả lời khi được mention. Runtime có thể gộp các tin nhắn một người gửi liên tiếp thành một request, và luôn gộp khi họ gửi nhiều file đính kèm cùng lúc. Các lệnh như `/stop` không phải chờ bước này.
 
 ## 2. Runtime xác định ngữ cảnh
 

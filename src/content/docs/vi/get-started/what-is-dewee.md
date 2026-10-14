@@ -32,7 +32,7 @@ Tại Việt Nam, dewee được cung cấp theo hai hình thức Tự cài đ�
 ## Đội ngũ của bạn nhận được gì
 
 - **Tách biệt dữ liệu.** Agent, session, bộ nhớ, provider, skill và MCP server đều thuộc về một tenant, và mọi truy vấn đều giới hạn trong tenant đó. Xem [Multi-tenancy](/docs/concepts/multi-tenancy).
-- **Kiểm soát.** Vai trò và phân quyền cho con người, API key theo phạm vi cho chương trình, duyệt ghép cặp trước khi agent trả lời người gửi mới, và phê duyệt các lệnh shell rủi ro. Xem [Mô hình bảo mật](/docs/security/overview).
+- **Kiểm soát.** Vai trò và phân quyền cho con người, API key theo phạm vi cho chương trình, phê duyệt ghép nối trước khi agent trả lời người gửi mới, và phê duyệt các lệnh shell rủi ro. Xem [Mô hình bảo mật](/docs/security/overview).
 - **Minh bạch.** Mỗi lượt chạy của agent để lại một trace gồm các lần gọi model, gọi tool, số token và chi phí ước tính; nhật ký hoạt động ghi lại ai đã thay đổi gì. Xem [Tracing](/docs/concepts/tracing).
 - **Tự chọn model.** 31 loại provider, từ Anthropic, OpenAI, Gemini đến OpenRouter, Ollama chạy nội bộ và mọi endpoint tương thích OpenAI, có cơ chế fallback khi một provider gặp lỗi. Xem [LLM provider](/docs/integrations/llm-providers).
 
@@ -40,7 +40,7 @@ Tại Việt Nam, dewee được cung cấp theo hai hình thức Tự cài đ�
 
 - **Không phải nhà cung cấp model.** dewee không huấn luyện hay host model. Bạn kết nối tài khoản của các provider, và dewee thay bạn gọi tới chúng.
 - **Không thay thế ứng dụng chat của bạn.** Agent trả lời ngay trong những ứng dụng mọi người đang dùng; console dành cho đội ngũ vận hành agent.
-- **Không phải sân chơi không luật lệ.** Agent chỉ chạm tới được những gì tool, chính sách và quyền được cấp cho phép, và theo mặc định người gửi mới trên một kênh phải chờ được duyệt.
+- **Không phải sân chơi không luật lệ.** Agent chỉ chạm tới được những gì tool, chính sách và quyền được cấp cho phép, và theo mặc định người gửi mới trên một kênh phải chờ được phê duyệt.
 
 ## Đọc tiếp
 
