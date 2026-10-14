@@ -3,7 +3,7 @@ title: Tool và quyền hạn
 description: Cách dewee quyết định agent được gọi tool nào, cách lệnh shell được lọc và phê duyệt, và những mặc định còn thoáng bạn nên siết lại trước khi đưa vào vận hành.
 section: concepts
 order: 4
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 Tool là cách agent hành động. Trước mỗi lần gọi model, dewee lọc danh sách tool qua một chuỗi chính sách, và mỗi lệnh shell còn phải qua thêm các bước kiểm tra khi chạy. Giá trị mặc định khá thoáng; phần cuối trang liệt kê những gì nên siết lại.
@@ -65,7 +65,7 @@ Lệnh khớp với `package_install` không bị từ chối ngay mà trở th�
 | `tools.execApproval.security` | `deny` (không cho chạy lệnh nào), `allowlist` (chỉ lệnh khớp danh sách), `full` (mọi lệnh vượt qua các nhóm chặn) | `full` |
 | `tools.execApproval.ask` | `off`, `on-miss` (hỏi khi lệnh không có trong allowlist), `always` | `off` |
 
-Mỗi yêu cầu phê duyệt là một bản ghi bền vững, gắn với tenant, chỉ chứa bản tóm tắt đã che thông tin nhạy cảm và mã hash của lệnh, không bao giờ lưu lệnh gốc hay output. Sau khi được duyệt, agent chạy lại đúng lệnh đó kèm một `approval_token` chỉ dùng được một lần. Yêu cầu được xem xét trên trang phê duyệt trên web hoặc qua CLI; nút bấm trong kênh chat không thể phê duyệt lệnh.
+Mỗi yêu cầu phê duyệt là một bản ghi bền vững, gắn với tenant, chỉ chứa bản tóm tắt đã che thông tin nhạy cảm và mã hash của lệnh, không bao giờ lưu lệnh gốc hay output. Sau khi được phê duyệt, agent chạy lại đúng lệnh đó kèm một `approval_token` chỉ dùng được một lần. Yêu cầu được xem xét trên trang phê duyệt trên web hoặc qua CLI; nút bấm trong kênh chat không thể phê duyệt lệnh.
 
 ```bash
 dewee packages approvals list --all
@@ -84,7 +84,7 @@ Khi bật `tools.execApproval.scopedPackageGrantsEnabled` (mặc định tắt),
 
 ## MCP server
 
-dewee kết nối tới MCP server qua `stdio`, `sse` hoặc `streamable-http`, kiểm tra tình trạng mỗi 30 giây, và kết nối lại với thời gian chờ tăng dần từ 2 đến 60 giây, tối đa 10 lần. Quyền truy cập được cấp theo agent và theo người dùng, mỗi lần cấp có danh sách `tool_allow` và `tool_deny` riêng; danh sách chặn luôn thắng. Người dùng cũng có thể gửi yêu cầu truy cập để quản trị viên duyệt.
+dewee kết nối tới MCP server qua `stdio`, `sse` hoặc `streamable-http`, kiểm tra tình trạng mỗi 30 giây, và kết nối lại với thời gian chờ tăng dần từ 2 đến 60 giây, tối đa 10 lần. Quyền truy cập được cấp theo agent và theo người dùng, mỗi lần cấp có danh sách `tool_allow` và `tool_deny` riêng; danh sách chặn luôn thắng. Người dùng cũng có thể gửi yêu cầu truy cập để quản trị viên phê duyệt.
 
 Khi agent có hơn 40 tool MCP, các tool này không còn được liệt kê từng cái. Thay vào đó, agent tìm chúng bằng `mcp_tool_search`. OAuth 2.1 với PKCE cho server từ xa đang ở giai đoạn beta.
 
@@ -123,4 +123,5 @@ dewee đóng theo mặc định ở lớp biên, nhưng năng lực của agent 
 - [Mô hình bảo mật](/docs/security/overview): các lớp kiểm soát ở biên và các lớp phòng vệ.
 - [Secret, vai trò và nhật ký kiểm toán](/docs/security/secrets-roles-and-audit): cách secret được lưu và ai được đổi chính sách.
 - [Hook](/docs/concepts/hooks): chặn hoặc sửa một lệnh gọi tool trước khi nó chạy.
+- [Cấp quyền theo tài nguyên](/docs/security/access-grants): agent nào được dùng một skill, MCP server, package hay provider.
 - [Webhook và MCP](/docs/api/webhooks-and-mcp): đưa chính dewee ra làm MCP server.
