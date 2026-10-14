@@ -4,7 +4,7 @@ description: Bật hoặc tắt tool tích hợp cho workspace, kết nối MCP 
 section: console
 order: 7
 screens: [tools, mcp-servers, hooks]
-updated: 2026-09-25
+updated: 2026-10-14
 ---
 
 Tool là cách agent hành động: tìm kiếm trên web, đọc file, gọi một API. dewee mặc định từ chối mọi thứ, nên agent chỉ dùng được một tool sau khi bạn cho phép. Trang này nói về ba khu vực quyết định agent được gọi những gì và điều gì chạy quanh các lần gọi đó, cùng hai khu vực **Gói runtime** và **Giọng nói**.
@@ -51,7 +51,7 @@ Bạn thu hồi quyền ngay trong tab đó. Tắt một server sẽ giữ nguy�
 
 Hook chạy handler của riêng bạn khi một sự kiện của agent xảy ra, để cho phép, chặn hoặc bổ sung ngữ cảnh cho bước tiếp theo. Khu vực hook đang ở giai đoạn beta.
 
-Với `integrations.manage`, bạn xem được mọi hook, lịch sử và hoạt động của chúng, và chạy thử (dry run). Tạo, sửa, bật hoặc tắt và xoá hook còn cần chủ workspace hoặc vai trò Admin. [Cấp quyền theo tài nguyên](/docs/security/access-grants) trên một hook quyết định hook chạy cho agent nào và ai được cấp lại quyền, nhưng không cho phép ai sửa hook từ console.
+Với `integrations.manage`, bạn xem được mọi hook và lịch sử chạy của chúng, và chạy thử (dry run); tab **Hoạt động** còn cần `observability.read`. Chỉ chủ workspace hoặc vai trò Admin mới tạo, sửa, bật, tắt và xoá được hook. [Cấp quyền theo tài nguyên](/docs/security/access-grants) trên một hook quyết định hook chạy cho agent nào và ai được sửa hook hoặc trao quyền tiếp cho người khác bằng API key của chính mình, nhưng không bao giờ cho phép sửa hook từ console.
 
 ::shot{id="hooks"}
 
