@@ -263,7 +263,7 @@ export const STORY: Bi<StoryPage> = {
       title: "Những gì *chúng tôi giữ lại*.",
       body: ["Triết lý thì mang theo nguyên vẹn. Sáu nguyên tắc, từ những buổi chia sẻ đầu tiên về GoClaw."],
       items: [
-        { icon: "lock", title: "Đóng từ cửa", body: "Không token thì không kết nối. Chưa duyệt thì không chat. Doanh nghiệp mở đúng những gì cần." },
+        { icon: "lock", title: "Đóng từ cửa", body: "Không token thì không kết nối. Chưa phê duyệt thì không chat. Doanh nghiệp mở đúng những gì cần." },
         { icon: "route", title: "Sửa kiến trúc, không đổ lỗi", body: "Khi agent làm sai, chúng tôi sửa hệ thống quanh mô hình thay vì đổ lỗi cho AI." },
         { icon: "layers", title: "Phòng thủ nhiều lớp", body: "Năm lớp độc lập. Vượt qua một lớp, vẫn còn bốn lớp chặn lại." },
         { icon: "building-2", title: "Làm cho tổ chức", body: "Multi-tenant, cô lập từng người dùng, phân vai trò, nhật ký kiểm toán và mã hoá thông tin đăng nhập." },

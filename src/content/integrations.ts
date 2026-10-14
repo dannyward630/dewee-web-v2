@@ -107,7 +107,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     streaming: false,
     voice: false,
     media: true,
-    note: { en: "Pairing is on by default. 2,000 characters a message, images up to 5 MB.", vi: "Mặc định bật ghép cặp. 2.000 ký tự mỗi tin, ảnh tối đa 5 MB." },
+    note: { en: "Pairing is on by default. 2,000 characters a message, images up to 5 MB.", vi: "Mặc định bật ghép nối. 2.000 ký tự mỗi tin, ảnh tối đa 5 MB." },
   },
   "zalo-personal": {
     connect: { en: "QR scan, unofficial protocol", vi: "Quét QR, giao thức không chính thức" },
@@ -145,7 +145,7 @@ export const CHANNEL_DETAILS: Record<string, ChannelDetail> = {
     note: { en: "Mentioned in a thread, it reads the last 25 messages first.", vi: "Được nhắc trong thread, agent đọc 25 tin gần nhất trước." },
   },
   whatsapp: {
-    connect: { en: "QR pairing, direct connection", vi: "Ghép cặp bằng QR, kết nối trực tiếp" },
+    connect: { en: "QR pairing, direct connection", vi: "Ghép nối bằng QR, kết nối trực tiếp" },
     chats: { en: "DMs and groups", vi: "Tin riêng và nhóm" },
     streaming: false,
     voice: "opt-in",
