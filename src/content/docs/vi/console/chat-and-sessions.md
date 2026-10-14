@@ -75,7 +75,7 @@ Trang chi tiết chỉ cho xem và đã được che dữ liệu nhạy cảm tr
 ## Liên quan
 
 - [Agent](/docs/console/agents)
-- [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring)
+- [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring)
 - [Vòng lặp agent](/docs/concepts/agent-loop)
 - [Tracing](/docs/concepts/tracing)
 - [Tổng quan API](/docs/api/overview)

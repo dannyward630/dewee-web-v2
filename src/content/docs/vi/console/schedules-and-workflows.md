@@ -68,5 +68,5 @@ Chọn một lần chạy để xem dòng thời gian các node, phiên bản v�
 - [Workflow](/docs/concepts/workflows)
 - [Lịch chạy và heartbeat](/docs/concepts/schedules-and-heartbeat)
 - [Nhóm agent và phê duyệt](/docs/console/agent-teams)
-- [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring)
+- [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring)
 - [Tham chiếu CLI](/docs/runtime/cli)

@@ -224,7 +224,7 @@ export const HOME: Bi<{
         channel: "#nhom-sales",
         lines: [
           { who: "Chị Lan", role: "Sales", text: "@dewee khách Đà Nẵng cần báo giá on-prem kèm 3 quy trình tuỳ chỉnh, em soạn giúp chị nhé?" },
-          { who: "dewee", text: "Em soạn xong theo bảng giá 2026 rồi ạ ✓ Em đính kèm luôn tài liệu bảo mật khách hỏi tuần trước. Anh Minh duyệt giúp em trước 5 giờ nhé?", me: true },
+          { who: "dewee", text: "Em soạn xong theo bảng giá 2026 rồi ạ ✓ Em đính kèm luôn tài liệu bảo mật khách hỏi tuần trước. Anh Minh phê duyệt giúp em trước 5 giờ nhé?", me: true },
           { who: "Anh Minh", role: "Trưởng phòng Sales", text: "Đã phê duyệt." },
           { who: "dewee", text: "Đã gửi khách. Thứ Năm khách chưa phản hồi thì em nhắc lại ạ.", me: true },
         ],

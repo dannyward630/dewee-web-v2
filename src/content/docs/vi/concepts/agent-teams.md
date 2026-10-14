@@ -53,7 +53,7 @@ Mọi phần việc của nhóm là một task, và mỗi task đều cần ngư
 | `pending` | Sẵn sàng để nhận |
 | `blocked` | Đang chờ các task trong danh sách `blocked_by` |
 | `in_progress` | Đã có thành viên nhận |
-| `in_review` | Đang chờ người phê duyệt hoặc từ chối |
+| `in_review` | Đang chờ một người phê duyệt hoặc từ chối |
 | `completed`, `failed`, `cancelled` | Đã kết thúc |
 | `stale` | Bị kẹt, và được cơ chế khôi phục xử lý |
 
@@ -61,7 +61,7 @@ Tool `team_tasks` gồm các thao tác `create`, `claim`, `complete`, `cancel`, 
 
 - **Nhận việc nguyên tử.** Thao tác nhận việc chỉ thành công khi task vẫn đang chờ và chưa có ai nhận, nên hai thành viên không bao giờ cùng giữ một task.
 - **Phụ thuộc.** Khi mọi task trong `blocked_by` đã hoàn thành hoặc bị huỷ, task phụ thuộc chuyển sang `pending` và được điều phối.
-- **Người xét duyệt.** Task tạo với `require_approval` chuyển sang `in_review` khi thành viên nộp, và một người phê duyệt hoặc từ chối trong console. Từ chối sẽ huỷ task và báo cho trưởng nhóm.
+- **Con người xét duyệt.** Task tạo với `require_approval` chuyển sang `in_review` khi thành viên nộp, và một người phê duyệt hoặc từ chối trong console. Từ chối sẽ huỷ task và báo cho trưởng nhóm.
 - **Báo vướng mắc.** Khi thành viên đăng một bình luận loại `blocker`, task bị đánh dấu thất bại, và trưởng nhóm nhận thông báo kèm lý do cùng lời nhắc thử lại. Tính năng này bật sẵn và có thể tắt theo từng nhóm bằng `blocker_escalation`.
 
 Khi thành viên hoàn thành task, các file nó đã ghi được gắn vào task, và những task vừa hết bị chặn được điều phối.

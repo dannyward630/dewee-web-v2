@@ -1,5 +1,5 @@
 ---
-title: Mức sử dụng, hoạt động, trace và sức khoẻ runtime
+title: Mức sử dụng, hoạt động, trace và tình trạng runtime
 description: Xem agent chạy bao nhiêu và tốn bao nhiêu, ai đã thay đổi điều gì, soi từng lần chạy của agent theo từng span, và kiểm tra runtime của workspace có khoẻ không.
 section: console
 order: 11

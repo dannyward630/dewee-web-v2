@@ -71,5 +71,5 @@ Trên AaaS, việc hoàn tiền gói đăng ký cũng tắt phần thiết lập
 - [Provider, fallback và suy luận](/docs/concepts/providers-and-routing)
 - [Provider LLM và giọng nói](/docs/integrations/llm-providers)
 - [Agent](/docs/console/agents)
-- [Mức sử dụng, hoạt động, trace và sức khoẻ runtime](/docs/console/monitoring)
+- [Mức sử dụng, hoạt động, trace và tình trạng runtime](/docs/console/monitoring)
 - [Secret, vai trò và nhật ký kiểm toán](/docs/security/secrets-roles-and-audit)

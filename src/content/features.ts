@@ -375,7 +375,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
         since: "3.30",
       },
       {
-        title: { en: "Agents draft, people publish", vi: "Agent soạn, con người phê duyệt" },
+        title: { en: "Agents draft, people publish", vi: "Agent soạn, con người publish" },
         body: { en: "An agent can draft a workflow from a request. Only a person can publish it.", vi: "Agent có thể soạn workflow từ một yêu cầu. Chỉ con người mới được publish." },
         since: "3.30",
       },
