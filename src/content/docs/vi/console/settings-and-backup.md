@@ -58,15 +58,15 @@ Chọn **Múi giờ mặc định** rồi lưu bằng thanh lưu. Lịch chạy 
 
 Trang **Sao lưu** giải thích cách sao lưu hoạt động theo hình thức triển khai của bạn:
 
-- **Shared SaaS**: việc sao lưu **Do đơn vị vận hành quản lý**. Xuất dữ liệu không tự phục vụ: chọn **Yêu cầu xuất dữ liệu qua hỗ trợ** để người vận hành xác nhận yêu cầu thuộc về workspace của bạn.
-- **Dedicated (TOSE)** và **On-premises**: việc sao lưu là **Tự phục vụ**. Nút **Sao lưu ngay** bị tắt cho tới khi người vận hành cấu hình endpoint xuất dữ liệu.
+- **Shared SaaS**: việc sao lưu **Do đơn vị vận hành quản lý**. Xuất dữ liệu không tự phục vụ: chọn **Yêu cầu xuất dữ liệu qua hỗ trợ** để mở một phiếu hỗ trợ mới, có sẵn tiêu đề **Yêu cầu xuất dữ liệu** và dàn ý để bạn điền phạm vi, định dạng, thời hạn. Bộ phận hỗ trợ sẽ xác nhận yêu cầu thuộc về workspace của bạn. Nếu chưa dùng được phiếu hỗ trợ, nút này mở trang hỗ trợ.
+- **Dedicated (TOSE)** và **On-premises**: việc sao lưu là **Tự phục vụ**. Nút **Sao lưu ngay** bị tắt, kèm lý do hiển thị trên trang, cho tới khi có endpoint xuất dữ liệu tự phục vụ. Hiện chưa bản triển khai nào cung cấp endpoint này trên bảng điều khiển, nên hãy nhờ nhà vận hành hoặc bộ phận hỗ trợ xuất dữ liệu cho bạn.
 
 ::shot{id="backup"}
 
 Trang có các thẻ sau:
 
 - **Lịch sao lưu**: cho biết bản triển khai không báo lịch sao lưu hay thời gian lưu giữ.
-- **Lịch sử xuất và khôi phục**: các lần xuất dữ liệu được yêu cầu từ workspace này trong phiên làm việc hiện tại. Thẻ này để trống khi endpoint xuất dữ liệu chưa được cấu hình.
+- **Lịch sử xuất và khôi phục**: hiển thị **Không có dữ liệu**, vì bản triển khai chưa báo lịch sử sao lưu về bảng điều khiển.
 - **Cách sao lưu hoạt động ở đây**: **Chế độ triển khai**, **Chính sách sao lưu**, **Mã tham chiếu hỗ trợ**, và **Endpoint xuất dữ liệu** là **Đã cấu hình** hay **Chưa cấu hình**.
 - **Kiểm tra trước khi sao lưu**: kiểm tra **Tenant runtime đã kết nối**, **Endpoint xuất dữ liệu tự phục vụ** và **Kênh yêu cầu hỗ trợ**, mỗi mục được đánh dấu **Sẵn sàng** hoặc **Cần xử lý**.
 

@@ -58,15 +58,15 @@ Pick the **Default time zone** and save it with the save bar. New schedules, and
 
 **Backup** explains how backups work in your deployment mode:
 
-- **Shared SaaS**: backups are **Operator-managed**. Export is not self-service: select **Request export via support** so the operator can confirm the request belongs to your workspace.
-- **Dedicated (TOSE)** and **On-premises**: backups are **Self-serve**. **Back up now** stays disabled until your operator configures the export endpoint.
+- **Shared SaaS**: backups are **Operator-managed**. Export is not self-service: select **Request export via support** to open a new support ticket already titled **Data export request**, with an outline for the scope, format and deadline. Support confirms the request belongs to your workspace. If tickets aren't available, the button opens the support page.
+- **Dedicated (TOSE)** and **On-premises**: backups are **Self-serve**. **Back up now** stays disabled, and the page shows why, until a self-service export endpoint is configured. No deployment offers one in the console yet, so ask your operator or support for an export.
 
 ::shot{id="backup"}
 
 The page has these cards:
 
 - **Schedule**: shows that the deployment doesn't report a backup schedule or retention.
-- **Export and restore history**: the export jobs requested from this workspace during your current session. It stays empty while the export endpoint is not configured.
+- **Export and restore history**: shows **Data unavailable**, because the deployment doesn't report backup history to the dashboard yet.
 - **How backups work here**: the **Deployment mode**, **Backup policy**, **Support reference** and whether the **Export endpoint** is **Configured** or **Not configured**.
 - **Backup preflight**: checks **Runtime tenant connected**, **Self-service export endpoint** and **Support request route**, each marked **Ready** or **Needs attention**.
 
