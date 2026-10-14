@@ -51,6 +51,8 @@ Revoke a grant from the same tab. Turning a server off keeps it configured but u
 
 A hook runs your own handler when an agent event happens, to allow, block or add context to what comes next. The hooks workbench is in beta.
 
+With `integrations.manage` you can see every hook, its history and its activity, and dry-run it. Creating, editing, switching on or off and deleting a hook also needs the workspace owner or the Admin role. [Access grants](/docs/security/access-grants) on a hook decide which agents it runs for and who may hand it on, but do not let anyone edit it from the console.
+
 ::shot{id="hooks"}
 
 | Event | Blocks the operation? |
