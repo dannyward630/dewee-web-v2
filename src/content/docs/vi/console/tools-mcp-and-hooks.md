@@ -51,6 +51,8 @@ Bạn thu hồi quyền ngay trong tab đó. Tắt một server sẽ giữ nguy�
 
 Hook chạy handler của riêng bạn khi một sự kiện của agent xảy ra, để cho phép, chặn hoặc bổ sung ngữ cảnh cho bước tiếp theo. Khu vực hook đang ở giai đoạn beta.
 
+Với `integrations.manage`, bạn xem được mọi hook và lịch sử chạy của chúng, và chạy thử (dry run); tab **Hoạt động** còn cần `observability.read`. Chỉ chủ workspace hoặc vai trò Admin mới tạo, sửa, bật, tắt và xoá được hook. [Cấp quyền theo tài nguyên](/docs/security/access-grants) trên một hook quyết định hook chạy cho agent nào và ai được sửa hook hoặc trao quyền tiếp cho người khác bằng API key của chính mình, nhưng không bao giờ cho phép sửa hook từ console.
+
 ::shot{id="hooks"}
 
 | Sự kiện | Có chặn thao tác không? |
