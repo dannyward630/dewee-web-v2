@@ -159,3 +159,5 @@ Each credential may send 120 requests per minute (bursts of 20) and run 4 tool c
 These budgets are **per credential, not per workspace**: a workspace with three MCP keys gets three times the budget. Some read tools spend the workspace's own paid quota, for example `web_search` uses the workspace's search providers, so treat even a read key as able to consume that quota.
 
 A revoked or expired key fails on its very next request; there is no cache window. An MCP-only key cannot manage keys itself, so revoking a leaked key needs an owner or admin, on the console's **API keys & docs** page or with an admin credential. To cut off every client of a workspace at once without revoking keys, turn workspace access off.
+
+If someone keeps using a key after you revoked it, or after it expired, each attempt still gets a plain `401` (the caller cannot tell it from a key that never existed), but the attempt is recorded in your workspace's **Traces** on channel `mcp_public`, with the reason `credential_revoked` or `credential_expired` and the key's ID and prefix, never the key itself. Find them in the console's Traces page or with `dewee traces list --channel mcp_public`.
