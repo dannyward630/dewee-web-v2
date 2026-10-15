@@ -53,6 +53,10 @@ When an agent asks to run a command or install a package, the request appears in
 
 Once a request is decided, or no longer pending, the card shows the result without buttons.
 
+### Cards that ask you for input
+
+During setup, the super agent can ask you to pick an option or enter a key in a card. Other agents ask for credentials the same way when an admin lets them. A card only stays open while the agent keeps the permission it used to ask. If an admin removes it, for example by turning off the super agent's setup role or the agent's credential requests, the card closes and shows that it is no longer allowed. Nothing you typed into it is saved. A card asked for in the app expires after 7 days for setup, and within 24 hours for a credential.
+
 ## Browse sessions
 
 **Sessions** lists every conversation in the workspace, from Chat and from connected channels. Cards at the top show the number of sessions, messages and tokens, and how many are **Active now**. Each row shows the **Session**, **Agent**, **Channel**, **Model**, **Messages**, **Tokens in/out**, **Traces** and when it was **Updated**.

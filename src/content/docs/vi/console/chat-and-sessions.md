@@ -53,6 +53,10 @@ Khi agent xin chạy một lệnh hoặc cài một gói, yêu cầu hiện tron
 
 Khi yêu cầu đã được quyết định, hoặc không còn chờ nữa, thẻ hiển thị kết quả và không còn nút.
 
+### Thẻ yêu cầu bạn nhập thông tin
+
+Trong lúc thiết lập, super agent có thể nhờ bạn chọn một phương án hoặc nhập khoá qua một thẻ. Các agent khác cũng xin thông tin đăng nhập theo cách này khi được admin cho phép. Thẻ chỉ còn mở khi agent vẫn giữ quyền đã dùng để hỏi. Nếu admin gỡ quyền đó, chẳng hạn tắt vai trò thiết lập của super agent hoặc tắt yêu cầu thông tin đăng nhập của agent, thẻ sẽ đóng và báo không còn được phép. Những gì bạn đã nhập vào thẻ sẽ không được lưu. Thẻ hỏi trong ứng dụng hết hạn sau 7 ngày với thẻ thiết lập, và trong vòng 24 giờ với thẻ thông tin đăng nhập.
+
 ## Xem danh sách phiên
 
 **Phiên** liệt kê mọi cuộc trò chuyện trong workspace, từ Trò chuyện và từ các kênh đã kết nối. Các thẻ ở đầu trang cho biết số phiên, tin nhắn, token và số phiên **Đang hoạt động**. Mỗi dòng hiển thị **Phiên**, **Agent**, **Kênh**, **Model**, **Tin nhắn**, **Token vào/ra**, **Trace** và thời điểm **Cập nhật**.
