@@ -4,7 +4,7 @@ description: Change workspace settings with one save bar, see how backups work i
 section: console
 order: 13
 screens: [settings, backup]
-updated: 2026-10-14
+updated: 2026-10-16
 ---
 
 **Settings** holds the options that apply to the whole workspace, from its name and default time zone to the settings your runtime lets you change. **Backup** shows how your data is protected in your deployment mode and how to ask for an export or a restore. On Dedicated and On-Premises, the workspace owner also gets a few pages for the runtime they run themselves.
@@ -26,7 +26,8 @@ See [Members, roles and API keys](/docs/console/members-roles-and-api-keys).
 **Settings** has a section list on the left and the selected section on the right:
 
 - **General**: the workspace name and reference details.
-- **Branding**, **Security**, **Notifications**, **Agent defaults**, **Data retention** and **Decision layer**: your deployment does not report these, so each shows **Not reported yet**.
+- **Branding**, **Security**, **Notifications**, **Agent defaults** and **Data retention**: your deployment does not report these, so each shows **Not reported yet**.
+- **Decision layer**: Jev by TypeSafe. Shows the instance settings, lets you make them stricter for this workspace, and lists recent decisions with links to their traces. See [Decision layer](/docs/concepts/decision-layer#workspace-overrides).
 - **Localization**: the default time zone.
 - **Voice**: text-to-speech and speech-to-text settings from the runtime.
 - **Channels & pairing**: pairing and task update settings from the runtime.
