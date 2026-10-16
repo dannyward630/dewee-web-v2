@@ -52,7 +52,7 @@ Keys can expire or be revoked at any time. A revoked key is refused from the nex
 
 ## Admitting chat-app senders
 
-On chat apps, direct messages default to pairing. When someone new writes to an agent, they get an 8-character code that is valid for 60 minutes, and nothing reaches the agent until an admin approves the code, in the console's **Pairing inbox** or with `dewee pairing approve`. Each account can have at most three codes waiting. You can switch a channel to an allowlist, open it, or disable direct messages, and in groups only designated writers can change files or reset the conversation. See [Channels, pairing and contacts](/docs/console/channels-and-contacts).
+On chat apps, direct messages default to pairing. When someone new writes to an agent, they get an 8-character code that is valid for 60 minutes, and nothing reaches the agent until an admin approves the code, in the console's **Pairing inbox** or with `dewee pairing approve`. A workspace admin can only approve or deny codes from their own workspace; the gateway owner can decide codes from any workspace. Each account can have at most three codes waiting. You can switch a channel to an allowlist, open it, or disable direct messages, and in groups only designated writers can change files or reset the conversation. See [Channels, pairing and contacts](/docs/console/channels-and-contacts).
 
 ## Audit trail
 

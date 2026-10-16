@@ -52,7 +52,7 @@ Key có thể hết hạn hoặc bị thu hồi bất cứ lúc nào. Key đã t
 
 ## Cấp quyền cho người gửi trên ứng dụng chat
 
-Trên ứng dụng chat, tin nhắn riêng mặc định dùng cơ chế ghép cặp. Khi một người mới nhắn cho agent, họ nhận một mã 8 ký tự có hiệu lực 60 phút, và không gì tới được agent cho tới khi admin phê duyệt mã đó, trong **Hộp ghép nối** của console hoặc bằng `dewee pairing approve`. Mỗi tài khoản có tối đa ba mã đang chờ. Bạn có thể chuyển channel sang danh sách cho phép, mở hoàn toàn, hoặc tắt tin nhắn riêng, và trong nhóm chỉ những người được chỉ định mới thay đổi được file hay đặt lại cuộc trò chuyện. Xem [Channel, ghép cặp và danh bạ](/docs/console/channels-and-contacts).
+Trên ứng dụng chat, tin nhắn riêng mặc định dùng cơ chế ghép cặp. Khi một người mới nhắn cho agent, họ nhận một mã 8 ký tự có hiệu lực 60 phút, và không gì tới được agent cho tới khi admin phê duyệt mã đó, trong **Hộp ghép nối** của console hoặc bằng `dewee pairing approve`. Admin của một workspace chỉ phê duyệt hoặc từ chối được mã thuộc workspace của mình; chủ sở hữu gateway quyết định được mã của mọi workspace. Mỗi tài khoản có tối đa ba mã đang chờ. Bạn có thể chuyển channel sang danh sách cho phép, mở hoàn toàn, hoặc tắt tin nhắn riêng, và trong nhóm chỉ những người được chỉ định mới thay đổi được file hay đặt lại cuộc trò chuyện. Xem [Channel, ghép cặp và danh bạ](/docs/console/channels-and-contacts).
 
 ## Nhật ký kiểm toán
 
