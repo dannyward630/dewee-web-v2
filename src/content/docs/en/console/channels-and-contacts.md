@@ -65,6 +65,15 @@ With pairing on, an unknown sender who messages the agent directly gets a short 
 2. Select **Approve** to let the sender talk to the agent, or **Deny** to refuse.
 3. To cut off someone later, find them under **Connected senders** and select **Revoke**, then **Revoke access**. They must request pairing again before the agent replies to them directly.
 
+**Approve** stays turned off when the request cannot be approved here, and hovering it tells you why:
+
+- The request's channel no longer exists in this workspace, was renamed, or is turned off. Fix the channel, then ask the sender to message again for a new code.
+- The channel's agent was removed, so approved messages would have nowhere to go. Assign an agent to the channel first.
+- The code has expired. The sender needs a new one.
+- The request comes from a browser session. Only the gateway operator can approve those.
+
+Approval checks the channel again at the moment you select **Approve**, so a request that changed in the meantime is refused and stays in the list. You can still **Deny** any request.
+
 The **Pairing policy** sets how long a new approval lasts. Under **Scope**, choose **Workspace** for the whole workspace or **Per channel** for one channel. The card shows the policy in effect and where it comes from.
 
 - Set **Expiry** in days, or turn on **Never expire**, then select **Save policy**.
