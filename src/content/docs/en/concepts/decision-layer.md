@@ -148,12 +148,14 @@ A workspace admin can make the decision layer stricter for their own workspace, 
 | Intent confidence floor | The higher of the two, so the workspace can only be stricter |
 | Intent time limit | The lower of the two |
 
+Turning the decision layer off for a workspace also stops semantic trace evaluation for that workspace, so none of its content is sent to Jev.
+
 Everything else, including the endpoint, model, provider, budget, key and retrieval settings, belongs to the instance and cannot be overridden. A value looser than the current instance value is rejected with a message that names the field. If the operator later tightens an instance value, the stricter instance value wins over an older override, and the console says so.
 
 ```bash
 dewee --tenant acme reflex settings                                  # instance, override and effective values
 dewee --tenant acme reflex overrides set --mode shadow --seam-sampling kg_chunk=0.1
-dewee --tenant acme reflex overrides set --enabled=false             # this workspace never calls Jev for memory admission or intent
+dewee --tenant acme reflex overrides set --enabled=false             # this workspace never calls Jev
 dewee --tenant acme reflex overrides reset mode seam_sampling.kg_chunk
 dewee --tenant acme reflex decisions --limit 25                      # recent decisions, newest first
 ```
@@ -166,7 +168,11 @@ The same three endpoints are available to a customer API key with the `integrati
 
 ### Upgrading
 
-Earlier versions stored decision layer settings for whichever workspace the operator was signed in to. dewee now reads instance values from master scope only. If a workspace still holds older rows, the gateway logs a warning at startup naming the workspace and the keys. Re-apply those values at master scope with `dewee reflex config set` and `set-key`.
+Earlier versions stored decision layer settings for whichever workspace the operator was signed in to. dewee now reads instance values from master scope only. If a workspace still holds older rows, the gateway logs a warning at startup naming the workspace and the keys. Re-apply those values at master scope with `dewee reflex config set` and `set-key`, then remove the old rows from the workspace:
+
+```bash
+dewee --tenant acme reflex overrides reset legacy_instance_rows
+```
 
 ## Limits and safety
 

@@ -148,12 +148,14 @@ Admin của một workspace có thể đặt lớp quyết định chặt hơn c
 | Độ tin cậy tối thiểu cho ý định | Giá trị cao hơn trong hai, nên workspace chỉ có thể chặt hơn |
 | Giới hạn thời gian cho ý định | Giá trị thấp hơn trong hai |
 
+Khi tắt lớp quyết định cho một workspace, đánh giá ngữ nghĩa trace của workspace đó cũng dừng, nên không có nội dung nào của workspace được gửi tới Jev.
+
 Mọi thứ khác, gồm endpoint, model, nhà cung cấp, ngân sách, key và cài đặt truy xuất, thuộc về hệ thống và không ghi đè được. Một giá trị lỏng hơn giá trị hiện tại của hệ thống sẽ bị từ chối, kèm thông báo nêu rõ trường đó. Nếu sau này người vận hành siết chặt một giá trị của hệ thống, giá trị chặt hơn đó thắng giá trị ghi đè cũ, và console sẽ báo điều này.
 
 ```bash
 dewee --tenant acme reflex settings                                  # giá trị của hệ thống, ghi đè và có hiệu lực
 dewee --tenant acme reflex overrides set --mode shadow --seam-sampling kg_chunk=0.1
-dewee --tenant acme reflex overrides set --enabled=false             # workspace này không gọi Jev cho kiểm duyệt bộ nhớ hay phân loại ý định
+dewee --tenant acme reflex overrides set --enabled=false             # workspace này không gọi Jev
 dewee --tenant acme reflex overrides reset mode seam_sampling.kg_chunk
 dewee --tenant acme reflex decisions --limit 25                      # các quyết định gần đây, mới nhất trước
 ```
@@ -166,7 +168,11 @@ API key của khách hàng có scope `integrations.manage` cũng dùng được 
 
 ### Nâng cấp
 
-Các phiên bản trước lưu cài đặt lớp quyết định vào workspace mà người vận hành đang đăng nhập. Giờ dewee chỉ đọc giá trị của hệ thống từ phạm vi master. Nếu một workspace vẫn còn các dòng cũ, gateway ghi cảnh báo lúc khởi động, nêu tên workspace và các khoá. Hãy đặt lại các giá trị đó ở phạm vi master bằng `dewee reflex config set` và `set-key`.
+Các phiên bản trước lưu cài đặt lớp quyết định vào workspace mà người vận hành đang đăng nhập. Giờ dewee chỉ đọc giá trị của hệ thống từ phạm vi master. Nếu một workspace vẫn còn các dòng cũ, gateway ghi cảnh báo lúc khởi động, nêu tên workspace và các khoá. Hãy đặt lại các giá trị đó ở phạm vi master bằng `dewee reflex config set` và `set-key`, rồi xoá các dòng cũ khỏi workspace:
+
+```bash
+dewee --tenant acme reflex overrides reset legacy_instance_rows
+```
 
 ## Giới hạn và an toàn
 
