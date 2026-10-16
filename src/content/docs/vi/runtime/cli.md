@@ -3,7 +3,7 @@ title: Tham chiếu CLI
 description: "Dòng lệnh dewee: global flag, cách CLI tìm gateway và key của bạn, định dạng đầu ra, và mọi nhóm lệnh cho agent, skill, workflow, bộ nhớ và quản trị."
 section: runtime
 order: 2
-updated: 2026-10-14
+updated: 2026-10-16
 ---
 
 Chính binary `dewee` dùng để chạy gateway cũng là client dòng lệnh của nó. Phần lớn lệnh nói chuyện với một gateway đang chạy qua HTTP hoặc WebSocket, trên máy hay từ xa, nên người vận hành có thể viết script cho gần như mọi việc làm được trong console. Một vài lệnh bảo trì làm việc trực tiếp với cơ sở dữ liệu và chỉ dùng trên máy chủ.
@@ -102,7 +102,7 @@ Mỗi nhóm `access` có `list`, `grant`, `set-level`, `revoke` và `activity`; 
 | `dewee cron` | `list`, `get`, `create`, `update`, `toggle`, `run`, `runs`, `status`, `delete` |
 | `dewee workflows` | `list`, `show`, `create`, `validate`, `apply`, `export`, `publish`, `rollback`, `enable`, `disable`, `trigger`, `delete`, `node-types`; `runs` để liệt kê, xem, theo dõi, huỷ hoặc chạy lại |
 | `dewee heartbeat` | `get`, `set`, `toggle`, `test`, `logs`, `targets` |
-| `dewee reflex` | `status`, `config`, `test`, `eval` |
+| `dewee reflex` | `status`, `config` (`set`, `set-key`, `reset`), `settings`, `overrides` (`set`, `reset`), `decisions`, `test`, `eval`; xem [Lớp quyết định](/docs/concepts/decision-layer) |
 
 Workflow có thể được giữ dưới dạng file và áp dụng từ CI:
 
