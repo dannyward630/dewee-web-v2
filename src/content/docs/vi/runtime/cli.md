@@ -3,7 +3,7 @@ title: Tham chiếu CLI
 description: "Dòng lệnh dewee: global flag, cách CLI tìm gateway và key của bạn, định dạng đầu ra, và mọi nhóm lệnh cho agent, skill, workflow, bộ nhớ và quản trị."
 section: runtime
 order: 2
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 
 Chính binary `dewee` dùng để chạy gateway cũng là client dòng lệnh của nó. Phần lớn lệnh nói chuyện với một gateway đang chạy qua HTTP hoặc WebSocket, trên máy hay từ xa, nên người vận hành có thể viết script cho gần như mọi việc làm được trong console. Một vài lệnh bảo trì làm việc trực tiếp với cơ sở dữ liệu và chỉ dùng trên máy chủ.
@@ -48,7 +48,7 @@ Tạo API key ở trang **API key & tài liệu** trong console, hoặc bằng `
 
 ## Định dạng đầu ra
 
-Không có flag đầu ra chung. Phần lớn lệnh đọc dữ liệu nhận `--json` để xuất dạng máy đọc được. `traces`, `usage`, `fleet` và `cli-credentials` dùng `-o table` hoặc `-o json`, còn `workflows`, `memory`, `vault`, `kg` và `files` nhận cả hai. Với `backup`, `tenant-backup` và `skills export`, `-o` là đường dẫn file đầu ra.
+Không có flag đầu ra chung. Phần lớn lệnh đọc dữ liệu nhận `--json` để xuất dạng máy đọc được. `traces`, `usage`, `fleet`, `cli-credentials` và `admin` dùng `-o table` hoặc `-o json`, còn `workflows`, `memory`, `vault`, `kg` và `files` nhận cả hai. Với `backup`, `tenant-backup` và `skills export`, `-o` là đường dẫn file đầu ra.
 
 ```bash
 dewee usage summary --period 7d -o json
@@ -131,6 +131,46 @@ dewee workflows apply -f workflow.json
 | `dewee settings`, `dewee system-config` | `list`, `get`, `set` (và `reset` cho settings) |
 | `dewee import-export` | `preview`, `import` |
 | `dewee workstations` | `list`, `create`, `delete` |
+
+## Admin Control Plane
+
+`dewee admin` điều khiển Dewee Admin Control Plane (ACP), dịch vụ vận hành đứng sau các gói hosted và licence của Dewee, không phải một runtime gateway. Nhóm lệnh này dành cho người vận hành nền tảng Dewee. Nó bỏ qua `--server`, `--token` và `DEWEE_API_KEY`, và đọc các thiết lập riêng:
+
+| Thiết lập | Ý nghĩa |
+|---|---|
+| `DEWEE_ADMIN_TOKEN` hoặc `--token-file` | Thông tin xác thực ACP. Không bao giờ được truyền qua tham số, để không lọt vào lịch sử shell hay danh sách tiến trình |
+| `DEWEE_ADMIN_URL` hoặc `--admin-url` | Địa chỉ ACP. Mặc định: `https://admin.dewee.sh` |
+| `-o table` hoặc `-o json` | Định dạng đầu ra |
+
+Thông tin xác thực thuộc một trong hai loại:
+
+- **API key ACP có phạm vi** (`dwak_…`, khuyến nghị dùng). Key chỉ có những scope được cấp, lấy từ một preset (`read-only`, `operator`, `super-admin`) hoặc từng scope riêng, và có thể bị giới hạn vào những tài nguyên cụ thể. Key hết hạn sau tối đa 90 ngày (mặc định 30 ngày) và có thể xoay vòng hoặc thu hồi bất cứ lúc nào.
+- **Token break-glass.** Token này có quyền super admin, nhưng ACP chỉ chấp nhận khi người vận hành ACP đã mở một cửa sổ thời gian dài tối đa 7 ngày. Ngoài cửa sổ đó, token bị từ chối với mã `admin_break_glass_disabled`; ACP không bao giờ lặng lẽ coi nó là super admin. Chỉ dùng token này để tạo những key đầu tiên và cho tình huống khẩn cấp.
+
+ACP kiểm tra mọi lệnh gọi theo quyền của thông tin xác thực và ghi nhật ký kiểm toán, kể cả các lần bị từ chối. Mỗi request mang một mã tương quan `X-Dewee-Request-Id`, được lưu cùng bản ghi kiểm toán.
+
+| Lệnh | Subcommand |
+|---|---|
+| `dewee admin early-access` | `status`, `enable`, `disable`, `sync`, `link-discount`, `redemptions` |
+| `dewee admin licenses` | `list`, `release-activation`, `resend-delivery` |
+| `dewee admin promotions` | `list`, `get`, `create`, `update`, `enable`, `disable`, `sync`, `redemptions` |
+| `dewee admin access-grants` | `list`, `get`, `create`, `revoke`, `extend` |
+| `dewee admin api-keys` | `list`, `get`, `create`, `rotate`, `revoke` |
+| `dewee admin audit` | `list`, lọc theo `--outcome`, `--actor-type`, `--credential-id`, phân trang bằng `--limit` và `--before` |
+
+```bash
+export DEWEE_ADMIN_TOKEN=<scoped-api-key>
+dewee admin licenses list -o json
+dewee admin audit list --outcome deny --limit 20
+
+# Quản lý key, dùng token break-glass khi cửa sổ đang mở
+dewee admin --token-file <break-glass-token-file> api-keys create \
+  --name ci-reader --preset read-only --expires-in-days 30
+dewee admin api-keys rotate <key-id> --grace-minutes 60
+dewee admin api-keys revoke <key-id> --reason "leaked in a CI log" --yes
+```
+
+API key không bao giờ được liệt kê, tạo, xoay vòng hay thu hồi API key, nên một key bị lộ không thể tự mở rộng quyền. Vì vậy các lệnh `api-keys` cần token break-glass; super admin cũng có thể quản lý key trên các trang web của ACP. Secret của key mới tạo hoặc vừa xoay vòng chỉ được in ra một lần và không thể xem lại. Với `--grace-minutes` (tối đa 1440), key cũ vẫn dùng được trong khoảng thời gian đó để các bên gọi kịp chuyển sang key mới. Thông tin xác thực bị từ chối (không hợp lệ, đã thu hồi, đã hết hạn, hoặc cửa sổ break-glass đã đóng) thoát với mã 3, còn thiếu quyền thoát với mã 4.
 
 ## Bảo trì máy chủ
 

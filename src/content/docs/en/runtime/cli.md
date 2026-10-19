@@ -3,7 +3,7 @@ title: CLI reference
 description: "The dewee command line: global flags, how it finds the gateway and your key, output formats, and every command group for agents, skills, workflows and more."
 section: runtime
 order: 2
-updated: 2026-10-16
+updated: 2026-10-19
 ---
 
 The same `dewee` binary that runs the gateway is also its command-line client. Most commands talk to a running gateway over HTTP or WebSocket, locally or remotely, so an operator can script almost everything the console does. A few maintenance commands work on the database directly and are meant for the host.
@@ -48,7 +48,7 @@ Create API keys on the console's **API keys** page, or with `dewee api-keys crea
 
 ## Output formats
 
-There is no global output flag. Most read commands accept `--json` for machine-readable output. `traces`, `usage`, `fleet` and `cli-credentials` use `-o table` or `-o json` instead, and `workflows`, `memory`, `vault`, `kg` and `files` accept both forms. On `backup`, `tenant-backup` and `skills export`, `-o` is the output file path.
+There is no global output flag. Most read commands accept `--json` for machine-readable output. `traces`, `usage`, `fleet`, `cli-credentials` and `admin` use `-o table` or `-o json` instead, and `workflows`, `memory`, `vault`, `kg` and `files` accept both forms. On `backup`, `tenant-backup` and `skills export`, `-o` is the output file path.
 
 ```bash
 dewee usage summary --period 7d -o json
@@ -131,6 +131,46 @@ dewee workflows apply -f workflow.json
 | `dewee settings`, `dewee system-config` | `list`, `get`, `set` (and `reset` for settings) |
 | `dewee import-export` | `preview`, `import` |
 | `dewee workstations` | `list`, `create`, `delete` |
+
+## Admin Control Plane
+
+`dewee admin` drives the Dewee Admin Control Plane (ACP), the operator service behind Dewee's hosted plans and licences, not a runtime gateway. It is meant for Dewee platform operators. It ignores `--server`, `--token` and `DEWEE_API_KEY`, and reads its own settings:
+
+| Setting | Meaning |
+|---|---|
+| `DEWEE_ADMIN_TOKEN` or `--token-file` | The ACP credential. It is never accepted as an argument, so it stays out of shell history and the process list |
+| `DEWEE_ADMIN_URL` or `--admin-url` | ACP address. Default: `https://admin.dewee.sh` |
+| `-o table` or `-o json` | Output format |
+
+The credential is one of two kinds:
+
+- **A scoped ACP API key** (`dwak_…`, recommended). It holds only the scopes it was given, from a preset (`read-only`, `operator`, `super-admin`) or one by one, and can be pinned to specific resources. It expires after at most 90 days (30 by default) and can be rotated or revoked at any time.
+- **The break-glass token.** It acts as a super admin, but ACP accepts it only while its operator has opened a window of at most 7 days. Outside that window it is refused with `admin_break_glass_disabled`; ACP never falls back to treating it as a super admin. Use it to mint the first keys and for emergencies.
+
+ACP checks every call against the credential's permissions and audits it, refusals included. Each request carries an `X-Dewee-Request-Id` correlation id that is stored with the audit record.
+
+| Command | Subcommands |
+|---|---|
+| `dewee admin early-access` | `status`, `enable`, `disable`, `sync`, `link-discount`, `redemptions` |
+| `dewee admin licenses` | `list`, `release-activation`, `resend-delivery` |
+| `dewee admin promotions` | `list`, `get`, `create`, `update`, `enable`, `disable`, `sync`, `redemptions` |
+| `dewee admin access-grants` | `list`, `get`, `create`, `revoke`, `extend` |
+| `dewee admin api-keys` | `list`, `get`, `create`, `rotate`, `revoke` |
+| `dewee admin audit` | `list`, filtered by `--outcome`, `--actor-type`, `--credential-id`, with `--limit` and `--before` for paging |
+
+```bash
+export DEWEE_ADMIN_TOKEN=<scoped-api-key>
+dewee admin licenses list -o json
+dewee admin audit list --outcome deny --limit 20
+
+# Key management, with the break-glass token while its window is open
+dewee admin --token-file <break-glass-token-file> api-keys create \
+  --name ci-reader --preset read-only --expires-in-days 30
+dewee admin api-keys rotate <key-id> --grace-minutes 60
+dewee admin api-keys revoke <key-id> --reason "leaked in a CI log" --yes
+```
+
+An API key can never list, create, rotate or revoke API keys, so a leaked key cannot widen itself. `api-keys` commands therefore need the break-glass token; super admins can also manage keys from the ACP web pages. A new or rotated key's secret is printed once and cannot be shown again. With `--grace-minutes` (up to 1440) the old key keeps working for that long, so callers can switch over. A rejected credential (invalid, revoked, expired, or a closed break-glass window) exits with code 3, and a missing permission with code 4.
 
 ## Host maintenance
 
