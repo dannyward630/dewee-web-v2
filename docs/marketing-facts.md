@@ -57,7 +57,7 @@ Run this when a new stable release ships, and again before any campaign that quo
 
    ```bash
    grep -rnE "8,900|8\.900|on every change|cho mỗi thay đổi|\b10 (chat )?channels|10 kênh" src
-   grep -rnE "v3\.[0-9]+(\.[0-9]+)?" src/content --include=*.ts | grep -v "features.ts\|roadmap.ts\|facts.ts"
+   grep -rnE "v3\.[0-9]+(\.[0-9]+)?" src/content --include=*.ts | grep -v "features.ts\|releases.ts\|roadmap.ts\|facts.ts"
    ```
 
 7. Update the "Last verified" column above for every figure you re-checked, then run
