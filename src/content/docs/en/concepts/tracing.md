@@ -85,7 +85,7 @@ dewee traces timeline <trace-id>
 dewee --server https://dewee.example.com --token <token> traces get <trace-id> -o json
 ```
 
-**Semantic evaluation** is off by default. When an operator turns it on and adds a TypeSafe API key, finished traces are sent to that external classifier, with credentials and personal data redacted, and labelled with signals such as whether the task succeeded. The labels become extra `dewee traces list` filters, such as `--semantic-decision`, and never change how an agent runs. `dewee traces semantic config get` shows whether it is on and why. The classifier is Jev, the same model the [decision layer](/docs/concepts/decision-layer) uses.
+**Semantic evaluation** is off by default. When an operator turns it on and adds a TypeSafe API key, finished traces are sent to that external classifier, with credentials and personal data redacted, and labelled with signals such as whether the task succeeded. The labels become extra `dewee traces list` filters, such as `--semantic-decision`, and never change how an agent runs. `dewee traces semantic config get` shows whether it is on and why. The classifier is Jev, the same model the [decision layer](/docs/concepts/decision-layer) uses. A failed evaluation shows only a coarse reason and a short, redacted hint such as `provider returned HTTP 429`; the classifier's response body is never stored or shown, and only labels the rubric defines are kept.
 
 ## Exporting to OpenTelemetry
 

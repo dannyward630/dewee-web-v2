@@ -85,7 +85,7 @@ dewee traces timeline <trace-id>
 dewee --server https://dewee.example.com --token <token> traces get <trace-id> -o json
 ```
 
-**Đánh giá ngữ nghĩa** tắt mặc định. Khi người vận hành bật tính năng này và thêm API key của TypeSafe, các trace đã hoàn tất được gửi tới bộ phân loại bên ngoài đó, sau khi đã che thông tin xác thực và dữ liệu cá nhân, rồi được gắn các tín hiệu như task có thành công hay không. Các nhãn này trở thành bộ lọc bổ sung của `dewee traces list`, chẳng hạn `--semantic-decision`, và không bao giờ thay đổi cách agent chạy. `dewee traces semantic config get` cho biết tính năng có đang bật hay không và vì sao. Bộ phân loại này là Jev, cùng model mà [lớp quyết định](/docs/concepts/decision-layer) sử dụng.
+**Đánh giá ngữ nghĩa** tắt mặc định. Khi người vận hành bật tính năng này và thêm API key của TypeSafe, các trace đã hoàn tất được gửi tới bộ phân loại bên ngoài đó, sau khi đã che thông tin xác thực và dữ liệu cá nhân, rồi được gắn các tín hiệu như task có thành công hay không. Các nhãn này trở thành bộ lọc bổ sung của `dewee traces list`, chẳng hạn `--semantic-decision`, và không bao giờ thay đổi cách agent chạy. `dewee traces semantic config get` cho biết tính năng có đang bật hay không và vì sao. Bộ phân loại này là Jev, cùng model mà [lớp quyết định](/docs/concepts/decision-layer) sử dụng. Một lần đánh giá thất bại chỉ hiển thị lý do ở mức khái quát và một gợi ý ngắn đã được che, ví dụ `provider returned HTTP 429`; nội dung phản hồi của bộ phân loại không bao giờ được lưu hay hiển thị, và chỉ những nhãn do bộ tiêu chí định nghĩa mới được giữ lại.
 
 ## Xuất sang OpenTelemetry
 
