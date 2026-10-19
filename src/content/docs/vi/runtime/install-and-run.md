@@ -105,7 +105,7 @@ Chạy `./dewee doctor` trên máy chủ để in ra phiên bản, đường d�
 
 ## Nâng cấp
 
-`dewee upgrade` đưa schema cơ sở dữ liệu lên bản mới nhất và chạy các migration dữ liệu. Lệnh an toàn khi chạy nhiều lần, và image Docker tự chạy nó mỗi lần khởi động. Kiểm tra trước bằng `dewee upgrade --status` hoặc `dewee upgrade --dry-run`. Lệnh cấp thấp hơn `dewee migrate` (`up`, `down`, `version`, `force`, `goto`) dành cho việc khắc phục sự cố.
+`dewee upgrade` đưa schema cơ sở dữ liệu lên bản mới nhất và chạy các migration dữ liệu. Lệnh an toàn khi chạy nhiều lần, và image Docker tự chạy nó mỗi lần khởi động. Kiểm tra trước bằng `dewee upgrade --status` hoặc `dewee upgrade --dry-run`. Lệnh cấp thấp hơn `dewee migrate` (`up`, `down`, `version`, `force`, `goto`) dành cho việc khắc phục sự cố. Một binary sẽ từ chối khởi động khi schema cơ sở dữ liệu mới hơn phiên bản nó hỗ trợ, trên PostgreSQL cũng như bản Lite (SQLite), và thông báo lỗi nêu rõ cả hai phiên bản. Để quay về bản cũ trên PostgreSQL, chạy `dewee migrate down` bằng binary mới trước; bản Lite không có migration down, nên hãy khôi phục bản sao lưu tạo trước khi nâng cấp.
 
 ## Sao lưu và khôi phục
 
