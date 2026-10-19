@@ -94,7 +94,7 @@ The same person often writes from several apps. To combine their identities:
 2. In **Merge identities**, under **Merge into**, choose **An existing person** and pick them, or enter their **Person ID**. Or choose **A new name** and type a **New name**.
 3. Select **Merge**. Message history stays intact.
 
-To split them again, tick the contacts and select **Unmerge selected**, or select **Unmerge** on one linked row.
+To split them again, tick the contacts and select **Unmerge selected**, or select **Unmerge** on one linked row. You can merge or unmerge up to 500 contacts at a time; a larger selection is refused, not partly applied.
 
 ## Pending messages
 
