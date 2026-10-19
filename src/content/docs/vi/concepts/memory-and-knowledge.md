@@ -28,6 +28,8 @@ File bộ nhớ được chia thành các đoạn tối đa 1.000 ký tự và �
 | `memory_get` | Chỉ đọc những dòng cần thiết trong một file bộ nhớ |
 | `memory_expand` | Nạp toàn bộ bản tóm tắt của một session trước theo ID |
 
+System prompt chỉ hướng dẫn agent dùng những tool bộ nhớ mà nó thực sự gọi được. Nếu một tool profile hoặc quy tắc deny loại bỏ `memory_search`, phần hướng dẫn gợi nhớ bộ nhớ sẽ bị bỏ qua, còn `memory_get` hoặc `memory_expand` chỉ được nhắc tới khi chúng cũng được cho phép.
+
 Agent cũng nhận được bộ nhớ liên quan mà không cần hỏi. Trước mỗi lượt, dewee đối chiếu tin nhắn của người dùng với bản tóm tắt các session trước, rồi thêm tối đa 5 phần tóm lược có điểm từ 0,3 trở lên vào system prompt, trong giới hạn khoảng 200 token. Bạn điều chỉnh bằng `auto_inject_enabled`, `auto_inject_threshold` và `auto_inject_max_tokens`.
 
 ## Hợp nhất bộ nhớ
