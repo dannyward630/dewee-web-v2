@@ -3,7 +3,7 @@ title: Schedules and heartbeat
 description: How dewee runs agents on a timer, from cron jobs with retries and run history to the heartbeat checklist, and how queued messages share the scheduler.
 section: concepts
 order: 9
-updated: 2026-09-25
+updated: 2026-10-19
 ---
 
 A dewee agent does not have to wait for someone to message it. A cron job runs an agent turn or a workflow at a set time or interval. A heartbeat wakes an agent on a fixed interval to work through its own checklist. Both go through the same scheduler that queues chat messages, so timed work and live conversations do not collide.
@@ -59,6 +59,8 @@ dewee cron toggle <job-id> false
 ```
 
 `--force` runs a job now even if it is not due.
+
+A job runs once at a time. A run marks it `running`, and a manual run requested meanwhile is refused with "schedule is already running". The gateway executing the run renews that mark every 30 seconds, so a run in progress survives a restart or failover of the gateway that runs the scheduler. A job shows `interrupted` only when its run stopped renewing the mark for 2 minutes, for example because its gateway crashed; its next run is then scheduled as usual.
 
 ## The session queue and lanes
 

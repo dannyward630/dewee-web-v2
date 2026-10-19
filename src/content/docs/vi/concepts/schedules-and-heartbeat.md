@@ -3,7 +3,7 @@ title: Lịch chạy và heartbeat
 description: Cách dewee chạy agent theo lịch, từ cron job có cơ chế thử lại và lịch sử chạy tới checklist heartbeat, cùng cách tin nhắn xếp hàng dùng chung bộ lập lịch.
 section: concepts
 order: 9
-updated: 2026-09-25
+updated: 2026-10-19
 ---
 
 Agent trong dewee không nhất thiết phải chờ có người nhắn tin. Một cron job chạy một lượt agent hoặc một workflow vào thời điểm định sẵn hoặc theo chu kỳ. Heartbeat đánh thức agent theo một khoảng thời gian cố định để nó tự rà soát checklist của mình. Cả hai đều đi qua cùng bộ lập lịch xếp hàng tin nhắn chat, nên việc chạy theo lịch không va chạm với các cuộc hội thoại đang diễn ra.
@@ -59,6 +59,8 @@ dewee cron toggle <job-id> false
 ```
 
 `--force` chạy job ngay cả khi chưa đến hạn.
+
+Mỗi job chỉ chạy một lượt tại một thời điểm. Lượt chạy đánh dấu job là `running`, và yêu cầu chạy thủ công trong lúc đó bị từ chối với "schedule is already running". Gateway đang thực thi lượt chạy gia hạn dấu này mỗi 30 giây, nên lượt chạy đang dở không bị ảnh hưởng khi gateway giữ bộ lập lịch khởi động lại hoặc chuyển sang gateway khác. Job chỉ hiện `interrupted` khi lượt chạy ngừng gia hạn dấu trong 2 phút, ví dụ vì gateway của nó bị sập; lượt chạy kế tiếp sau đó vẫn được lên lịch như bình thường.
 
 ## Hàng đợi session và các lane
 
