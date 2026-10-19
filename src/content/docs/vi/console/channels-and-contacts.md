@@ -94,7 +94,7 @@ Một người thường nhắn tới từ nhiều ứng dụng. Để gộp cá
 2. Trong **Gộp danh tính**, ở mục **Gộp vào**, chọn **Một người đã có** rồi chọn người đó, hoặc nhập **ID người**. Hoặc chọn **Một tên mới** và nhập **Tên mới**.
 3. Chọn **Gộp**. Lịch sử tin nhắn được giữ nguyên.
 
-Muốn tách ra lại, đánh dấu các liên hệ đó và chọn **Bỏ gộp mục đã chọn**, hoặc chọn **Tách** trên một dòng đã liên kết. Mỗi lần gộp hoặc bỏ gộp tối đa 500 liên hệ; chọn nhiều hơn sẽ bị từ chối chứ không chỉ áp dụng một phần.
+Muốn tách ra lại, đánh dấu các liên hệ đó và chọn **Bỏ gộp mục đã chọn**, hoặc chọn **Tách** trên một dòng đã liên kết. Mỗi lần chỉ gộp hoặc bỏ gộp được tối đa 500 liên hệ; nếu chọn nhiều hơn, thao tác sẽ bị từ chối hoàn toàn chứ không áp dụng một phần.
 
 ## Tin nhắn đang chờ
 
