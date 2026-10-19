@@ -32,6 +32,7 @@ export const PROVIDERS: Integration[] = [
   { id: "mistral", brand: "mistral", name: "Mistral" },
   { id: "xai", brand: "xai", name: "xAI" },
   { id: "openrouter", brand: "openrouter", name: "OpenRouter" },
+  { id: "atlascloud", brand: "atlascloud", name: "Atlas Cloud" },
   { id: "groq", brand: "groq", name: "Groq" },
   { id: "minimax", brand: "minimax", name: "MiniMax" },
   { id: "cohere", brand: "cohere", name: "Cohere" },
@@ -51,7 +52,7 @@ export type ProviderGroupId = "api" | "subscription" | "local";
 export const PROVIDER_GROUPS: { id: ProviderGroupId; ids: string[] }[] = [
   {
     id: "api",
-    ids: ["anthropic", "openai", "gemini", "vertex", "deepseek", "qwen", "mistral", "xai", "openrouter", "groq", "minimax", "cohere", "perplexity", "byteplus", "workersai", "vercel"],
+    ids: ["anthropic", "openai", "gemini", "vertex", "deepseek", "qwen", "mistral", "xai", "openrouter", "atlascloud", "groq", "minimax", "cohere", "perplexity", "byteplus", "workersai", "vercel"],
   },
   { id: "subscription", ids: ["codex", "claude-cli", "opencode", "cline"] },
   { id: "local", ids: ["ollama"] },
