@@ -1,17 +1,19 @@
 /**
  * The dewee capability catalogue and the latest stable releases, EN + VI.
  *
- * Sources (verified 2026-09-25): GitHub release notes v3.28.0 → v3.33.0 (all stable), and the
- * dewee repo docs: 01-agent-loop, 03-tools-system, 05-channels-messaging, 07-bootstrap-skills-memory,
+ * Sources (verified 2026-10-19): GitHub release notes v3.28.0 → v3.40.0 (stable only; v3.38.1 is a
+ * single fix with no notes and has no entry), and the dewee repo docs: 01-agent-loop, 03-tools-system, 05-channels-messaging, 07-bootstrap-skills-memory,
  * 08-scheduling-cron, 09-security, 10-tracing-observability, 11-agent-teams, 23-multi-tenant-architecture,
  * 24-knowledge-vault, 25-workflows, ccp-usage-tasks-approvals.
  * `since` is set only for items that shipped in a verified release listed in RELEASES; older
- * capabilities carry no version so we never guess one. Beta releases (v3.34) are left out on purpose.
+ * capabilities carry no version so we never guess one. Beta releases (v3.41.0-beta.x) are left out on
+ * purpose. Counts quoted in the catalogue come from FACTS (src/content/facts.ts).
  */
 import type { Bi } from "~/i18n/config";
+import { FACTS } from "~/content/facts";
 
 export type Release = {
-  /** Git tag without the leading "v", e.g. "3.33.0" */
+  /** Git tag without the leading "v", e.g. "3.40.0" */
   version: string;
   /** ISO date the release was published */
   date: string;
@@ -30,8 +32,143 @@ export type CapabilityGroup = {
   items: Capability[];
 };
 
-/** Stable releases shipped in September 2026, newest first. */
+/** Stable releases since v3.28 (September and October 2026), newest first. */
 export const RELEASES: Release[] = [
+  {
+    version: "3.40.0",
+    date: "2026-10-15",
+    title: { en: "A browser your agents can borrow", vi: "Trình duyệt của bạn, agent mượn được" },
+    items: {
+      en: [
+        "A connected browser: with your grant, an agent works in tabs of your own Chrome through the dewee extension",
+        "The admin console is rebuilt, and GitHub sign-in is fixed",
+        "Leased workers stop before their lease runs out",
+        "Every stable release is built from one preflighted commit that runs the full test suite first",
+      ],
+      vi: [
+        "Trình duyệt kết nối: khi bạn cấp quyền, agent làm việc trên các tab Chrome của chính bạn qua tiện ích dewee",
+        "Giao diện admin console được dựng lại, và đăng nhập GitHub đã được sửa",
+        "Worker thuê theo lease dừng trước khi lease hết hạn",
+        "Mỗi bản stable được build từ một commit đã preflight, chạy trọn bộ test trước khi phát hành",
+      ],
+    },
+  },
+  {
+    version: "3.39.0",
+    date: "2026-10-14",
+    title: { en: "Say who may use what", vi: "Ai được dùng gì, nói rõ từng người" },
+    items: {
+      en: [
+        "Share levels for agents, and access grants for skills, MCP servers, providers and packages, with an access panel in the console and the CLI",
+        "Agents improve from evidence: candidate changes are replayed on saved examples, tried on live traffic once approved, and rolled back if they regress",
+        "Signed external events, starting with GitHub, can wake an agent",
+        "Memory facts keep their provenance and follow a clear lifecycle",
+        "The public MCP endpoint is served at /mcp/server, with status checks, connection diagnostics and a setup screen in the console",
+        "Atlas Cloud joins as a native chat provider",
+      ],
+      vi: [
+        "Cấp độ chia sẻ cho agent, và quyền truy cập cho skill, MCP server, nhà cung cấp và package, kèm bảng quyền trong console và CLI",
+        "Agent cải thiện dựa trên bằng chứng: thay đổi đề xuất được chạy lại trên ví dụ đã lưu, thử trên lưu lượng thật sau khi được duyệt, và quay lui nếu kết quả tệ đi",
+        "Sự kiện bên ngoài có chữ ký, bắt đầu từ GitHub, có thể đánh thức một agent",
+        "Dữ kiện trong bộ nhớ giữ nguồn gốc và theo một vòng đời rõ ràng",
+        "Endpoint MCP công khai chuyển sang /mcp/server, kèm kiểm tra trạng thái, chẩn đoán kết nối và màn hình thiết lập trong console",
+        "Atlas Cloud gia nhập như một nhà cung cấp chat gốc",
+      ],
+    },
+  },
+  {
+    version: "3.38.0",
+    date: "2026-10-07",
+    title: { en: "A CLI for agents, onboarding by conversation", vi: "CLI cho agent, làm quen bằng hội thoại" },
+    items: {
+      en: [
+        "An agent-first CLI: structured errors, non-interactive create-and-update commands, idempotency, a handshake and a command manifest",
+        "Set up a workspace by talking to a Super Agent, with the plan and each step kept as durable state",
+        "Fewer round trips per request in the control plane",
+      ],
+      vi: [
+        "CLI ưu tiên agent: lỗi có cấu trúc, lệnh tạo và cập nhật không cần tương tác, idempotency, handshake và manifest lệnh",
+        "Thiết lập workspace bằng cách trò chuyện với Super Agent, kế hoạch và từng bước được lưu bền vững",
+        "Control plane xử lý mỗi yêu cầu với ít vòng gọi hơn",
+      ],
+    },
+  },
+  {
+    version: "3.37.0",
+    date: "2026-10-05",
+    title: { en: "Channels that know who is talking", vi: "Kênh chat biết ai đang nói" },
+    items: {
+      en: [
+        "Trusted channel identity, plus an inbound gate that screens messages through an MCP tool before the agent sees them (Zalo Personal first)",
+        "Discord observe mode records every in-scope server message in a tenant-scoped inbox, and support threads let the author keep talking without mentioning the bot",
+        "A guard that checks Discord's remaining connection budget, so a busy support agent does not get its bot token reset",
+      ],
+      vi: [
+        "Danh tính kênh đáng tin cậy, cùng một cổng kiểm tra lọc tin nhắn qua một tool MCP trước khi agent nhìn thấy (bắt đầu với Zalo cá nhân)",
+        "Chế độ observe của Discord ghi mọi tin nhắn trong phạm vi vào hộp thư theo tenant, và thread hỗ trợ cho phép người hỏi tiếp tục trò chuyện mà không cần nhắc tên bot",
+        "Cơ chế bảo vệ kiểm tra hạn mức kết nối còn lại của Discord, để agent hỗ trợ bận rộn không bị reset token bot",
+      ],
+    },
+  },
+  {
+    version: "3.36.0",
+    date: "2026-10-01",
+    title: { en: "Model catalogs that follow your scope", vi: "Danh mục model theo đúng phạm vi của bạn" },
+    items: {
+      en: [
+        "Scoped model catalogs, and GPT-6.1 Sol",
+        "Reflex decisions show up in trace details",
+        "Stricter validation of import archives",
+      ],
+      vi: [
+        "Danh mục model theo phạm vi, và GPT-6.1 Sol",
+        "Quyết định của Reflex hiện trong chi tiết trace",
+        "Kiểm tra chặt hơn đối với gói import",
+      ],
+    },
+  },
+  {
+    version: "3.35.0",
+    date: "2026-09-29",
+    title: { en: "The control plane catches up with the runtime", vi: "Control plane bắt kịp runtime" },
+    items: {
+      en: [
+        "Agent teams in the console: task detail, task actions and team settings",
+        "Chat keys confined to a single agent",
+        "A complete workflow editor, with published versions and run feedback",
+        "Deep span inspection in traces, with stricter secret redaction",
+        "A workspace activity audit with readable labels and actor names",
+        "Providers, models, memory, knowledge vault and schedules reach parity with the runtime dashboard",
+        "HTTP MCP servers can use static or OAuth authentication",
+      ],
+      vi: [
+        "Đội agent trong console: chi tiết task, thao tác task và cài đặt đội",
+        "Chat key bị giới hạn trong một agent duy nhất",
+        "Trình soạn workflow hoàn chỉnh, có phiên bản đã publish và phản hồi khi chạy",
+        "Soi sâu từng span trong trace, kèm che secret chặt hơn",
+        "Nhật ký hoạt động của workspace với nhãn dễ đọc và tên người thực hiện",
+        "Nhà cung cấp, model, bộ nhớ, kho tri thức và lịch chạy ngang bằng dashboard của runtime",
+        "MCP server qua HTTP có thể dùng xác thực tĩnh hoặc OAuth",
+      ],
+    },
+  },
+  {
+    version: "3.34.0",
+    date: "2026-09-25",
+    title: { en: "A calmer control plane", vi: "Control plane gọn gàng hơn" },
+    items: {
+      en: [
+        "The Calm Precision redesign across every page of the customer control plane",
+        "Export archives download from the Import/Export tab and the CLI",
+        "Self-install: first-run owner setup, password sign-in, the dewee selfhost CLI and a per-workspace channels licence",
+      ],
+      vi: [
+        "Giao diện Calm Precision được áp dụng cho mọi trang của customer control plane",
+        "Tải gói export ngay từ tab Import/Export và CLI",
+        "Self-install: thiết lập chủ sở hữu ở lần chạy đầu, đăng nhập bằng mật khẩu, CLI dewee selfhost và license kênh theo từng workspace",
+      ],
+    },
+  },
   {
     version: "3.33.0",
     date: "2026-09-24",
@@ -57,13 +194,13 @@ export const RELEASES: Release[] = [
     title: { en: "dewee becomes an MCP server", vi: "dewee thành MCP server" },
     items: {
       en: [
-        "A tenant-aware public MCP endpoint at /v1/mcp, off until you turn it on",
+        "A tenant-aware public MCP endpoint, off until you turn it on (served at /mcp/server since v3.39)",
         "Works with Claude Code, Cursor, VS Code/Copilot, Gemini CLI and OpenAI remote MCP",
         "Write tools need their own scope, mcp.tools.write",
         "Deploy readiness checks retry instead of failing early",
       ],
       vi: [
-        "Endpoint MCP công khai theo tenant tại /v1/mcp, chỉ mở khi bạn bật",
+        "Endpoint MCP công khai theo tenant, chỉ mở khi bạn bật (từ v3.39 phục vụ tại /mcp/server)",
         "Dùng được với Claude Code, Cursor, VS Code/Copilot, Gemini CLI và OpenAI remote MCP",
         "Tool ghi dữ liệu cần scope riêng là mcp.tools.write",
         "Bước kiểm tra sẵn sàng khi deploy sẽ thử lại thay vì dừng sớm",
@@ -152,10 +289,10 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "channels",
     icon: "messages-square",
     title: { en: "Channels", vi: "Kênh chat" },
-    lede: { en: "Where your team and your customers already talk.", vi: "Nơi đội ngũ và khách hàng của bạn vốn đang trò chuyện." },
+    lede: { en: "Where your people and your agents already work together.", vi: "Nơi con người và agent của bạn vốn đã làm việc cùng nhau." },
     items: [
       {
-        title: { en: "Eleven chat channels", vi: "11 kênh chat" },
+        title: { en: `${FACTS.channels} chat channels`, vi: `${FACTS.channels} kênh chat` },
         body: {
           en: "Telegram, Zalo OA, Zalo Bot, Zalo Personal, Slack, Lark, Discord, WhatsApp, Facebook, Pancake and Bitrix24.",
           vi: "Telegram, Zalo OA, Zalo Bot, Zalo cá nhân, Slack, Lark, Discord, WhatsApp, Facebook, Pancake và Bitrix24.",
@@ -191,7 +328,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "agents",
     icon: "users",
     title: { en: "Agents & teams", vi: "Agent & đội agent" },
-    lede: { en: "Specialists that work together, and know when to call a human.", vi: "Những chuyên viên biết phối hợp, và biết lúc nào cần gọi người." },
+    lede: { en: "Specialist agents that hand work to each other, and know when to call a person.", vi: "Những agent chuyên trách biết giao việc cho nhau, và biết lúc nào cần gọi người." },
     items: [
       {
         title: { en: "One agent, one job", vi: "Mỗi agent một việc" },
@@ -214,6 +351,14 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
         body: { en: "The agent sends a case summary to the right person, group or topic.", vi: "Agent gửi bản tóm tắt vụ việc tới đúng người, nhóm hoặc topic." },
       },
       {
+        title: { en: "Say who may use which agent", vi: "Nói rõ ai được dùng agent nào" },
+        body: {
+          en: "Share an agent at a set level, and grant access to skills, MCP servers, providers and packages person by person.",
+          vi: "Chia sẻ agent theo cấp độ, và cấp quyền dùng skill, MCP server, nhà cung cấp, package cho từng người.",
+        },
+        since: "3.39",
+      },
+      {
         title: { en: "Reasoning, per agent", vi: "Mức suy luận theo agent" },
         body: { en: "Decide how hard each agent thinks. Settings are checked before they reach the model.", vi: "Chọn mức suy nghĩ cho từng agent. Cấu hình được kiểm tra trước khi tới model." },
         since: "3.28",
@@ -234,10 +379,10 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "models",
     icon: "cpu",
     title: { en: "Models & providers", vi: "Model & nhà cung cấp" },
-    lede: { en: "21 providers, one setting to switch, and a plan B when one fails.", vi: "21 nhà cung cấp, đổi bằng một thiết lập, và luôn có phương án B khi một hãng trục trặc." },
+    lede: { en: `${FACTS.providers} providers, one setting to switch, and a plan B when one fails.`, vi: `${FACTS.providers} nhà cung cấp, đổi bằng một thiết lập, và luôn có phương án B khi một hãng trục trặc.` },
     items: [
       {
-        title: { en: "21 model providers", vi: "21 nhà cung cấp model" },
+        title: { en: `${FACTS.providers} model providers`, vi: `${FACTS.providers} nhà cung cấp model` },
         body: {
           en: "Model labs, cloud gateways, subscriptions you already pay for, and local models on Ollama.",
           vi: "Các hãng model, cổng cloud, gói subscription bạn đang trả tiền, và model chạy local qua Ollama.",
@@ -336,6 +481,14 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
           vi: "Mở tool theo tenant cho Claude Code, Cursor, VS Code và nhiều công cụ khác. Tắt mặc định; quyền ghi cần scope riêng.",
         },
         since: "3.32",
+      },
+      {
+        title: { en: "Your own browser, by grant", vi: "Trình duyệt của bạn, khi bạn cấp quyền" },
+        body: {
+          en: "With the dewee Chrome extension, an agent can work in tabs of a person's own Chrome instead of a server browser.",
+          vi: "Với tiện ích Chrome của dewee, agent có thể làm việc trên các tab Chrome của chính bạn thay vì trình duyệt trên máy chủ.",
+        },
+        since: "3.40",
       },
       {
         title: { en: "Skills", vi: "Skill" },
@@ -488,7 +641,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "tenancy",
     icon: "building-2",
     title: { en: "Multi-tenant admin & RBAC", vi: "Đa tenant & phân quyền" },
-    lede: { en: "One install, many companies or departments, no leaks between them.", vi: "Một bản cài, nhiều công ty hay phòng ban, không rò rỉ giữa các bên." },
+    lede: { en: "One install, many companies or departments, each isolated from the others.", vi: "Một bản cài, nhiều công ty hay phòng ban, mỗi bên được cô lập với các bên còn lại." },
     items: [
       {
         title: { en: "Tenant isolation", vi: "Cô lập tenant" },

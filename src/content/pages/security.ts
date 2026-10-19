@@ -3,7 +3,7 @@
  * docs/09-security.md, docs/03-tools-system.md (policy engine, shell deny groups, credentialed CLI),
  * internal/crypto/aes.go (AES-256-GCM, "aes-gcm:" + base64(nonce + ciphertext + tag)),
  * docs/23-multi-tenant-architecture.md, docs/05-channels-messaging.md (pairing), the licence
- * runbook (DEWEE_LICENSE_REQUIRED, 5-minute heartbeat) and release notes v3.29 / v3.30 / v3.33.
+ * runbook (DEWEE_LICENSE_REQUIRED, 5-minute heartbeat) and the 3.29, 3.30 and 3.33 release notes.
  * Honest caveats (CORS and injection defaults) are stated on the page, not hidden.
  */
 import type { Bi } from "~/i18n/config";
@@ -47,7 +47,7 @@ export const SECURITY_PAGE: Bi<{
     meta: {
       title: "Security: shut at the door, opened on purpose",
       description:
-        "Five layers of defence in dewee: rate limits, prompt-injection checks, a tool policy engine, secret scrubbing, sandboxing, and AES-256-GCM for stored credentials.",
+        "Five layers of defence keep people in control of AI agents: rate limits, injection checks, a tool policy engine, approvals, secret scrubbing and AES-256-GCM.",
       crumb: "Security",
     },
     hero: {
@@ -271,7 +271,7 @@ export const SECURITY_PAGE: Bi<{
     meta: {
       title: "Bảo mật: đóng từ cửa, mở có chủ đích",
       description:
-        "Năm lớp phòng thủ của dewee: giới hạn tốc độ, kiểm tra prompt injection, policy engine cho tool, che secret, sandbox, và mã hoá AES-256-GCM cho credential lưu trữ.",
+        "Năm lớp phòng thủ giúp con người kiểm soát AI agent: giới hạn tốc độ, kiểm tra injection, policy engine cho tool, phê duyệt, che secret và mã hoá AES-256-GCM.",
       crumb: "Bảo mật",
     },
     hero: {
