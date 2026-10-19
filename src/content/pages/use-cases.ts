@@ -88,7 +88,7 @@ export const USE_CASES_PAGE: Bi<{
   },
   vi: {
     meta: {
-      title: "Ứng dụng AI agent cho doanh nghiệp",
+      title: "Ứng dụng AI agent theo từng đội ngũ",
       description:
         "Mười bốn cách doanh nghiệp giao việc cho AI agent dewee: chăm sóc khách hàng, bán hàng, marketing, nhân sự, nghiên cứu và kỹ thuật, kèm quy trình và phê duyệt.",
     },

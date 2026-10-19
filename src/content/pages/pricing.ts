@@ -42,7 +42,7 @@ export const PRICING: Bi<PricingPage> = {
     hero: {
       eyebrow: "Pricing & deployment",
       title: "Pick where dewee *lives*.",
-      lede: "Your own machine, our shared cloud, your own runtime on TOSE.sh, or your hardware set up by us. Same product, same care. Every price is on this page, in US dollars.",
+      lede: "Your own machine, our shared cloud, your own runtime on TOSE.sh, or your hardware set up by us. Same multiplayer agent platform, same care. Every price is on this page, in US dollars.",
       note: "prices in ink, not pencil",
       primary: "Compare side by side",
       secondary: "Talk to us",
@@ -136,7 +136,7 @@ export const PRICING: Bi<PricingPage> = {
     hero: {
       eyebrow: "Bảng giá & triển khai",
       title: "Dữ liệu ở lại *công ty bạn*.",
-      lede: "Tại Việt Nam, dewee luôn chạy trên máy của chính bạn: tự cài đặt miễn phí, hoặc để chúng tôi triển khai On-Premises trên VPS hay Mac mini của công ty. Dữ liệu không rời khỏi công ty.",
+      lede: "Tại Việt Nam, dewee luôn chạy trên máy của chính bạn: tự cài đặt miễn phí, hoặc để chúng tôi triển khai On-Premises trên VPS hay Mac mini của công ty. Dữ liệu dewee lưu nằm ngay trên hạ tầng của công ty.",
       note: "giá viết bằng mực, không phải bút chì",
       primary: "So sánh hai cách",
       secondary: "Nhận báo giá On-Premises",

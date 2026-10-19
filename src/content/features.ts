@@ -1,23 +1,19 @@
 /**
- * The dewee capability catalogue and the latest stable releases, EN + VI.
+ * The dewee capability catalogue, EN + VI. The release list lives in src/content/releases.ts and is
+ * re-exported here, so pages and tests keep importing both from one module.
  *
- * Sources (verified 2026-09-25): GitHub release notes v3.28.0 → v3.33.0 (all stable), and the
- * dewee repo docs: 01-agent-loop, 03-tools-system, 05-channels-messaging, 07-bootstrap-skills-memory,
+ * Sources (verified 2026-10-19): GitHub release notes v3.28.0 → v3.40.0 (stable only), and the dewee
+ * repo docs: 01-agent-loop, 03-tools-system, 05-channels-messaging, 07-bootstrap-skills-memory,
  * 08-scheduling-cron, 09-security, 10-tracing-observability, 11-agent-teams, 23-multi-tenant-architecture,
  * 24-knowledge-vault, 25-workflows, ccp-usage-tasks-approvals.
  * `since` is set only for items that shipped in a verified release listed in RELEASES; older
- * capabilities carry no version so we never guess one. Beta releases (v3.34) are left out on purpose.
+ * capabilities carry no version so we never guess one. Counts quoted in the catalogue come from
+ * FACTS (src/content/facts.ts).
  */
 import type { Bi } from "~/i18n/config";
+import { FACTS } from "~/content/facts";
 
-export type Release = {
-  /** Git tag without the leading "v", e.g. "3.33.0" */
-  version: string;
-  /** ISO date the release was published */
-  date: string;
-  title: Bi;
-  items: Bi<string[]>;
-};
+export { RELEASES, type Release } from "./releases";
 
 export type Capability = { title: Bi; body: Bi; since?: string };
 
@@ -30,132 +26,16 @@ export type CapabilityGroup = {
   items: Capability[];
 };
 
-/** Stable releases shipped in September 2026, newest first. */
-export const RELEASES: Release[] = [
-  {
-    version: "3.33.0",
-    date: "2026-09-24",
-    title: { en: "The control plane speaks Vietnamese", vi: "Control plane nói tiếng Việt" },
-    items: {
-      en: [
-        "Customer Control Plane in English and Vietnamese, with your time zone",
-        "Credential retargeting through the operator CLI is blocked, and gateway secrets are stripped from host exec",
-        "Reasoning-effort ladders per vendor, plus Opus 5.5, Fable 5.1 and GPT-6 Sol-Luna",
-        "Gemini 3.8 Flash and Flash-Lite text-to-speech",
-      ],
-      vi: [
-        "Customer Control Plane có tiếng Anh, tiếng Việt và theo múi giờ của bạn",
-        "Chặn việc đổi đích credential qua CLI vận hành, và loại secret của gateway khỏi lệnh exec trên host",
-        "Thang reasoning effort theo từng hãng, thêm Opus 5.5, Fable 5.1 và GPT-6 Sol-Luna",
-        "Text-to-speech Gemini 3.8 Flash và Flash-Lite",
-      ],
-    },
-  },
-  {
-    version: "3.32.0",
-    date: "2026-09-22",
-    title: { en: "dewee becomes an MCP server", vi: "dewee thành MCP server" },
-    items: {
-      en: [
-        "A tenant-aware public MCP endpoint at /v1/mcp, off until you turn it on",
-        "Works with Claude Code, Cursor, VS Code/Copilot, Gemini CLI and OpenAI remote MCP",
-        "Write tools need their own scope, mcp.tools.write",
-        "Deploy readiness checks retry instead of failing early",
-      ],
-      vi: [
-        "Endpoint MCP công khai theo tenant tại /v1/mcp, chỉ mở khi bạn bật",
-        "Dùng được với Claude Code, Cursor, VS Code/Copilot, Gemini CLI và OpenAI remote MCP",
-        "Tool ghi dữ liệu cần scope riêng là mcp.tools.write",
-        "Bước kiểm tra sẵn sàng khi deploy sẽ thử lại thay vì dừng sớm",
-      ],
-    },
-  },
-  {
-    version: "3.31.0",
-    date: "2026-09-21",
-    title: { en: "More models on the menu", vi: "Thêm model vào thực đơn" },
-    items: {
-      en: [
-        "GPT-6 Astra through your ChatGPT subscription",
-        "ClinePass (13 models) and OpenCode Go (20 models)",
-        "Vercel AI Gateway, and all 27 Workers AI text models",
-        "The Customer Control Plane can now do everything the runtime dashboard does",
-      ],
-      vi: [
-        "GPT-6 Astra qua gói ChatGPT bạn đang dùng",
-        "ClinePass (13 model) và OpenCode Go (20 model)",
-        "Vercel AI Gateway, và đủ 27 model text của Workers AI",
-        "Customer Control Plane làm được mọi thao tác như dashboard runtime",
-      ],
-    },
-  },
-  {
-    version: "3.30.0",
-    date: "2026-09-19",
-    title: { en: "Workflows you can draw", vi: "Workflow vẽ được, chạy đúng từng bước" },
-    items: {
-      en: [
-        "Deterministic visual workflows: canvas editor, CLI and run inspector",
-        "Cron jobs can start a workflow",
-        "A message sent to a busy agent is read as a status check, cancel, steer or new task (opt-in)",
-        "Intent decisions and a semantic evaluator (shadow mode) show up in traces",
-      ],
-      vi: [
-        "Workflow trực quan chạy tất định: canvas, CLI và trình xem từng lần chạy",
-        "Cron có thể khởi động workflow",
-        "Tin nhắn gửi lúc agent đang bận được hiểu là hỏi tiến độ, huỷ, đổi hướng hay việc mới (bật khi cần)",
-        "Quyết định ý định và bộ đánh giá ngữ nghĩa (chế độ shadow) hiện trong trace",
-      ],
-    },
-  },
-  {
-    version: "3.29.0",
-    date: "2026-09-04",
-    title: { en: "Clearer traces, stricter tenants", vi: "Trace rõ hơn, tenant chặt hơn" },
-    items: {
-      en: [
-        "Traces show how reasoning was delivered",
-        "Fleet admin operations write trace spans",
-        "An unknown --tenant is rejected instead of quietly falling back to the master tenant",
-        "Backup skills for operators running dewee on a VPS",
-      ],
-      vi: [
-        "Trace cho thấy phần reasoning được trả về ra sao",
-        "Thao tác quản trị fleet cũng ghi span vào trace",
-        "--tenant không xác định bị từ chối, thay vì âm thầm rơi về tenant master",
-        "Skill sao lưu cho người vận hành dewee trên VPS",
-      ],
-    },
-  },
-  {
-    version: "3.28.0",
-    date: "2026-09-03",
-    title: { en: "Voice and reasoning, tuned per agent", vi: "Giọng nói và suy luận, chỉnh theo từng agent" },
-    items: {
-      en: [
-        "Per-provider TTS parameters and multi-speaker Gemini voices from the CLI",
-        "Speech-to-text settings from the CLI with dewee stt config",
-        "Per-agent reasoning settings, validated before they reach the model",
-      ],
-      vi: [
-        "Tham số TTS riêng cho từng hãng và giọng Gemini nhiều người đọc, chỉnh ngay từ CLI",
-        "Cấu hình speech-to-text từ CLI bằng lệnh dewee stt config",
-        "Cấu hình reasoning cho từng agent, được kiểm tra trước khi gửi tới model",
-      ],
-    },
-  },
-];
-
 /** Everything dewee can do, grouped by area. Order follows how a buyer evaluates the platform. */
 export const CAPABILITY_GROUPS: CapabilityGroup[] = [
   {
     id: "channels",
     icon: "messages-square",
     title: { en: "Channels", vi: "Kênh chat" },
-    lede: { en: "Where your team and your customers already talk.", vi: "Nơi đội ngũ và khách hàng của bạn vốn đang trò chuyện." },
+    lede: { en: "Where your people and your agents already work together.", vi: "Nơi con người và agent của bạn vốn đã làm việc cùng nhau." },
     items: [
       {
-        title: { en: "Eleven chat channels", vi: "11 kênh chat" },
+        title: { en: `${FACTS.channels} chat channels`, vi: `${FACTS.channels} kênh chat` },
         body: {
           en: "Telegram, Zalo OA, Zalo Bot, Zalo Personal, Slack, Lark, Discord, WhatsApp, Facebook, Pancake and Bitrix24.",
           vi: "Telegram, Zalo OA, Zalo Bot, Zalo cá nhân, Slack, Lark, Discord, WhatsApp, Facebook, Pancake và Bitrix24.",
@@ -191,7 +71,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "agents",
     icon: "users",
     title: { en: "Agents & teams", vi: "Agent & đội agent" },
-    lede: { en: "Specialists that work together, and know when to call a human.", vi: "Những chuyên viên biết phối hợp, và biết lúc nào cần gọi người." },
+    lede: { en: "Specialist agents that hand work to each other, and know when to call a person.", vi: "Những agent chuyên trách biết giao việc cho nhau, và biết lúc nào cần gọi người." },
     items: [
       {
         title: { en: "One agent, one job", vi: "Mỗi agent một việc" },
@@ -214,6 +94,14 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
         body: { en: "The agent sends a case summary to the right person, group or topic.", vi: "Agent gửi bản tóm tắt vụ việc tới đúng người, nhóm hoặc topic." },
       },
       {
+        title: { en: "Say who may use which agent", vi: "Nói rõ ai được dùng agent nào" },
+        body: {
+          en: "Share an agent at a set level, and grant access to skills, MCP servers, providers and packages person by person.",
+          vi: "Chia sẻ agent theo cấp độ, và cấp quyền dùng skill, MCP server, nhà cung cấp, package cho từng người.",
+        },
+        since: "3.39",
+      },
+      {
         title: { en: "Reasoning, per agent", vi: "Mức suy luận theo agent" },
         body: { en: "Decide how hard each agent thinks. Settings are checked before they reach the model.", vi: "Chọn mức suy nghĩ cho từng agent. Cấu hình được kiểm tra trước khi tới model." },
         since: "3.28",
@@ -234,10 +122,10 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "models",
     icon: "cpu",
     title: { en: "Models & providers", vi: "Model & nhà cung cấp" },
-    lede: { en: "21 providers, one setting to switch, and a plan B when one fails.", vi: "21 nhà cung cấp, đổi bằng một thiết lập, và luôn có phương án B khi một hãng trục trặc." },
+    lede: { en: `${FACTS.providers} providers, one setting to switch, and a plan B when one fails.`, vi: `${FACTS.providers} nhà cung cấp, đổi bằng một thiết lập, và luôn có phương án B khi một hãng trục trặc.` },
     items: [
       {
-        title: { en: "21 model providers", vi: "21 nhà cung cấp model" },
+        title: { en: `${FACTS.providers} model providers`, vi: `${FACTS.providers} nhà cung cấp model` },
         body: {
           en: "Model labs, cloud gateways, subscriptions you already pay for, and local models on Ollama.",
           vi: "Các hãng model, cổng cloud, gói subscription bạn đang trả tiền, và model chạy local qua Ollama.",
@@ -336,6 +224,14 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
           vi: "Mở tool theo tenant cho Claude Code, Cursor, VS Code và nhiều công cụ khác. Tắt mặc định; quyền ghi cần scope riêng.",
         },
         since: "3.32",
+      },
+      {
+        title: { en: "Your own browser, by grant", vi: "Trình duyệt của bạn, khi bạn cấp quyền" },
+        body: {
+          en: "With the dewee Chrome extension, an agent can work in tabs of a person's own Chrome instead of a server browser.",
+          vi: "Với tiện ích Chrome của dewee, agent có thể làm việc trên các tab Chrome của chính bạn thay vì trình duyệt trên máy chủ.",
+        },
+        since: "3.40",
       },
       {
         title: { en: "Skills", vi: "Skill" },
@@ -488,7 +384,7 @@ export const CAPABILITY_GROUPS: CapabilityGroup[] = [
     id: "tenancy",
     icon: "building-2",
     title: { en: "Multi-tenant admin & RBAC", vi: "Đa tenant & phân quyền" },
-    lede: { en: "One install, many companies or departments, no leaks between them.", vi: "Một bản cài, nhiều công ty hay phòng ban, không rò rỉ giữa các bên." },
+    lede: { en: "One install, many companies or departments, each isolated from the others.", vi: "Một bản cài, nhiều công ty hay phòng ban, mỗi bên được cô lập với các bên còn lại." },
     items: [
       {
         title: { en: "Tenant isolation", vi: "Cô lập tenant" },

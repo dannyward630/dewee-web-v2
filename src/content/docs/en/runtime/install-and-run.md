@@ -105,7 +105,7 @@ Run `./dewee doctor` on the host to print the version, the config path and wheth
 
 ## Upgrades
 
-`dewee upgrade` brings the database schema up to date and runs data migrations. It is safe to run more than once, and the Docker image runs it on every start. Check first with `dewee upgrade --status` or `dewee upgrade --dry-run`. The lower-level `dewee migrate` command (`up`, `down`, `version`, `force`, `goto`) exists for recovery work.
+`dewee upgrade` brings the database schema up to date and runs data migrations. It is safe to run more than once, and the Docker image runs it on every start. Check first with `dewee upgrade --status` or `dewee upgrade --dry-run`. The lower-level `dewee migrate` command (`up`, `down`, `version`, `force`, `goto`) exists for recovery work. A binary refuses to start on a database whose schema is newer than it supports, on PostgreSQL and on the Lite (SQLite) edition alike, and the error names both versions. To roll back, run the newer binary's `dewee migrate down` first on PostgreSQL; Lite has no down migrations, so restore the backup taken before the upgrade.
 
 ## Backups and restores
 
