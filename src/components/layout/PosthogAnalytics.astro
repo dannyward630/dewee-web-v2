@@ -7,6 +7,7 @@
  * Events: pageviews, plan CTAs, hero CTAs (`hero_cta_clicked`, from `data-hero-cta`),
  * app/contact/outbound clicks, theme toggles, chat opens, leads. A hero link to app.dewee.sh
  * sends both `hero_cta_clicked` and `app_cta_clicked`, so the app-entry funnel stays whole.
+ * `site` and `locale` ride on every event through `posthog.register`, so no event repeats them.
  */
 import { SITE } from "~/content/site";
 import type { Locale } from "~/i18n/config";
@@ -53,7 +54,7 @@ const config = {
       };
       if (link.dataset.trackPlan) posthog.capture("pricing_plan_cta_clicked", Object.assign({ plan: link.dataset.trackPlan }, props));
       var heroCta = link.dataset.heroCta;
-      if (heroCta === "primary" || heroCta === "secondary") posthog.capture("hero_cta_clicked", Object.assign({ cta: heroCta, locale: config.props.locale }, props));
+      if (heroCta === "primary" || heroCta === "secondary") posthog.capture("hero_cta_clicked", Object.assign({ cta: heroCta }, props));
       if (url.hostname === config.appHost) posthog.capture("app_cta_clicked", props);
       else if (url.protocol === "mailto:") posthog.capture("contact_email_clicked", props);
       else if (url.origin !== location.origin && url.protocol.indexOf("http") === 0) posthog.capture("outbound_link_clicked", props);

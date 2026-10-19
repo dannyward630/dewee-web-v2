@@ -166,7 +166,7 @@ export const PARTNERS: Bi<PartnersPage> = {
     },
     apply: {
       eyebrow: "Apply",
-      title: "Ready to ship *enterprise AI* with us?",
+      title: "Ready to put *AI agents to work* with us?",
       lede: "Tell us about your business. We'll reply with a suggested track and an onboarding plan.",
       checklist: {
         title: "Good to include",
@@ -360,7 +360,7 @@ export const PARTNERS: Bi<PartnersPage> = {
     },
     apply: {
       eyebrow: "Đăng ký",
-      title: "Sẵn sàng cùng chúng tôi *đưa AI vào doanh nghiệp*?",
+      title: "Sẵn sàng cùng chúng tôi *đưa AI agent vào làm việc*?",
       lede: "Kể chúng tôi nghe về doanh nghiệp của bạn. Chúng tôi sẽ phản hồi với hướng hợp tác phù hợp và kế hoạch onboarding.",
       checklist: {
         title: "Nên có trong đơn",

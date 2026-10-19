@@ -12,9 +12,9 @@ export const FEATURES_PAGE: Bi<{
     eyebrow: string;
     title: string;
     lede: string;
-    monthLabel: string;
     weekdays: string[];
-    calendarLabel: string;
+    /** Accessible name of the calendar; `month` is the newest release's month, already formatted. */
+    calendarLabel: (month: string) => string;
     releasedOn: string;
     changelog: string;
     note: string;
@@ -43,9 +43,8 @@ export const FEATURES_PAGE: Bi<{
       eyebrow: "Recently shipped",
       title: "Recent releases, *stable* only.",
       lede: "Every one of them stable, none of them beta. The days circled in red are the days we shipped.",
-      monthLabel: "October 2026",
       weekdays: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
-      calendarLabel: "October 2026 calendar with the release days circled",
+      calendarLabel: (month) => `${month} calendar with the release days circled`,
       releasedOn: "Released",
       changelog: "Read the full changelog",
       note: "beta features wait until they earn a place here",
@@ -99,9 +98,8 @@ export const FEATURES_PAGE: Bi<{
       eyebrow: "Vừa phát hành",
       title: "Các bản *ổn định* gần đây.",
       lede: "Bản nào cũng ổn định, không bản nào là beta. Những ngày khoanh bút đỏ là ngày chúng tôi phát hành.",
-      monthLabel: "Tháng 10 năm 2026",
       weekdays: ["T2", "T3", "T4", "T5", "T6", "T7", "CN"],
-      calendarLabel: "Lịch tháng 10 năm 2026, khoanh tròn các ngày phát hành",
+      calendarLabel: (month) => `Lịch ${month}, khoanh tròn các ngày phát hành`,
       releasedOn: "Phát hành",
       changelog: "Xem toàn bộ changelog",
       note: "tính năng beta phải đợi tới lượt",

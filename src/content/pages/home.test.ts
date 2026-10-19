@@ -7,7 +7,8 @@ import { describe, expect, it } from "vitest";
 import { LOCALES } from "~/i18n/config";
 import { FACTS } from "~/content/facts";
 import { ICONS } from "~/components/ui/icon-paths";
-import { HOME, HOME_UI, HOME_WORKFLOW, HOME_WORKFLOW_ANCHOR } from "./home";
+import { useCaseBySlug } from "~/content/use-cases";
+import { HOME, HOME_UI, HOME_USE_CASE_SLUGS, HOME_WORKFLOW, HOME_WORKFLOW_ANCHOR } from "./home";
 
 const plain = (s: string) => s.replace(/[*~=]/g, "");
 const text = (locale: "en" | "vi") => JSON.stringify([HOME[locale], HOME_WORKFLOW[locale], HOME_UI[locale]]);
@@ -28,13 +29,45 @@ describe("homepage hero", () => {
     expect(h.eyebrow).toBe("Nền tảng cộng tác giữa con người và AI agent");
     expect(plain(h.title)).toBe("Đội ngũ của bạn vừa có thêm đồng đội.");
     expect(h.lede).toBe("Đưa con người và AI agent vào cùng một workspace. Giao việc, phối hợp giữa các agent, phê duyệt hành động quan trọng và vận hành ngay trên những công cụ đội ngũ đang sử dụng.");
-    expect(h.primary).toBe("Tạo workspace");
+    expect(h.primary).toBe("Cài dewee miễn phí");
     expect(h.secondary).toBe("Xem cách hoạt động");
     expect(h.microcopy).toBe("Con người và AI agent. Cùng làm việc như một đội.");
   });
 
   it("points the secondary call to action at a valid in-page anchor", () => {
     expect(HOME_WORKFLOW_ANCHOR).toMatch(/^[a-z][a-z0-9-]*$/);
+  });
+
+  it("labels the simulated chat visibly, not only for screen readers", () => {
+    expect(HOME_UI.en.chatCaption.toLowerCase()).toMatch(/illustrative/);
+    expect(HOME_UI.vi.chatCaption.toLowerCase()).toMatch(/minh hoạ/);
+  });
+});
+
+describe("homepage use cases", () => {
+  it("shows the four coordination patterns its lede names, in that order, and each one exists", () => {
+    expect(HOME_USE_CASE_SLUGS).toEqual(["ai-coworker-in-group-chats", "task-chasing", "customer-care-with-handoff", "sales-knowledge-assistant"]);
+    for (const slug of HOME_USE_CASE_SLUGS) expect(useCaseBySlug(slug), slug).toBeDefined();
+  });
+});
+
+describe("homepage getting-started answer", () => {
+  const answer = (locale: "en" | "vi") => HOME[locale].faq.items.find((i) => /get started|Bắt đầu/.test(i.q))?.a ?? "";
+
+  it("describes the real sign-up flow: email, GitHub or Google, then naming the workspace", () => {
+    expect(answer("en")).toMatch(/GitHub, Google or a sign-in link sent to your email/);
+    expect(answer("en")).toMatch(/name your workspace/);
+  });
+
+  it("starts Vietnamese visitors on the free self-install, never the hosted app", () => {
+    expect(answer("vi")).toMatch(/script cài đặt hoặc Docker, hoàn toàn miễn phí/);
+    expect(answer("vi")).not.toMatch(/app\.dewee\.sh|Annual/);
+  });
+
+  it("says plainly that chat channels need a paid plan or licence", () => {
+    expect(answer("en")).toContain("connecting chat channels such as Slack, Telegram or Zalo needs the Annual plan ($500 a year)");
+    expect(answer("en")).toContain("a $500/year licence connects chat channels");
+    expect(answer("vi")).toContain("bạn cần license $500/năm cho workspace đó");
   });
 });
 
@@ -106,7 +139,7 @@ describe("homepage facts", () => {
   it("makes no unsupported claims", () => {
     for (const locale of LOCALES) {
       const all = text(locale).toLowerCase();
-      for (const banned of ["world's first", "the first multiplayer", "đầu tiên trên thế giới", "seamless", "revolutionary", "unlock", "co-editing in real time", "100% safe", "an toàn tuyệt đối"]) {
+      for (const banned of ["world's first", "the first multiplayer", "đầu tiên trên thế giới", "seamless", "revolutionary", "unlock", "co-editing in real time", "100% safe", "an toàn tuyệt đối", "never leaves", "không rời khỏi"]) {
         expect(all).not.toContain(banned);
       }
     }

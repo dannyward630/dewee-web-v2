@@ -92,7 +92,7 @@ export const HOME_EN: HomeCopy = {
       { text: "5 defence layers between your data and the internet", detail: "Shut at the door: a token to connect, an approval before a stranger can chat." },
       { text: `${FACTS.providers} model providers, with a fallback per agent`, detail: "When one provider has a bad day, your agents don't." },
       { text: `${FACTS.channels} chat channels, Zalo and Pancake included`, detail: "Built for how Southeast Asian teams actually talk." },
-      { text: `Stable v${FACTS.stableRelease.version}, every release written down`, detail: "We ship, we patch, and the changelog says what changed." },
+      { text: `Stable v${FACTS.stableRelease.version}, with a public changelog`, detail: "We ship, we patch, and the changelog says what changed." },
     ],
     grade: "10",
     signature: "Checked by the team, re-checked by the tests",
@@ -115,7 +115,7 @@ export const HOME_EN: HomeCopy = {
     title: "Things people ask us *first*.",
     items: [
       { q: "What does \"multiplayer\" mean in dewee?", a: "People and AI agents working in the same workspace. A lead agent splits a request into tasks on a shared board, delegates them to member agents and combines the results, while people assign work, review it and approve what matters. It is coordinated work through tasks, messages and approvals, not live co-editing." },
-      { q: "How do we get started?", a: "Start your workspace at app.dewee.sh: the first time you sign in with GitHub or Google, dewee creates one for you. You can also install dewee on your own machine for free, or talk to us about a dedicated or on-premises setup." },
+      { q: "How do we get started?", a: "Sign in at app.dewee.sh with GitHub, Google or a sign-in link sent to your email, name your workspace on the setup step, and dewee creates it. A free workspace runs in the web console; connecting chat channels such as Slack, Telegram or Zalo needs the Annual plan ($500 a year). You can also install dewee on your own machine for free, where a $500/year licence connects chat channels, or talk to us about a dedicated or on-premises setup." },
       { q: "What stops an agent from doing something it shouldn't?", a: "Each agent only gets the tools and channels you grant it. Tasks can require a person's approval before they complete, sensitive commands wait for a member to approve or deny them, and every run is traced, so you can see what happened and why." },
       { q: "Can we keep our data on our own servers?", a: "Yes. The On-Premises option runs the dewee runtime on your VPS or Mac mini, activated by a licence key. Or install dewee on your own machine yourself: installing is free, and a licence connects your chat channels." },
       { q: "Which AI models can we use?", a: `Anthropic, OpenAI, Gemini, DeepSeek, Qwen, Mistral, xAI, OpenRouter, Groq, Ollama and more: ${FACTS.providers} providers. You bring your own keys, and each agent can fall back to another provider automatically.` },

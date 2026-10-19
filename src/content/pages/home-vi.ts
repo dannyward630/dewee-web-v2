@@ -17,7 +17,7 @@ export const HOME_VI: HomeCopy = {
     title: "Đội ngũ của bạn vừa có thêm *đồng đội*.",
     lede:
       "Đưa con người và AI agent vào cùng một workspace. Giao việc, phối hợp giữa các agent, phê duyệt hành động quan trọng và vận hành ngay trên những công cụ đội ngũ đang sử dụng.",
-    primary: "Tạo workspace",
+    primary: "Cài dewee miễn phí",
     secondary: "Xem cách hoạt động",
     microcopy: "Con người và AI agent. Cùng làm việc như một đội.",
     note: "lịch nhắc thứ Năm cũng đặt sẵn rồi",
@@ -92,7 +92,7 @@ export const HOME_VI: HomeCopy = {
       { text: "5 lớp phòng thủ giữa dữ liệu của bạn và internet", detail: "Đóng từ cửa: có token mới kết nối, người lạ phải được phê duyệt mới chat được." },
       { text: `${FACTS.providers} nhà cung cấp mô hình, agent nào cũng có dự phòng`, detail: "Nhà cung cấp gặp sự cố, agent của bạn vẫn làm việc." },
       { text: `${FACTS.channels} kênh chat, có cả Zalo và Pancake`, detail: "Làm cho đúng cách người Việt và Đông Nam Á trò chuyện." },
-      { text: `Bản ổn định v${FACTS.stableRelease.version}, bản nào cũng ghi chép đầy đủ`, detail: "Ra bản đều, vá lỗi nhanh, changelog ghi rõ từng thay đổi." },
+      { text: `Bản ổn định v${FACTS.stableRelease.version}, có changelog công khai`, detail: "Ra bản đều, vá lỗi nhanh, changelog ghi rõ từng thay đổi." },
     ],
     grade: "10",
     signature: "Đội ngũ đã chấm, bài test chấm lại lần nữa",
@@ -100,7 +100,7 @@ export const HOME_VI: HomeCopy = {
   pricing: {
     eyebrow: "Bảng giá",
     title: "Chạy ngay trên *hạ tầng của bạn*.",
-    lede: "Tại Việt Nam, dewee chạy trên máy chủ hoặc Mac mini của bạn, dữ liệu không rời khỏi công ty. Bạn tự cài miễn phí, hoặc chọn On-Premises để chúng tôi lo phần cài đặt.",
+    lede: "Tại Việt Nam, runtime dewee chạy ngay trên máy chủ hoặc Mac mini của công ty bạn. Bạn tự cài miễn phí, hoặc chọn On-Premises để chúng tôi lo phần cài đặt.",
     cta: "So sánh hai cách triển khai",
   },
   company: {
@@ -115,7 +115,7 @@ export const HOME_VI: HomeCopy = {
     title: "Những điều mọi người hỏi *đầu tiên*.",
     items: [
       { q: "\"Cộng tác giữa con người và AI agent\" trong dewee nghĩa là gì?", a: "Con người và AI agent làm việc trong cùng một workspace. Agent trưởng nhóm tách yêu cầu thành các việc trên bảng công việc chung, giao cho agent thành viên rồi tổng hợp kết quả; con người giao việc, xem lại và phê duyệt những gì quan trọng. Đây là phối hợp qua công việc, tin nhắn và phê duyệt, không phải cùng sửa một tài liệu theo thời gian thực." },
-      { q: "Bắt đầu như thế nào?", a: "Vào app.dewee.sh và đăng nhập lần đầu bằng GitHub hoặc Google, dewee sẽ tạo workspace cho bạn. Nếu muốn dữ liệu nằm lại trong công ty, bạn có thể tự cài dewee miễn phí hoặc trao đổi với chúng tôi về gói On-Premises." },
+      { q: "Bắt đầu như thế nào?", a: "Cài dewee lên máy chủ hoặc Mac mini của bạn bằng script cài đặt hoặc Docker, hoàn toàn miễn phí. Tạo tài khoản chủ sở hữu trên bảng điều khiển, thêm nhà cung cấp LLM bằng API key của bạn rồi tạo agent đầu tiên. Muốn kết nối kênh chat như Zalo, Telegram hay Slack, bạn cần license $500/năm cho workspace đó. Nếu muốn chúng tôi cài đặt và dựng quy trình cùng bạn, hãy chọn gói On-Premises." },
       { q: "Điều gì ngăn agent làm việc không được phép?", a: "Mỗi agent chỉ dùng được công cụ và kênh bạn cấp. Công việc có thể yêu cầu người duyệt trước khi hoàn tất, lệnh nhạy cảm phải chờ thành viên duyệt hoặc từ chối, và mọi lượt chạy đều có trace để bạn thấy rõ chuyện gì đã xảy ra và vì sao." },
       { q: "Dữ liệu có nằm trên máy chủ của chúng tôi không?", a: "Có. Gói On-Premises chạy runtime dewee trên VPS hoặc Mac mini của bạn, kích hoạt bằng license key. Hoặc bạn tự cài dewee lên máy của mình: cài đặt miễn phí, license dùng để kết nối kênh chat." },
       { q: "Dùng được những mô hình AI nào?", a: `Anthropic, OpenAI, Gemini, DeepSeek, Qwen, Mistral, xAI, OpenRouter, Groq, Ollama và hơn thế: ${FACTS.providers} nhà cung cấp. Bạn dùng API key của mình, và mỗi agent có thể tự chuyển sang nhà cung cấp dự phòng.` },
@@ -125,8 +125,8 @@ export const HOME_VI: HomeCopy = {
   },
   cta: {
     title: "Đưa agent *vào làm việc*.",
-    body: "Tạo workspace và giao cho agent đầu tiên một việc thật, hoặc kể chúng tôi nghe những việc đội ngũ bạn muốn bớt đi. Tin nhắn nào cũng được trả lời.",
-    primary: "Tạo workspace",
+    body: "Tự cài dewee và giao cho agent đầu tiên một việc thật, hoặc kể chúng tôi nghe những việc đội ngũ bạn muốn bớt đi. Tin nhắn nào cũng được trả lời.",
+    primary: "Cài dewee miễn phí",
     secondary: "Trò chuyện với chúng tôi",
     note: "Đội ngũ của bạn. Agent của bạn. Quy tắc của bạn.",
   },

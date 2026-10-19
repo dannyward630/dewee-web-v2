@@ -51,8 +51,8 @@ Run this when a new stable release ships, and again before any campaign that quo
    update the header comment with the verified date.
 4. Update the Roadmap: move shipped items out of Now, add a "Recently shipped" line, and refresh the
    "checked" note. Check the in-progress items against the dewee plans and the latest betas.
-5. Check the calendar labels on Features (`monthLabel`, `calendarLabel` in `src/content/pages/features.ts`)
-   when the newest release falls in a new month.
+5. Nothing to do for the Features calendar: its month caption and accessible label are formatted
+   from `RELEASES[0].date` in `src/pages/[...lang]/features.astro`.
 6. Search for stale figures. This should print nothing outside tests and code comments about history:
 
    ```bash

@@ -82,8 +82,9 @@ const initial = (name: string) => (name.trim().split(/\s+/).slice(-1)[0] ?? "").
 </section>
 
 <style>
-  .mw { --spine: 3.5rem; --dot: 2rem; }
-  .mw__stack { display: grid; gap: clamp(2rem, 1rem + 3vw, 3.5rem); }
+  /* Geometry from the space scale: spine 3.5rem, numbered dot 2rem, avatar 2.25rem. */
+  .mw { --spine: calc(var(--space-7) + var(--space-2)); --dot: var(--space-6); --avatar: calc(var(--space-6) + var(--space-1)); }
+  .mw__stack { display: grid; gap: clamp(var(--space-6), var(--space-4) + 3vw, var(--space-7)); }
   .mw__head { display: grid; gap: var(--space-4); justify-items: start; }
   .mw__label { white-space: normal; color: var(--ink-2); }
   .mw__label :global(svg) { flex: none; color: var(--accent-ink); }
@@ -105,7 +106,7 @@ const initial = (name: string) => (name.trim().split(/\s+/).slice(-1)[0] ?? "").
   .mw__num {
     position: absolute; z-index: 1; inset-block-start: var(--space-5);
     display: grid; place-items: center; inline-size: var(--dot); block-size: var(--dot); border-radius: 50%;
-    background: var(--paper); border: 1.5px solid var(--accent-ink); color: var(--accent-ink);
+    background: var(--paper); border: 2px solid var(--accent-ink); color: var(--accent-ink);
     font-family: var(--font-mono-stack); font-size: var(--step--2); font-weight: 600;
   }
   .mw__step--human .mw__num { inset-inline-end: calc((var(--spine) + var(--dot)) / -2); }
@@ -118,21 +119,21 @@ const initial = (name: string) => (name.trim().split(/\s+/).slice(-1)[0] ?? "").
     background: var(--surface); border: 1px solid var(--rule); box-shadow: var(--shadow-1);
   }
   .mw__step--agent .mw__card { border-color: color-mix(in oklch, var(--accent) 35%, var(--rule)); }
-  .mw__step--board .mw__card { border: 1.5px dashed var(--rule-strong); box-shadow: var(--shadow-2); }
+  .mw__step--board .mw__card { border: 2px dashed var(--rule-strong); box-shadow: var(--shadow-2); }
 
   .mw__who { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap; }
   .mw__avatar {
-    flex: none; display: grid; place-items: center; inline-size: 2.25rem; block-size: 2.25rem; border-radius: 50%;
+    flex: none; display: grid; place-items: center; inline-size: var(--avatar); block-size: var(--avatar); border-radius: 50%;
     background: var(--paper-3); color: var(--ink-2); font-size: var(--step--1); font-weight: 600;
   }
   .mw__step--agent .mw__avatar, .mw__step--board .mw__avatar { background: var(--accent-soft); color: var(--accent-ink); }
-  .mw__name { display: grid; min-inline-size: 0; flex: 1 1 8rem; }
-  .mw__name b { color: var(--ink); font-weight: 600; line-height: 1.3; }
+  .mw__name { display: grid; min-inline-size: 0; flex: 1 1 var(--space-10); }
+  .mw__name b { color: var(--ink); font-weight: 600; line-height: var(--leading-snug); }
   .mw__role { font-size: var(--step--2); color: var(--ink-3); }
   .mw__kind {
-    font-family: var(--font-mono-stack); font-size: var(--step--2); letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3);
+    font-family: var(--font-mono-stack); font-size: var(--step--2); letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--ink-3);
   }
-  .mw__text { color: var(--ink-2); font-size: var(--step--1); line-height: 1.6; }
+  .mw__text { color: var(--ink-2); font-size: var(--step--1); line-height: var(--leading-body); }
   .mw__status { display: flex; }
 
   .mw__tasks { display: grid; border-block-start: 1px solid var(--rule); }
@@ -144,15 +145,15 @@ const initial = (name: string) => (name.trim().split(/\s+/).slice(-1)[0] ?? "").
   .mw__task-owner { font-family: var(--font-mono-stack); font-size: var(--step--2); color: var(--ink-3); font-weight: 400; }
 
   .mw__outcome {
-    display: flex; gap: var(--space-3); align-items: start; max-inline-size: 48rem; justify-self: center;
+    display: flex; gap: var(--space-3); align-items: start; max-inline-size: var(--measure); justify-self: center;
     padding: var(--space-4) var(--space-5); border-radius: var(--radius-3);
-    background: var(--success-soft); color: var(--ink); line-height: 1.6;
+    background: var(--success-soft); color: var(--ink); line-height: var(--leading-body);
   }
-  .mw__outcome :global(.mw__outcome-icon) { flex: none; margin-block-start: 0.1rem; color: color-mix(in oklch, var(--success) 65%, var(--ink)); }
+  .mw__outcome :global(.mw__outcome-icon) { flex: none; margin-block-start: var(--space-1); color: color-mix(in oklch, var(--success) 65%, var(--ink)); }
 
   /* Narrow: one column, the spine runs down the left edge and every step hangs from it. */
   @media (max-width: 960px) {
-    .mw { --rail: 2.75rem; }
+    .mw { --rail: calc(var(--space-7) - var(--space-1)); }
     .mw__flow { grid-template-columns: minmax(0, 1fr); padding-inline-start: var(--rail); row-gap: var(--space-4); }
     .mw__flow::before { inset-inline-start: calc(var(--dot) / 2); translate: -50% 0; }
     .mw__step, .mw__step--human, .mw__step--agent, .mw__step--board { grid-column: 1; grid-row: auto; padding-block-start: 0; }

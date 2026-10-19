@@ -10,7 +10,8 @@
  *   plans/261013-2200-773-public-mcp-oauth (pending).
  * - Later: plans/260917-1815-jev-reflex-memory-gate/stage-2-plus-roadmap.md (deferred register,
  *   explicitly "authorizes nothing").
- * - Shipped: GitHub releases v3.34 to v3.40 (25 Sep to 15 Oct 2026, stable only).
+ * - Shipped: GitHub releases v3.34 to v3.40 (25 Sep to 15 Oct 2026, stable only), eight in all with the
+ *   v3.38.1 patch, whose notes are only a compare link, so its line says no more than "patch".
  * No dates are promised for anything that has not shipped.
  */
 import type { Bi } from "~/i18n/config";
@@ -124,12 +125,13 @@ export const ROADMAP: Bi<RoadmapPage> = {
     },
     shipped: {
       eyebrow: "Recently shipped",
-      title: "Seven stable releases *in three weeks*.",
+      title: "Eight stable releases *in three weeks*.",
       lede: "The roadmap is a promise about direction. The changelog is the record of what actually shipped.",
       label: "dewee stable releases from 25 September to 15 October 2026",
       items: [
         { date: "15 Oct · v3.40", text: "A connected browser for agents, and a rebuilt admin console" },
         { date: "14 Oct · v3.39", text: "Access grants for agents and tools, and the first self-improvement loop" },
+        { date: "9 Oct · v3.38.1", text: "A patch release on top of v3.38" },
         { date: "7 Oct · v3.38", text: "An agent-first CLI, and workspace setup by conversation" },
         { date: "5 Oct · v3.37", text: "Trusted channel identity and a Discord support inbox" },
         { date: "1 Oct · v3.36", text: "Scoped model catalogs and GPT-6.1 Sol" },
@@ -243,12 +245,13 @@ export const ROADMAP: Bi<RoadmapPage> = {
     },
     shipped: {
       eyebrow: "Vừa phát hành",
-      title: "Bảy bản stable *trong ba tuần*.",
+      title: "Tám bản stable *trong ba tuần*.",
       lede: "Lộ trình là lời hứa về hướng đi. Changelog mới là ghi chép về những gì đã thật sự phát hành.",
       label: "Các bản stable của dewee từ 25/9 đến 15/10/2026",
       items: [
         { date: "15/10 · v3.40", text: "Trình duyệt kết nối cho agent, và admin console được dựng lại" },
         { date: "14/10 · v3.39", text: "Cấp quyền truy cập cho agent và công cụ, cùng vòng tự cải thiện đầu tiên" },
+        { date: "9/10 · v3.38.1", text: "Bản vá bổ sung cho v3.38" },
         { date: "7/10 · v3.38", text: "CLI ưu tiên agent, và thiết lập workspace bằng hội thoại" },
         { date: "5/10 · v3.37", text: "Danh tính kênh đáng tin cậy và hộp thư hỗ trợ trên Discord" },
         { date: "1/10 · v3.36", text: "Danh mục model theo phạm vi và GPT-6.1 Sol" },

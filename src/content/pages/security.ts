@@ -47,7 +47,7 @@ export const SECURITY_PAGE: Bi<{
     meta: {
       title: "Security: shut at the door, opened on purpose",
       description:
-        "Five layers of defence keep people in control of AI agents: rate limits, injection checks, a tool policy engine, approvals, secret scrubbing and AES-256-GCM.",
+        "Five defence layers keep people in control of AI agents: transport, input checks, tool policy, output scrubbing and isolation, plus approvals and AES-256-GCM.",
       crumb: "Security",
     },
     hero: {
@@ -271,7 +271,7 @@ export const SECURITY_PAGE: Bi<{
     meta: {
       title: "Bảo mật: đóng từ cửa, mở có chủ đích",
       description:
-        "Năm lớp phòng thủ giúp con người kiểm soát AI agent: giới hạn tốc độ, kiểm tra injection, policy engine cho tool, phê duyệt, che secret và mã hoá AES-256-GCM.",
+        "Năm lớp phòng thủ giữ con người làm chủ AI agent: transport, kiểm tra đầu vào, chính sách tool, lọc đầu ra và cô lập, cùng phê duyệt và mã hoá AES-256-GCM.",
       crumb: "Bảo mật",
     },
     hero: {
