@@ -65,6 +65,15 @@ Khi bật ghép nối, một người gửi lạ nhắn trực tiếp cho agent 
 2. Chọn **Phê duyệt** để cho người gửi trò chuyện với agent, hoặc **Từ chối** để từ chối.
 3. Muốn ngắt kết nối một người sau này, tìm họ trong **Người gửi đã kết nối**, chọn **Thu hồi**, rồi **Thu hồi quyền truy cập**. Họ phải yêu cầu ghép nối lại trước khi agent trả lời trực tiếp.
 
+Nút **Phê duyệt** bị tắt khi yêu cầu không thể phê duyệt tại đây, và khi rê chuột lên nút bạn sẽ thấy lý do:
+
+- Kênh của yêu cầu không còn tồn tại trong workspace, đã bị đổi tên hoặc đang tắt. Hãy sửa kênh, rồi nhờ người gửi nhắn lại để nhận mã mới.
+- Agent của kênh đã bị xoá, nên tin nhắn được phê duyệt sẽ không có nơi nhận. Hãy gán agent cho kênh trước.
+- Mã đã hết hạn. Người gửi cần một mã mới.
+- Yêu cầu đến từ một phiên trình duyệt. Chỉ người vận hành gateway mới phê duyệt được loại này.
+
+Lúc bạn chọn **Phê duyệt**, hệ thống kiểm tra lại kênh một lần nữa, nên yêu cầu nào đã thay đổi trong lúc đó sẽ bị từ chối và vẫn nằm trong danh sách. Bạn vẫn luôn có thể **Từ chối** mọi yêu cầu.
+
 **Chính sách ghép nối** quyết định một lượt phê duyệt mới có hiệu lực bao lâu. Trong **Phạm vi**, chọn **Workspace** cho cả workspace hoặc **Theo kênh** cho một kênh. Thẻ chính sách cho biết chính sách đang áp dụng và nguồn của nó.
 
 - Đặt **Thời hạn** theo số ngày, hoặc bật **Không hết hạn**, rồi chọn **Lưu chính sách**.

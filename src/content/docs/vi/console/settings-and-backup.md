@@ -4,7 +4,7 @@ description: Thay đổi cài đặt workspace với một thanh lưu chung, xem
 section: console
 order: 13
 screens: [settings, backup]
-updated: 2026-10-14
+updated: 2026-10-16
 ---
 
 **Cài đặt** chứa các tuỳ chọn áp dụng cho toàn workspace, từ tên và múi giờ mặc định tới những cài đặt mà runtime cho phép bạn thay đổi. **Sao lưu** cho biết dữ liệu của bạn được bảo vệ thế nào theo hình thức triển khai, và cách yêu cầu xuất hay khôi phục dữ liệu. Trên Dedicated và On-Premises, chủ workspace còn có thêm vài trang để quản lý runtime do chính họ vận hành.
@@ -26,7 +26,8 @@ Xem [Thành viên, vai trò và API key](/docs/console/members-roles-and-api-key
 Trang **Cài đặt** có danh sách mục ở bên trái và nội dung của mục đang chọn ở bên phải:
 
 - **Chung**: tên workspace và các thông tin tham chiếu.
-- **Thương hiệu**, **Bảo mật**, **Thông báo**, **Mặc định cho agent**, **Lưu giữ dữ liệu** và **Lớp quyết định**: bản triển khai của bạn không báo các mục này, nên mỗi mục hiện **Chưa được báo cáo**.
+- **Thương hiệu**, **Bảo mật**, **Thông báo**, **Mặc định cho agent** và **Lưu giữ dữ liệu**: bản triển khai của bạn không báo các mục này, nên mỗi mục hiện **Chưa được báo cáo**.
+- **Lớp quyết định**: Jev by TypeSafe. Hiện cài đặt của hệ thống, cho phép đặt chặt hơn cho workspace này và liệt kê các quyết định gần đây kèm liên kết tới trace. Xem [Lớp quyết định](/docs/concepts/decision-layer#ghi-đè-theo-workspace).
 - **Ngôn ngữ và khu vực**: múi giờ mặc định.
 - **Giọng nói**: cài đặt chuyển văn bản thành giọng nói và giọng nói thành văn bản do runtime cung cấp.
 - **Kênh và ghép nối**: cài đặt ghép nối và cập nhật task do runtime cung cấp.
