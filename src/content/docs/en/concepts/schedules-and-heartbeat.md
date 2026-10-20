@@ -3,7 +3,7 @@ title: Schedules and heartbeat
 description: How dewee runs agents on a timer, from cron jobs with retries and run history to the heartbeat checklist, and how queued messages share the scheduler.
 section: concepts
 order: 9
-updated: 2026-09-25
+updated: 2026-10-20
 ---
 
 A dewee agent does not have to wait for someone to message it. A cron job runs an agent turn or a workflow at a set time or interval. A heartbeat wakes an agent on a fixed interval to work through its own checklist. Both go through the same scheduler that queues chat messages, so timed work and live conversations do not collide.
