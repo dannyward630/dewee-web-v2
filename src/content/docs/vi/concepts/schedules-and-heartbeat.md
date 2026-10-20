@@ -60,6 +60,8 @@ dewee cron toggle <job-id> false
 
 `--force` chạy job ngay cả khi chưa đến hạn.
 
+Mỗi job chỉ chạy một lượt tại một thời điểm. **Run now** hoặc `dewee cron run` trên một job đang chạy sẽ bị từ chối với thông báo "schedule is already running", và một mốc lịch đến trong lúc job đang chạy sẽ bị bỏ qua chứ không xếp hàng. Nếu gateway bị sập hoặc khởi động lại giữa chừng, lượt chạy được đánh dấu `interrupted` và job được lên lịch lại: trên PostgreSQL là khoảng hai phút sau khi lượt chạy ngừng báo còn sống, trên Lite là khi gateway khởi động lại. Một lượt đang chạy trên instance gateway khác vẫn tiếp tục khi bộ lập lịch chuyển sang instance khác.
+
 ## Hàng đợi session và các lane
 
 Mọi lượt chạy của agent đều đi qua bộ lập lịch, và tin nhắn gửi tới một session sẽ chờ trong hàng đợi của session đó. Session DM chạy từng lượt một, còn session nhóm chạy từ ba lượt trở lên cùng lúc. Khi lịch sử của session vượt quá 60% cửa sổ ngữ cảnh của model, số lượt chạy đồng thời giảm về một.

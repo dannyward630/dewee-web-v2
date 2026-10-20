@@ -60,6 +60,8 @@ dewee cron toggle <job-id> false
 
 `--force` runs a job now even if it is not due.
 
+A job runs at most once at a time. **Run now** or `dewee cron run` on a job that is still running is refused with "schedule is already running", and a scheduled time that comes up during a run is skipped, not queued. If a gateway crashes or restarts during a run, the run is marked `interrupted` and the job is scheduled again: on PostgreSQL about two minutes after the run stops reporting that it is alive, on Lite when the gateway starts again. A run still executing on another gateway instance keeps going when the scheduler moves between instances.
+
 ## The session queue and lanes
 
 Every agent run goes through the scheduler, and messages to a session wait in that session's queue. A DM session runs one turn at a time, and a group session runs three or more. When a session's history passes 60% of the model's context window, it drops back to one.
