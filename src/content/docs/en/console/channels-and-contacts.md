@@ -37,7 +37,7 @@ To connect one:
 4. On **Identity & Policies**, set the **DM policy**, the **Group policy** and **Require mention in groups**. More options sit under **Advanced platform settings**.
 5. Select **Connect channel**. For Zalo OA the button is **Create & continue setup**: register the generated Callback and Webhook URLs in Zalo, paste the webhook secret, then authorize the Official Account.
 
-Feishu/Lark in webhook mode receives events on the gateway's own address. On a shared workspace, give each Feishu channel its own **Webhook Path** under `/feishu/` (for example `/feishu/sales`); a path outside `/feishu/` falls back to `/feishu/events`. Only the master workspace can open a separate **Webhook Port**; on other workspaces the port is ignored and events arrive on the main address.
+Feishu/Lark in webhook mode receives events on the gateway's own address. On a shared workspace, give each Feishu channel its own **Webhook Path** under `/feishu/` (for example `/feishu/sales`); a path outside `/feishu/`, or one ending in `/`, falls back to `/feishu/events`. Two workspaces cannot share a path: only one of them receives the events. Only the master workspace can open a separate **Webhook Port**; on other workspaces the port is ignored and events arrive on the main address.
 
 The **DM policy** offers **Pairing required**, **Open**, **Allowed list only** and **Disabled**. The **Group policy** offers **Pairing approval**, **Open**, **Allowed list only** and **Disabled**. On most platforms both default to pairing; Zalo Personal defaults to **Allowed list only**. **Require mention in groups** is on by default. **Task status updates** sets how task progress reaches the channel: **Inherit agent or workspace**, **Off**, **Progress**, **Completion** or **Both**.
 
