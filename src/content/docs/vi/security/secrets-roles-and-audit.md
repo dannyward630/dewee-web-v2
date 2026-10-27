@@ -25,7 +25,7 @@ HTTP API không bao giờ trả về API key của provider đã lưu; nó hiệ
 
 Agent được bạn cho phép xin credential không bao giờ bảo bạn dán key vào khung chat. Trong chat của console, agent hiện một form; trên ứng dụng chat, agent gửi một link dùng một lần tới form trong console. Link có hiệu lực 24 giờ và chỉ dùng được bởi người đã yêu cầu. Giá trị được ghi thẳng vào kho mã hoá, agent chỉ biết là đã lưu hay chưa.
 
-Nếu bạn yêu cầu từ một nhóm hoặc một thread, link được gửi cho bạn qua tin nhắn riêng, không bao giờ vào nhóm; nhóm chỉ được báo là đã gửi tin nhắn riêng. Tính năng này hoạt động trên Telegram, Discord và Slack, và chỉ khi tài khoản chat của bạn đã liên kết với một người dùng trong workspace. Nếu bot không nhắn riêng được cho bạn (ví dụ bạn chưa từng bắt đầu chat với bot), yêu cầu bị huỷ và agent sẽ đề nghị bạn nhắn trực tiếp cho nó hoặc tiếp tục trong console.
+Nếu bạn yêu cầu từ một nhóm hoặc một thread, link được gửi cho bạn qua tin nhắn riêng, không bao giờ vào nhóm; nhóm chỉ được báo là đã gửi tin nhắn riêng. Tính năng này hoạt động trên Telegram, Discord và Slack. Nếu bot không nhắn riêng được cho bạn (ví dụ bạn chưa từng bắt đầu chat với bot, hoặc kênh không hỗ trợ tin nhắn riêng), yêu cầu bị huỷ, link bị thu hồi và agent sẽ đề nghị bạn tiếp tục trong chat riêng hoặc trong console. Các lần chạy theo lịch hoặc tự động khác không bao giờ gửi link credential trên ứng dụng chat.
 
 ## Vai trò trong workspace trên console
 
