@@ -74,6 +74,8 @@ Each agent works in its own workspace, with a sub-directory per user. With the s
 
 When an agent needs a credentialed CLI such as `gh`, `aws`, `gcloud`, `kubectl` or `terraform`, dewee runs the binary for it without a shell and injects the credential at run time. The agent never sees the raw value. Before any command runs, environment variables that look like secrets (names ending in `_TOKEN`, `_SECRET`, `_KEY`, `_PASSWORD`, `_DSN` or `_CREDENTIAL`, and the gateway's own variables) are removed, and the output is scrubbed.
 
+A subagent or background task that an agent starts does not inherit the personal credentials of the user who started the parent run. In the child run, a credentialed CLI matches only credentials configured for the agent itself, a personal `gh` or Git token is refused before the command runs, a user's own MCP servers and connected browser are refused, and the managed browser opens pages without that user's cookies. The model is told to hand such a command back to the parent run, and the refusal is logged and recorded on the subagent's trace span.
+
 ## Multi-tenant isolation
 
 Every tenant-owned table carries a tenant ID, and every query filters on it. Events are filtered by tenant on the server, file links are signed, and each channel connection belongs to exactly one tenant. Suspending a tenant stops its runtime work, and revoked access is pushed to connected clients immediately. Details are in [Multi-tenancy](/docs/concepts/multi-tenancy).

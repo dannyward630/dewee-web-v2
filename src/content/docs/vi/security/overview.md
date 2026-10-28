@@ -74,6 +74,8 @@ Mỗi agent làm việc trong workspace riêng, với thư mục con cho từng 
 
 Khi agent cần một CLI có credential như `gh`, `aws`, `gcloud`, `kubectl` hay `terraform`, dewee chạy binary đó thay cho agent mà không qua shell và chèn credential lúc chạy. Agent không bao giờ thấy giá trị gốc. Trước mỗi lệnh, các biến môi trường trông giống secret (tên kết thúc bằng `_TOKEN`, `_SECRET`, `_KEY`, `_PASSWORD`, `_DSN` hoặc `_CREDENTIAL`, và các biến của chính gateway) bị gỡ bỏ, và đầu ra được làm sạch.
 
+Subagent hoặc tác vụ nền mà agent khởi tạo không kế thừa credential cá nhân của người dùng đã bắt đầu run cha. Trong run con, CLI có credential chỉ dùng được credential cấu hình cho chính agent; token `gh` hoặc Git cá nhân bị từ chối trước khi lệnh chạy; MCP server riêng và trình duyệt đã kết nối của người dùng bị từ chối; trình duyệt do gateway quản lý mở trang không kèm cookie của người dùng đó. Model được hướng dẫn trả lệnh đó về run cha, và lần từ chối được ghi log cùng trace span của subagent.
+
 ## Cách ly nhiều tenant
 
 Mọi bảng thuộc về tenant đều có tenant ID, và mọi truy vấn đều lọc theo nó. Sự kiện được lọc theo tenant ngay trên máy chủ, đường dẫn file được ký, và mỗi kết nối channel thuộc về đúng một tenant. Tạm ngưng một tenant sẽ dừng công việc runtime của tenant đó, và quyền bị thu hồi được đẩy ngay tới các client đang kết nối. Chi tiết trong [Multi-tenancy](/docs/concepts/multi-tenancy).
