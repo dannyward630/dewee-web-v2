@@ -48,6 +48,8 @@ The tool list the model sees is built in this order:
 
 MCP servers register as the groups `mcp` and `mcp:<server>`.
 
+A conversation's per-request allow list (step 3) and a run's tool ceiling, such as a website visitor's, hold for Claude CLI agents too. Their tools run through the runtime's MCP bridge, and on such a turn the bridge offers only the tools the run allows, while the agent's other MCP servers are not connected. A turn allowed no tools gets none. A run resumed after an approval, an answer or a credential request keeps the limits of the run that asked.
+
 ## Shell commands
 
 `exec` runs with a default timeout of 60 seconds, adjustable from 1 to 3,600.
