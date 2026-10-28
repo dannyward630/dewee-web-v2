@@ -48,7 +48,7 @@ Danh sách tool mà model nhìn thấy được dựng theo thứ tự sau:
 
 MCP server được đăng ký thành các nhóm `mcp` và `mcp:<server>`.
 
-Danh sách cho phép theo request của một cuộc trò chuyện (bước 3) và giới hạn tool của một lượt chạy, ví dụ của khách truy cập website, cũng áp dụng cho agent Claude CLI. Tool của các agent này chạy qua MCP bridge của runtime. Ở những lượt như vậy, bridge chỉ cung cấp các tool mà lượt chạy được phép dùng, và các MCP server khác của agent không được kết nối. Lượt chạy không được phép dùng tool nào thì không có tool nào. Một lượt chạy được tiếp tục sau khi có phê duyệt, câu trả lời hoặc yêu cầu thông tin xác thực vẫn giữ giới hạn của lượt chạy đã đưa ra yêu cầu đó.
+Pipeline chính sách cũng áp dụng cho agent Claude CLI. Tool của các agent này chạy qua MCP bridge của runtime, và ở mọi lượt, bridge chỉ cung cấp các tool mà pipeline để lại cho agent, nên tool bị chính sách của agent từ chối không thể dùng qua bridge. Danh sách cho phép theo request của một cuộc trò chuyện (bước 3) và giới hạn tool của một lượt chạy, ví dụ của khách truy cập website, còn ngắt kết nối các MCP server khác của agent trong lượt đó. Lượt chạy không được phép dùng tool nào thì không có tool nào. Một lượt chạy được tiếp tục sau khi có phê duyệt, câu trả lời hoặc yêu cầu thông tin xác thực vẫn giữ giới hạn của lượt chạy đã đưa ra yêu cầu đó.
 
 ## Lệnh shell
 
