@@ -4,7 +4,7 @@ import { niceScale } from "../../src/lib/blocks/post-widgets/chart-svg";
 import { postBodyMarkdown, renderPostBody } from "../../src/lib/blocks/post-widgets/post-body";
 import { POST_WIDGETS } from "../../src/lib/blocks/post-widgets/post-widget-registry";
 import { widgetLabels } from "../../src/lib/blocks/post-widgets/widget-labels";
-import { mermaidType } from "../../src/lib/blocks/visual-block-schemas";
+import { hasClickStatement, mermaidType } from "../../src/lib/blocks/visual-block-schemas";
 
 const en = { labels: widgetLabels("en") };
 const vi = { labels: widgetLabels("vi") };
@@ -97,6 +97,17 @@ describe("Diagram", () => {
     expect(issues("Diagram", { ...flow, source: "%% a comment\nsequenceDiagram\n A->>B: hi\n B-->>A: ok" })).toEqual([]);
     expect(issues("Diagram", { ...flow, source: "classDiagram\n Animal <|-- Duck" })).toEqual([]);
     expect(mermaidType("\r\n%% note\r\ngraph TD\r\n A-->B")).toBe("graph");
+  });
+
+  it("refuses click statements after a semicolon on the same line, not just at line start", () => {
+    for (const bad of ['flowchart LR\n A-->B; click A href "javascript:alert(1)"', "flowchart LR; A-->B;click B callback", "graph TD\r\n A-->B ;\tclick A cb"]) {
+      expect(hasClickStatement(bad), bad).toBe(true);
+      expect(issues("Diagram", { ...flow, source: bad }).length, bad).toBeGreaterThan(0);
+    }
+    for (const ok of ["flowchart LR\n A[click here]-->B", "flowchart LR\n A-->B; B-->C", "sequenceDiagram\n A->>B: double-click to open"]) {
+      expect(hasClickStatement(ok), ok).toBe(false);
+      expect(issues("Diagram", { ...flow, source: ok }), ok).toEqual([]);
+    }
   });
 
   it("ships escaped source with the alt text on the figure", () => {

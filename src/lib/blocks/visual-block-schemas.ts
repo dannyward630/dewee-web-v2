@@ -82,6 +82,11 @@ export function mermaidType(source: string): string {
   return line.trim().split(/\s/)[0] ?? "";
 }
 
+/** True when any statement is a `click`; Mermaid ends a statement at a newline or at `;`. */
+export function hasClickStatement(source: string): boolean {
+  return source.split(/\r?\n|\r|;/).some((statement) => /^\s*click\s/.test(statement));
+}
+
 const mermaidSource = z
   .string()
   .max(5000, "Keep the diagram under 5,000 characters.")
@@ -91,7 +96,7 @@ const mermaidSource = z
   // matter, click handlers and raw HTML out of the source as well, so nothing depends on that alone.
   .refine((s) => !/%%\s*\{/.test(s), "Init directives (%%{…}%%) are not allowed; the site sets the theme.")
   .refine((s) => !/^\s*---\s*$/m.test(s), "Front matter (---) is not allowed in the diagram source.")
-  .refine((s) => !/^\s*click\s/m.test(s), "click handlers and links are not allowed in diagrams.")
+  .refine((s) => !hasClickStatement(s), "click handlers and links are not allowed in diagrams.")
   .refine((s) => !/<\s*\/?\s*[a-z!]/i.test(s), "HTML tags are not allowed in diagram labels; use plain text.");
 
 const diagram = z
