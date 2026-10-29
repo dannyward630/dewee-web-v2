@@ -98,7 +98,8 @@ export async function widgetReport(db: D1Database, postId: string, widgetId: str
 
 /** A spreadsheet cell: quoted, and text that a spreadsheet would run as a formula is defused. */
 export function csvCell(value: string): string {
-  const safe = /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+  // Spreadsheets skip leading whitespace before reading a formula, so look past it too.
+  const safe = /^[\t\r]|^\s*[=+\-@]/.test(value) ? `'${value}` : value;
   return `"${safe.replace(/"/g, '""')}"`;
 }
 

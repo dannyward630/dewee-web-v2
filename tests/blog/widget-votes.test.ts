@@ -226,4 +226,9 @@ describe("admin survey report", () => {
     expect(csvCell("@cmd")).toBe(`"'@cmd"`);
     expect(await widgetReport(env.DB, post.id, "missing")).toBeNull();
   });
+
+  it("defuses formulas hidden behind leading whitespace, and leaves plain text alone", () => {
+    for (const v of [" =1+1", "  +SUM(A1)", "\n-2", "\u00a0@cmd", "\tplain", "\rplain"]) expect(csvCell(v)).toBe(`"'${v}"`);
+    for (const v of ["plain", "a=b", "x - y", "mail@example.com", " hello"]) expect(csvCell(v)).toBe(`"${v}"`);
+  });
 });
