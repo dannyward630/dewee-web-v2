@@ -42,6 +42,32 @@ export const BLOG = {
   rss: {
     title: { en: "dewee blog", vi: "Blog dewee" },
   },
+  /** Labels inside inline post widgets (src/lib/blocks/post-widgets). `{name}` is filled in. */
+  widgets: {
+    copy: { en: "Copy", vi: "Sao chép" },
+    copied: { en: "Copied", vi: "Đã chép" },
+    copyFailed: { en: "Copy failed", vi: "Không chép được" },
+    plainCode: { en: "Code", vi: "Mã" },
+    gallery: { en: "Image gallery", vi: "Bộ sưu tập ảnh" },
+    previous: { en: "Previous image", vi: "Ảnh trước" },
+    next: { en: "Next image", vi: "Ảnh sau" },
+    slideOf: { en: "{n} of {total}", vi: "{n} / {total}" },
+    play: { en: "Play video", vi: "Phát video" },
+    watchOn: { en: "Watch on {platform}", vi: "Xem trên {platform}" },
+    videoFile: { en: "Download the video", vi: "Tải video" },
+    viewOn: { en: "View on {platform}", vi: "Xem trên {platform}" },
+    postBy: { en: "{author} on {platform}", vi: "{author} trên {platform}" },
+    previewOnly: { en: "Preview only, readers do not see this.", vi: "Chỉ hiện trong bản xem trước, người đọc không thấy." },
+    noticeMissing: { en: 'No block has the id "{id}", so nothing is placed here.', vi: 'Không có block nào mang id "{id}", nên chỗ này trống.' },
+    noticeInvalid: { en: 'Block "{id}" ({type}) is hidden because it is invalid: {reason}', vi: 'Block "{id}" ({type}) bị ẩn vì không hợp lệ: {reason}' },
+    noticeMalformed: { en: "This widget directive cannot be read: {reason}", vi: "Không đọc được directive widget này: {reason}" },
+    noticeNested: {
+      en: "A widget cannot sit inside a list or a quote. Put the directive on its own line, outside it.",
+      vi: "Widget không thể nằm trong danh sách hay trích dẫn. Hãy đặt directive trên một dòng riêng, bên ngoài.",
+    },
+    noticeDuplicate: { en: 'Block "{id}" is already placed above. Each block appears once.', vi: 'Block "{id}" đã được đặt ở trên. Mỗi block chỉ xuất hiện một lần.' },
+    noticeUnplacedInvalid: { en: "Block {n} ({type}) is hidden because it is invalid: {reason}", vi: "Block {n} ({type}) bị ẩn vì không hợp lệ: {reason}" },
+  },
   cta: {
     title: { en: "Put an agent on the work your team *would rather not do*.", vi: "Giao cho agent phần việc đội ngũ bạn *không muốn làm*." },
     body: {

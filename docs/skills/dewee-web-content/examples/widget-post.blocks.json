@@ -1,0 +1,77 @@
+[
+  {
+    "id": "chart-placeholder",
+    "type": "Callout",
+    "props": { "tone": "note", "title": "Rollout, week by week", "body": "Week 1: 12 teams. Week 2: 31 teams. Week 3: 58 teams. A chart replaces this callout once chart widgets ship." }
+  },
+  {
+    "id": "rollout-steps",
+    "type": "Steps",
+    "props": {
+      "label": "Step",
+      "items": [
+        { "title": "Invite", "body": "Add the agent to a team chat." },
+        { "title": "Approve", "body": "A person approves the first run." },
+        { "title": "Repeat", "body": "The agent takes the same job every week." }
+      ]
+    }
+  },
+  {
+    "id": "diagram-placeholder",
+    "type": "Callout",
+    "props": { "tone": "tip", "title": "How a request flows", "body": "Chat app → dewee gateway → agent → tools → a person approves → the reply goes back to the chat." }
+  },
+  {
+    "id": "screens",
+    "type": "Gallery",
+    "props": {
+      "label": "dewee ecosystem logos",
+      "caption": "Three of the products that run on dewee.",
+      "images": [
+        { "src": "https://dewee.sh/img/ecosystem/goclaw.svg", "alt": "GoClaw logo", "caption": "GoClaw" },
+        { "src": "https://dewee.sh/img/ecosystem/agentkit.svg", "alt": "AgentKit logo", "caption": "AgentKit" },
+        { "src": "https://dewee.sh/img/ecosystem/dewee-webchat.svg", "alt": "dewee webchat logo", "caption": "Webchat" }
+      ]
+    }
+  },
+  {
+    "id": "walkthrough",
+    "type": "VideoEmbed",
+    "props": { "url": "https://www.youtube.com/watch?v=M7lc1UVf-VE", "title": "YouTube player demo", "caption": "Loads from youtube-nocookie.com only after a click." }
+  },
+  {
+    "id": "clip",
+    "type": "Video",
+    "props": {
+      "title": "A flower opening",
+      "caption": "A short muted loop. It starts on its own only for readers who allow motion.",
+      "sources": [
+        { "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm", "type": "video/webm" },
+        { "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "type": "video/mp4" }
+      ],
+      "autoplay": true,
+      "muted": true,
+      "loop": true
+    }
+  },
+  {
+    "id": "reaction",
+    "type": "SocialCard",
+    "props": {
+      "url": "https://bsky.app/profile/dewee.sh/post/3l2example",
+      "author": "dewee",
+      "handle": "@dewee.sh",
+      "date": "2026-10-20",
+      "text": "Our first post with inline widgets is live. No scripts from the network it quotes."
+    }
+  },
+  {
+    "id": "install",
+    "type": "CodeBlock",
+    "props": { "language": "bash", "filename": "Terminal", "code": "curl -fsSL https://dewee.sh/install.sh | sh\ndewee-web posts create post.md --publish" }
+  },
+  {
+    "type": "Quote",
+    "props": { "text": "Unplaced blocks render after the body, in order.", "cite": "The post format" }
+  }
+]
