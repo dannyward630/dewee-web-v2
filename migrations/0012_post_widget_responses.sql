@@ -16,6 +16,8 @@ CREATE TABLE IF NOT EXISTS widget_responses (
   UNIQUE (post_id, widget_id, voter)
 );
 CREATE INDEX IF NOT EXISTS widget_responses_tally ON widget_responses (post_id, widget_id, widget_type, choice);
+-- A reader's own answers on a post (results endpoint), without scanning every vote on the post.
+CREATE INDEX IF NOT EXISTS widget_responses_voter ON widget_responses (post_id, voter);
 
 -- Server-side random values the worker creates on first use (the voter-hash salt), so no extra
 -- secret has to be provisioned per environment.
