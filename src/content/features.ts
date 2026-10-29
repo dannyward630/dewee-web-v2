@@ -2,7 +2,7 @@
  * The dewee capability catalogue, EN + VI. The release list lives in src/content/releases.ts and is
  * re-exported here, so pages and tests keep importing both from one module.
  *
- * Sources (verified 2026-10-19): GitHub release notes v3.28.0 → v3.40.0 (stable only), and the dewee
+ * Sources (verified 2026-10-29): GitHub release notes v3.28.0 → v3.42.0 (stable only), and the dewee
  * repo docs: 01-agent-loop, 03-tools-system, 05-channels-messaging, 07-bootstrap-skills-memory,
  * 08-scheduling-cron, 09-security, 10-tracing-observability, 11-agent-teams, 23-multi-tenant-architecture,
  * 24-knowledge-vault, 25-workflows, ccp-usage-tasks-approvals.

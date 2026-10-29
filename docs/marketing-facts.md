@@ -12,13 +12,13 @@ the latest stable tag (`gh release list --repo nextlevelbuilder/dewee --exclude-
 
 | Figure | Value | Shown on | Source and command | Last verified |
 |---|---|---|---|---|
-| Latest stable release | v3.40.0 (2026-10-15) | Homepage proof, About report card, llms.txt, JSON-LD `softwareVersion` | `FACTS.stableRelease`; `gh release list --repo nextlevelbuilder/dewee --exclude-pre-releases --limit 3` | 2026-10-19 |
+| Latest stable release | v3.42.0 (2026-10-27) | Homepage proof, About report card, llms.txt, JSON-LD `softwareVersion` | `FACTS.stableRelease`; `gh release list --repo nextlevelbuilder/dewee --exclude-pre-releases --limit 3`. Date is `published_at` in UTC, not a commit date. `pnpm releases:check` (also a CI step) fails when GitHub has a newer stable release; v3.43.0-beta.1 is a prerelease and is ignored | 2026-10-29 |
 | Chat channels | 11 | Homepage, Integrations, Features catalogue, llms.txt | `FACTS.channels` = `CHANNELS.length` in `src/content/integrations.ts`; compare with the adapters in dewee `internal/channels/` (Zalo has three variants) | 2026-10-19 |
 | Model providers | 22 | Homepage, Integrations, Features catalogue, llms.txt | `FACTS.providers` = `PROVIDERS.length`; compare with dewee `internal/providers` and `docs/02-providers.md` (Atlas Cloud added in v3.39.0) | 2026-10-19 |
-| Go test functions | 13,351, shown as "13,000+" | Homepage proof, About report card | `FACTS.goTests`; in the dewee repo: `git grep -h -E '^func Test[A-Z_]' v<tag> -- '*_test.go' \| wc -l` | 2026-10-19 (v3.40.0) |
-| Go lines under `internal/` | 921,264, shown as "900,000+" | Homepage proof | `FACTS.goLines`; in the dewee repo: `git grep -c '' v<tag> -- 'internal/*.go' \| awk -F: '{s+=$NF} END{print s}'` (tests included) | 2026-10-19 (v3.40.0) |
+| Go test functions | 13,351, shown as "13,000+" | Homepage proof, About report card | `FACTS.goTests`; in the dewee repo: `git grep -h -E '^func Test[A-Z_]' v<tag> -- '*_test.go' \| wc -l` | 2026-10-19 (v3.40.0); v3.42.0 has 15,358, so the rounded figure still holds |
+| Go lines under `internal/` | 921,264, shown as "900,000+" | Homepage proof | `FACTS.goLines`; in the dewee repo: `git grep -c '' v<tag> -- 'internal/*.go' \| awk -F: '{s+=$NF} END{print s}'` (tests included) | 2026-10-19 (v3.40.0); v3.42.0 has 1,081,907, so the rounded figure still holds |
 | Test cadence | Full suite runs on one preflighted commit before every release | Homepage proof, About report card | dewee commit `e511ada` (#1351, 2026-10-14): pull requests and `dev` pushes no longer run tests. Never write "on every change" or "on every pull request" | 2026-10-19 |
-| Stable release history | v3.28 to v3.40, v3.38.1 has no notes | Features releases, Roadmap "Recently shipped" | `RELEASES` in `src/content/features.ts`; `gh release view v<x> --repo nextlevelbuilder/dewee` for each stable tag | 2026-10-19 |
+| Stable release history | v3.28 to v3.42, v3.38.1 has no notes | Features releases, Roadmap "Recently shipped" | `RELEASES` in `src/content/releases.ts`; v3.42.0's notes are only a promotion PR, so its entry comes from `git log --no-merges v3.41.0..v3.42.0`; `gh release view v<x> --repo nextlevelbuilder/dewee` for each stable tag | 2026-10-29 |
 | Roadmap columns | Now, Next, Later | Roadmap | `src/content/pages/roadmap.ts` header lists the dewee plan or beta release behind every item; no dates are promised | 2026-10-19 |
 | Public MCP path | `/mcp/server` (legacy `/mcp` deprecated) | Integrations, Features | dewee `docs/18-http-api.md` at `v<tag>` | 2026-10-19 |
 | Five layers of defence, AES-256-GCM, seven denied shell categories | as written | Security | dewee `docs/09-security.md`, `internal/crypto/aes.go` | 2026-09-25 |
@@ -26,7 +26,7 @@ the latest stable tag (`gh release list --repo nextlevelbuilder/dewee --exclude-
 | Prices ($500 a year licence, On-Premises from $5K) | as written | Pricing, Install | `src/content/plans.ts`, `src/content/early-access.ts` (the owners' decision, not derived) | 2026-09-25 |
 | NextLevelBuilder proof (130K+ stars, 115 contributors, 10,000+ businesses, 65K+ members) | as written | About | `plans/reports/scout-260924-2346-ecosystem-story.md`, GitHub counts read 2026-09-24 | 2026-09-24, not re-read in the last refresh |
 
-Rows dated before 2026-10-19 were not re-checked in the last refresh. Treat them as due.
+Rows dated before 2026-10-19 were not re-checked in the last refresh. The Roadmap Now, Next and Later columns were last checked on 2026-10-19; only their release references were updated on 2026-10-29. Treat them as due.
 
 ## Wording rules the figures depend on
 
@@ -46,7 +46,7 @@ Run this when a new stable release ships, and again before any campaign that quo
 2. Update `src/content/facts.ts`: `stableRelease`, then re-count with the commands in the table
    (tests and lines at the new tag) and update `goTests` and `goLines`. If the channel or provider
    lists changed, update `CHANNELS` or `PROVIDERS` in `src/content/integrations.ts` so the counts follow.
-3. Add a `RELEASES` entry at the top of `src/content/features.ts`: benefits first, only what the notes
+3. Add a `RELEASES` entry at the top of `src/content/releases.ts`: benefits first, only what the notes
    support, EN and VI. Set `since` on a catalogue item only for a release listed in `RELEASES`, and
    update the header comment with the verified date.
 4. Update the Roadmap: move shipped items out of Now, add a "Recently shipped" line, and refresh the

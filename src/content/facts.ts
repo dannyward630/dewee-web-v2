@@ -6,17 +6,17 @@
 import { CHANNELS, PROVIDERS } from "~/content/integrations";
 
 export const FACTS = {
-  /** Latest stable runtime release (GitHub releases, nextlevelbuilder/dewee, 2026-10-15). */
-  stableRelease: { version: "3.40.0", date: "2026-10-15" },
+  /** Latest stable runtime release (GitHub releases, nextlevelbuilder/dewee, checked 2026-10-29). */
+  stableRelease: { version: "3.42.0", date: "2026-10-27" },
   /** Chat channels in the catalogue; it mirrors the adapters in the runtime's internal/channels. */
   channels: CHANNELS.length,
   /** Model providers in the catalogue (internal/providers). */
   providers: PROVIDERS.length,
   /**
-   * Go test functions (`func Test…`) in the runtime at the stable tag, rounded down for copy.
+   * Go test functions (`func Test…`) in the runtime, counted at v3.40.0 and rounded down for copy (v3.42.0 has 15,358, so "13,000+" stays true).
    * The full suite runs on one preflighted commit before every release, not on every pull request.
    */
   goTests: { measured: 13_351, rounded: "13,000+", roundedVi: "13.000+" },
-  /** Lines of Go under internal/ at the stable tag, tests included, rounded down for copy. */
+  /** Lines of Go under internal/, counted at v3.40.0, tests included, rounded down for copy (v3.42.0 has 1,081,907, so "900,000+" stays true). */
   goLines: { measured: 921_264, rounded: "900,000+", roundedVi: "900.000+" },
 } as const;
