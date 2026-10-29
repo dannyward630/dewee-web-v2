@@ -39,6 +39,7 @@ blocks. Everything else is code. `/developers` is the public guide.
 | Surface | Where | Notes |
 |---|---|---|
 | Blocks | `src/lib/blocks/registry.ts` | the only block types the builder accepts; each has a schema |
+| Post widgets | `src/lib/blocks/post-widgets/` | blocks with `contexts` incl. `post`, placed in `body_md` by `::widget{id="…"}`; one renderer for page, preview, RSS and `.md` (how to add one: `post-widget-registry.ts`) |
 | Page service | `src/lib/server/pages/` | validation, slugs, versions (stale writes get 409), revisions |
 | REST | `/api/v1/*`, spec at `/api/v1/openapi.json` | one route table drives both dispatch and the spec (`src/lib/server/api/`) |
 | MCP | `POST /mcp` (JSON-RPC, streamable HTTP) | bearer API key only; `tools/list` shows only what the key's scopes allow |

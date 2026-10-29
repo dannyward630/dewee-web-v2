@@ -26,15 +26,25 @@ The site's hand-built pages live in code (this repo). Custom pages (`/p/<slug>`)
    existing slug instead of creating a near-duplicate.
 2. **Blocks, not HTML.** `blocks list`, then `blocks schema <Type>` (MCP: `list_blocks`,
    `get_block_schema`). Pages accept registered block types only; props are validated.
-3. **Write both languages.** Every page or post gets an EN and a VI version that share a
+3. **Posts are Markdown, with widgets between paragraphs.** `blocks list --context post`
+   (MCP: `list_blocks` with `context: "post"`) lists them: Gallery, Video, VideoEmbed
+   (YouTube/Vimeo), SocialCard, CodeBlock, plus Image, Callout, Quote, Steps, Timeline, Faq,
+   Columns and Divider. Give each block an `id`, then put a line `::widget{id="…"}` on its own
+   where it goes; blocks you do not place show after the body. The CLI reads them from the file
+   named by `blocks:` in the front matter (or `--blocks`). Validate first with
+   `POST /api/v1/blocks/validate` and `{ "context": "post", "blocks": [...], "body_md": "…" }`.
+   Charts and diagrams are not widgets yet: use a Callout or Steps with the numbers in words.
+   A worked sample is in `examples/widget-post.md` and `examples/widget-post.blocks.json`.
+4. **Write both languages.** Every page or post gets an EN and a VI version that share a
    `translation_key`. The Vietnamese is written for Vietnamese readers, not machine-translated.
    Pricing in VI is Self-install and On-Premises only.
-4. **Save as a draft** (drafts are not public; a super-admin can open the live preview in
+5. **Save as a draft** (drafts are not public; a super-admin can open the live preview in
    `/admin`). Publish, then check the public URL at 375 px and 1440 px in light and dark. Pass
    `--version <n>` on updates; a `409 conflict` means someone saved first: re-read, merge, retry.
-5. **Media:** `media upload <file>` (PNG, JPEG, WebP, GIF, AVIF, up to 10 MB) returns a
-   `cdn.dewee.sh` URL. Every image needs real alt text.
-6. **Report** the published URLs (EN and VI) and anything you could not verify.
+6. **Media:** `media upload <file>` (PNG, JPEG, WebP, GIF, AVIF, up to 10 MB) returns a
+   `cdn.dewee.sh` URL. Every image needs real alt text, gallery images included. Videos are
+   `.mp4`/`.webm` files on https or `/media/`, with `.vtt` captions when there is speech.
+7. **Report** the published URLs (EN and VI) and anything you could not verify.
 
 ## Content rules
 
