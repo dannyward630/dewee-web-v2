@@ -28,6 +28,8 @@ export type BlockDef = {
   description: string;
   schema: z.ZodType;
   example: Record<string, unknown>;
+  /** Post widgets that store reader responses by widget id (Poll, Quiz, Survey) must carry an `id`. */
+  requiresId?: boolean;
 };
 
 /**

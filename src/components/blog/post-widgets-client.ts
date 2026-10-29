@@ -6,6 +6,7 @@
  */
 import { initCodeCopy } from "../docs/code-copy-client";
 import { EMBED_FRAME_ORIGINS } from "../../lib/blocks/media-urls";
+import { initInteractiveWidgets } from "./interactive-widgets-client";
 
 type ClientLabels = { copy: string; copied: string; failed: string; slideOf: string };
 
@@ -103,4 +104,5 @@ if (root) {
   }
   root.querySelectorAll<HTMLElement>("[data-pw-embed]").forEach(initEmbed);
   root.querySelectorAll<HTMLVideoElement>("video[data-pw-autoplay]").forEach(initAutoplay);
+  initInteractiveWidgets(root);
 }

@@ -15,7 +15,7 @@ describe("block registry", () => {
   it("every example validates against its own schema", () => {
     for (const def of BLOCKS) {
       const context = blockContexts(def)[0];
-      const res = validateBlocks([{ type: def.type, props: def.example }], { context });
+      const res = validateBlocks([{ ...(def.requiresId ? { id: "example" } : {}), type: def.type, props: def.example }], { context });
       expect(res.ok, `${def.type}: ${JSON.stringify(!res.ok && res.issues)}`).toBe(true);
     }
   });

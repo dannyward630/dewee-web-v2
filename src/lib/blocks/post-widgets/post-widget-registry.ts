@@ -7,11 +7,19 @@
  * tests/blog/post-widgets.test.ts fails when a post block type has no renderer.
  */
 import { CONTENT_WIDGETS } from "./content-widgets";
+import { DEMO_WIDGETS } from "./demo-widget";
+import { INTERACTIVE_WIDGETS } from "./interactive-widgets";
 import { MEDIA_WIDGETS } from "./media-widgets";
 import type { PostWidget } from "./post-widget-types";
 import { TEXT_WIDGETS } from "./text-widgets";
 
-export const POST_WIDGETS: Readonly<Record<string, PostWidget>> = { ...CONTENT_WIDGETS, ...MEDIA_WIDGETS, ...TEXT_WIDGETS };
+export const POST_WIDGETS: Readonly<Record<string, PostWidget>> = {
+  ...CONTENT_WIDGETS,
+  ...MEDIA_WIDGETS,
+  ...TEXT_WIDGETS,
+  ...INTERACTIVE_WIDGETS,
+  ...DEMO_WIDGETS,
+};
 
 export function postWidget(type: string): PostWidget | undefined {
   return Object.hasOwn(POST_WIDGETS, type) ? POST_WIDGETS[type] : undefined;

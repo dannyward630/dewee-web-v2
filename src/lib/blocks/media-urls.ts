@@ -5,6 +5,8 @@
  * player URL ourselves (privacy-enhanced hosts, click-to-load).
  */
 
+import { DEMO_FRAME_ORIGINS } from "./demo-urls";
+
 const UNSAFE_CHARS = /[\s<>"'`\\]/;
 
 /** https:// (any host) or a /media/ path, ending in one of `exts` (a query string is allowed). */
@@ -42,8 +44,9 @@ export const EMBED_FRAME_ORIGINS = ["https://www.youtube-nocookie.com", "https:/
  * CSP for pages that render post bodies (the post page and the admin preview). Only `frame-src`
  * is set: the site has no CSP otherwise, and a full policy is a separate decision. Besides the
  * players it keeps the frames the layout already uses: Turnstile (chat) and the GTM noscript tag.
+ * Demo hosts (demo-urls.ts) are appended so a sandboxed Demo widget can load.
  */
-export const POST_PAGE_CSP = `frame-src 'self' ${EMBED_FRAME_ORIGINS.join(" ")} https://challenges.cloudflare.com https://www.googletagmanager.com`;
+export const POST_PAGE_CSP = `frame-src 'self' ${EMBED_FRAME_ORIGINS.join(" ")} https://challenges.cloudflare.com https://www.googletagmanager.com ${DEMO_FRAME_ORIGINS.join(" ")}`;
 
 const YT_ID = /^[A-Za-z0-9_-]{11}$/;
 const VIMEO_ID = /^\d{6,12}$/;
