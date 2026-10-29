@@ -10,8 +10,14 @@ export const FACTS = {
   stableRelease: { version: "3.42.0", date: "2026-10-27" },
   /** Chat channels in the catalogue; it mirrors the adapters in the runtime's internal/channels. */
   channels: CHANNELS.length,
-  /** Model providers in the catalogue (internal/providers). */
+  /** Featured model providers: the vendors the site names (PROVIDERS), not the runtime's provider types. */
   providers: PROVIDERS.length,
+  /**
+   * Provider types the runtime accepts as `provider_type`: 32 keys in `store.ValidProviderTypes`
+   * (internal/store/provider_store.go) at tag v3.42.0, verified 2026-10-29. PROVIDER_TYPES lists
+   * them and a test keeps the two in step.
+   */
+  providerTypes: 32,
   /**
    * Go test functions (`func Test…`) in the runtime, counted at v3.40.0 and rounded down for copy (v3.42.0 has 15,358, so "13,000+" stays true).
    * The full suite runs on one preflighted commit before every release, not on every pull request.

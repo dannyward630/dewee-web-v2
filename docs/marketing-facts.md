@@ -14,7 +14,8 @@ the latest stable tag (`gh release list --repo nextlevelbuilder/dewee --exclude-
 |---|---|---|---|---|
 | Latest stable release | v3.42.0 (2026-10-27) | Homepage proof, About report card, llms.txt, JSON-LD `softwareVersion` | `FACTS.stableRelease`; `gh release list --repo nextlevelbuilder/dewee --exclude-pre-releases --limit 3`. Date is `published_at` in UTC, not a commit date. `pnpm releases:check` (also a CI step) fails when GitHub has a newer stable release; v3.43.0-beta.1 is a prerelease and is ignored | 2026-10-29 |
 | Chat channels | 11 | Homepage, Integrations, Features catalogue, llms.txt | `FACTS.channels` = `CHANNELS.length` in `src/content/integrations.ts`; compare with the adapters in dewee `internal/channels/` (Zalo has three variants) | 2026-10-19 |
-| Model providers | 22 | Homepage, Integrations, Features catalogue, llms.txt | `FACTS.providers` = `PROVIDERS.length`; compare with dewee `internal/providers` and `docs/02-providers.md` (Atlas Cloud added in v3.39.0) | 2026-10-19 |
+| Featured model providers | 22 | Homepage, Integrations, Features catalogue, llms.txt, docs (LLM and voice providers) | `FACTS.providers` = `PROVIDERS.length` in `src/content/integrations.ts`; each entry carries the runtime `providerType` and an `auth` mechanism. Always write "featured" next to the number. Compare with dewee `docs/02-providers.md` (Atlas Cloud added in v3.39.0) | 2026-10-29 (v3.42.0) |
+| Provider types the runtime accepts | 32 | Homepage FAQ, Integrations, Features catalogue, llms.txt, docs (What is dewee, Providers, fallback and reasoning, LLM and voice providers) | `FACTS.providerTypes`; the ids are in `src/content/provider-types.ts`. In the dewee repo: `git show v<tag>:internal/store/provider_store.go \| awk '/^var ValidProviderTypes/,/^}/' \| grep -c true`. Same 32 at v3.40.0, v3.41.0 and v3.42.0. The console's type picker (`ui/web/src/constants/providers.ts`) shows 31 because it omits `alibaba_token_plan`; docs and copy follow the runtime. The runtime has no per-edition provider list | 2026-10-29 (v3.42.0) |
 | Go test functions | 13,351, shown as "13,000+" | Homepage proof, About report card | `FACTS.goTests`; in the dewee repo: `git grep -h -E '^func Test[A-Z_]' v<tag> -- '*_test.go' \| wc -l` | 2026-10-19 (v3.40.0); v3.42.0 has 15,358, so the rounded figure still holds |
 | Go lines under `internal/` | 921,264, shown as "900,000+" | Homepage proof | `FACTS.goLines`; in the dewee repo: `git grep -c '' v<tag> -- 'internal/*.go' \| awk -F: '{s+=$NF} END{print s}'` (tests included) | 2026-10-19 (v3.40.0); v3.42.0 has 1,081,907, so the rounded figure still holds |
 | Test cadence | Full suite runs on one preflighted commit before every release | Homepage proof, About report card | dewee commit `e511ada` (#1351, 2026-10-14): pull requests and `dev` pushes no longer run tests. Never write "on every change" or "on every pull request" | 2026-10-19 |
@@ -45,7 +46,9 @@ Run this when a new stable release ships, and again before any campaign that quo
 1. Read the notes: `gh release view v<tag> --repo nextlevelbuilder/dewee`. Skip betas.
 2. Update `src/content/facts.ts`: `stableRelease`, then re-count with the commands in the table
    (tests and lines at the new tag) and update `goTests` and `goLines`. If the channel or provider
-   lists changed, update `CHANNELS` or `PROVIDERS` in `src/content/integrations.ts` so the counts follow.
+   lists changed, update `CHANNELS` or `PROVIDERS` in `src/content/integrations.ts` so the counts follow, and re-count
+   the provider types (`FACTS.providerTypes`, `PROVIDER_TYPES`, and the "32" in the English and Vietnamese docs; a test
+   fails until they agree).
 3. Add a `RELEASES` entry at the top of `src/content/releases.ts`: benefits first, only what the notes
    support, EN and VI. Set `since` on a catalogue item only for a release listed in `RELEASES`, and
    update the header comment with the verified date.
