@@ -49,10 +49,41 @@ export type WidgetLabels = {
   after: string;
   compareSlider: string;
   compareValue: string;
+  formVote: string;
+  formCheck: string;
+  formSend: string;
+  formNotice: string;
+  formSurveyNotice: string;
+  formPreview: string;
+  formOptional: string;
+  formTextHint: string;
+  formResults: string;
+  formVotes: string;
+  formVoteOne: string;
+  formYours: string;
+  formCorrect: string;
+  formIncorrect: string;
+  formAnswerIs: string;
+  formChange: string;
+  formThanks: string;
+  formClosed: string;
+  formErrorPick: string;
+  formErrorRate: string;
+  formErrorAlready: string;
+  formError: string;
+  formBack: string;
+  formSaved: string;
+  demoLoad: string;
+  demoOpen: string;
+  demoNote: string;
 };
 
 export type RenderMode = "public" | "preview";
-export type WidgetContext = { labels: WidgetLabels };
+/**
+ * `postId` is set only on the public page (never in the preview or text exports) and `widgetId`
+ * is the block's id; widgets that store reader answers need both to post their form.
+ */
+export type WidgetContext = { labels: WidgetLabels; postId?: string; widgetId?: string };
 
 export const esc = escapeHtml;
 

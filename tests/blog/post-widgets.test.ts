@@ -21,7 +21,7 @@ describe("post widget registry", () => {
   it("has a renderer for every block a post may use", () => {
     for (const def of BLOCKS.filter((b) => blockContexts(b).includes("post"))) {
       expect(POST_WIDGETS[def.type], def.type).toBeDefined();
-      const [block] = validateOk([{ type: def.type, props: def.example }]);
+      const [block] = validateOk([{ ...(def.requiresId ? { id: "example" } : {}), type: def.type, props: def.example }]);
       expect(POST_WIDGETS[def.type].html(block.props, { labels }).length, def.type).toBeGreaterThan(0);
       expect(POST_WIDGETS[def.type].markdown(block.props, { labels }).trim().length, def.type).toBeGreaterThan(0);
     }

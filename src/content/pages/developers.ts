@@ -135,7 +135,7 @@ Markdown body. Raw HTML is shown as text, never rendered.
 A widget line places the block with that id: gallery,
 video, YouTube or Vimeo, social card, code, chart,
 Mermaid diagram, comparison table, before/after,
-callout, steps.`,
+poll, quiz, survey, sandboxed demo, callout, steps.`,
   claudeCode: `claude mcp add --transport http dewee-web https://dewee.sh/mcp \\
   --header "Authorization: Bearer ${KEY}"`,
   cursor: `{

@@ -224,5 +224,9 @@
       "text": "Unplaced blocks render after the body, in order.",
       "cite": "The post format"
     }
-  }
+  },
+  {"id": "first-agent-poll", "type": "Poll", "props": {"question": "Where would your first agent work?", "options": [{"id": "support", "label": "Customer support"}, {"id": "sales", "label": "Sales follow-up"}, {"id": "ops", "label": "Internal operations"}]}},
+  {"id": "approval-quiz", "type": "Quiz", "props": {"question": "Who approves the first run of a new agent?", "options": [{"id": "agent", "label": "The agent itself"}, {"id": "person", "label": "A person on your team"}, {"id": "nobody", "label": "Nobody, it just runs"}], "answer": "person", "explanation": "A person approves the first run, so the agent only repeats work someone has checked."}},
+  {"id": "next-post-survey", "type": "Survey", "props": {"title": "Help us plan the next post", "questions": [{"id": "role", "prompt": "What is your role?", "kind": "single", "required": true, "options": [{"id": "eng", "label": "Engineering"}, {"id": "ops", "label": "Operations"}, {"id": "other", "label": "Something else"}]}, {"id": "topics", "prompt": "Which topics should we cover?", "kind": "multi", "options": [{"id": "setup", "label": "Setup"}, {"id": "security", "label": "Security"}, {"id": "pricing", "label": "Pricing"}]}, {"id": "wish", "prompt": "Anything else?", "kind": "text"}]}},
+  {"id": "pen-demo", "type": "Demo", "props": {"url": "https://codepen.io/codepen/embed/PNaGbb?default-tab=result", "title": "A CodePen demo", "description": "A small interactive example: try it here instead of reading a screenshot.", "aspectRatio": "16:9"}}
 ]

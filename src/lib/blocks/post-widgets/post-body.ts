@@ -13,10 +13,11 @@ import { validateBlocks } from "../registry";
 import { createSafeMarked } from "../safe-markdown";
 import { postWidget } from "./post-widget-registry";
 import { codeBlockHtml } from "./text-widgets";
-import { esc, fill, type RenderMode, type WidgetLabels } from "./widget-html";
+import { esc, fill, type RenderMode, type WidgetContext, type WidgetLabels } from "./widget-html";
 import { isWidgetToken, listDirectives, normaliseSource, widgetExtension, type WidgetToken } from "./widget-directives";
 
-export type PostContent = { body_md: string | null | undefined; blocks?: readonly unknown[] | null };
+/** `id` (the post's row id) lets widgets that store reader answers post their form on the public page. */
+export type PostContent = { id?: string; body_md: string | null | undefined; blocks?: readonly unknown[] | null };
 type Resolved = { ok: true; block: StoredBlock } | { ok: false; type: string; reason: string };
 
 function resolveBlock(raw: unknown): Resolved {
@@ -52,9 +53,9 @@ export function renderPostBody(post: PostContent, { mode, labels }: RenderPostOp
   const source = normaliseSource(post.body_md);
   const blocks = post.blocks ?? [];
   const notice = (text: string) => (mode === "preview" ? `<p class="pw-notice" role="note"><b>${esc(labels.previewOnly)}</b> ${esc(text)}</p>\n` : "");
-  const ctx = { labels };
+  const ctx: WidgetContext = { labels, ...(mode === "public" && post.id ? { postId: post.id } : {}) };
   const widget = (block: StoredBlock) => {
-    const html = postWidget(block.type)?.html(block.props, ctx) ?? "";
+    const html = postWidget(block.type)?.html(block.props, { ...ctx, ...(block.id ? { widgetId: block.id } : {}) }) ?? "";
     return html ? `<div class="pw" data-widget="${esc(block.type)}">${html}</div>\n` : "";
   };
 

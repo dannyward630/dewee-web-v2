@@ -8,6 +8,7 @@
  */
 import { initCodeCopy } from "../docs/code-copy-client";
 import { EMBED_FRAME_ORIGINS } from "../../lib/blocks/media-urls";
+import { initInteractiveWidgets } from "./interactive-widgets-client";
 
 type ClientLabels = { copy: string; copied: string; failed: string; slideOf: string };
 
@@ -127,4 +128,5 @@ if (root) {
       .then(({ initDiagrams }) => initDiagrams(root))
       .catch((err: unknown) => console.warn("Diagrams could not load; their source stays visible", err));
   }
+  initInteractiveWidgets(root);
 }

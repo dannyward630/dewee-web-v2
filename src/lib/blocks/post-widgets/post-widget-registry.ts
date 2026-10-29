@@ -10,6 +10,8 @@ import { chartWidget } from "./chart-widget";
 import { COMPARISON_WIDGETS } from "./comparison-widgets";
 import { CONTENT_WIDGETS } from "./content-widgets";
 import { diagramWidget } from "./diagram-widget";
+import { DEMO_WIDGETS } from "./demo-widget";
+import { INTERACTIVE_WIDGETS } from "./interactive-widgets";
 import { MEDIA_WIDGETS } from "./media-widgets";
 import type { PostWidget } from "./post-widget-types";
 import { TEXT_WIDGETS } from "./text-widgets";
@@ -21,6 +23,8 @@ export const POST_WIDGETS: Readonly<Record<string, PostWidget>> = {
   Chart: chartWidget,
   Diagram: diagramWidget,
   ...COMPARISON_WIDGETS,
+  ...INTERACTIVE_WIDGETS,
+  ...DEMO_WIDGETS,
 };
 
 export function postWidget(type: string): PostWidget | undefined {

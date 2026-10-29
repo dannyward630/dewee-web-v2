@@ -78,7 +78,9 @@ export const POST_WIDGETS_HELP =
   'A post is `body_md` (Markdown) plus optional `blocks`: widgets shaped { "id": "gallery-1", "type": "Gallery", "props": { … } } (list_blocks with context "post" lists them). ' +
   'Place a block inline with a line of its own in body_md: ::widget{id="gallery-1"}. Each id is placed at most once; blocks you do not place render after the body. ' +
   "No HTML or MDX: unknown ids, nested directives (inside lists or quotes) and invalid props are rejected with a `path` and the line." +
-  " Data and comparison widgets: Chart (bar, line, pie, donut; labels plus series of numbers), Diagram (Mermaid source plus required alt), ComparisonTable (options as columns, yes/no/partial marks) and BeforeAfter (two images with alt).";
+  " Data and comparison widgets: Chart (bar, line, pie, donut; labels plus series of numbers), Diagram (Mermaid source plus required alt), ComparisonTable (options as columns, yes/no/partial marks) and BeforeAfter (two images with alt). " +
+  "Poll, Quiz and Survey collect anonymous reader answers and need an `id` (answers are stored per post and id; renaming the id starts over): poll results are public after voting, a quiz reveals its `answer` and `explanation` only to readers who answered, survey results are admin-only. " +
+  "Demo shows an https page from an allowlisted demo host in a sandboxed iframe after a click.";
 
 export const normaliseSource = (source: string | null | undefined): string => (source ?? "").replace(/\r\n?/g, "\n");
 

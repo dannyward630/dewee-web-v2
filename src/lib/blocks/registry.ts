@@ -6,6 +6,7 @@
 import { z } from "zod";
 import { sectionOptions } from "./block-fields";
 import type { BlockContext, BlockDef, BlockIssue, StoredBlock } from "./block-types";
+import { INTERACTIVE_BLOCKS } from "./interactive-block-schemas";
 import { MARKETING_BLOCKS } from "./marketing-block-schemas";
 import { POST_BLOCKS } from "./post-block-schemas";
 import { PRIMITIVE_BLOCKS } from "./primitive-block-schemas";
@@ -13,7 +14,7 @@ import { VISUAL_BLOCKS } from "./visual-block-schemas";
 
 export type { BlockContext, BlockDef, BlockIssue, StoredBlock } from "./block-types";
 
-export const BLOCKS: readonly BlockDef[] = [...MARKETING_BLOCKS, ...PRIMITIVE_BLOCKS, ...POST_BLOCKS, ...VISUAL_BLOCKS];
+export const BLOCKS: readonly BlockDef[] = [...MARKETING_BLOCKS, ...PRIMITIVE_BLOCKS, ...POST_BLOCKS, ...VISUAL_BLOCKS, ...INTERACTIVE_BLOCKS];
 export const BLOCK_TYPES: readonly string[] = BLOCKS.map((b) => b.type);
 export const MAX_BLOCKS = 60;
 export const MAX_BLOCKS_BYTES = 200_000;
@@ -109,6 +110,9 @@ export function validateBlocks(input: unknown, opts: { context?: BlockContext } 
       const known = typesFor(context).join(", ");
       const where = def ? `"${def.type}" cannot be used in a ${noun}.` : `Unknown block type "${String(raw.type)}".`;
       return void issues.push({ path: `${at}.type`, message: `${where} Known ${noun} blocks: ${known}.` });
+    }
+    if (context === "post" && def.requiresId && raw.id === undefined) {
+      issues.push({ path: `${at}.id`, message: `${def.type} needs an id: reader answers are stored per widget id, and ::widget{id="…"} places it.` });
     }
     const props = def.schema.safeParse(raw.props ?? {});
     if (!props.success) issues.push(...issuesFrom(props.error, `${at}.props`));
