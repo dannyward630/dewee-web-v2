@@ -133,14 +133,53 @@ describe("POST /api/post-widgets/vote", () => {
     const { env, post } = await setup();
     const first = await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }), env);
     const cookie = cookieFrom(first)!;
-    for (let i = 1; i < VOTE_LIMITS.voter; i++) expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { cookie }), env)).status).toBe(200);
+    // The first (cookieless) vote counted against the network's cookieless budget, not this voter's.
+    for (let i = 0; i < VOTE_LIMITS.voter; i++) expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { cookie }), env)).status).toBe(200);
     const limited = await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "no" }, { cookie }), env);
     expect(limited.status).toBe(429);
     expect(limited.headers.get("retry-after")).toBe(String(VOTE_LIMITS.windowSeconds));
 
     const ip = "198.51.100.9";
-    for (let i = 0; i < VOTE_LIMITS.ip; i++) expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip }), env)).status).toBe(200);
-    expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip }), env)).status).toBe(429);
+    const voterCookie = (i: number) => i.toString(16).padStart(32, "0");
+    for (let i = 0; i < VOTE_LIMITS.ip; i++) expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie: voterCookie(i) }), env)).status).toBe(200);
+    expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie: voterCookie(VOTE_LIMITS.ip) }), env)).status).toBe(429);
+  });
+
+  it("holds cookieless requests to a stricter budget per network, since each one is a new voter", async () => {
+    const { env, post } = await setup();
+    const ip = "198.51.100.10";
+    const vote = (cookie?: string) => handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie }), env);
+    let cookie: string | undefined;
+    for (let i = 0; i < VOTE_LIMITS.cookielessIp; i++) {
+      const res = await vote();
+      expect(res.status).toBe(200);
+      cookie ??= cookieFrom(res);
+    }
+    expect((await vote()).status).toBe(429);
+    // A reader who kept the cookie from their first vote is still within the network's budget.
+    expect((await vote(cookie)).status).toBe(200);
+  });
+
+  it("refuses a body over 32 KB without reading all of it", async () => {
+    const { env, post } = await setup();
+    const big = voteRequest({ post: post.id, widget: "poll-1", choice: "yes", pad: "x".repeat(40 * 1024) });
+    expect((await handleVote(big, env)).status).toBe(413);
+
+    let pulls = 0;
+    const endless = new ReadableStream<Uint8Array>({
+      pull(controller) {
+        pulls++;
+        controller.enqueue(new Uint8Array(8 * 1024).fill(0x61));
+      },
+    });
+    const req = new Request(`${SITE}/api/post-widgets/vote`, {
+      method: "POST",
+      headers: { origin: SITE, "content-type": "application/json" },
+      body: endless,
+      duplex: "half",
+    } as RequestInit);
+    expect((await handleVote(req, env)).status).toBe(413);
+    expect(pulls).toBeLessThan(10);
   });
 
   it("checks the origin like the admin writes do", async () => {

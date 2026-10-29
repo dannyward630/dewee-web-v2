@@ -2,7 +2,7 @@
  * POST /api/post-widgets/vote and GET /api/post-widgets/results (logic only; the Astro routes
  * pass the request and bindings in, so tests run without the runtime).
  *
- * Vote: origin → content type → size → parse → ids → rate limit (cookie and IP) → published post
+ * Vote: origin → content type → size → parse → ids → rate limit (cookie or cookieless IP, then IP) → published post
  * → widget in its CURRENT blocks → closed? → answer against the definition → save → results.
  * The body is a form (`post`, `widget`, `choice` or `q.<question id>`) or the same as JSON.
  * Callers that accept JSON get `{ ok, result? , error?, message? }`; a plain form post gets a small
@@ -18,8 +18,12 @@ import { publicResult, publicResults, type PublicResult } from "./public-results
 import { choiceCounts, publishedPost, responseWidgets, saveResponse, voterChoices, type PublishedPost, type ResponseWidget } from "./response-store";
 import { newVoterId, rateKeys, readVoterId, voterCookie, voterKey, voterSalt } from "./voter";
 
-/** Writes per window: one browser (cookie) and one network (IP hash, shared by offices and NAT). */
-export const VOTE_LIMITS = { voter: 10, ip: 40, windowSeconds: 600 } as const;
+/**
+ * Writes per window: one browser (cookie) and one network (IP hash, shared by offices and NAT).
+ * A request without the cookie gets a fresh voter id every time, so the per-voter limit cannot
+ * hold it; those requests share the stricter `cookielessIp` budget per network instead.
+ */
+export const VOTE_LIMITS = { voter: 10, cookielessIp: 10, ip: 40, windowSeconds: 600 } as const;
 const MAX_BODY_BYTES = 32 * 1024;
 
 export type VoteError = "invalid" | "not_found" | "closed" | "already_answered" | "rate_limited" | "forbidden_origin" | "unsupported_media_type" | "payload_too_large" | "method_not_allowed" | "server_error";
@@ -37,6 +41,35 @@ export function sameOriginRequest(request: Request): boolean {
   const origin = request.headers.get("origin");
   if (origin) return origin === new URL(request.url).origin;
   return request.headers.get("sec-fetch-site") === "same-origin";
+}
+
+/**
+ * Reads the body as text but stops (and cancels the stream) once it passes `maxBytes`, so a client
+ * that lies about or omits Content-Length cannot make the worker buffer a large body.
+ * Returns null when the body is too large.
+ */
+export async function readBodyCapped(request: Request, maxBytes: number): Promise<string | null> {
+  if (!request.body) return "";
+  const reader = request.body.getReader();
+  const chunks: Uint8Array[] = [];
+  let size = 0;
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    size += value.byteLength;
+    if (size > maxBytes) {
+      await reader.cancel().catch(() => {});
+      return null;
+    }
+    chunks.push(value);
+  }
+  const bytes = new Uint8Array(size);
+  let offset = 0;
+  for (const c of chunks) {
+    bytes.set(c, offset);
+    offset += c.byteLength;
+  }
+  return new TextDecoder().decode(bytes);
 }
 
 const clientIp = (request: Request) => request.headers.get("cf-connecting-ip") ?? "unknown";
@@ -66,8 +99,8 @@ export async function handleVote(request: Request, env: VoteEnv): Promise<Respon
   const type = (request.headers.get("content-type") ?? "").split(";")[0].trim().toLowerCase();
   if (type !== "application/json" && type !== "application/x-www-form-urlencoded") return json({ ok: false, error: "unsupported_media_type" }, 415);
   if (Number(request.headers.get("content-length") ?? "0") > MAX_BODY_BYTES) return json({ ok: false, error: "payload_too_large" }, 413);
-  const body = await request.text();
-  if (body.length > MAX_BODY_BYTES) return json({ ok: false, error: "payload_too_large" }, 413);
+  const body = await readBodyCapped(request, MAX_BODY_BYTES);
+  if (body === null) return json({ ok: false, error: "payload_too_large" }, 413);
 
   const wantsJson = type === "application/json" || (request.headers.get("accept") ?? "").includes("application/json");
   const parsed = parseBody(type, body);
@@ -95,8 +128,10 @@ export async function handleVote(request: Request, env: VoteEnv): Promise<Respon
     const cookieId = readVoterId(request);
     const voterId = cookieId ?? newVoterId();
     const keys = await rateKeys(salt, voterId, clientIp(request));
-    const byVoter = await rateLimit(env.KV, `pw-voter:${keys.voter}`, VOTE_LIMITS.voter, VOTE_LIMITS.windowSeconds);
-    const byIp = byVoter.ok ? await rateLimit(env.KV, `pw-ip:${keys.ip}`, VOTE_LIMITS.ip, VOTE_LIMITS.windowSeconds) : byVoter;
+    const first = cookieId
+      ? await rateLimit(env.KV, `pw-voter:${keys.voter}`, VOTE_LIMITS.voter, VOTE_LIMITS.windowSeconds)
+      : await rateLimit(env.KV, `pw-ip-nocookie:${keys.ip}`, VOTE_LIMITS.cookielessIp, VOTE_LIMITS.windowSeconds);
+    const byIp = first.ok ? await rateLimit(env.KV, `pw-ip:${keys.ip}`, VOTE_LIMITS.ip, VOTE_LIMITS.windowSeconds) : first;
     if (!byIp.ok) return reply(429, "rate_limited", { headers: { "retry-after": String(VOTE_LIMITS.windowSeconds) } });
 
     post = await publishedPost(env.DB, parsed.post);

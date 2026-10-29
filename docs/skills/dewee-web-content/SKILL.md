@@ -38,7 +38,11 @@ The site's hand-built pages live in code (this repo). Custom pages (`/p/<slug>`)
    `explanation` are shown only after the reader answers, never in the page or the Markdown) and
    Survey (one submission; results and free text only at `/admin/widgets`, with CSV export).
    These three need an `id`, because answers are stored per post and widget id: keep the id and
-   the option ids stable once a post is live, or earlier answers stop counting. Demo embeds a
+   the option ids stable once a post is live, or earlier answers stop counting. Answers are
+   anonymous and one-per-reader only as far as a cookie can tell: a reader who clears or blocks
+   cookies can answer again. Writes are capped per 10 minutes at 10 per cookie and 40 per network;
+   requests without the cookie get a new voter each time, so they share a stricter 10 per network.
+   Treat poll and survey numbers as indicative, not as a ballot. Demo embeds a
    sandboxed page (`allow-scripts` only) from an allowlisted host (codepen.io, jsfiddle.net),
    loaded only when the reader clicks; any other host is rejected.
    A worked sample is in `examples/widget-post.md` and `examples/widget-post.blocks.json`.
