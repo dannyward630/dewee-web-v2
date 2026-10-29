@@ -1,8 +1,29 @@
 [
   {
-    "id": "chart-placeholder",
-    "type": "Callout",
-    "props": { "tone": "note", "title": "Rollout, week by week", "body": "Week 1: 12 teams. Week 2: 31 teams. Week 3: 58 teams. A chart replaces this callout once chart widgets ship." }
+    "id": "rollout-chart",
+    "type": "Chart",
+    "props": {
+      "kind": "bar",
+      "title": "Teams using the agent, week by week",
+      "labels": [
+        "Week 1",
+        "Week 2",
+        "Week 3"
+      ],
+      "series": [
+        {
+          "name": "Teams",
+          "values": [
+            12,
+            31,
+            58
+          ]
+        }
+      ],
+      "unit": "teams",
+      "labelHeading": "Week",
+      "caption": "Illustrative numbers for this sample post."
+    }
   },
   {
     "id": "rollout-steps",
@@ -10,16 +31,98 @@
     "props": {
       "label": "Step",
       "items": [
-        { "title": "Invite", "body": "Add the agent to a team chat." },
-        { "title": "Approve", "body": "A person approves the first run." },
-        { "title": "Repeat", "body": "The agent takes the same job every week." }
+        {
+          "title": "Invite",
+          "body": "Add the agent to a team chat."
+        },
+        {
+          "title": "Approve",
+          "body": "A person approves the first run."
+        },
+        {
+          "title": "Repeat",
+          "body": "The agent takes the same job every week."
+        }
       ]
     }
   },
   {
-    "id": "diagram-placeholder",
-    "type": "Callout",
-    "props": { "tone": "tip", "title": "How a request flows", "body": "Chat app → dewee gateway → agent → tools → a person approves → the reply goes back to the chat." }
+    "id": "request-flow",
+    "type": "Diagram",
+    "props": {
+      "source": "flowchart LR\n  chat[Chat app] --> gw[dewee gateway]\n  gw --> agent[Agent]\n  agent --> tools[Tools]\n  tools --> ok{A person approves}\n  ok -->|yes| reply[Reply in the chat]\n  ok -->|no| agent",
+      "alt": "A request goes from the chat app to the dewee gateway, then to the agent and its tools. A person approves the result; approved replies go back to the chat, rejected ones return to the agent.",
+      "caption": "How a request flows."
+    }
+  },
+  {
+    "id": "widget-choice",
+    "type": "ComparisonTable",
+    "props": {
+      "title": "Which widget carries the numbers",
+      "criterionHeading": "What you need",
+      "columns": [
+        "Chart",
+        "ComparisonTable",
+        "Callout"
+      ],
+      "rows": [
+        {
+          "criterion": "Works without JavaScript",
+          "cells": [
+            {
+              "mark": "yes"
+            },
+            {
+              "mark": "yes"
+            },
+            {
+              "mark": "yes"
+            }
+          ]
+        },
+        {
+          "criterion": "Shows a trend at a glance",
+          "cells": [
+            {
+              "mark": "yes"
+            },
+            {
+              "mark": "no"
+            },
+            {
+              "mark": "no"
+            }
+          ]
+        },
+        {
+          "criterion": "Exact numbers in RSS and the .md twin",
+          "cells": [
+            {
+              "mark": "yes",
+              "text": "as a Markdown table"
+            },
+            {
+              "mark": "yes"
+            },
+            {
+              "mark": "partial",
+              "text": "only the words you write"
+            }
+          ]
+        },
+        {
+          "criterion": "Best for",
+          "cells": [
+            "Series over time or shares of a whole",
+            "Options side by side",
+            "One number that matters"
+          ]
+        }
+      ],
+      "highlight": 0,
+      "highlightLabel": "For trends"
+    }
   },
   {
     "id": "screens",
@@ -28,16 +131,51 @@
       "label": "dewee ecosystem logos",
       "caption": "Three of the products that run on dewee.",
       "images": [
-        { "src": "https://dewee.sh/img/ecosystem/goclaw.svg", "alt": "GoClaw logo", "caption": "GoClaw" },
-        { "src": "https://dewee.sh/img/ecosystem/agentkit.svg", "alt": "AgentKit logo", "caption": "AgentKit" },
-        { "src": "https://dewee.sh/img/ecosystem/dewee-webchat.svg", "alt": "dewee webchat logo", "caption": "Webchat" }
+        {
+          "src": "https://dewee.sh/img/ecosystem/goclaw.svg",
+          "alt": "GoClaw logo",
+          "caption": "GoClaw"
+        },
+        {
+          "src": "https://dewee.sh/img/ecosystem/agentkit.svg",
+          "alt": "AgentKit logo",
+          "caption": "AgentKit"
+        },
+        {
+          "src": "https://dewee.sh/img/ecosystem/dewee-webchat.svg",
+          "alt": "dewee webchat logo",
+          "caption": "Webchat"
+        }
       ]
+    }
+  },
+  {
+    "id": "og-cards",
+    "type": "BeforeAfter",
+    "props": {
+      "before": {
+        "src": "https://dewee.sh/og/en/pricing.png",
+        "alt": "The social card of the English pricing page",
+        "label": "English"
+      },
+      "after": {
+        "src": "https://dewee.sh/og/vi/pricing.png",
+        "alt": "The social card of the Vietnamese pricing page",
+        "label": "Tiếng Việt"
+      },
+      "pixelWidth": 1200,
+      "pixelHeight": 630,
+      "caption": "The same pricing card in both languages. Drag the slider, or use the arrow keys."
     }
   },
   {
     "id": "walkthrough",
     "type": "VideoEmbed",
-    "props": { "url": "https://www.youtube.com/watch?v=M7lc1UVf-VE", "title": "YouTube player demo", "caption": "Loads from youtube-nocookie.com only after a click." }
+    "props": {
+      "url": "https://www.youtube.com/watch?v=M7lc1UVf-VE",
+      "title": "YouTube player demo",
+      "caption": "Loads from youtube-nocookie.com only after a click."
+    }
   },
   {
     "id": "clip",
@@ -46,8 +184,14 @@
       "title": "A flower opening",
       "caption": "A short muted loop. It starts on its own only for readers who allow motion.",
       "sources": [
-        { "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm", "type": "video/webm" },
-        { "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4", "type": "video/mp4" }
+        {
+          "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.webm",
+          "type": "video/webm"
+        },
+        {
+          "src": "https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4",
+          "type": "video/mp4"
+        }
       ],
       "autoplay": true,
       "muted": true,
@@ -68,10 +212,17 @@
   {
     "id": "install",
     "type": "CodeBlock",
-    "props": { "language": "bash", "filename": "Terminal", "code": "curl -fsSL https://dewee.sh/install.sh | sh\ndewee-web posts create post.md --publish" }
+    "props": {
+      "language": "bash",
+      "filename": "Terminal",
+      "code": "curl -fsSL https://dewee.sh/install.sh | sh\ndewee-web posts create post.md --publish"
+    }
   },
   {
     "type": "Quote",
-    "props": { "text": "Unplaced blocks render after the body, in order.", "cite": "The post format" }
+    "props": {
+      "text": "Unplaced blocks render after the body, in order.",
+      "cite": "The post format"
+    }
   }
 ]

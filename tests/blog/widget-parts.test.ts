@@ -80,9 +80,9 @@ describe("the .md twin of a widget post", () => {
   it("turns every widget of the sample post into readable Markdown", () => {
     const html = renderPostBody(samplePost(), { mode: "public", labels: widgetLabels("en") });
     const { markdown } = htmlToMarkdown(page(html), origin);
-    for (const s of ["Rollout, week by week", "Invite", "GoClaw logo", "Watch on YouTube", "View on Bluesky", "```bash", "curl -fsSL", "Unplaced blocks render"]) {
+    for (const s of ["Teams using the agent", "| Week 3 | 58 |", "```mermaid\nflowchart LR", "A request goes from the chat app", "| Works without JavaScript | Yes | Yes | Yes |", "Chart (For trends)", "Yes: as a Markdown table", "Tiếng Việt", "Invite", "GoClaw logo", "Watch on YouTube", "View on Bluesky", "```bash", "curl -fsSL", "Unplaced blocks render"]) {
       expect(markdown, s).toContain(s);
     }
-    expect(markdown).not.toMatch(/Copy|Previous image|<svg/);
+    expect(markdown).not.toMatch(/Copy|Previous image|<svg|\*\*View data\*\*|Diagram source/);
   });
 });

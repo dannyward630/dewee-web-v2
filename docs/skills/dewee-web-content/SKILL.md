@@ -28,13 +28,14 @@ The site's hand-built pages live in code (this repo). Custom pages (`/p/<slug>`)
    `get_block_schema`). Pages accept registered block types only; props are validated.
 3. **Posts are Markdown, with widgets between paragraphs.** `blocks list --context post`
    (MCP: `list_blocks` with `context: "post"`) lists them: Gallery, Video, VideoEmbed
-   (YouTube/Vimeo), SocialCard, CodeBlock, plus Image, Callout, Quote, Steps, Timeline, Faq,
-   Columns and Divider. Give each block an `id`, then put a line `::widget{id="…"}` on its own
-   where it goes; blocks you do not place show after the body. The CLI reads them from the file
-   named by `blocks:` in the front matter (or `--blocks`). Validate first with
-   `POST /api/v1/blocks/validate` and `{ "context": "post", "blocks": [...], "body_md": "…" }`.
-   Charts and diagrams are not widgets yet: use a Callout or Steps with the numbers in words.
+   (YouTube/Vimeo), SocialCard, CodeBlock, Chart, Diagram, ComparisonTable, BeforeAfter, plus
+   Image, Callout, Quote, Steps, Timeline, Faq, Columns and Divider. Give each block an `id`,
+   then put a line `::widget{id="…"}` on its own where it goes; blocks you do not place show
+   after the body. The CLI reads them from the file named by `blocks:` in the front matter (or
+   `--blocks`). Validate first with `POST /api/v1/blocks/validate` and
+   `{ "context": "post", "blocks": [...], "body_md": "…" }`.
    A worked sample is in `examples/widget-post.md` and `examples/widget-post.blocks.json`.
+   For numbers, diagrams and comparisons see **Data and comparison widgets** below.
 4. **Write both languages.** Every page or post gets an EN and a VI version that share a
    `translation_key`. The Vietnamese is written for Vietnamese readers, not machine-translated.
    Pricing in VI is Self-install and On-Premises only.
@@ -45,6 +46,28 @@ The site's hand-built pages live in code (this repo). Custom pages (`/p/<slug>`)
    `cdn.dewee.sh` URL. Every image needs real alt text, gallery images included. Videos are
    `.mp4`/`.webm` files on https or `/media/`, with `.vtt` captions when there is speech.
 7. **Report** the published URLs (EN and VI) and anything you could not verify.
+
+## Data and comparison widgets
+
+Pick the widget by what the reader must take away.
+
+- **Chart** for a trend or a share: `kind` is `bar`, `line`, `pie` or `donut`; `labels` are
+  the categories and every series has exactly one number per label (at most 50 labels and
+  6 series; pie and donut take one series of 2–8 non-negative slices). Add `unit`,
+  `caption` and a `source` (+ `sourceUrl`) for every real figure. The chart is drawn on
+  the server; readers can open the exact numbers under "View data", and feeds get a table.
+- **Diagram** for a flow or a structure, in Mermaid (`flowchart`, `sequenceDiagram`,
+  `stateDiagram-v2`, `erDiagram`, `gantt`, `timeline`, …). `alt` is required: one or two
+  sentences that say what the diagram shows, not "a diagram". Plain-text labels only: no
+  `%%{init}%%`, front matter, `click` lines or HTML tags. It draws in the reader's browser;
+  without JavaScript the source shows, so keep it readable.
+- **ComparisonTable** for options side by side: `columns` are the options (2–5), each row
+  has a `criterion` and one cell per column. A cell is text or
+  `{ "mark": "yes" | "no" | "partial", "text"?: "…" }`; `highlight` is the 0-based column to
+  tint, with an optional `highlightLabel`. Compare only what you can verify.
+- **BeforeAfter** for two versions of one view: `before` and `after` each take `src`, `alt`
+  and an optional `label`; use images of the same size and pass `pixelWidth`/`pixelHeight`.
+  Readers drag a slider (or use the arrow keys); without JavaScript the images sit side by side.
 
 ## Content rules
 

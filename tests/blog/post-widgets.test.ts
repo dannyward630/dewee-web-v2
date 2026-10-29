@@ -112,7 +112,7 @@ describe("renderPostBody", () => {
   it("renders the sample post in the documented order", () => {
     const { body_md, blocks } = samplePost();
     const html = pub(body_md, blocks);
-    const order = ["Where a chart will go", 'data-widget="Callout"', 'data-widget="Steps"', "A diagram", 'data-widget="Gallery"', 'data-widget="VideoEmbed"', 'data-widget="Video"', 'data-widget="SocialCard"', "Wrapping up", 'data-widget="CodeBlock"', 'data-widget="Quote"'].map((s) => html.indexOf(s));
+    const order = ["A chart", 'data-widget="Chart"', 'data-widget="Steps"', "A diagram", 'data-widget="Diagram"', 'data-widget="ComparisonTable"', 'data-widget="Gallery"', 'data-widget="BeforeAfter"', 'data-widget="VideoEmbed"', 'data-widget="Video"', 'data-widget="SocialCard"', "Wrapping up", 'data-widget="CodeBlock"', 'data-widget="Quote"'].map((s) => html.indexOf(s));
     expect(order.every((n) => n >= 0), JSON.stringify(order)).toBe(true);
     expect([...order].sort((x, y) => x - y)).toEqual(order);
     expect(validatePostContent(body_md, validateOk(blocks))).toEqual([]);
@@ -149,7 +149,7 @@ describe("postBodyMarkdown", () => {
   it("gives the sample post a text stand-in for every widget", () => {
     const out = postBodyMarkdown(samplePost(), labels);
     expect(out.replace(/```md\n[\s\S]*?```/, "")).not.toMatch(/^ *::widget/m);
-    for (const s of ["Rollout, week by week", "1. **Invite**", "![GoClaw logo](https://dewee.sh/img/ecosystem/goclaw.svg)", "Watch on YouTube", "flower.webm", "View on Bluesky", "```bash", "Unplaced blocks render"]) {
+    for (const s of ["| Week | Teams (teams) |", "1. **Invite**", "```mermaid\nflowchart LR", "| Works without JavaScript | Yes | Yes | Yes |", "**English:** ![", "![GoClaw logo](https://dewee.sh/img/ecosystem/goclaw.svg)", "Watch on YouTube", "flower.webm", "View on Bluesky", "```bash", "Unplaced blocks render"]) {
       expect(out, s).toContain(s);
     }
     expect(out).toContain('```md\n::widget{id="screens"}\n```');

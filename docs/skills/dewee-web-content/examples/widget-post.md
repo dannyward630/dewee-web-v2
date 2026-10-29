@@ -2,30 +2,42 @@
 title: How a widget post reads
 slug: how-a-widget-post-reads
 locale: en
-description: A sample post that places every P0 widget inline, in reading order, between paragraphs of Markdown.
+description: A sample post that places every kind of widget inline, in reading order, between paragraphs of Markdown.
 tags: [product, widgets]
 blocks: ./widget-post.blocks.json
 ---
 Posts are **Markdown first**. Widgets sit between paragraphs: each one is a block in `blocks`
 with an `id`, and a line `::widget{id="…"}` places it in the body.
 
-## Where a chart will go
+## A chart
 
-Charts arrive later. Until then a callout and a short list of steps carry the numbers.
+The chart is drawn on the server. Under it, "View data" opens the same numbers as a table, and
+feeds get that table in Markdown.
 
-::widget{id="chart-placeholder"}
+::widget{id="rollout-chart"}
 
-The steps below are what the chart will show, as text that every reader and every feed can use.
+The rollout itself took three steps:
 
 ::widget{id="rollout-steps"}
 
-## A diagram, in words for now
+## A diagram
 
-::widget{id="diagram-placeholder"}
+Diagrams are written in Mermaid. Readers without JavaScript see the source; screen readers get
+the alt text.
+
+::widget{id="request-flow"}
+
+## Choosing a widget
+
+::widget{id="widget-choice"}
 
 ## Screens
 
 ::widget{id="screens"}
+
+Two versions of one image compare best with a slider:
+
+::widget{id="og-cards"}
 
 ## Watch it run
 
