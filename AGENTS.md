@@ -112,7 +112,9 @@ Use `pnpm preview` for anything that touches the worker (chat, API, MCP, redirec
 Work on a feature branch, open a PR into `dev`, and promote `dev` to `main` with a PR.
 
 CI (`.github/workflows/ci-deploy.yml`) runs `pnpm test`, `pnpm check` and `pnpm build` on every
-PR and push. Deploy steps (remote D1 migrations → `wrangler deploy` → smoke test of `/`, `/vi`,
+PR and push. `.github/workflows/release-metadata.yml` runs `pnpm releases:check` daily
+and on PRs that touch the release data; it fails when GitHub has a newer stable dewee release than
+`FACTS.stableRelease`, without blocking unrelated PRs or deploys. Deploy steps (remote D1 migrations → `wrangler deploy` → smoke test of `/`, `/vi`,
 `/index.md`) run only on pushes to `dev`/`main` when the repository variable
 `DEPLOY_ENABLED=true` and the secrets `CLOUDFLARE_API_TOKEN` + `CLOUDFLARE_ACCOUNT_ID` (the
 account that owns dewee.sh) are set. Worker secrets (`DISCORD_WEBHOOK_URL`, `RESEND_API_KEY`,

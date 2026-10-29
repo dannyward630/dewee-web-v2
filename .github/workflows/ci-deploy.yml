@@ -37,14 +37,6 @@ jobs:
           node-version: 24
           cache: pnpm
       - run: pnpm install --frozen-lockfile
-      # Fails only when GitHub shows a newer stable dewee release than FACTS.stableRelease. Network
-      # errors and missing access are warnings. The token only lifts the API rate limit while the
-      # runtime repository is readable anonymously; if it goes private, add a read-only
-      # RELEASES_READ_TOKEN secret, otherwise a 404 skips the check with a warning.
-      - name: Check stable release metadata
-        run: pnpm releases:check
-        env:
-          GITHUB_TOKEN: ${{ secrets.RELEASES_READ_TOKEN || github.token }}
       - run: pnpm test
       - run: pnpm check
       - run: pnpm build
