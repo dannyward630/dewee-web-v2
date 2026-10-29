@@ -105,6 +105,18 @@ describe("POST /api/post-widgets/vote", () => {
     expect((await results(env, post.id)).data.widgets["quiz-1"]).toEqual({ type: "Quiz", closed: false, answered: false });
   });
 
+  it("shows nothing of a reader's answer to a forged or swapped cookie", async () => {
+    const { env, post } = await setup();
+    const a = cookieFrom(await handleVote(voteRequest({ post: post.id, widget: "quiz-1", choice: "no" }), env))!;
+    const b = cookieFrom(await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip: "198.51.100.12" }), env))!;
+    const [idA, sigA] = a.split(".");
+    const [idB] = b.split(".");
+    for (const cookie of [`${idA}.${"0".repeat(32)}`, `${idB}.${sigA}`, idA]) {
+      expect((await results(env, post.id, cookie)).data.widgets["quiz-1"]).toEqual({ type: "Quiz", closed: false, answered: false });
+    }
+    expect((await results(env, post.id, a)).data.widgets["quiz-1"]).toMatchObject({ answered: true, choice: "no" });
+  });
+
   it("returns only aggregates, and never survey answers", async () => {
     const { env, post } = await setup();
     await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }), env);
@@ -142,8 +154,8 @@ describe("POST /api/post-widgets/vote", () => {
     const ip = "198.51.100.9";
     const salt = await voterSalt(env.DB);
     const issued = async (i: number) => /=([^;]+)/.exec(await signedVoterCookie(salt, i.toString(16).padStart(32, "0")))![1];
-    const voterCookie = (i: number) => cookies[i];
     const cookies = await Promise.all(Array.from({ length: VOTE_LIMITS.ip + 1 }, (_, i) => issued(i)));
+    const voterCookie = (i: number) => cookies[i];
     for (let i = 0; i < VOTE_LIMITS.ip; i++) expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie: voterCookie(i) }), env)).status).toBe(200);
     expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie: voterCookie(VOTE_LIMITS.ip) }), env)).status).toBe(429);
   });

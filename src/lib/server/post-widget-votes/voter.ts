@@ -11,7 +11,7 @@
  * The salt is a random value the worker creates in D1 on first use (`widget_secrets`), so every
  * environment gets its own without a secret to provision.
  */
-import { randomHex, toHex } from "../auth/crypto-helpers";
+import { randomHex, timingSafeEqual, toHex } from "../auth/crypto-helpers";
 
 export const VOTER_COOKIE = "__Host-dewee_voter";
 export const VOTER_COOKIE_MAX_AGE = 365 * 24 * 60 * 60;
@@ -39,7 +39,7 @@ export async function readVoterId(request: Request, salt: string): Promise<strin
   const match = VOTER_VALUE_RE.exec(voterCookieValue(request) ?? "");
   if (!match) return null;
   const [, id, sig] = match;
-  return (await voterSig(salt, id)) === sig ? id : null;
+  return timingSafeEqual(await voterSig(salt, id), sig) ? id : null;
 }
 
 export const newVoterId = (): string => randomHex(16);
