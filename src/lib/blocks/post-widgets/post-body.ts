@@ -55,8 +55,11 @@ export function renderPostBody(post: PostContent, { mode, labels }: RenderPostOp
   const notice = (text: string) => (mode === "preview" ? `<p class="pw-notice" role="note"><b>${esc(labels.previewOnly)}</b> ${esc(text)}</p>\n` : "");
   const ctx: WidgetContext = { labels, ...(mode === "public" && post.id ? { postId: post.id } : {}) };
   const widget = (block: StoredBlock) => {
-    const html = postWidget(block.type)?.html(block.props, { ...ctx, ...(block.id ? { widgetId: block.id } : {}) }) ?? "";
-    return html ? `<div class="pw" data-widget="${esc(block.type)}">${html}</div>\n` : "";
+    const def = postWidget(block.type);
+    const widgetCtx = { ...ctx, ...(block.id ? { widgetId: block.id } : {}) };
+    const html = def?.html(block.props, widgetCtx) ?? "";
+    const twin = def?.twinFromMarkdown ? ` data-md="${esc(def.markdown(block.props, widgetCtx))}"` : "";
+    return html ? `<div class="pw" data-widget="${esc(block.type)}"${twin}>${html}</div>\n` : "";
   };
 
   const { marked, tokens } = lexBody(source, labels, () => notice(labels.noticeNested));

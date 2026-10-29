@@ -79,14 +79,17 @@ const optionsMd = (options: { label: string }[]) => options.map((o) => `- ${o.la
 export const INTERACTIVE_WIDGETS: Record<string, PostWidget> = {
   Poll: {
     html: (p, ctx) => choiceForm("Poll", p as PollProps, ctx),
+    twinFromMarkdown: true,
     markdown: (p) => `**${(p as PollProps).question}**\n\n${optionsMd((p as PollProps).options)}`,
   },
   Quiz: {
     html: (p, ctx) => choiceForm("Quiz", p as QuizProps, ctx),
+    twinFromMarkdown: true,
     // The answer stays out of text exports too: feeds and agents get the question, not the key.
     markdown: (p) => `**${(p as QuizProps).question}**\n\n${optionsMd((p as QuizProps).options)}`,
   },
   Survey: {
+    twinFromMarkdown: true,
     html: (p, ctx) => {
       const s = p as SurveyProps;
       const head = (s.title ? `<legend class="pw-form__question">${esc(s.title)}</legend>` : "") + (s.intro ? `<p class="pw-form__intro">${esc(s.intro)}</p>` : "");

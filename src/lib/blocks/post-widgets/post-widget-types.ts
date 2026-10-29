@@ -10,4 +10,6 @@ export type PostWidget = {
   html: (props: Record<string, unknown>, ctx: WidgetContext) => string;
   /** A meaningful Markdown stand-in for RSS, llms-full.txt and other text exports. */
   markdown: (props: Record<string, unknown>, ctx: WidgetContext) => string;
+  /** The page's `.md` twin cannot read this widget's HTML (a form), so it carries `markdown` instead. */
+  twinFromMarkdown?: boolean;
 };

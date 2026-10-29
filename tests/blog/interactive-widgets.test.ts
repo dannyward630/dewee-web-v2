@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { validateBlocks } from "../../src/lib/blocks/registry";
+import { htmlToMarkdown } from "../../src/lib/html-to-markdown";
 import { DEMO_HOSTS, parseDemoUrl } from "../../src/lib/blocks/demo-urls";
 import { POST_PAGE_CSP } from "../../src/lib/blocks/media-urls";
 import { answerFromForm, parseWidgetAnswer } from "../../src/lib/blocks/interactive-answers";
@@ -110,5 +111,27 @@ describe("answers against the definition", () => {
     expect(parseWidgetAnswer("Survey", survey.props, { answers: { role: "ceo" } }).ok).toBe(false);
     expect(parseWidgetAnswer("Survey", survey.props, { answers: { role: "eng", wish: "x".repeat(281) } }).ok).toBe(false);
     expect(parseWidgetAnswer("Survey", survey.props, { answers: { role: "eng", topics: ["a", "zzz"] } }).ok).toBe(false);
+  });
+});
+
+describe("interactive widgets in the page's .md twin", () => {
+  const twin = (blocks: unknown[]) => {
+    const body = renderPostBody({ id: "11111111-2222-4333-8444-555555555555", body_md: "Intro.", blocks }, { mode: "public", labels });
+    return htmlToMarkdown(`<!doctype html><html lang="en"><head><title>T</title></head><body><main>${body}</main></body></html>`, "https://dewee.sh").markdown;
+  };
+
+  it("keeps the question and options a form would otherwise drop", () => {
+    const md = twin([poll, quiz, survey]);
+    for (const block of [poll, quiz]) {
+      const expected = POST_WIDGETS[block.type]!.markdown(block.props, { labels });
+      expect(md).toContain(expected);
+    }
+    expect(md).toContain(POST_WIDGETS.Survey!.markdown(survey.props, { labels }).split("\n").at(-1)!);
+  });
+
+  it("never carries the quiz answer or explanation", () => {
+    const md = twin([quiz]);
+    const props = quiz.props as { explanation?: string };
+    if (props.explanation) expect(md).not.toContain(props.explanation);
   });
 });
