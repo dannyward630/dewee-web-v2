@@ -138,7 +138,7 @@ export const INTERACTIVE_BLOCKS: BlockDef[] = [
     example: {
       url: "https://codepen.io/codepen/embed/PNaGbb?default-tab=result",
       title: "A CodePen demo",
-      description: "Runs in a sandbox on codepen.io after you press the button.",
+      description: "A small interactive example: try it here instead of reading a screenshot.",
       aspectRatio: "16:9",
     },
   },

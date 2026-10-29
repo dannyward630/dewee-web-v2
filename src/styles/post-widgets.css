@@ -152,6 +152,9 @@ div.pw-divider::before, div.pw-divider::after { content: ""; flex: 1; border-blo
 .pw-form__set[hidden], .pw-form__results[hidden] { display: none; }
 .pw-form__question { padding: 0; font-family: var(--font-display-stack); font-size: var(--step-1); line-height: var(--leading-snug); color: var(--ink); }
 .pw-form__intro { color: var(--ink-2); }
+/* A rendered legend is not a grid item, so the fieldset gap does not space it from the options. */
+legend.pw-form__question { margin-block-end: var(--space-3); }
+legend.pw-form__prompt { margin-block-end: var(--space-2); }
 .pw-form__q { display: grid; gap: var(--space-2); min-inline-size: 0; margin: 0; padding: 0; border: 0; }
 .pw-form__prompt { padding: 0; font-weight: 600; color: var(--ink); }
 .pw-form__optional { font-weight: 400; color: var(--ink-3); font-size: var(--step--1); }
@@ -177,7 +180,7 @@ div.pw-divider::before, div.pw-divider::after { content: ""; flex: 1; border-blo
 .pw-form__results { display: grid; gap: var(--space-3); }
 .pw-form__results:focus { outline: none; }
 .pw-form__thanks, .pw-form__closed { color: var(--ink); font-weight: 500; }
-.pw-form__change { justify-self: start; }
+.pw-form__change { justify-self: start; min-block-size: 2.75rem; }
 .pw-quiz__verdict { color: var(--ink); }
 .pw-quiz__verdict--right strong { color: color-mix(in oklch, var(--success) 70%, var(--ink)); }
 .pw-quiz__verdict--wrong strong { color: var(--danger); }
