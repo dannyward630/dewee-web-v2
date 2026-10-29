@@ -192,7 +192,7 @@ export const MARKETING_BLOCKS: BlockDef[] = [
     render: "section",
     description: "A ruler timeline (horizontal on wide screens); the last entry pulses as 'now'.",
     schema: timeline,
-    example: { items: [{ date: "Feb 2026", text: "GoClaw's first commit" }, { date: "Oct 2026", text: "dewee v3.40" }], label: "Milestones" },
+    example: { items: [{ date: "Feb 2026", text: "GoClaw's first commit" }, { date: "Oct 2026", text: "dewee v3.42" }], label: "Milestones" },
   },
   {
     type: "ProofStrip",
