@@ -73,6 +73,12 @@ export function widgetExtension(source: string, renderNested: (token: WidgetToke
   };
 }
 
+/** One-paragraph contract for API, MCP and CLI descriptions, so every surface explains it the same way. */
+export const POST_WIDGETS_HELP =
+  'A post is `body_md` (Markdown) plus optional `blocks`: widgets shaped { "id": "gallery-1", "type": "Gallery", "props": { … } } (list_blocks with context "post" lists them). ' +
+  'Place a block inline with a line of its own in body_md: ::widget{id="gallery-1"}. Each id is placed at most once; blocks you do not place render after the body. ' +
+  "No HTML or MDX: unknown ids, nested directives (inside lists or quotes) and invalid props are rejected with a `path` and the line.";
+
 export const normaliseSource = (source: string | null | undefined): string => (source ?? "").replace(/\r\n?/g, "\n");
 
 export const isWidgetToken = (t: Token): t is WidgetToken => t.type === "widget";
