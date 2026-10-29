@@ -30,6 +30,7 @@ opening a pull request.
 | `migrations/` | D1 SQL migrations, applied in order |
 | `public/` | static files served as-is |
 | `plans/` | plans and reports (not shipped) |
+| `docs/experiments/` | pre-registered A/B tests (e.g. `homepage-h1.md`: hypothesis, sample size, stopping rule, flag switch) |
 
 ## Content platform (API, MCP, CLI, WebMCP)
 
