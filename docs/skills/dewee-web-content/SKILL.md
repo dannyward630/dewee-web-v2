@@ -33,6 +33,13 @@ The site's hand-built pages live in code (this repo). Custom pages (`/p/<slug>`)
    where it goes; blocks you do not place show after the body. The CLI reads them from the file
    named by `blocks:` in the front matter (or `--blocks`). Validate first with
    `POST /api/v1/blocks/validate` and `{ "context": "post", "blocks": [...], "body_md": "…" }`.
+   Interactive widgets: Poll (readers may change their vote), Quiz (one answer; the `answer` and
+   `explanation` are shown only after the reader answers, never in the page or the Markdown) and
+   Survey (one submission; results and free text only at `/admin/widgets`, with CSV export).
+   These three need an `id`, because answers are stored per post and widget id: keep the id and
+   the option ids stable once a post is live, or earlier answers stop counting. Demo embeds a
+   sandboxed page (`allow-scripts` only) from an allowlisted host (codepen.io, jsfiddle.net),
+   loaded only when the reader clicks; any other host is rejected.
    Charts and diagrams are not widgets yet: use a Callout or Steps with the numbers in words.
    A worked sample is in `examples/widget-post.md` and `examples/widget-post.blocks.json`.
 4. **Write both languages.** Every page or post gets an EN and a VI version that share a

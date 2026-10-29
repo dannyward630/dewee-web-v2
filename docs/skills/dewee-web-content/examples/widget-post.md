@@ -39,6 +39,25 @@ A native video plays inline with captions:
 
 ::widget{id="reaction"}
 
+## Your turn
+
+Polls, quizzes and surveys are forms: they work without JavaScript, and answers are stored
+anonymously. A poll shows the split after you vote, and you can change your vote.
+
+::widget{id="first-agent-poll"}
+
+A quiz keeps its answer to itself until you answer.
+
+::widget{id="approval-quiz"}
+
+Survey answers go to the team only; nobody else sees them.
+
+::widget{id="next-post-survey"}
+
+A demo from an allowed host runs in a sandbox, and only after you ask for it.
+
+::widget{id="pen-demo"}
+
 ## Wrapping up
 
 Directives inside code stay code:

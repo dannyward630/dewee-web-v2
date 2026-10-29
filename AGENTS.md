@@ -41,12 +41,13 @@ blocks. Everything else is code. `/developers` is the public guide.
 |---|---|---|
 | Blocks | `src/lib/blocks/registry.ts` | the only block types the builder accepts; each has a schema |
 | Post widgets | `src/lib/blocks/post-widgets/` | blocks with `contexts` incl. `post`, placed in `body_md` by `::widget{id="…"}`; one renderer for page, preview, RSS and `.md` (how to add one: `post-widget-registry.ts`) |
+| Widget answers | `src/lib/server/post-widget-votes/` | Poll/Quiz/Survey forms post to `/api/post-widgets/vote`; `/api/post-widgets/results` gives aggregates; D1 `widget_responses` keeps a salted hash per voter, never the cookie or IP; survey results only in `/admin/widgets` |
 | Page service | `src/lib/server/pages/` | validation, slugs, versions (stale writes get 409), revisions |
 | REST | `/api/v1/*`, spec at `/api/v1/openapi.json` | one route table drives both dispatch and the spec (`src/lib/server/api/`) |
 | MCP | `POST /mcp` (JSON-RPC, streamable HTTP) | bearer API key only; `tools/list` shows only what the key's scopes allow |
 | CLI | `cli/` (`dewee-web`) | REST client plus an MCP stdio bridge (`dewee-web mcp`) |
 | WebMCP | `src/components/webmcp/` | public tools on every page (read as Markdown, language, theme, chat); admin tools in `/admin` |
-| Admin | `/admin` (noindex, English) | email code or Cloudflare Access; API keys, pages, posts, leads, audit log |
+| Admin | `/admin` (noindex, English) | email code or Cloudflare Access; API keys, pages, posts, leads, widget answers, audit log |
 
 - **Scopes:** `pages:read`, `pages:write`, `posts:read`, `posts:write`, `media:write`,
   `leads:read`. Keys are shown once, stored hashed, and only super-admins can create them.
