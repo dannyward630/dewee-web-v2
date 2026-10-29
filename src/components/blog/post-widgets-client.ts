@@ -1,8 +1,10 @@
 /**
  * Progressive enhancement for inline post widgets. Without JavaScript everything still works:
  * the gallery scrolls and snaps, videos have native controls and an embed is a link to the video
- * page. With it, this adds gallery buttons and keys, the click-to-load player and the copy
- * button on code. Nothing from YouTube or Vimeo loads until the reader asks for the video.
+ * page, before/after images sit side by side and a diagram shows its source. With it, this adds
+ * gallery buttons and keys, the click-to-load player, the copy button on code, the before/after
+ * slider and the Mermaid drawings (loaded on demand). Nothing from YouTube or Vimeo loads until
+ * the reader asks for the video.
  */
 import { initCodeCopy } from "../docs/code-copy-client";
 import { EMBED_FRAME_ORIGINS } from "../../lib/blocks/media-urls";
@@ -77,6 +79,21 @@ function initEmbed(figure: HTMLElement) {
   });
 }
 
+function initCompare(figure: HTMLElement) {
+  const range = figure.querySelector<HTMLInputElement>("[data-pw-compare-range]");
+  if (!range) return;
+  const template = figure.dataset.valuetext ?? "";
+  const sync = () => {
+    const pos = Math.min(100, Math.max(0, Number(range.value) || 0));
+    figure.style.setProperty("--pw-ba-pos", `${pos}%`);
+    range.setAttribute("aria-valuetext", template.replace("{before}", String(pos)).replace("{after}", String(100 - pos)));
+  };
+  range.addEventListener("input", sync);
+  if (range.hidden !== false) range.hidden = false;
+  figure.classList.add("pw-ba--slider");
+  sync();
+}
+
 function initAutoplay(video: HTMLVideoElement) {
   // Muted loops start on their own only for readers who allow motion, and only while on screen.
   if (!motionOk() || !("IntersectionObserver" in window)) return;
@@ -103,4 +120,11 @@ if (root) {
   }
   root.querySelectorAll<HTMLElement>("[data-pw-embed]").forEach(initEmbed);
   root.querySelectorAll<HTMLVideoElement>("video[data-pw-autoplay]").forEach(initAutoplay);
+  root.querySelectorAll<HTMLElement>("[data-pw-compare]").forEach(initCompare);
+  // Mermaid is large: fetch it only when this post has a diagram.
+  if (root.querySelector("[data-pw-diagram]")) {
+    import("./post-diagrams-client")
+      .then(({ initDiagrams }) => initDiagrams(root))
+      .catch((err: unknown) => console.warn("Diagrams could not load; their source stays visible", err));
+  }
 }

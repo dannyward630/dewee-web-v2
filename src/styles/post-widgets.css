@@ -145,3 +145,107 @@ div.pw-divider::before, div.pw-divider::after { content: ""; flex: 1; border-blo
   .pw-callout, .pw-social { padding: var(--space-3) var(--space-4); }
   .pw-embed__play { inline-size: 3.25rem; block-size: 3.25rem; }
 }
+
+/* Tables in widgets (chart data, comparisons): the box scrolls, never the page. `contain`
+   keeps a wide table from widening the grid column the post body sits in; `position` keeps
+   visually hidden labels (absolutely positioned) inside the scroll box. */
+.pw-scroll { position: relative; contain: inline-size; max-inline-size: 100%; overflow-x: auto; overscroll-behavior-x: contain; border: 1px solid var(--rule); border-radius: var(--radius-2); background: var(--surface); }
+.pw-scroll:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+.post-body .pw-table { display: table; inline-size: 100%; overflow: visible; }
+.pw-table caption { padding: var(--space-3) var(--space-4) var(--space-2); text-align: start; font-weight: 600; color: var(--ink); }
+.post-body .pw-table td { font-variant-numeric: tabular-nums; }
+.post-body .pw-table tr:last-child > * { border-block-end: 0; }
+
+/* Chart: series colours come from tokens; the pattern of the line tells series apart too. */
+.pw-chart {
+  --pw-chart-1: var(--accent); --pw-chart-2: var(--seal); --pw-chart-3: var(--success); --pw-chart-4: var(--warning);
+  --pw-chart-5: var(--brand-sky); --pw-chart-6: var(--brand-magenta); --pw-chart-7: var(--ink-3);
+  --pw-chart-8: color-mix(in oklch, var(--accent) 45%, var(--paper));
+  display: grid; gap: var(--space-3); padding: var(--space-4) var(--space-5); border: 1px solid var(--rule); border-radius: var(--radius-3); background: var(--surface);
+  container-type: inline-size;
+}
+.pw-chart__title { font-weight: 600; color: var(--ink); }
+.pw-chart__title span { font-weight: 400; color: var(--ink-3); }
+.pw-chart__plot { display: grid; gap: var(--space-3); }
+.pw-chart--pie .pw-chart__plot, .pw-chart--donut .pw-chart__plot { grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); align-items: center; }
+.pw-chart__svg { display: block; inline-size: 100%; block-size: auto; overflow: visible; font-family: var(--font-body-stack); }
+.pw-chart__grid { stroke: var(--rule); stroke-width: 1; }
+.pw-chart__grid--zero { stroke: var(--rule-strong); }
+.pw-chart__tick { fill: var(--ink-3); }
+.pw-chart__value { fill: var(--ink-2); font-variant-numeric: tabular-nums; }
+.pw-chart__c1 { --c: var(--pw-chart-1); } .pw-chart__c2 { --c: var(--pw-chart-2); } .pw-chart__c3 { --c: var(--pw-chart-3); } .pw-chart__c4 { --c: var(--pw-chart-4); }
+.pw-chart__c5 { --c: var(--pw-chart-5); } .pw-chart__c6 { --c: var(--pw-chart-6); } .pw-chart__c7 { --c: var(--pw-chart-7); } .pw-chart__c8 { --c: var(--pw-chart-8); }
+.pw-chart rect, .pw-chart__dot, .pw-chart__slice { fill: var(--c); }
+.pw-chart__dot { stroke: var(--surface); stroke-width: 1.5; }
+.pw-chart__slice { stroke: var(--surface); stroke-width: 2; }
+.pw-chart__line { fill: none; stroke: var(--c); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.post-body .pw-chart__legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-4); font-size: var(--step--1); color: var(--ink-2); }
+.post-body .pw-chart__legend li { margin: 0; display: inline-flex; align-items: center; gap: var(--space-2); }
+.pw-chart--pie .pw-chart__legend, .pw-chart--donut .pw-chart__legend { flex-direction: column; }
+.pw-chart__key { inline-size: 0.8rem; block-size: 0.8rem; border-radius: 3px; background: var(--c); flex: none; }
+.pw-chart__swatch { flex: none; overflow: visible; }
+.pw-chart__num { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.pw-chart__data > summary { inline-size: fit-content; cursor: pointer; font-size: var(--step--1); font-weight: 500; color: var(--accent-ink); }
+.pw-chart__data[open] > summary { margin-block-end: var(--space-2); }
+.pw .pw-chart > figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--space-1) var(--space-3); margin: 0; }
+.pw-chart__source a { color: var(--accent-ink); }
+
+/* Diagram: Mermaid source until the client draws it; the drawing follows the theme. */
+.pw-diagram__view { position: relative; contain: inline-size; overflow-x: auto; padding: var(--space-4); border: 1px solid var(--rule); border-radius: var(--radius-3); background: var(--surface); }
+.pw-diagram__note { margin-block-end: var(--space-2); font-size: var(--step--2); color: var(--ink-3); }
+.post-body .pw-diagram__source { margin: 0; max-block-size: 24rem; }
+.pw-diagram[data-state="drawing"] .pw-diagram__view { min-block-size: 12rem; }
+.pw-diagram[data-state="drawing"] .pw-diagram__view > * { visibility: hidden; }
+/* Mermaid caps the drawing at its natural width (inline max-width); on a phone a wide diagram
+   keeps a legible size and scrolls inside its box instead of shrinking to fit. */
+.pw-diagram__svg svg { display: block; margin-inline: auto; inline-size: max(100%, 34rem); block-size: auto; }
+
+/* Comparison table: the option column to look at is tinted; the criterion column stays put. */
+.pw-compare__table th[scope="row"] { position: sticky; inset-inline-start: 0; z-index: 1; min-inline-size: 8rem; background: var(--paper-2); }
+.pw-compare__table td, .pw-compare__table thead th { min-inline-size: 8rem; }
+.post-body .pw-compare__table .pw-compare__hl { background: color-mix(in oklch, var(--accent-soft) 70%, var(--surface)); }
+.pw-compare__pick { display: block; font-size: var(--step--2); font-weight: 500; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--accent-ink); }
+.pw-mark { display: inline-flex; align-items: center; gap: var(--space-1); vertical-align: middle; font-weight: 500; }
+.pw-mark--yes { color: color-mix(in oklch, var(--success) 70%, var(--ink)); }
+.pw-mark--no { color: var(--danger); }
+.pw-mark--partial { color: color-mix(in oklch, var(--warning) 65%, var(--ink)); }
+:root[data-theme="dark"] .pw-mark--yes { color: var(--success); }
+:root[data-theme="dark"] .pw-mark--partial { color: var(--warning); }
+.pw-mark__text { color: var(--ink-2); }
+
+/* Before/after: side by side without JavaScript; stacked behind a slider with it. */
+.pw-ba__stage { display: grid; gap: var(--space-3); grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); }
+.pw .pw-ba__item img { display: block; inline-size: 100%; }
+.pw .pw-ba__label { margin: var(--space-1) 0 0; font-size: var(--step--2); font-weight: 600; letter-spacing: var(--tracking-caps); text-transform: uppercase; color: var(--ink-2); }
+.pw-ba--slider .pw-ba__stage { position: relative; grid-template-columns: minmax(0, 1fr); gap: 0; overflow: hidden; border-radius: var(--radius-2); border: 1px solid var(--rule); }
+.pw-ba--slider .pw-ba__item { grid-area: 1 / 1; position: relative; }
+.post-body .pw-ba--slider .pw-ba__item img { aspect-ratio: var(--pw-ba-ratio, 16 / 10); object-fit: cover; border: 0; border-radius: 0; }
+.pw-ba--slider .pw-ba__after { clip-path: inset(0 0 0 var(--pw-ba-pos, 50%)); }
+.pw-ba--slider .pw-ba__stage::after {
+  content: ""; position: absolute; inset-block: 0; inset-inline-start: var(--pw-ba-pos, 50%); inline-size: 2px; margin-inline-start: -1px;
+  background: var(--surface); box-shadow: 0 0 0 1px color-mix(in oklch, var(--ink) 35%, transparent); pointer-events: none;
+}
+.pw .pw-ba--slider .pw-ba__label {
+  position: absolute; inset-block-start: var(--space-2); margin: 0; padding: 0.15em 0.6em; border-radius: var(--radius-1);
+  background: color-mix(in oklch, var(--ink) 72%, transparent); color: var(--ink-inverse);
+}
+.pw-ba--slider .pw-ba__before .pw-ba__label { inset-inline-start: var(--space-2); }
+.pw-ba--slider .pw-ba__after .pw-ba__label { inset-inline-end: var(--space-2); }
+.pw-ba__range { display: block; inline-size: 100%; min-block-size: 2.75rem; margin: var(--space-1) 0 0; accent-color: var(--accent); cursor: ew-resize; }
+.pw-ba__range[hidden] { display: none; }
+.pw-ba__range:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
+
+/* The SVG scales with the column; on a narrow one its text grows in drawing units to stay legible. */
+@container (max-width: 34rem) {
+  .pw-chart__tick, .pw-chart__value { font-size: 17px; }
+}
+@container (max-width: 34rem) and (min-width: 24rem) {
+  .pw-chart__tick, .pw-chart__value { font-size: 15px; }
+}
+
+@media (max-width: 480px) {
+  .pw-chart { padding: var(--space-3) var(--space-4); }
+  .pw-chart--pie .pw-chart__plot, .pw-chart--donut .pw-chart__plot { grid-template-columns: minmax(0, 1fr); justify-items: center; }
+  .pw-chart--pie .pw-chart__svg, .pw-chart--donut .pw-chart__svg { max-inline-size: 14rem; }
+  .pw-diagram__view { padding: var(--space-3); }
+}

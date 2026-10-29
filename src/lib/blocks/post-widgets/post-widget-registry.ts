@@ -6,12 +6,22 @@
  *   3. styles in src/styles/post-widgets.css and, only if it needs behaviour, post-widgets-client.ts.
  * tests/blog/post-widgets.test.ts fails when a post block type has no renderer.
  */
+import { chartWidget } from "./chart-widget";
+import { COMPARISON_WIDGETS } from "./comparison-widgets";
 import { CONTENT_WIDGETS } from "./content-widgets";
+import { diagramWidget } from "./diagram-widget";
 import { MEDIA_WIDGETS } from "./media-widgets";
 import type { PostWidget } from "./post-widget-types";
 import { TEXT_WIDGETS } from "./text-widgets";
 
-export const POST_WIDGETS: Readonly<Record<string, PostWidget>> = { ...CONTENT_WIDGETS, ...MEDIA_WIDGETS, ...TEXT_WIDGETS };
+export const POST_WIDGETS: Readonly<Record<string, PostWidget>> = {
+  ...CONTENT_WIDGETS,
+  ...MEDIA_WIDGETS,
+  ...TEXT_WIDGETS,
+  Chart: chartWidget,
+  Diagram: diagramWidget,
+  ...COMPARISON_WIDGETS,
+};
 
 export function postWidget(type: string): PostWidget | undefined {
   return Object.hasOwn(POST_WIDGETS, type) ? POST_WIDGETS[type] : undefined;

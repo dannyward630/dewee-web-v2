@@ -28,6 +28,27 @@ export type WidgetLabels = {
   noticeNested: string;
   noticeDuplicate: string;
   noticeUnplacedInvalid: string;
+  numberLocale: string;
+  chartBar: string;
+  chartLine: string;
+  chartPie: string;
+  chartDonut: string;
+  chartRange: string;
+  chartCategory: string;
+  chartShare: string;
+  viewData: string;
+  source: string;
+  diagramSource: string;
+  diagramFailed: string;
+  markYes: string;
+  markNo: string;
+  markPartial: string;
+  criterion: string;
+  recommended: string;
+  before: string;
+  after: string;
+  compareSlider: string;
+  compareValue: string;
 };
 
 export type RenderMode = "public" | "preview";
