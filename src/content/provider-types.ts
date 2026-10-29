@@ -5,7 +5,7 @@
  * Plan), and the list includes plain OpenAI-compatible endpoints.
  *
  * Source (verified 2026-10-29): `store.ValidProviderTypes` in internal/store/provider_store.go at
- * tag v3.42.0 of nextlevelbuilder/dewee, 32 keys (the same 32 at v3.40.0 and v3.41.0). Re-count with
+ * tag v3.43.0 of nextlevelbuilder/dewee, 32 keys (the same 32 at v3.40.0, v3.41.0 and v3.42.0). Re-count with
  *   git show v<tag>:internal/store/provider_store.go | awk '/^var ValidProviderTypes/,/^}/' | grep -c true
  * The runtime has no per-edition provider list, so no edition is recorded here.
  */

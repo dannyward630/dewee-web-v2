@@ -7,14 +7,14 @@ import { CHANNELS, PROVIDERS } from "~/content/integrations";
 
 export const FACTS = {
   /** Latest stable runtime release (GitHub releases, nextlevelbuilder/dewee, checked 2026-10-29). */
-  stableRelease: { version: "3.42.0", date: "2026-10-27" },
+  stableRelease: { version: "3.43.0", date: "2026-10-29" },
   /** Chat channels in the catalogue; it mirrors the adapters in the runtime's internal/channels. */
   channels: CHANNELS.length,
   /** Featured model providers: the vendors the site names (PROVIDERS), not the runtime's provider types. */
   providers: PROVIDERS.length,
   /**
    * Provider types the runtime accepts as `provider_type`: 32 keys in `store.ValidProviderTypes`
-   * (internal/store/provider_store.go) at tag v3.42.0, verified 2026-10-29. PROVIDER_TYPES lists
+   * (internal/store/provider_store.go) at tag v3.43.0, verified 2026-10-29. PROVIDER_TYPES lists
    * them and a test keeps the two in step.
    */
   providerTypes: 32,

@@ -3,7 +3,7 @@
  * per-channel details) live in src/content/integrations.ts; this file holds page chrome and the
  * short notes for subscription and local providers. Facts verified against the dewee repo
  * (internal/channels, internal/providers, internal/audio, internal/tools, docs/05) and the
- * v3.28–v3.42 release notes. Channel and provider counts come from FACTS (src/content/facts.ts). The website section describes dewee-webchat v0.1.0, checked
+ * v3.28–v3.43 release notes. Channel and provider counts come from FACTS (src/content/facts.ts). The website section describes dewee-webchat v0.1.0, checked
  * against github.com/nextlevelbuilder/dewee-webchat (README and package README).
  */
 import type { Bi } from "~/i18n/config";

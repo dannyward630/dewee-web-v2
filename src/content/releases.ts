@@ -2,16 +2,17 @@
  * The latest stable dewee releases, EN + VI, newest first. The /features calendar and its caption
  * follow RELEASES[0], and secondary-pages-copy.test.ts checks that it matches FACTS.stableRelease.
  *
- * Source (verified 2026-10-29): GitHub release notes v3.28.0 → v3.41.0 and the non-merge commits
- * between v3.41.0 and v3.42.0 (that release's notes are only a promotion PR), stable only.
+ * Source (verified 2026-10-29): GitHub release notes v3.28.0 → v3.41.0 and v3.43.0, and the
+ * non-merge commits between v3.41.0 and v3.42.0 (that release's notes are only a promotion PR),
+ * stable only.
  * v3.38.1 is a single fix whose notes are only a compare link, so it has no entry. Beta releases
- * (v3.43.0-beta.x) are left out on purpose. scripts/check-stable-release.ts fails when GitHub
+ * (v3.43.0-beta.x and later) are left out on purpose. scripts/check-stable-release.ts fails when GitHub
  * has a newer stable release than FACTS.stableRelease.
  */
 import type { Bi } from "~/i18n/config";
 
 export type Release = {
-  /** Git tag without the leading "v", e.g. "3.42.0" */
+  /** Git tag without the leading "v", e.g. "3.43.0" */
   version: string;
   /** ISO date the release was published */
   date: string;
@@ -21,6 +22,29 @@ export type Release = {
 
 /** Stable releases since v3.28 (September and October 2026), newest first. */
 export const RELEASES: Release[] = [
+  {
+    version: "3.43.0",
+    date: "2026-10-29",
+    title: { en: "Every run stays inside its limits", vi: "Mỗi lượt chạy luôn trong giới hạn của nó" },
+    items: {
+      en: [
+        "A run keeps its tool limits and tool policy when it resumes, continues after a credential request or goes through the CLI bridge, and memory flush and the advisor use only the tools the run allows",
+        "Runs with a tool ceiling cannot write shared memory facts, and tenant and credential boundaries are tightened further",
+        "Public webchat checks which agents a visitor may reach, keeps operator runs without limits out of visitor conversations, and warns when an allowed tool exposes shared memory, the knowledge graph or the vault",
+        "Self-hosted installs trust a forwarded caller address only from proxies you list, and print the setup link after a failed first install and on the published port",
+        "MCP sign-in with OAuth works from the hosted control plane, and the MCP server's Tools tab lists the tools found when testing with OAuth",
+        "A grouped model picker with default models from the catalogue, and during setup owners can switch provider or reopen the plan at the key step",
+      ],
+      vi: [
+        "Lượt chạy giữ nguyên giới hạn tool và chính sách tool khi được tiếp tục, khi chạy tiếp sau một yêu cầu credential hoặc khi đi qua cầu nối CLI; memory flush và advisor chỉ dùng các tool mà lượt chạy cho phép",
+        "Lượt chạy có trần tool không thể ghi memory fact dùng chung, và ranh giới giữa các tenant và credential được siết chặt thêm",
+        "Webchat công khai kiểm tra khách được nói chuyện với agent nào, không để lượt chạy của operator thiếu giới hạn lọt vào hội thoại của khách, và cảnh báo khi một tool được cho phép làm lộ memory dùng chung, knowledge graph hoặc vault",
+        "Bản tự cài chỉ tin địa chỉ người gọi được chuyển tiếp từ các proxy bạn liệt kê, và in link thiết lập sau khi lần cài đầu thất bại và trên đúng cổng đã publish",
+        "Đăng nhập MCP bằng OAuth chạy được từ control plane lưu trữ sẵn, và tab Tools của MCP server liệt kê các tool tìm thấy khi kiểm tra bằng OAuth",
+        "Bộ chọn model theo nhóm với model mặc định lấy từ danh mục, và trong lúc thiết lập owner có thể đổi nhà cung cấp hoặc mở lại gói ở bước nhập key",
+      ],
+    },
+  },
   {
     version: "3.42.0",
     date: "2026-10-27",
