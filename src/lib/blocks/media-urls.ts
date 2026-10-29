@@ -35,8 +35,15 @@ export type VideoEmbed = {
   thumbnail?: string;
 };
 
-/** Hosts the player iframes may load from; mirrored in the blog page's CSP frame-src. */
+/** Hosts the player iframes may load from; the post page's CSP allows exactly these. */
 export const EMBED_FRAME_ORIGINS = ["https://www.youtube-nocookie.com", "https://player.vimeo.com"] as const;
+
+/**
+ * CSP for pages that render post bodies (the post page and the admin preview). Only `frame-src`
+ * is set: the site has no CSP otherwise, and a full policy is a separate decision. Besides the
+ * players it keeps the frames the layout already uses: Turnstile (chat) and the GTM noscript tag.
+ */
+export const POST_PAGE_CSP = `frame-src 'self' ${EMBED_FRAME_ORIGINS.join(" ")} https://challenges.cloudflare.com https://www.googletagmanager.com`;
 
 const YT_ID = /^[A-Za-z0-9_-]{11}$/;
 const VIMEO_ID = /^\d{6,12}$/;
