@@ -3,8 +3,9 @@
 Pre-registration. Everything below is fixed before the test starts; change it only by adding a
 dated amendment at the bottom, never by editing the plan after data exists.
 
-**Status: not running.** The code is in place and inert: the flag does not exist in PostHog, so
-every visitor sees the control headline. Nothing here claims a result, and no uplift may be
+**Status: not running.** The code is in place and inert: `H1_TEST_ENABLED` in
+`src/lib/hero-h1-experiment.ts` is `false` and the flag does not exist in PostHog, so every
+visitor sees the control headline and nobody's headline is held back while PostHog loads. Nothing here claims a result, and no uplift may be
 claimed until the test has run to its stopping rule (see "No claim without data").
 
 ## Hypothesis
@@ -24,7 +25,8 @@ The eyebrow, lede, buttons and chat card do not change. Copy lives in
 ## Who is in the test
 
 Only visitors who accepted analytics cookies ("Accept" on the cookie notice) and whose PostHog
-flag answer arrives within 300 ms. Everyone else, including JS off, PostHog blocked, "essential
+flag answer arrives within 300 ms of the headline being hidden (the clock starts while the page
+is still parsing, not when the script loads). Everyone else, including JS off, PostHog blocked, "essential
 only" and slow responses, sees control and is not counted. Results therefore describe
 consenting visitors who load PostHog quickly; they are not a claim about all traffic. The
 exclusions happen before the flag answer is known, so they hit both arms equally.
@@ -118,16 +120,23 @@ The code reads one PostHog multivariate feature flag, key `homepage-h1-test`, va
 
 1. Complete the run record, then create the flag in PostHog: variants `control` 50% and
    `category` 50%, release condition 100% of users. (Creating the flag is deliberately not part
-   of the code change.)
+   of the code change.) Then set `H1_TEST_ENABLED = true` in `src/lib/hero-h1-experiment.ts` and
+   deploy. Until that deploy the homepage carries no category text and never hides the headline.
 2. **Kill switch:** disable or delete the flag. A missing, disabled or unknown answer renders
    control with no deploy. The same happens without consent, with JS off, or when PostHog is
-   blocked or slow.
+   blocked or slow. Consented visitors still wait for PostHog's (empty) answer, at most 300 ms,
+   until `H1_TEST_ENABLED` goes back to `false` in the next deploy.
 3. How it behaves: the server always renders control (also what search engines, the `.md` twin
-   and social cards see). For consented visitors the headline is held invisible (same box, no
-   layout shift) for at most 300 ms while PostHog answers; a stylesheet rule reveals it after
-   about 560 ms even if the script fails. A `category` answer swaps only the text, in
-   `src/lib/hero-h1-experiment.ts`. `category` runs one line longer than control, so the swap
-   moves content below the headline by one line before the visitor has seen it.
+   and social cards see). For consented visitors an inline script hides the headline (same box)
+   while the page parses and records the time. From then on there is one deadline of 300 ms,
+   shared by the script and a stylesheet rule that starts revealing control at that deadline
+   even if the script fails. The script, however late it loads, only swaps or calls
+   `getFeatureFlag` (the exposure event) while the headline is still hidden and the deadline has
+   not passed; otherwise the visitor stays on control and is not counted, so nobody sees a late
+   swap. A `category` answer swaps only the text, in `src/lib/hero-h1-experiment.ts`.
+   `category` runs one line longer than control, so the swap moves the content below the
+   headline down by one line while the headline is still hidden. No space is reserved for it:
+   reserving it would also add an empty line for the control arm.
 4. After the run, remove the experiment code and keep the winning headline as the normal
    `hero.title`.
 

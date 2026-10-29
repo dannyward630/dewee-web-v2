@@ -3,9 +3,12 @@ import { describe, expect, it } from "vitest";
 import {
   H1_FLAG_KEY,
   H1_PENDING_CLASS,
+  H1_PENDING_SINCE_DATASET_KEY,
   H1_RESOLVE_TIMEOUT_MS,
+  H1_TEST_ENABLED,
   H1_VARIANT_DATASET_KEY,
   chooseH1Variant,
+  h1Deadline,
   parseH1Variant,
   runHeroH1Experiment,
   type H1ExperimentDeps,
@@ -15,24 +18,57 @@ import { HOME, HOME_H1_CATEGORY } from "../src/content/pages/home";
 const CATEGORY_HTML = '<span class="hero__line">category</span>';
 const CONTROL_HTML = "control";
 
-/** A PostHog stand-in: `answer` is what the flag returns; `fire()` plays the "flags loaded" callback. */
-function setup(over: Partial<H1ExperimentDeps> & { answer?: unknown; noPosthog?: boolean } = {}) {
-  const root = { dataset: {} as Record<string, string | undefined>, classList: { removed: [] as string[], remove(n: string) { this.removed.push(n); } } };
+const HIDDEN_AT = 1000;
+
+/** A root whose headline the inline script hid at `HIDDEN_AT` (unless `hiddenAt` is null). */
+function makeRoot(hiddenAt: number | null = HIDDEN_AT) {
+  const classes = new Set(hiddenAt === null ? [] : [H1_PENDING_CLASS]);
+  const dataset: Record<string, string | undefined> = hiddenAt === null ? {} : { [H1_PENDING_SINCE_DATASET_KEY]: String(hiddenAt) };
+  return {
+    dataset,
+    classList: { removed: [] as string[], contains: (n: string) => classes.has(n), remove(n: string) { classes.delete(n); this.removed.push(n); } },
+  };
+}
+
+/**
+ * A PostHog stand-in: `answer` is what the flag returns; `fire()` plays the "flags loaded" callback.
+ * `clock` is the shared `performance.now()`; `startAt` is when the module runs (default: right away).
+ */
+function setup(over: Partial<H1ExperimentDeps> & { answer?: unknown; noPosthog?: boolean; startAt?: number } = {}) {
+  const root = makeRoot();
   const h1 = { innerHTML: CONTROL_HTML };
   const calls: string[] = [];
+  const clock = { t: over.startAt ?? HIDDEN_AT };
   let loaded: (() => void) | undefined;
   let timer: (() => void) | undefined;
+  let timerMs: number | undefined;
   const posthog = over.noPosthog ? undefined : {
     onFeatureFlags: (cb: () => void) => { loaded = cb; },
     getFeatureFlag: (key: string) => { calls.push(key); return over.answer; },
   };
   runHeroH1Experiment({
     root, h1, categoryHtml: CATEGORY_HTML, consented: true, posthog,
-    setTimer: (cb, ms) => { expect(ms).toBe(H1_RESOLVE_TIMEOUT_MS); timer = cb; },
+    setTimer: (cb, ms) => { timer = cb; timerMs = ms; },
+    now: () => clock.t,
     ...over,
   });
-  return { root, h1, calls, fire: () => loaded?.(), timeout: () => timer?.() };
+  return {
+    root, h1, calls, clock, timerMs: () => timerMs,
+    fire: (at?: number) => { if (at !== undefined) clock.t = at; loaded?.(); },
+    timeout: () => { clock.t = HIDDEN_AT + H1_RESOLVE_TIMEOUT_MS; timer?.(); },
+  };
 }
+
+describe("experiment switch", () => {
+  it("ships off, so nobody is hidden or waits for PostHog", () => {
+    expect(H1_TEST_ENABLED).toBe(false);
+  });
+
+  it("reads the deadline the inline script recorded", () => {
+    expect(h1Deadline(String(HIDDEN_AT))).toBe(HIDDEN_AT + H1_RESOLVE_TIMEOUT_MS);
+    for (const v of [undefined, "", "soon"]) expect(h1Deadline(v)).toBeNull();
+  });
+});
 
 describe("variant selection", () => {
   it("accepts only the known variants", () => {
@@ -87,6 +123,50 @@ describe("runHeroH1Experiment", () => {
     expect(t.root.classList.removed).toContain(H1_PENDING_CLASS);
   });
 
+  it("waits for the full budget when the module starts as soon as the headline is hidden", () => {
+    const t = setup({ answer: "category" });
+    expect(t.timerMs()).toBe(H1_RESOLVE_TIMEOUT_MS);
+  });
+
+  it("gives a late module only the rest of the budget, and still swaps inside it", () => {
+    const t = setup({ answer: "category", startAt: HIDDEN_AT + 200 });
+    expect(t.timerMs()).toBe(H1_RESOLVE_TIMEOUT_MS - 200);
+    t.fire(HIDDEN_AT + 250);
+    expect(t.calls).toEqual([H1_FLAG_KEY]);
+    expect(t.h1.innerHTML).toBe(CATEGORY_HTML);
+  });
+
+  it("settles to control without reading the flag when the module starts after the deadline", () => {
+    const t = setup({ answer: "category", startAt: HIDDEN_AT + H1_RESOLVE_TIMEOUT_MS + 200 });
+    t.fire();
+    expect(t.timerMs()).toBeUndefined();
+    expect(t.calls).toEqual([]);
+    expect(t.h1.innerHTML).toBe(CONTROL_HTML);
+    expect(t.root.dataset[H1_VARIANT_DATASET_KEY]).toBeUndefined();
+    expect(t.root.classList.removed).toContain(H1_PENDING_CLASS);
+  });
+
+  it("does not swap or count an answer that lands after the deadline, even before the timer fires", () => {
+    const t = setup({ answer: "category", startAt: HIDDEN_AT + 200 });
+    t.fire(HIDDEN_AT + H1_RESOLVE_TIMEOUT_MS + 50);
+    expect(t.calls).toEqual([]);
+    expect(t.h1.innerHTML).toBe(CONTROL_HTML);
+    expect(t.root.dataset[H1_VARIANT_DATASET_KEY]).toBeUndefined();
+  });
+
+  it("does not enroll a visitor whose headline was never hidden", () => {
+    const root = makeRoot(null);
+    const h1 = { innerHTML: CONTROL_HTML };
+    const calls: string[] = [];
+    runHeroH1Experiment({
+      root, h1, categoryHtml: CATEGORY_HTML, consented: true,
+      posthog: { onFeatureFlags: (cb) => { cb(); }, getFeatureFlag: (k) => { calls.push(k); return "category"; } },
+      setTimer: () => {}, now: () => HIDDEN_AT,
+    });
+    expect(calls).toEqual([]);
+    expect(h1.innerHTML).toBe(CONTROL_HTML);
+  });
+
   it("reveals control on timeout and ignores a late answer (no late swap, no exposure)", () => {
     const t = setup({ answer: "category" });
     t.timeout();
@@ -113,12 +193,12 @@ describe("runHeroH1Experiment", () => {
   });
 
   it("falls back to control when PostHog throws", () => {
-    const root = { dataset: {} as Record<string, string | undefined>, classList: { remove: () => {} } };
+    const root = makeRoot();
     const h1 = { innerHTML: CONTROL_HTML };
     runHeroH1Experiment({
       root, h1, categoryHtml: CATEGORY_HTML, consented: true,
       posthog: { onFeatureFlags: () => { throw new Error("boom"); }, getFeatureFlag: () => "category" },
-      setTimer: () => {},
+      setTimer: () => {}, now: () => HIDDEN_AT,
     });
     expect(h1.innerHTML).toBe(CONTROL_HTML);
     expect(root.dataset[H1_VARIANT_DATASET_KEY]).toBeUndefined();
