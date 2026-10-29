@@ -120,7 +120,8 @@ The code reads one PostHog multivariate feature flag, key `homepage-h1-test`, va
 
 1. Complete the run record, then create the flag in PostHog: variants `control` 50% and
    `category` 50%, release condition 100% of users. (Creating the flag is deliberately not part
-   of the code change.) Then set `H1_TEST_ENABLED = true` in `src/lib/hero-h1-experiment.ts` and
+   of the code change.) Then set `H1_TEST_ENABLED = true` in `src/lib/hero-h1-experiment.ts`,
+   update the "ships off" assertion in `tests/hero-h1-experiment.test.ts` in the same change, and
    deploy. Until that deploy the homepage carries no category text and never hides the headline.
 2. **Kill switch:** disable or delete the flag. A missing, disabled or unknown answer renders
    control with no deploy. The same happens without consent, with JS off, or when PostHog is

@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from "vitest";
 import { createPage } from "../../src/lib/server/pages/page-service";
 import { handleResults, handleVote, VOTE_LIMITS } from "../../src/lib/server/post-widget-votes/vote-handler";
 import { csvCell, surveyCsv, widgetReport } from "../../src/lib/server/post-widget-votes/admin-report";
-import { VOTER_COOKIE } from "../../src/lib/server/post-widget-votes/voter";
+import { VOTER_COOKIE, voterCookie as signedVoterCookie, voterSalt } from "../../src/lib/server/post-widget-votes/voter";
 import { memoryKv, sqliteD1 } from "../helpers/sqlite-d1";
 import { poll, quiz, survey } from "./interactive-fixtures";
 
@@ -35,7 +35,7 @@ function voteRequest(payload: Record<string, unknown>, opts: VoteOpts = {}) {
   return new Request(`${SITE}/api/post-widgets/vote`, { method: "POST", headers, body: JSON.stringify(payload) });
 }
 
-const cookieFrom = (res: Response) => /__Host-dewee_voter=([0-9a-f]{32})/.exec(res.headers.get("set-cookie") ?? "")?.[1];
+const cookieFrom = (res: Response) => /__Host-dewee_voter=([0-9a-f]{32}\.[0-9a-f]{32})/.exec(res.headers.get("set-cookie") ?? "")?.[1];
 
 async function results(env: Awaited<ReturnType<typeof setup>>["env"], postId: string, cookie?: string) {
   const headers = cookie ? { cookie: `${VOTER_COOKIE}=${cookie}` } : undefined;
@@ -48,7 +48,7 @@ describe("POST /api/post-widgets/vote", () => {
     const { env, raw, post } = await setup();
     const res = await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }), env);
     expect(res.status).toBe(200);
-    expect(res.headers.get("set-cookie")).toMatch(/^__Host-dewee_voter=[0-9a-f]{32}; Path=\/; Max-Age=31536000; HttpOnly; Secure; SameSite=Lax$/);
+    expect(res.headers.get("set-cookie")).toMatch(/^__Host-dewee_voter=[0-9a-f]{32}\.[0-9a-f]{32}; Path=\/; Max-Age=31536000; HttpOnly; Secure; SameSite=Lax$/);
     const data = (await res.json()) as { ok: boolean; result: { total: number; voted: boolean; choice: string } };
     expect(data).toMatchObject({ ok: true, result: { type: "Poll", voted: true, choice: "yes", total: 1 } });
     const rows = raw.prepare("SELECT * FROM widget_responses").all() as Record<string, unknown>[];
@@ -140,7 +140,10 @@ describe("POST /api/post-widgets/vote", () => {
     expect(limited.headers.get("retry-after")).toBe(String(VOTE_LIMITS.windowSeconds));
 
     const ip = "198.51.100.9";
-    const voterCookie = (i: number) => i.toString(16).padStart(32, "0");
+    const salt = await voterSalt(env.DB);
+    const issued = async (i: number) => /=([^;]+)/.exec(await signedVoterCookie(salt, i.toString(16).padStart(32, "0")))![1];
+    const voterCookie = (i: number) => cookies[i];
+    const cookies = await Promise.all(Array.from({ length: VOTE_LIMITS.ip + 1 }, (_, i) => issued(i)));
     for (let i = 0; i < VOTE_LIMITS.ip; i++) expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie: voterCookie(i) }), env)).status).toBe(200);
     expect((await handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie: voterCookie(VOTE_LIMITS.ip) }), env)).status).toBe(429);
   });
@@ -158,6 +161,19 @@ describe("POST /api/post-widgets/vote", () => {
     expect((await vote()).status).toBe(429);
     // A reader who kept the cookie from their first vote is still within the network's budget.
     expect((await vote(cookie)).status).toBe(200);
+  });
+
+  it("treats a made-up or tampered cookie as no cookie", async () => {
+    const { env, post } = await setup();
+    const ip = "198.51.100.11";
+    const vote = (cookie: string) => handleVote(voteRequest({ post: post.id, widget: "poll-1", choice: "yes" }, { ip, cookie }), env);
+    const forged = (i: number) => `${i.toString(16).padStart(32, "0")}.${"0".repeat(32)}`;
+    for (let i = 0; i < VOTE_LIMITS.cookielessIp; i++) {
+      const res = await vote(i % 2 ? forged(i) : i.toString(16).padStart(32, "0"));
+      expect(res.status).toBe(200);
+      expect(res.headers.get("set-cookie")).toContain(VOTER_COOKIE);
+    }
+    expect((await vote(forged(99))).status).toBe(429);
   });
 
   it("refuses a body over 32 KB without reading all of it", async () => {

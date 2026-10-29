@@ -16,12 +16,13 @@ import { rateLimit } from "../auth/rate-limit";
 import { fallbackPage, postPath } from "./fallback-page";
 import { publicResult, publicResults, type PublicResult } from "./public-results";
 import { choiceCounts, publishedPost, responseWidgets, saveResponse, voterChoices, type PublishedPost, type ResponseWidget } from "./response-store";
-import { newVoterId, rateKeys, readVoterId, voterCookie, voterKey, voterSalt } from "./voter";
+import { hasVoterCookie, newVoterId, rateKeys, readVoterId, voterCookie, voterKey, voterSalt } from "./voter";
 
 /**
  * Writes per window: one browser (cookie) and one network (IP hash, shared by offices and NAT).
- * A request without the cookie gets a fresh voter id every time, so the per-voter limit cannot
- * hold it; those requests share the stricter `cookielessIp` budget per network instead.
+ * A request without a cookie this server signed gets a fresh voter id every time, so the
+ * per-voter limit cannot hold it; those requests share the stricter `cookielessIp` budget per
+ * network instead. Trade-off: first-time voters behind one busy NAT share those 10 votes.
  */
 export const VOTE_LIMITS = { voter: 10, cookielessIp: 10, ip: 40, windowSeconds: 600 } as const;
 const MAX_BODY_BYTES = 32 * 1024;
@@ -125,7 +126,7 @@ export async function handleVote(request: Request, env: VoteEnv): Promise<Respon
 
   try {
     const salt = await voterSalt(env.DB);
-    const cookieId = readVoterId(request);
+    const cookieId = await readVoterId(request, salt);
     const voterId = cookieId ?? newVoterId();
     const keys = await rateKeys(salt, voterId, clientIp(request));
     const first = cookieId
@@ -147,7 +148,7 @@ export async function handleVote(request: Request, env: VoteEnv): Promise<Respon
     const outcome = await saveResponse(env.DB, post.id, widget, voter, answer.value);
     const [counts, mine] = await Promise.all([choiceCounts(env.DB, post.id), voterChoices(env.DB, post.id, voter)]);
     const result = publicResult(widget, counts, mine);
-    const headers = cookieId ? undefined : { "set-cookie": voterCookie(voterId) };
+    const headers = cookieId ? undefined : { "set-cookie": await voterCookie(salt, voterId) };
     if (outcome === "already_answered") return reply(409, "already_answered", { result, headers });
     return reply(200, null, { result, headers });
   } catch (err) {
@@ -165,8 +166,9 @@ export async function handleResults(request: Request, env: VoteEnv): Promise<Res
     if (!post) return json({ ok: false, error: "not_found" }, 404);
     const widgets = responseWidgets(post);
     if (!widgets.length) return json({ ok: true, widgets: {} }, 200);
-    const cookieId = readVoterId(request);
-    const voter = cookieId ? await voterKey(await voterSalt(env.DB), post.id, cookieId) : null;
+    const salt = hasVoterCookie(request) ? await voterSalt(env.DB) : null;
+    const cookieId = salt ? await readVoterId(request, salt) : null;
+    const voter = salt && cookieId ? await voterKey(salt, post.id, cookieId) : null;
     const [counts, mine] = await Promise.all([choiceCounts(env.DB, post.id), voter ? voterChoices(env.DB, post.id, voter) : Promise.resolve(new Map<string, string>())]);
     return json({ ok: true, widgets: publicResults(widgets, counts, mine) }, 200);
   } catch (err) {
